@@ -1,0 +1,394 @@
+# Default config for sway
+#
+# Copy this to ~/.config/sway/config and edit it to your liking.
+#
+# Read `man 5 sway` for a complete reference.
+
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+# MISC. SETTERS
+# Set mod key ($mod_next=<Alt>, Mod4=<Super>)
+set $mod Mod1
+set $mod_next Mod4
+set $border_no_name border pixel 2
+set $border_normal border normal 2
+
+# change borders
+bindsym $mod+u border none
+bindsym $mod+y border pixel 2
+bindsym $mod+n border normal
+ 
+# Theme colors
+# set variable for main accent color
+#set $acolor #eb564d
+set $acolor #d64161
+ 
+# set other colors
+set $bgicolor #00979E
+set $bgucolor #6a6868
+set $txtacolor #F9FAF9
+set $txtucolor #bdbbbb
+set $indcolor #4deb56
+ 
+# class                   border  backgr. text    indic.   child_border
+client.focused          $acolor $acolor $txtacolor $indcolor $acolor
+client.focused_inactive $bgicolor $bgicolor $txtacolor $indcolor $bgicolor
+client.unfocused        $bgucolor $bgucolor $txtucolor $indcolor $bgucolor
+#client.urgent           #CB4B16 #FDF6E3 #CB4B16 $indcolor
+#client.placeholder      #000000 #0c0c0c $txtacolor #000000
+#client.background       #2B2C2B
+
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+
+# Your preferred terminal emulator
+set $term alacritty
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+set $menu dmenu_path | dmenu | xargs swaymsg exec --
+
+### Output configuration
+#
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+#
+# Example configuration:
+#
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+
+### Idle configuration
+#
+# Example configuration:
+#
+# exec swayidle -w \
+#          timeout 300 'swaylock -f -c 000000' \
+#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+#          before-sleep 'swaylock -f -c 000000'
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
+### Input configuration
+#
+# Example configuration:
+#
+#   input "2:14:SynPS/2_Synaptics_TouchPad" {
+#       dwt enabled
+#       tap enabled
+#       natural_scroll enabled
+#       middle_emulation enabled
+#   }
+#
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+
+# set default desktop layout (default is tiling) <default|stacking|tabbed>
+#workspace_layout stacking
+ 
+# set preferred focus_wrapping <yes|no|force>
+focus_wrapping no
+ 
+# Hide borders <none|vertical|horizontal|both|smart>
+hide_edge_borders none
+ 
+# set popup behaviour during full screen <smart|ignore|leave_fullscreen>
+popup_during_fullscreen leave_fullscreen
+
+# workspace back and forth (with/without active container)
+workspace_auto_back_and_forth yes
+bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
+ 
+# change borders
+bindsym $mod+period $border_no_name
+bindsym $mod+$mod_next+period $border_normal
+bindsym $mod+$mod_next+Shift+period border none
+
+### Key bindings
+#
+# Basics:
+#
+    # Start a terminal
+    bindsym $mod+Return exec $term
+
+    # Kill focused window
+    bindsym $mod+Shift+q kill
+
+    # Start your launcher
+    bindsym $mod+d exec $menu
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod normal
+
+    # Reload the configuration file
+    bindsym $mod+Shift+c reload
+
+    # Exit sway (logs you out of your Wayland session)
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+#
+# Moving around:
+#
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+    # Or use $mod+[up|down|left|right]
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+Left move left 100px
+bindsym $mod+Shift+Down move down 100px
+bindsym $mod+Shift+Up move up 100px
+bindsym $mod+Shift+Right move right 100px
+ 
+# hjkl move
+bindsym $mod+Shift+h move left 100px
+bindsym $mod+Shift+j move down 100px
+bindsym $mod+Shift+k move up 100px
+bindsym $mod+Shift+l move right 100px
+
+# container layouts
+bindsym $mod+w layout tabbed;exec notify-send 'tabbed layout'
+bindsym $mod+q layout splith;exec notify-send 'horizontal layout'
+bindsym $mod+e layout splitv;exec notify-send 'vertical layout'
+bindsym $mod+s layout stacking;exec notify-send 'stacking layout'
+ 
+# child container layouts (creates a child container from current selected application)
+bindsym $mod+z split h; exec "$con_title"
+bindsym $mod+x split v; exec "$con_title"
+bindsym $mod+c layout toggle
+
+#
+# Workspaces:
+#
+    # Switch to workspace
+    bindsym $mod+1 workspace number 1
+    bindsym $mod+2 workspace number 2
+    bindsym $mod+3 workspace number 3
+    bindsym $mod+4 workspace number 4
+    bindsym $mod+5 workspace number 5
+    bindsym $mod+6 workspace number 6
+    bindsym $mod+7 workspace number 7
+    bindsym $mod+8 workspace number 8
+    bindsym $mod+9 workspace number 9
+
+    # Move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace number 1
+    bindsym $mod+Shift+2 move container to workspace number 2
+    bindsym $mod+Shift+3 move container to workspace number 3
+    bindsym $mod+Shift+4 move container to workspace number 4
+    bindsym $mod+Shift+5 move container to workspace number 5
+    bindsym $mod+Shift+6 move container to workspace number 6
+    bindsym $mod+Shift+7 move container to workspace number 7
+    bindsym $mod+Shift+8 move container to workspace number 8
+    bindsym $mod+Shift+9 move container to workspace number 9
+
+    # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.
+#
+# Layout stuff:
+#
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+    bindsym $mod+b splith
+    bindsym $mod+v splitv
+
+    # Make the current focus fullscreen
+    bindsym $mod+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+Shift+space floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    bindsym $mod+space focus mode_toggle
+
+    # Move focus to the parent container
+    bindsym $mod+a focus parent
+#
+# Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+Shift+minus move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+minus scratchpad show
+
+    bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
+
+#
+# Resizing containers:
+#
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# arrow key resizing without resize mode
+bindsym $mod+$mod_next+Left resize shrink width 50 px or 5 ppt
+bindsym $mod+$mod_next+Down resize grow height 50 px or 5 ppt
+bindsym $mod+$mod_next+Up resize shrink height 50 px or 5 ppt
+bindsym $mod+$mod_next+Right resize grow width 50 px or 5 ppt
+bindsym $mod+$mod_next+Shift+Left resize shrink width 100 px or 10 ppt
+bindsym $mod+$mod_next+Shift+Down resize grow height 100 px or 10 ppt
+bindsym $mod+$mod_next+Shift+Up resize shrink height 100 px or 10 ppt
+bindsym $mod+$mod_next+Shift+Right resize grow width 100 px or 10 ppt
+
+# hkjl resize
+bindsym $mod+$mod_next+h resize shrink width 50 px or 5 ppt
+bindsym $mod+$mod_next+j resize grow height 50 px or 5 ppt
+bindsym $mod+$mod_next+k resize shrink height 50 px or 5 ppt
+bindsym $mod+$mod_next+l resize grow width 50 px or 5 ppt
+bindsym $mod+$mod_next+Shift+h resize shrink width 100 px or 10 ppt
+bindsym $mod+$mod_next+Shift+j resize grow height 100 px or 10 ppt
+bindsym $mod+$mod_next+Shift+k resize shrink height 100 px or 10 ppt
+bindsym $mod+$mod_next+Shift+l resize grow width 100 px or 10 ppt
+
+# predefined sizes (70/30)
+bindsym $mod+$mod_next+u resize set width 40 ppt
+bindsym $mod+$mod_next+i resize set width 50 ppt
+bindsym $mod+$mod_next+o resize set width 60 ppt
+
+# "netflix" and "spotify" modes
+bindsym $mod+$mod_next+n floating enable;sticky enable; move position 1300px 708px resize set 612 343;border none
+bindsym $mod+$mod_next+m floating enable;sticky enable; resize set 791 70;border none
+bindsym $mod+$mod_next+Shift+m resize set height 64; border none
+
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+bar {
+    position bottom
+
+    # When the status_command prints a new line to stdout, swaybar updates.
+    # The default just shows the current date and time.
+    status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
+
+    bindsym button4 nop bindsym button5 nop
+#   font xft:URWGothic-Book 11
+    strip_workspace_numbers yes
+ 
+    colors {
+        background #4a4a4a
+        statusline #F9FAF9
+        separator  #454947
+ 
+#                      border  backgr. text
+        focused_workspace  #F9FAF9 $acolor #F9FAF9
+        active_workspace   #595B5B #353836 #FDF6E3
+        inactive_workspace #595B5B #283339 #EEE8D5
+        binding_mode       $acolor #2C2C2C #F9FAF9
+        urgent_workspace   $acolor #FDF6E3 #E5201D
+    }
+}
+
+# switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
+
+# Open specific applications in floating mode
+for_window [class=".*"] title_format " %title"
+for_window [class="(?i)Gcolor3"] floating enable border pixel 1
+for_window [class="(?i)Gnome-calculator"] floating enable
+for_window [class="(?i)Kupfer"] border none
+for_window [class="(?i)System-config-printer.py"] floating enable border normal
+for_window [class="(?i)arandr"] floating enable
+for_window [class="Calamares"] floating enable border normal
+for_window [class="Clipgrab"] floating enable
+for_window [class="Galculator"] floating enable border pixel 1
+for_window [class="Lightdm-gtk-greeter-settings"] floating enable
+for_window [class="Lxappearance"] floating enable sticky enable border normal
+for_window [class="Manjaro Settings Manager"] floating enable border normal
+for_window [class="Manjaro-hello"] floating enable
+for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
+for_window [class="Shutter"] floating disable
+for_window [class="Simple-scan"] floating enable border normal
+for_window [class="Thus"] floating enable border normal
+for_window [class="Timeset-gui"] floating enable border normal
+for_window [class="Xfburn"] floating enable
+for_window [class="copyq"] floating enable border pixel 1
+for_window [class="octopi"] floating enable
+for_window [class="qt5ct"] floating enable sticky enable border normal
+for_window [class="spectacle"] floating disable
+for_window [title="About Pale Moon"] floating enable
+for_window [title="File Transfer*"] floating enable
+for_window [title="MuseScore: Play Panel"] floating enable
+for_window [title="alsamixer"] floating enable border pixel 1
+for_window [class="(?i)^timeshift-gtk$"] floating disable
+for_window [class="(?i)^gnome-calculator$"] floating disable
+for_window [class="(?i)virtualbox"] floating enable border normal
+for_window [class="(?i)System-config-printer.py"] floating enable border normal
+for_window [class="Nitrogen"] floating enable sticky enable border normal
+for_window [class="Oblogout"] fullscreen enable
+for_window [class="octopi"] floating enable
+for_window [class="qt5ct"] floating enable sticky enable border normal
+for_window [class="Pamac-manager"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [title="File Transfer*"] floating enable
+for_window [class="fpakman"] floating enable
+for_window [class="Galculator"] floating enable border pixel 1
+for_window [class="GParted"] floating enable border normal
+for_window [title="Remmina Remote Desktop Client" class="org.remmina.Remmina"] floating enable
+for_window [instance="remmina"] floating enable resize set 1920 1080
+
+# Configure border style <normal|1pixel|pixel xx|none|pixel>
+for_window [class=".*"] $border_no_name
+
+#############################
+### settings for i3-gaps: ###
+#############################
+ 
+## Set inner/outer gaps
+gaps inner 14
+gaps outer -2
+#
+## Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
+## gaps inner|outer current|all set|plus|minus <px>
+## gaps inner all set 10
+## gaps outer all plus 5
+#
+## Smart gaps (gaps used if only more than one container on the workspace)
+smart_gaps on
+#
+## Smart borders (draw borders around container only if it is not the only container on this workspace)
+## on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
+smart_borders on
+
+
+include /etc/sway/config.d/*

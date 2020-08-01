@@ -1,0 +1,7 @@
+#!/bin/bash
+
+$HOME/.config/herbstluftwm/xmobar-tags | xmobar -x 0 -B "#292d3e" -F "#ffffff" ~/.config/xmobar/xmobarrc2 &
+$HOME/.config/herbstluftwm/xmobar-tags | xmobar -x 1 -B "#292d3e" -F "#ffffff" ~/.config/xmobar/xmobarrc1 &
+$HOME/.config/herbstluftwm/xmobar-tags | xmobar -x 2 -B "#292d3e" -F "#ffffff" ~/.config/xmobar/xmobarrc0 &
+
+echo "Bars launched..."

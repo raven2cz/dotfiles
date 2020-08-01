@@ -1,0 +1,19 @@
+[global_config]
+  title_transmit_bg_color = "#ef2929"
+[keybindings]
+[profiles]
+  [[default]]
+    background_darkness = 0.83
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    font = TerminessTTF Nerd Font Mono Medium 13
+    use_system_font = False
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]
