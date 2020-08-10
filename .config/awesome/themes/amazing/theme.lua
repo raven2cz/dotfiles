@@ -127,9 +127,9 @@ theme.awesome_icon = theme.dir .. "/awesome-icon.png"
 -- {{{ Tag Wallpaper
 -- Set according to wallpaper directory
 local path = os.getenv("HOME") .."/Pictures/manga-wallpapers/"
--- Set to number of used tags
+-- Set wallpaper for each tag
 local wp_selected = {
-    "anime-streets-wallpaper.jpg",
+    "random",
     "lone-samurai-wallpaper.jpg",
     "wallhaven-xlmlmo.jpg",
     "wallhaven-yjd97g.jpg",
@@ -139,6 +139,20 @@ local wp_selected = {
     "wallhaven-g8y59e.jpg",
     "wallhaven-lqekzp.jpg",
 }
+-- Feature: place random wallpaper if the wp_selected has "random" text
+local wp_random = {
+    "anime-streets-wallpaper.jpg",
+    "6330.jpg",
+    "alone-sad-girl.jpg",
+    "24525.jpg",
+    "41107.jpg",
+    "127009.jpg",
+    "127022.jpg",
+    "127656.jpg",
+    "381246.jpg",
+    "gamer-girl.jpg",
+}
+
 -- default wallpaper
 theme.wallpaper = theme.dir.."/zenburn-background.png"
 -- }}}
@@ -253,11 +267,16 @@ local cpu = lain.widget.cpu({
     end
 })
 
--- Coretemp (lain, average)
+-- CPU and GPU temps (lain, average)
 local tempicon = wibox.widget.imagebox(theme.widget_temp)
-local temp = lain.widget.temp({
+local tempcpu = lain.widget.temp_ryzen({
     settings = function()
-        widget:set_markup(markup.fontfg(theme.font, theme.widgetbar_fg, " " .. coretemp_now .. "°C "))
+        widget:set_markup(markup.fontfg(theme.font, theme.widgetbar_fg, " cpu " .. coretemp_now .. "°C "))
+    end
+})
+local tempgpu = lain.widget.temp_gpu({
+    settings = function()
+        widget:set_markup(markup.fontfg(theme.font, theme.widgetbar_fg, " gpu " .. coretemp_now .. "°C "))
     end
 })
 
@@ -382,6 +401,12 @@ local function set_wallpaper(s)
 end
 
 function theme.at_screen_connect(s)
+    -- activate random seed by time
+    math.randomseed(os.time());
+    -- To guarantee unique random numbers on every platform, pop a few
+    for i = 1,10 do
+        math.random()
+    end
     -- Each screen has its own tag table.
     awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 
@@ -453,7 +478,7 @@ function theme.at_screen_connect(s)
             arrow("#273450", "#4f395e"),
             wibox.container.background(wibox.container.margin(wibox.widget { cpuicon, cpu.widget, layout = wibox.layout.align.horizontal }, 3, 4), "#4f395e"),
             arrow("#4f395e", "#273450"),
-            wibox.container.background(wibox.container.margin(wibox.widget { tempicon, temp.widget, layout = wibox.layout.align.horizontal }, 4, 4), "#273450"),
+            wibox.container.background(wibox.container.margin(wibox.widget { tempicon, tempcpu.widget, tempgpu.widget, layout = wibox.layout.align.horizontal }, 4, 4), "#273450"),
             arrow("#273450", "#4f395e"),
             wibox.container.background(wibox.container.margin(myWeather, 3, 3), "#4f395e"),
             arrow("#4f395e", "#273450"),
@@ -470,22 +495,30 @@ function theme.at_screen_connect(s)
 
     -- Wallpaper Settings for each Tag
     -- Set wallpaper on first tab (else it would be empty at start up)
-	  gears.wallpaper.maximized(path .. wp_selected[1], s, false)
-	  -- For each screen
-	  for scr in screen do
-		  -- Go over each tab
-		  for t = 1,#wp_selected do
-			  local tag = scr.tags[t]
-			  tag:connect_signal("property::selected", function (tag)
-			  -- And if selected
-				  if not tag.selected then return end
-				  -- Set wallpaper
-				  --gears.wallpaper.fit(path .. wp_selected[t], s)
-				  gears.wallpaper.maximized(path .. wp_selected[t], s, false)
-			  end)
-		  end
-	  end
-	  -- }}}
+    local wp = wp_selected[1]
+    if wp == "random" then wp = wp_random[1] end
+    gears.wallpaper.maximized(path .. wp, s, false)
+    -- For each screen
+    for scr in screen do
+      -- Go over each tab
+      for t = 1,#wp_selected do
+        local tag = scr.tags[t]
+        tag:connect_signal("property::selected", function (tag)
+          -- And if selected
+          if not tag.selected then return end
+          -- Set random wallpaper
+          if wp_selected[t] == "random" then 
+              local position = math.random(1, #wp_random)
+              wp = wp_random[position]
+          else 
+              wp = wp_selected[t]
+          end
+          --gears.wallpaper.fit(path .. wp_selected[t], s)
+          gears.wallpaper.maximized(path .. wp, s, false)
+        end)
+      end
+    end
+    -- }}}
     -- not used: set_wallpaper(s)
 end
 

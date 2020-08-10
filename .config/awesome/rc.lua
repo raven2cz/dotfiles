@@ -21,6 +21,10 @@ local dpi = require("beautiful.xresources").apply_dpi
 
 local ipairs, string, os, table, tostring, tonumber, type, math = ipairs, string, os, table, tostring, tonumber, type, math
 
+-- test special layouts
+local treetile = require("treetile")
+local machi = require("layout-machi")
+
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -59,6 +63,7 @@ editor_cmd = terminal .. " -e " .. editor
 -- Themes define colours, icons, font and wallpapers.
 -- usr folder: beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 beautiful.init(gears.filesystem.get_configuration_dir() .. "/themes/amazing/theme.lua")
+beautiful.layout_machi = machi.get_icon()
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -71,6 +76,8 @@ modkey1 = "Control"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
+    machi.default_layout,
+    treetile,
     awful.layout.suit.tile,
     awful.layout.suit.floating,
     lain.layout.centerwork,
@@ -125,7 +132,17 @@ root.buttons(gears.table.join(
 globalkeys = gears.table.join(
     
     --{{ Personal custom key bindings
-    
+
+    awful.key({ modkey,           }, ".", function () machi.default_editor.start_interactive() end,
+        {description = "machi: edit the current machi layout", group = "layout"}),
+    awful.key({ modkey,           }, "/", function () machi.switcher.start(client.focus) end,
+        {description = "machi: switch between windows", group = "layout"}),
+
+    awful.key({ modkey }, "x", treetile.vertical,
+        {description = "treetile.vertical split", group = "layout"}),
+    awful.key({ modkey }, "z", treetile.horizontal,
+        {description = "treetile.horizontal split", group = "layout"}),
+
     awful.key({ "Shift" }, "Alt_L", function () beautiful.mykeyboardlayout.next_layout(); end),
     
     -- Print Screen
@@ -267,6 +284,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
 
+    --[[
     awful.key({ modkey }, "x",
               function ()
                   awful.prompt.run {
@@ -277,6 +295,7 @@ globalkeys = gears.table.join(
                   }
               end,
               {description = "lua execute prompt", group = "awesome"}),
+    ]]--
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"})
@@ -284,6 +303,26 @@ globalkeys = gears.table.join(
 
 clientkeys = gears.table.join(
     -- {{ Personal keybindings
+
+    --[[
+    awful.key({ modkey, "Shift"   }, "h", function (c)
+        if awful.layout.get(c.screen).name ~= "treetile" then
+            awful.client.moveresize(-20,0,0,0) 
+        else
+            treetile.resize_client(-0.1) 
+            -- increase or decrease by percentage of current width or height, 
+            -- the value can be from 0.01 to 0.99, negative or postive
+        end 
+        end),   
+    awful.key({ modkey, "Shift"   }, "l", function (c) 
+        if awful.layout.get(c.screen).name ~= "treetile" then
+            awful.client.moveresize(20,0,0,0) 
+        else
+            treetile.resize_client(0.1)
+        end 
+        end),
+    ]]--
+
     awful.key({ modkey }, "Next", function (c) awful.util.spawn("transset-df -a --inc 0.20 --max 0.99") end,
       {description="Client Transparency Up", group="client"}),
     awful.key({ modkey }, "Prior", function (c) awful.util.spawn("transset-df -a --min 0.1 --dec 0.1") end,
