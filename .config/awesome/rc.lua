@@ -1,3 +1,10 @@
+--  _ __ __ ___   _____ _ __  
+-- | '__/ _` \ \ / / _ \ '_  \  Antonin Fischer (raven2cz)
+-- | | | (_| |\ V /  __/ | | |  https://tonda-fischer.online/
+-- |_|  \__,_| \_/ \___|_| |_|  https://github.com/raven2cz
+--        
+-- A customized rc.lua for awesomewm (https://awesomewm.org//) 
+
 -- If LuaRocks is installed, make sure that packages installed through it are
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
@@ -17,13 +24,15 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
+-- special layouts import
+local treetile = require("treetile")
+-- local treetileBindings = require("treetile.bindings")
+local machi = require("layout-machi")
+
+-- classes and services
 local dpi = require("beautiful.xresources").apply_dpi
 
 local ipairs, string, os, table, tostring, tonumber, type, math = ipairs, string, os, table, tostring, tonumber, type, math
-
--- test special layouts
-local treetile = require("treetile")
-local machi = require("layout-machi")
 
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
@@ -54,16 +63,15 @@ do
 end
 -- }}}
 
+-- MainMenu XMENU
+local function xmenu()
+    awful.spawn("/home/box/.config/xmenu/xmenu.sh")
+end
+
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
-
--- {{{ Variable definitions
--- Themes define colours, icons, font and wallpapers.
--- usr folder: beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-beautiful.init(gears.filesystem.get_configuration_dir() .. "/themes/amazing/theme.lua")
-beautiful.layout_machi = machi.get_icon()
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -74,10 +82,20 @@ modkey  = "Mod4"
 altkey  = "Mod1"
 modkey1 = "Control"
 
+-- THEMES
+-- usr folder: beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.init(gears.filesystem.get_configuration_dir() .. "/themes/amazing/theme.lua")
+
+-- {{{ Layouts configuration
+-- machi layout config
+beautiful.layout_machi = machi.get_icon()
+-- treetile layout bindings loading
+--treetileBindings.init()
+
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    machi.default_layout,
     treetile,
+    machi.default_layout,
     awful.layout.suit.tile,
     awful.layout.suit.floating,
     lain.layout.centerwork,
@@ -122,7 +140,7 @@ awful.screen.connect_for_each_screen(function(s) beautiful.at_screen_connect(s) 
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
-    awful.button({ }, 3, function () beautiful.mymainmenu:toggle() end),
+    awful.button({ }, 3, function () xmenu() end),
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
 ))
@@ -133,15 +151,95 @@ globalkeys = gears.table.join(
     
     --{{ Personal custom key bindings
 
+    -- machi layout special keybindings
     awful.key({ modkey,           }, ".", function () machi.default_editor.start_interactive() end,
         {description = "machi: edit the current machi layout", group = "layout"}),
     awful.key({ modkey,           }, "/", function () machi.switcher.start(client.focus) end,
         {description = "machi: switch between windows", group = "layout"}),
 
+    -- treetile layout special keybindings
     awful.key({ modkey }, "x", treetile.vertical,
         {description = "treetile.vertical split", group = "layout"}),
     awful.key({ modkey }, "z", treetile.horizontal,
         {description = "treetile.horizontal split", group = "layout"}),
+
+    -- resize clients with arrows
+    awful.key({ modkey, altkey   }, "Right", function ()
+        local c = client.focus
+        if awful.layout.get(c.screen).name ~= "treetile" then
+            awful.tag.incmwfact(0.05)
+        else
+            treetile.resize_horizontal(0.1) 
+            -- increase or decrease by percentage of current width or height, 
+            -- the value can be from 0.01 to 0.99, negative or postive
+        end 
+        end,
+        {description = "layout.extends right", group = "layout"}),   
+        awful.key({ modkey, altkey   }, "Left", function ()
+        local c = client.focus
+        if awful.layout.get(c.screen).name ~= "treetile" then
+            awful.tag.incmwfact(-0.05) 
+        else
+            treetile.resize_horizontal(-0.1) 
+            -- increase or decrease by percentage of current width or height, 
+            -- the value can be from 0.01 to 0.99, negative or postive
+        end 
+        end,
+        {description = "layout.extends left", group = "layout"}), 
+    awful.key({ modkey, altkey   }, "Up", function () 
+        local c = client.focus
+        if awful.layout.get(c.screen).name ~= "treetile" then
+            awful.tag.incmwfact(0.05) 
+        else
+            treetile.resize_vertical(-0.1)
+        end 
+        end,
+        {description = "layout.extends up", group = "layout"}),
+    awful.key({ modkey, altkey   }, "Down", function () 
+        local c = client.focus
+        if awful.layout.get(c.screen).name ~= "treetile" then
+            awful.tag.incmwfact(-0.05) 
+        else
+            treetile.resize_vertical(0.1)
+        end 
+        end,
+        {description = "layout.extends down", group = "layout"}),
+
+    -- swap client with arrows
+    awful.key({ modkey, "Shift"  }, "Right", function ()
+          awful.client.swap.byidx(1)
+        end,
+        {description = "layout.client.swap right", group = "layout"}),   
+        awful.key({ modkey, "Shift"  }, "Left", function ()
+          awful.client.swap.byidx(-1)
+        end,
+        {description = "layout.client.swap left", group = "layout"}), 
+    awful.key({ modkey, "Shift" }, "Up", function () 
+          awful.client.swap.byidx(1)
+        end,
+        {description = "layout.client.swap up", group = "layout"}),
+    awful.key({ modkey, "Shift" }, "Down", function () 
+          awful.client.swap.byidx(-1)
+        end,
+        {description = "layout.client.swap down", group = "layout"}),
+
+    -- focus client with arrows
+    awful.key({ modkey, modkey1 }, "Right", function ()
+          awful.client.focus.bydirection("right")
+        end,
+        {description = "layout.client.focus right", group = "layout"}),   
+    awful.key({ modkey, modkey1 }, "Left", function ()
+          awful.client.focus.bydirection("left")
+        end,
+        {description = "layout.client.focus left", group = "layout"}), 
+    awful.key({ modkey, modkey1 }, "Up", function () 
+          awful.client.focus.bydirection("up")
+        end,
+        {description = "layout.client.focus up", group = "layout"}),
+    awful.key({ modkey, modkey1 }, "Down", function () 
+          awful.client.focus.bydirection("down")
+        end,
+        {description = "layout.client.focus down", group = "layout"}),
 
     awful.key({ "Shift" }, "Alt_L", function () beautiful.mykeyboardlayout.next_layout(); end),
     
@@ -158,14 +256,14 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "F12", function () awful.spawn("i3exit suspend") end,
               {description="Suspend Computer", group="awesome"}),
     
-    -- Menu Support
+    -- ROFI Support
     awful.key({ modkey,           }, "s",      function () awful.spawn("rofi -show-icons -modi windowcd,window,drun -show drun") end,
-              {description="show rofi drun", group="awesome"}),
+              {description="show rofi drun", group="launcher"}),
     
     -- Layout and Gaps Support
-    awful.key({ modkey, "Control" }, "=", function () lain.util.useless_gaps_resize(1) end),
+    awful.key({ modkey, modkey1 }, "=", function () lain.util.useless_gaps_resize(1) end),
 
-    awful.key({ modkey, "Control" }, "-", function () lain.util.useless_gaps_resize(-1) end),
+    awful.key({ modkey, modkey1 }, "-", function () lain.util.useless_gaps_resize(-1) end),
     
     -- Widgets popups
     awful.key({ altkey, }, "h", function () if beautiful.fs then beautiful.fs.show(7) end end,
@@ -199,13 +297,14 @@ globalkeys = gears.table.join(
     
     -- }}
     
-    awful.key({ modkey, "Control" }, "s",      hotkeys_popup.show_help,
+    -- Navigation
+    awful.key({ modkey, modkey1   }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
               {description = "view next", group = "tag"}),
-    awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
+    awful.key({ modkey            }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
 
     awful.key({ modkey,           }, "j",
@@ -220,8 +319,6 @@ globalkeys = gears.table.join(
         end,
         {description = "focus previous by index", group = "client"}
     ),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
-              {description = "show main menu", group = "awesome"}),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
@@ -246,11 +343,12 @@ globalkeys = gears.table.join(
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
-    awful.key({ modkey, "Control" }, "r", awesome.restart,
+    awful.key({ modkey, modkey1   }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
 
+    -- layout and client manipulation
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
@@ -268,7 +366,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
 
-    awful.key({ modkey, "Control" }, "n",
+    awful.key({ modkey, modkey1   }, "n",
               function ()
                   local c = awful.client.restore()
                   -- Focus restored client
@@ -284,8 +382,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
 
-    --[[
-    awful.key({ modkey }, "x",
+    awful.key({ modkey, "Shift" }, "x",
               function ()
                   awful.prompt.run {
                     prompt       = "Run Lua code: ",
@@ -294,9 +391,13 @@ globalkeys = gears.table.join(
                     history_path = awful.util.get_cache_dir() .. "/history_eval"
                   }
               end,
-              {description = "lua execute prompt", group = "awesome"}),
-    ]]--
-    -- Menubar
+              {description = "lua execute prompt", group = "launcher"}),
+
+    -- Show Main Menu
+    awful.key({ modkey,           }, "w", function () xmenu() end,
+              {description = "show main menu", group = "launcher"}),
+
+    -- Menubar like DMENU
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"})
 )
@@ -304,29 +405,19 @@ globalkeys = gears.table.join(
 clientkeys = gears.table.join(
     -- {{ Personal keybindings
 
-    --[[
-    awful.key({ modkey, "Shift"   }, "h", function (c)
-        if awful.layout.get(c.screen).name ~= "treetile" then
-            awful.client.moveresize(-20,0,0,0) 
-        else
-            treetile.resize_client(-0.1) 
-            -- increase or decrease by percentage of current width or height, 
-            -- the value can be from 0.01 to 0.99, negative or postive
-        end 
-        end),   
-    awful.key({ modkey, "Shift"   }, "l", function (c) 
-        if awful.layout.get(c.screen).name ~= "treetile" then
-            awful.client.moveresize(20,0,0,0) 
-        else
-            treetile.resize_client(0.1)
-        end 
-        end),
-    ]]--
+    -- swap and rotate clients in treetile layout
+    awful.key({ modkey, "Shift" }, "r", function (c) treetile.rotate(c) end,
+        {description = "treetile.container.rotate", group = "layout"}),
+    awful.key({ modkey, "Shift" }, "s", function (c) treetile.swap(c) end,
+        {description = "treetile.container.swap", group = "layout"}),
 
+    -- transparency for focused client
     awful.key({ modkey }, "Next", function (c) awful.util.spawn("transset-df -a --inc 0.20 --max 0.99") end,
       {description="Client Transparency Up", group="client"}),
     awful.key({ modkey }, "Prior", function (c) awful.util.spawn("transset-df -a --min 0.1 --dec 0.1") end,
       {description="Client Transparency Down", group="client"}),  
+
+    -- show/hide titlebar
     awful.key({ modkey,           }, "t", awful.titlebar.toggle,
               {description = "Show/Hide Titlebars", group="client"}),
     -- }}
@@ -423,6 +514,7 @@ for i = 1, 9 do
     )
 end
 
+-- Mouse Operations
 clientbuttons = gears.table.join(
     awful.button({ }, 1, function (c)
         c:emit_signal("request::activate", "mouse_click", {raise = true})

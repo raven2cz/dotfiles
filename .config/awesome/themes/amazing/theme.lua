@@ -1,3 +1,9 @@
+--  _ __ __ ___   _____ _ __  
+-- | '__/ _` \ \ / / _ \ '_  \  Antonin Fischer (raven2cz)
+-- | | | (_| |\ V /  __/ | | |  https://tonda-fischer.online/
+-- |_|  \__,_| \_/ \___|_| |_|  https://github.com/raven2cz
+--        
+-- A customized theme.lua for awesomewm / amazing theme (https://awesomewm.org//) 
 ----------------------------
 -- Amazing Awesome Theme! --
 ----------------------------
@@ -201,6 +207,8 @@ theme.layout_cornernw = theme.dir.."/layouts/cornernww.png"
 theme.layout_cornerne = theme.dir.."/layouts/cornernew.png"
 theme.layout_cornersw = theme.dir.."/layouts/cornersww.png"
 theme.layout_cornerse = theme.dir.."/layouts/cornersew.png"
+theme.layout_treetile = theme.dir.."/layouts/treetile.png"
+theme.layout_machi = theme.dir.."/layouts/machi.png"
 
 -- Volume
 theme.widget_vol      = theme.dir .. "/icons/vol.png"
