@@ -423,7 +423,21 @@ function theme.at_screen_connect(s)
         math.random()
     end
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    --awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    names = { "main", "www", "apps", "idea", "air", "water", "fire", "earth", "love" }
+    l = awful.layout.suit  -- Just to save some typing: use an alias.
+    layouts = { 
+      awful.layout.layouts[1], --main
+      awful.layout.layouts[2], --www
+      awful.layout.layouts[2], --apps
+      l.floating,              --idea
+      l.magnifier,             --air
+      l.max,                   --water
+      awful.layout.layouts[5], --fire
+      awful.layout.layouts[6], --earth
+      l.max.fullscreen         --love
+    }
+    awful.tag(names, s, layouts)
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
