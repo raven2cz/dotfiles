@@ -472,6 +472,10 @@ function theme.at_screen_connect(s)
             if button == 1 then cw.toggle() end
         end
     )
+
+    -- test my first widget
+    firstWidget = wibox.widget.textbox()
+    firstWidget.text = "You are awesome!"
     
     -- separator type
     separator:set_text("  ")
@@ -488,6 +492,7 @@ function theme.at_screen_connect(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            firstWidget,
             separator,
             spotify_widget({
                 font = 'Hack Nerd Font 9',
