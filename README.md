@@ -1,2 +1,5 @@
 # dotfiles
-My User-specific Linux configuration: i3, awesome, qtile, bspwm, and many other linux accessories...
+
+![dotfiles](/images/dotfiles.png)
+
+My dotfiles Linux configuration: awesomewm, i3, qtile, bspwm, and many other linux accessories...
