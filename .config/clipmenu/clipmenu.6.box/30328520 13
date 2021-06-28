@@ -1,0 +1,28 @@
+{
+            String sdhdate = candidate.properties.getString("Securities.Security.History.SetLastDate");
+            if (sdhdate != null) {
+                try {
+                    Date dhdate = new SimpleDateFormat(StandardServiceConstants.SECURITY_HISTORY_FORMAT).parse(sdhdate);
+                    for (int j = 0; j < equity.size(); j++) {
+                        if (equity.getIdents().get(j).date.after(dhdate)) {
+                            if (j != 0) equity.getIdents().get(j - 1).segment = true;
+                            break;
+                        }
+                    }
+                } catch (ParseException e) {
+                    logger.error(e.getMessage(), e);
+                }
+                // eliminate problematic risk on the first 10 values
+                DescriptiveStatistics stat = new DescriptiveStatistics();
+                for (int j = 0; j < equity.getIdents().size(); j++) {
+                    stat.addValue(equity.getIdents().get(j).risk);
+                }
+                double mean30 = stat.getMean() * 1.30;
+                int beginRange = Math.min(10, equity.getIdents().size()-1);
+                for (int j = 0; j <= beginRange; j++) {
+                    if (Math.abs(equity.getIdents().get(j).risk) > mean30) {
+                        equity.getIdents().get(j).risk = 0.0d;
+                    }
+                }
+            }
+        }

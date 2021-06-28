@@ -1,0 +1,5 @@
+Druhý tímeframe má několik modulů, dále pak umožňuje ovládat DIRECTION (směr, ve kterém je povoleno obchodovat) nebo RISK (úroveň risku je odlišná dle kontextu rozdělená do BINs).
+
+Obecně je jasně vidět, že ovládání směru DIRECTION je nevhodné. Equity v některých případech jsou dokonce nestabilní. V jiných případech dochází k ziskům a okamžitým pádům a tím takovým neustálým vlnkám, které při jiných pozorováních patrné nejsou, jedná se tedy velmi pravděpodobně o tento vliv DIRECTION CONTEXT ovládání. POUZE v jediném případě nebyl výsledek špatný a to DIRECTION pro SFB kontext, ten celý rok pěkně stabilně vydělával v roce 2020, ale zase má hrozivý a velmi dlouhý propad v roce 2018. Jinými slovy stabilní to taky není.
+
+Řízení risku na základě contextu RISK je však odlišné a lze říci, že je velmi podařené. Ne však MQ3S (náš vynález nefunguje bohužel...), ty jsou velmi nevhodné a to po celý rok 2020 nevydělaly nic. SFB RISK nejsou špatné, určitě by šly používat, avšak 

@@ -1,0 +1,5 @@
+ * 1) Record the P&L for each closed trade. For a User-specified date, calculate the Mean Return of all closed trades.
+ * 2) Randomly sample with replacement from an array containing the close trade values and subtract the Mean of (1).
+ * 3) Repeat this REPETITION times to get a distribution of trades that mimic the original but with a Mean of Zero.
+ * 4) Calculate where the original strategy mean resides within the sequence of bootstrap means. If the strategy
+ * truly has an edge, we'd expect the original mean to meet or exceed most or all of the bootstrapped means.

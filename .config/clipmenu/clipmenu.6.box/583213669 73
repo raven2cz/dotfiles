@@ -1,0 +1,3 @@
+    case 2b : {&Filter1_N1=-3|3} {&Filter1_N2=NONE} //ID: 1.10
+    begin
+       filter1_long  = Average(CCI(9 + Filter1_N1), 9) <= -100;

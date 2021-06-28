@@ -1,0 +1,5 @@
+    case 29a : {&Filter1_N1=-3|3} {&Filter1_N2=FIXED} //ID: 6.0  N1 -3/+3, N2 fix
+    begin
+      filter1_long  = CCI((Filter1_N2 * 10)) < -1*((10 * Filter1_N1));
+      filter1_short = CCI((Filter1_N2 * 10)) > ((10 * Filter1_N1));
+    end;

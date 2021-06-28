@@ -1,0 +1,10 @@
+        // BATCH
+        BatchConfig timeMaxLossf08d3 = () -> {
+            String testPrefix = "time-max-loss-f0.8-d3";
+            ptfSelectQuery = "*p20";
+            test = String.format("%s-%s-test", testPrefix, FileUtils.sanitizeFileName(ptfSelectQuery));
+            plugins = new JtdPositionPlugin[] {
+                    new TimeMaxLossJtdPositionPlugin(MAX_LOSS_LIMIT__DAILY, ZERO_TRADES_EXCEEDING_LIMIT, 0.8, 3)
+            };
+        };
+

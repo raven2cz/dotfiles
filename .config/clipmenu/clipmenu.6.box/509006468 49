@@ -1,0 +1,1 @@
+l movingAverage = data.windowed(3) { it.average(

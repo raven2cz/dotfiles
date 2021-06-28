@@ -1,0 +1,60 @@
+// The ui-variables file is provided by base themes provided by Atom.
+//
+// See https://github.com/atom/atom-dark-ui/blob/master/styles/ui-variables.less
+// for a full listing of what's available.
+@import 'ui-variables';
+
+:root {
+  --highlight-color-size: 15px;
+}
+
+atom-overlay.highlight-color {
+  z-index: 0 !important;
+}
+
+.tab-bar {
+  z-index: 1;
+}
+
+.highlight-color-container {
+  position: absolute;
+  top: ~'calc(var(--highlight-color-line-height) * -1)';
+  left: ~'calc(var(--highlight-color-size) / 2)';
+  height: var(--highlight-color-line-height);
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+
+  &.interactive .highlight-color-item {
+    pointer-events: auto;
+    cursor: pointer;
+  }
+}
+
+.highlight-color-item {
+  position: relative;
+  width: var(--highlight-color-size);
+  height: var(--highlight-color-size);
+  border-radius: ~'calc(var(--highlight-color-size) / 2)';
+  background-color: #fff;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NUE4Mzc1QzdCRTc5MTFFMEEzN0JGMzVBMjczRjNDOTgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NUE4Mzc1QzhCRTc5MTFFMEEzN0JGMzVBMjczRjNDOTgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo1QTgzNzVDNUJFNzkxMUUwQTM3QkYzNUEyNzNGM0M5OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo1QTgzNzVDNkJFNzkxMUUwQTM3QkYzNUEyNzNGM0M5OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pm86kuEAAAAGUExURf///8zMzDjqqoMAAAAXSURBVHjaYmCEAgYYGCCBAbYeJgAQYABFEACBH3S9GAAAAABJRU5ErkJggg%3D%3D');
+  background-position: center;
+  background-size: ~'calc(var(--highlight-color-size) * 0.3)';
+  image-rendering: pixelated;
+  box-shadow: 0 0 0 1px white;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    display: block;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3) inset;
+    background-color: var(--highlight-color-color);
+  }
+
+  & + & {
+    margin-left: ~'calc(var(--highlight-color-size) / 2)';
+  }
+}

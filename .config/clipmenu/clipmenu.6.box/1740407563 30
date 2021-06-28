@@ -1,0 +1,5 @@
+          <archive>
+            <manifest>
+              <mainClass>org.sample.App</mainClass>
+            </manifest>
+          </archive>

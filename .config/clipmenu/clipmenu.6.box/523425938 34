@@ -1,0 +1,5 @@
+                      {
+                            id = 'text_role',
+                            widget = wibox.widget.textbox
+                      },
+                      top = 0,

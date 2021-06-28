@@ -1,0 +1,1 @@
+awful.keyboard.append_global_keybindings(machina.keys)

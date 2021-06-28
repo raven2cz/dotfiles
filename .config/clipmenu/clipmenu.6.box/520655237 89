@@ -1,0 +1,5 @@
+	case 2: begin //High picture deployment - Chart pattern 2 - Close <> OpenD(1)
+		modeLong = C > OpenD(1);
+		modeShort = C < OpenD(1);
+	end;
+	case 3: begin //High picture deployment - Chart pattern 3 - Close <> OpenD(0)

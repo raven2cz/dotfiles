@@ -1,0 +1,2 @@
+> > In addition, widget cannot directly takes beautiful.fg_normal, beautiful.bg_normal, etc. This is not acceptable for common library widgets. You have to implement default values and allow to declare override parameters by user settings. Look to "lain" and "nice" git repos how this is solved.
+> 

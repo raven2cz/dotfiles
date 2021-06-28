@@ -1,0 +1,9 @@
+function(self, c3, index, objects)
+            local focused = false
+            for _, x in pairs(awful.screen.focused().selected_tags) do
+                if x.index == index then
+                    focused = true
+                    break
+                end
+            end
+            local color

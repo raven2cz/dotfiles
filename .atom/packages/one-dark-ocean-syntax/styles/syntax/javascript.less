@@ -1,0 +1,67 @@
+.syntax--source.syntax--js {
+
+  color: @mono-1;
+
+  .syntax--keyword.syntax--operator {
+    color: @hue-1;
+
+    // keywords are definded in https://github.com/atom/language-javascript/blob/master/grammars/javascript.cson
+    // search "instanceof" for location
+    &.syntax--delete,
+    &.syntax--in,
+    &.syntax--of,
+    &.syntax--instanceof,
+    &.syntax--new,
+    &.syntax--typeof,
+    &.syntax--void {
+      color: @hue-3;
+    }
+  }
+
+  .syntax--comment.syntax--block.syntax--js{
+   font-style: italic;
+  }
+
+  .syntax--variable.syntax--parameter.syntax--function.syntax--js{
+    font-style: italic;
+  }
+
+  .syntax--meta.syntax--brace.syntax--round.syntax--js, .syntax--meta.syntax--brace.syntax--curly.syntax--js,
+  .syntax--meta.syntax--brace.syntax--square.syntax--js{
+    color: @mono-1;
+  }
+
+  .syntax--punctuation.syntax--definition.syntax--function.syntax--body.syntax--begin.syntax--bracket.syntax--curly.syntax--js{
+    color: @mono-1;
+  }
+
+  .syntax--meta.syntax--arguments.syntax--js{
+    color: @hue-5;
+  }
+
+  .syntax--variable.syntax--parameter.syntax--function.syntax--js{
+    color: @hue-5;
+  }
+
+  .syntax--keyword.syntax--operator.syntax--assignment.syntax--js{
+    color: @mono-1;
+  }
+
+  .syntax--punctuation.syntax--definition.syntax--function.syntax--body.syntax--end.syntax--bracket.syntax--curly.syntax--js{
+    color: @mono-1;
+  }
+
+  .syntax--punctuation.syntax--terminator.syntax--statement.syntax--js{
+    color: @mono-1;
+  }
+
+  .syntax--meta.syntax--delimiter.syntax--object.syntax--comma.syntax--js{
+    color: @mono-1;
+  }
+
+  .syntax--punctuation.syntax--definition.syntax--arguments.syntax--begin.syntax--bracket.syntax--round.syntax--js, .syntax--punctuation.syntax--definition.syntax--arguments.syntax--end.syntax--bracket.syntax--round.syntax--js{
+    color: @mono-1;
+  }
+
+
+}

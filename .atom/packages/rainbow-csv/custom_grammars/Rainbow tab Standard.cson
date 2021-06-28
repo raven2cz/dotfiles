@@ -1,0 +1,52 @@
+'scopeName': 'text.rbcst9'
+'name': 'Rainbow tab Standard'
+'fileTypes': [
+	'rbcst9'
+]
+'patterns': [
+ 	{
+		'match': '(?:((?:"(?:[^"]*"")*[^"]*"(?:\\t|$))|(?:[^"\\t]*(?:\\t|$)))|(.+))?(?:((?:"(?:[^"]*"")*[^"]*"(?:\\t|$))|(?:[^"\\t]*(?:\\t|$)))|(.+))?(?:((?:"(?:[^"]*"")*[^"]*"(?:\\t|$))|(?:[^"\\t]*(?:\\t|$)))|(.+))?(?:((?:"(?:[^"]*"")*[^"]*"(?:\\t|$))|(?:[^"\\t]*(?:\\t|$)))|(.+))?(?:((?:"(?:[^"]*"")*[^"]*"(?:\\t|$))|(?:[^"\\t]*(?:\\t|$)))|(.+))?(?:((?:"(?:[^"]*"")*[^"]*"(?:\\t|$))|(?:[^"\\t]*(?:\\t|$)))|(.+))?(?:((?:"(?:[^"]*"")*[^"]*"(?:\\t|$))|(?:[^"\\t]*(?:\\t|$)))|(.+))?(?:((?:"(?:[^"]*"")*[^"]*"(?:\\t|$))|(?:[^"\\t]*(?:\\t|$)))|(.+))?(?:((?:"(?:[^"]*"")*[^"]*"(?:\\t|$))|(?:[^"\\t]*(?:\\t|$)))|(.+))?(?:((?:"(?:[^"]*"")*[^"]*"(?:\\t|$))|(?:[^"\\t]*(?:\\t|$)))|(.+))?'
+		'name': 'rainbowline'
+		'captures':
+			'1':
+				'name': 'rainbow1'
+			'2':
+				'name': 'invalid.rainbowerror'
+			'3':
+				'name': 'keyword.rainbow2'
+			'4':
+				'name': 'invalid.rainbowerror'
+			'5':
+				'name': 'entity.name.rainbow3'
+			'6':
+				'name': 'invalid.rainbowerror'
+			'7':
+				'name': 'comment.rainbow4'
+			'8':
+				'name': 'invalid.rainbowerror'
+			'9':
+				'name': 'string.rainbow5'
+			'10':
+				'name': 'invalid.rainbowerror'
+			'11':
+				'name': 'entity.rainbow6'
+			'12':
+				'name': 'invalid.rainbowerror'
+			'13':
+				'name': 'storage.type.rainbow7'
+			'14':
+				'name': 'invalid.rainbowerror'
+			'15':
+				'name': 'support.rainbow8'
+			'16':
+				'name': 'invalid.rainbowerror'
+			'17':
+				'name': 'constant.language.rainbow9'
+			'18':
+				'name': 'invalid.rainbowerror'
+			'19':
+				'name': 'variable.language.rainbow10'
+			'20':
+				'name': 'invalid.rainbowerror'
+	}
+]

@@ -1,0 +1,6 @@
+            if (firstEquity != null && normValue == null) {
+                normValue = firstEquity.getLastValue();
+            }
+            CombinedEquity equity = EquityNormalizationLibrary.convertOhlcvToEquityNorm(ohlcv, normValue);
+            if (firstEquity == null) {
+                firstEquity = equity;

@@ -1,0 +1,39 @@
+@neutral-red: #cc241d;
+@neutral-green: #98971a;
+@neutral-yellow: #d79921;
+@neutral-blue: #458588;
+@neutral-purple: #b16286;
+@neutral-aqua: #689d6a;
+@neutral-orange: #d65d0e;
+
+@guide: fade(@fg1, 15);
+@guideAlt: fade(@fg1, 25);
+@ruler: fade(@fg1, 50);
+@headingBackground: lighten(@background, 7);
+@invisibles: @bg2;
+
+@syntax-text-color: @foreground;
+@syntax-cursor-color: @fg4;
+@syntax-selection-color: @bg1;
+@syntax-background-color: @background;
+
+// Guide colors
+@syntax-wrap-guide-color: @guide;
+@syntax-indent-guide-color: @guide;
+@syntax-invisible-character-color: @invisibles;
+
+// For find and replace markers
+@syntax-result-marker-color: @yellow;
+@syntax-result-marker-color-selected: @background;
+
+// Gutter colors
+@syntax-gutter-text-color: @gray;
+@syntax-gutter-text-color-selected: @yellow;
+@syntax-gutter-background-color: @background;
+@syntax-gutter-background-color-selected: @bg1;
+
+// For git diff info. i.e. in the gutter
+@syntax-color-renamed: @blue;
+@syntax-color-added: @green;
+@syntax-color-modified: @yellow;
+@syntax-color-removed: @red;

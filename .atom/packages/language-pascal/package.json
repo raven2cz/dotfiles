@@ -1,0 +1,51 @@
+{
+  "_from": "https://www.atom.io/api/packages/language-pascal/versions/1.0.0/tarball",
+  "_id": "language-pascal@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-jADzd5ya/iOy8/pVxf2+rPdjjUmnlCAgkrxpQm+9Ga6d86708H6vykJBqOGJpVGinWzDC6guSLerArk+w4iCZA==",
+  "_location": "/language-pascal",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/language-pascal/versions/1.0.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/language-pascal/versions/1.0.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/language-pascal/versions/1.0.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/language-pascal/versions/1.0.0/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/language-pascal/versions/1.0.0/tarball",
+  "_shasum": "de7f91ffad461a3e3c1259c080114c34e170dd1d",
+  "_spec": "https://www.atom.io/api/packages/language-pascal/versions/1.0.0/tarball",
+  "_where": "/tmp/apm-install-dir-2021516-301594-124jnnx.c2us",
+  "bugs": {
+    "url": "https://github.com/alefragnani/atom-language-pascal/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
+  "description": "Pascal language support in Atom",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "homepage": "https://github.com/alefragnani/atom-language-pascal#readme",
+  "license": "MIT",
+  "name": "language-pascal",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alefragnani/atom-language-pascal.git"
+  },
+  "version": "1.0.0",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

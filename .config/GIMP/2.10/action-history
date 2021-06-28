@@ -1,0 +1,27 @@
+# GIMP action-history
+
+(history-item "file-export-as" 4)
+(history-item "file-quit" 3)
+(history-item "image-scale" 3)
+(history-item "file-save-as" 1)
+(history-item "view-zoom-in" 0)
+(history-item "edit-paste-as-new-image" 0)
+(history-item "tools-vector" 1)
+(history-item "layers-new" 0)
+(history-item "view-zoom-revert" 0)
+(history-item "tools-scale" 0)
+(history-item "image-print-size" 0)
+(history-item "filters-unsharp-mask" 0)
+(history-item "filters-color-balance" 0)
+(history-item "filters-color-temperature" 0)
+(history-item "tools-gradient" 0)
+(history-item "tools-bucket-fill" 0)
+(history-item "image-resize" 0)
+(history-item "tools-perspective" 0)
+(history-item "image-crop-to-selection" 0)
+(history-item "layers-crop-to-content" 0)
+(history-item "tools-rect-select" 0)
+(history-item "vectors-selection-to-vectors-short" 0)
+(history-item "tools-pencil" 1)
+
+# end of action-history

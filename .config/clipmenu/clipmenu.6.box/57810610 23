@@ -1,0 +1,1 @@
+gpg --list-secret-keys

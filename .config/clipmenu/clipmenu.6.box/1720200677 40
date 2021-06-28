@@ -1,0 +1,7 @@
+        args = new String[] {
+                "-i", "/home/box/.data/equities/equity-check-boot",
+                "-r", "500",
+                "-e", "1024x768",
+                "-f", "01/01/2014",
+                "-t", "12/31/2019",
+        };

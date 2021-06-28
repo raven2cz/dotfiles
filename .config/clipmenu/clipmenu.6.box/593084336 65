@@ -1,0 +1,3 @@
+            // JTD context settings - Plugins Settings
+            // DEFINE ANALYSIS TEST FOR EVALUATION
+            plugins = new JtdPositionPlugin[]{

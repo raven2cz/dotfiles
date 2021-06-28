@@ -1,0 +1,51 @@
+{
+  "_from": "https://www.atom.io/api/packages/dark-pastel-eighties-syntax/versions/0.4.0/tarball",
+  "_id": "dark-pastel-eighties-syntax@0.4.0",
+  "_inBundle": false,
+  "_integrity": "sha512-mnHiD5NjLHJQJNwlrWFo/oN3VfaQ2OJd6S4oMB0Q+dcxVAAdpR+yKL9SpAnwI/CP+fSP1YIfebVyyW1QE8VOMQ==",
+  "_location": "/dark-pastel-eighties-syntax",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/dark-pastel-eighties-syntax/versions/0.4.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/dark-pastel-eighties-syntax/versions/0.4.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/dark-pastel-eighties-syntax/versions/0.4.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/dark-pastel-eighties-syntax/versions/0.4.0/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/dark-pastel-eighties-syntax/versions/0.4.0/tarball",
+  "_shasum": "73c8d15dc8e51eba53aad168c728f5b2c392f578",
+  "_spec": "https://www.atom.io/api/packages/dark-pastel-eighties-syntax/versions/0.4.0/tarball",
+  "_where": "/tmp/apm-install-dir-202151-959622-1vs7y6l.t9va",
+  "bugs": {
+    "url": "https://github.com/akonwi/dark-pastel-eighties-syntax/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "eighties friendly pastel theme for atom",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "homepage": "https://github.com/akonwi/dark-pastel-eighties-syntax#readme",
+  "license": "MIT",
+  "name": "dark-pastel-eighties-syntax",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akonwi/dark-pastel-eighties-syntax.git"
+  },
+  "theme": "syntax",
+  "version": "0.4.0",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "_from": "https://www.atom.io/api/packages/busy-signal/versions/2.0.1/tarball",
+  "_id": "busy-signal@2.0.1",
+  "_inBundle": false,
+  "_integrity": "sha512-pXzYeHJi5f8jn3DMC2PT/gDdArX12VaDcEoWmq818f+i9WX6jyqzB9zMTebC/9FISpwrT63g/x9hUGCzzIl+Vw==",
+  "_location": "/busy-signal",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/busy-signal/versions/2.0.1/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/busy-signal/versions/2.0.1/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/busy-signal/versions/2.0.1/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/busy-signal/versions/2.0.1/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/busy-signal/versions/2.0.1/tarball",
+  "_shasum": "74a948cc09ed6ecb262b9515d5c31a0a0e66a2e0",
+  "_spec": "https://www.atom.io/api/packages/busy-signal/versions/2.0.1/tarball",
+  "_where": "/tmp/apm-install-dir-2021431-5808-3rdto6.2iuj7",
+  "bugs": {
+    "url": "https://github.com/steelbrain/busy-signal/issues"
+  },
+  "bundleDependencies": false,
+  "consumedServices": {
+    "status-bar": {
+      "versions": {
+        "^1.0.0": "consumeStatusBar"
+      }
+    }
+  },
+  "dependencies": {
+    "disposify": "^1.0.0",
+    "ms": "^2.1.1"
+  },
+  "deprecated": false,
+  "description": "A package that provides an easy to use API to show your package is performing a task",
+  "devDependencies": {
+    "eslint-config-steelbrain": "^6.0.0",
+    "eslint-plugin-flowtype": "^3.2.0",
+    "flow-bin": "^0.89.0",
+    "jasmine-fix": "^1.3.1"
+  },
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "homepage": "https://github.com/steelbrain/busy-signal#readme",
+  "keywords": [
+    "busy",
+    "signal"
+  ],
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "name": "busy-signal",
+  "providedServices": {
+    "busy-signal": {
+      "versions": {
+        "1.0.0": "providerRegistry"
+      }
+    },
+    "atom-ide-busy-signal": {
+      "versions": {
+        "0.1.0": "provideBusySignal"
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steelbrain/busy-signal.git"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "apm test"
+  },
+  "version": "2.0.1",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [
+      {
+        "name": "disposify",
+        "version": "1.0.0",
+        "path": "node_modules/disposify/lib/index.js"
+      },
+      {
+        "name": "ms",
+        "version": "2.1.3",
+        "path": "node_modules/ms/index.js"
+      }
+    ],
+    "extensions": {
+      ".json": [
+        ".eslintrc.json",
+        "lib/.eslintrc.json",
+        "node_modules/disposify/package.json",
+        "node_modules/ms/package.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      ".js": [
+        "lib/atom-ide-provider.js",
+        "lib/element.js",
+        "lib/helpers.js",
+        "lib/index.js",
+        "lib/main.js",
+        "lib/provider.js",
+        "lib/registry.js",
+        "lib/types.js",
+        "node_modules/disposify/lib/index.js",
+        "node_modules/ms/index.js"
+      ]
+    },
+    "folders": [
+      {
+        "paths": [
+          "",
+          "decls",
+          "lib",
+          "spec"
+        ],
+        "dependencies": {
+          "disposify": "^1.0.0",
+          "ms": "^2.1.1"
+        }
+      }
+    ]
+  }
+}

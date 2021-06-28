@@ -1,0 +1,1 @@
+aModules = with pkgs.lua52Packages; [

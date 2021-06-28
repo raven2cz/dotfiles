@@ -1,0 +1,88 @@
+    case 41 : begin
+        Filter1_Long =  C < ELITE_MA_SWING_MEDIUM(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+        Filter1_Short = C > ELITE_MA_SWING_MEDIUM(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+    end;
+    case 42 : begin
+        Filter1_Long =  C > ELITE_MA_SWING_MEDIUM(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+        Filter1_Short = C < ELITE_MA_SWING_MEDIUM(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+    end;
+    case 43 : begin
+        Filter1_Long =  C < ELITE_MA_SWING_LOW(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+        Filter1_Short = C > ELITE_MA_SWING_HIGH(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+    end;
+    case 44 : begin
+        Filter1_Long =  C > ELITE_MA_SWING_LOW(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+        Filter1_Short = C < ELITE_MA_SWING_HIGH(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+    end;
+    case 45 : begin
+        Filter1_Long =  C < ELITE_MA_SWING_HIGH(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+        Filter1_Short = C > ELITE_MA_SWING_LOW(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+    end;
+    case 46 : begin
+        Filter1_Long =  C > ELITE_MA_SWING_HIGH(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+        Filter1_Short = C < ELITE_MA_SWING_LOW(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+    end;    
+    case 47 : begin
+        Filter1_Long =  ELITE_SWING_LOW(minList(Filter1_N2,3), 0)>= ELITE_MA_SWING_HIGH(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+        Filter1_Short = ELITE_SWING_HIGH(minList(Filter1_N2,3), 0)<= ELITE_MA_SWING_LOW(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+    end; 
+    case 48 : begin
+        Filter1_Long =  ELITE_SWING_LOW(minList(Filter1_N2,3), 0)<= ELITE_MA_SWING_HIGH(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+        Filter1_Short = ELITE_SWING_HIGH(minList(Filter1_N2,3), 0)>= ELITE_MA_SWING_LOW(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+    end; 
+    { SFB Adapted filters - ADX/MQ}
+    case 49: begin 
+        Filter1_Long = ADX(30)<=20; 
+        Filter1_Short = Filter1_Long;
+    end;
+    case 50: begin 
+        Filter1_Long = ADX(30)>20; 
+        Filter1_Short = Filter1_Long;
+    end; 
+    { SFB Adapted filters - ATR BINS}
+    case 51 : begin      
+        Filter1_Long = ATR_BIN=1; 
+        Filter1_Short = Filter1_Long;
+    end;
+    case 52 : begin      
+        Filter1_Long = ATR_BIN=2; 
+        Filter1_Short = Filter1_Long;
+    end;
+    case 53 : begin      
+        Filter1_Long = ATR_BIN=3; 
+        Filter1_Short = Filter1_Long;
+    end;
+    case 54 : begin      
+        Filter1_Long = ATR_BIN<>1; 
+        Filter1_Short = Filter1_Long;
+    end;
+    case 55 : begin      
+        Filter1_Long = ATR_BIN<>2; 
+        Filter1_Short = Filter1_Long;
+    end;
+    case 56 : begin      
+        Filter1_Long = ATR_BIN<>3; 
+        Filter1_Short = Filter1_Long;
+    end;
+    {SFB Adapted filters - HOD/LOD and HOW/LOW}
+    case 57 : begin 
+        Filter1_Long = High<>HighD(0); 
+        Filter1_Short = Low<>LowD(0);
+    end;
+    case 58 : begin 
+        Filter1_Long = High=HighD(0); 
+        Filter1_Short = Low=LowD(0);
+    end; 
+    case 59 : begin 
+        Filter1_Long = High<>HighW(0); 
+        Filter1_Short = Low<>LowW(0);
+    end;
+    case 60 : begin 
+        Filter1_Long = High=HighW(0); 
+        Filter1_Short = Low=LowW(0);
+    end; 
+    { SFB Adapted filters - Higher Picture Deployment}
+    case 61 : begin
+        CloseD1 = CloseD(1);
+        Filter1_Long = C > CloseD1;
+        Filter1_Short = C < CloseD1;

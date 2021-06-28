@@ -1,0 +1,1 @@
+            interval = new CalendarInterval(fromDate, toDate);

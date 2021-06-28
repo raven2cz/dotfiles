@@ -1,0 +1,2 @@
+            cal.add(Calendar.YEAR, 1000);
+            interval = new CalendarInterval(fromDate, cal.getTime());

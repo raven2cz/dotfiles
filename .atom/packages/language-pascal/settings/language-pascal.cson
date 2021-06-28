@@ -1,0 +1,5 @@
+'.source.pascal':
+  'editor':
+    'tabLength': 2
+    'commentStart': '// '
+    'increaseIndentPattern': '\\b(?i:(begin|const|declare|else|except|exception|finally|for|if|loop|(?<!of\\s)object|package|private\\s*$|protected\\s*$|public\\s*$|published\\s*$|task|try|type|uses|var|when))\\b'

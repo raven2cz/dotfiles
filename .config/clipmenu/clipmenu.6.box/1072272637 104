@@ -1,0 +1,1 @@
+        byte[] image = SystemCandidateCommonLibrary.createEquityImage(null, portfolio, title,

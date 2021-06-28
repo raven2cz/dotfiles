@@ -1,0 +1,14 @@
+@import "colors";
+
+.syntax--mustache {
+
+  .syntax--meta.syntax--tag.syntax--template {
+    color: @tag;
+
+    .syntax--entity.syntax--name.syntax--tag {
+      color: lighten(@tag, 20%);
+    }
+
+  }
+
+}

@@ -1,0 +1,2 @@
+# Fish greetings when the terminal is shown up in interactive mode
+function fish_greeting

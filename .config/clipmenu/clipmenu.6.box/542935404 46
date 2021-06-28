@@ -1,0 +1,7 @@
+            // JTD context settings
+            context.setAttribute(JtdCommonAttributes.INITIAL_CAPITAL, 250000.0);
+            context.setAttribute(JtdCommonAttributes.FRACTION_CONTRACT_ROUNDING_TYPE, ROUND);
+            context.setAttribute(ACCOUNT_CALCULATION_TYPE, USE_RESETED_ACCOUNT_TO_INITIAL_BY_YEAR);
+            context.setAttribute(JtdCommonAttributes.MAX_ALLOWED_CONTRACT_LIMIT, 10);
+            context.setAttribute(IGNORE_ORIGINAL_FRACTION, false);
+            context.setAttribute(SequenceService.APPLY_FROM_YEAR, 2007);

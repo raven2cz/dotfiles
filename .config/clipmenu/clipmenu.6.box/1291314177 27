@@ -1,0 +1,1 @@
+alias mc="mc --nosubshell"

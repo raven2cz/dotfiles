@@ -1,0 +1,57 @@
+{
+  "_from": "https://www.atom.io/api/packages/one-dark-ocean-syntax/versions/4.4.7/tarball",
+  "_id": "one-dark-ocean-syntax@4.4.7",
+  "_inBundle": false,
+  "_integrity": "sha512-kZkXCGNSyLhLX7gQk/FSioQhKVQTtrRSfIUDCNMq7rVcZR6qNN9hyrRu2RQL1AvBZH4jpWruD6iVRLygRwAfwg==",
+  "_location": "/one-dark-ocean-syntax",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/one-dark-ocean-syntax/versions/4.4.7/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/one-dark-ocean-syntax/versions/4.4.7/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/one-dark-ocean-syntax/versions/4.4.7/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/one-dark-ocean-syntax/versions/4.4.7/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/one-dark-ocean-syntax/versions/4.4.7/tarball",
+  "_shasum": "fdb6f65e8eba10e448ea44d6d9959dec947f50ff",
+  "_spec": "https://www.atom.io/api/packages/one-dark-ocean-syntax/versions/4.4.7/tarball",
+  "_where": "/tmp/apm-install-dir-202151-963574-1bc7eby.az0m",
+  "bugs": {
+    "url": "https://github.com/juliancruzsanchez/one-dark-ocean-syntax/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "A custom syntax with a nice background a complete vivid colors. With a dark ocean colored background and nice color.",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "homepage": "https://github.com/juliancruzsanchez/one-dark-ocean-syntax#readme",
+  "keywords": [
+    "ocean",
+    "one",
+    "dark",
+    "syntax",
+    "subtle"
+  ],
+  "name": "one-dark-ocean-syntax",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juliancruzsanchez/one-dark-ocean-syntax.git"
+  },
+  "theme": "syntax",
+  "version": "4.4.7",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

@@ -9,10 +9,11 @@ Calendar widget for Awesome WM - slightly improved version of the `wibox.widget.
   
     | Name | Screenshot |
     |---|---|
-    |nord (default) | ![nord_theme](./nord.png) |
+    | nord (default) | ![nord_theme](./nord.png) |
     | outrun | ![outrun_theme](./outrun.png) |
     | light | ![outrun_theme](./light.png) |
     | dark | ![outrun_theme](./dark.png) |
+    | naughty (default) | from local theme |
   
  - setup widget placement
   
@@ -44,7 +45,8 @@ local cw = calendar_widget()
 -- or customized
 local cw = calendar_widget({
     theme = 'outrun',
-    placement = 'bottom_right'
+    placement = 'bottom_right',
+    radius = 8,
 })
 mytextclock:connect_signal("button::press", 
     function(_, _, _, button)

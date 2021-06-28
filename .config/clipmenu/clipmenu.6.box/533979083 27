@@ -1,0 +1,13 @@
+val ma3 = ma(3)
+    val ma = ma()
+    val c = Series(3.0, 5.0, 8.0, 12.0, 18.0) // series Close prices
+    val l = Series(1.0, 3.0, 4.0, 7.0, 13.0)  // series Low prices
+
+    fun calculate() {
+        // example of perBar processing
+        for (d in 2..4) { // maxbarsback = 3
+            val closes = Series(c.asList().subList(0, d+1)) // Just for test! Not optimized, example of processing by bar
+            processBar(closes)
+        }
+        // show results
+        println("ma3=$ma3")

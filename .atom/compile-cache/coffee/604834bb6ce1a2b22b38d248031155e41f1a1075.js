@@ -1,0 +1,28 @@
+(function() {
+  var settings;
+
+  settings = {
+    config: {
+      brightness: {
+        type: 'string',
+        "default": 'Dark',
+        "enum": ["Dark", "Light"]
+      },
+      contrast: {
+        type: 'string',
+        "default": 'Medium',
+        "enum": ["Hard", "Medium", "Soft"]
+      },
+      variant: {
+        type: 'string',
+        "default": 'Default',
+        "enum": ["Default", "No Dimmed Colors"]
+      }
+    }
+  };
+
+  module.exports = settings;
+
+}).call(this);
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiL2hvbWUvYm94Ly5hdG9tL3BhY2thZ2VzL2dydXZib3gtcGx1cy1zeW50YXgvbGliL2dydXZib3gtc2V0dGluZ3MuY29mZmVlIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0FBQUEsTUFBQTs7RUFBQSxRQUFBLEdBQ0U7SUFBQSxNQUFBLEVBQ0U7TUFBQSxVQUFBLEVBQ0U7UUFBQSxJQUFBLEVBQU0sUUFBTjtRQUNBLENBQUEsT0FBQSxDQUFBLEVBQVMsTUFEVDtRQUVBLENBQUEsSUFBQSxDQUFBLEVBQU0sQ0FBQyxNQUFELEVBQVMsT0FBVCxDQUZOO09BREY7TUFJQSxRQUFBLEVBQ0U7UUFBQSxJQUFBLEVBQU0sUUFBTjtRQUNBLENBQUEsT0FBQSxDQUFBLEVBQVMsUUFEVDtRQUVBLENBQUEsSUFBQSxDQUFBLEVBQU0sQ0FBQyxNQUFELEVBQVMsUUFBVCxFQUFtQixNQUFuQixDQUZOO09BTEY7TUFRQSxPQUFBLEVBQ0U7UUFBQSxJQUFBLEVBQU0sUUFBTjtRQUNBLENBQUEsT0FBQSxDQUFBLEVBQVMsU0FEVDtRQUVBLENBQUEsSUFBQSxDQUFBLEVBQU0sQ0FBQyxTQUFELEVBQVksa0JBQVosQ0FGTjtPQVRGO0tBREY7OztFQWFGLE1BQU0sQ0FBQyxPQUFQLEdBQWlCO0FBZGpCIiwic291cmNlc0NvbnRlbnQiOlsic2V0dGluZ3MgPVxuICBjb25maWc6XG4gICAgYnJpZ2h0bmVzczpcbiAgICAgIHR5cGU6ICdzdHJpbmcnXG4gICAgICBkZWZhdWx0OiAnRGFyaydcbiAgICAgIGVudW06IFtcIkRhcmtcIiwgXCJMaWdodFwiXVxuICAgIGNvbnRyYXN0OlxuICAgICAgdHlwZTogJ3N0cmluZydcbiAgICAgIGRlZmF1bHQ6ICdNZWRpdW0nXG4gICAgICBlbnVtOiBbXCJIYXJkXCIsIFwiTWVkaXVtXCIsIFwiU29mdFwiXVxuICAgIHZhcmlhbnQ6XG4gICAgICB0eXBlOiAnc3RyaW5nJ1xuICAgICAgZGVmYXVsdDogJ0RlZmF1bHQnXG4gICAgICBlbnVtOiBbXCJEZWZhdWx0XCIsIFwiTm8gRGltbWVkIENvbG9yc1wiXVxubW9kdWxlLmV4cG9ydHMgPSBzZXR0aW5nc1xuIl19

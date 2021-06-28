@@ -1,0 +1,28 @@
+
+            TreeMap<Double, String> slEquities = new TreeMap<>();
+            for (String techSlResource : eqsRes) {
+                int endIndex = techSlResource.lastIndexOf("-techsl");
+                int startIndex = techSlResource.lastIndexOf("-", endIndex - 1) + 1;
+                double sl = Double.parseDouble(techSlResource.substring(startIndex, endIndex));
+                slEquities.put(sl, techSlResource);
+            }
+            Double techSL = takeMaxTechSL ?
+                    slEquities.lastEntry().getKey() : slEquities.firstEntry().getKey();
+            String maxMinTechSlFileName = takeMaxTechSL ?
+                    slEquities.lastEntry().getValue() : slEquities.firstEntry().getValue();
+            String maxMinTechSlResource = new File(path+"/SL", maxMinTechSlFileName).getAbsolutePath();
+            // backward compatibility
+            if (!new File(maxMinTechSlResource).exists()) {
+                maxMinTechSlResource = new File(path, maxMinTechSlFileName).getAbsolutePath();
+            }
+
+            // load DH-EQ without stats
+            CombinedEquity equity = importEquityFromWriteTrade32Csv(maxMinTechSlResource, null);
+            equity.getIdents().forEach(i -> i.strategy = candidate.id);
+            equity.setTitle(candidate.surid);
+            equity.getAddons().setAttribute(EQUITY_ADDON__ESTIMATED_TECH_SL, techSL);
+            candidate.candidateEquities.put("DH-EQ-MAXMINTECHSL", equity); // without calculation of stats!
+        }
+
+        
+        

@@ -1,0 +1,7 @@
+	public int nextInt() {
+		int[] randomNumbers = nextInt (DEFAULT_NUM_OF_RANDOMS, DEFAULT_MIN_RANDOM_RANGE, DEFAULT_MAX_RANDOM_RANGE, DEFAULT_REPEATABLE_VALUES, DEFAULT_BASE);
+		if (randomNumbers.length == 0) {
+			throw new RuntimeException("Unable to generate a random int from random.org");
+		}
+		return randomNumbers[0];
+	}

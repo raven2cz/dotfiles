@@ -1,0 +1,57 @@
+{
+  "_from": "https://www.atom.io/api/packages/gruvbox-syntax/versions/2.4.1/tarball",
+  "_id": "gruvbox-syntax@2.4.1",
+  "_inBundle": false,
+  "_integrity": "sha512-AvFHGJN5YQIUvJTZGfHjz5xVpWlzRhrTV4AafsMymT9+120Gb/pxaoq0VXq0cJ9aowDFY3yZLq0BGp3lXmCEjQ==",
+  "_location": "/gruvbox-syntax",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/gruvbox-syntax/versions/2.4.1/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/gruvbox-syntax/versions/2.4.1/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/gruvbox-syntax/versions/2.4.1/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/gruvbox-syntax/versions/2.4.1/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/gruvbox-syntax/versions/2.4.1/tarball",
+  "_shasum": "a414703752c0fa3056a2c723b20c927b2b0bdcb9",
+  "_spec": "https://www.atom.io/api/packages/gruvbox-syntax/versions/2.4.1/tarball",
+  "_where": "/tmp/apm-install-dir-202151-379094-1b2u0yh.qqgc",
+  "bugs": {
+    "url": "https://github.com/smlombardi/gruvbox-syntax/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Gruvbox enhanced for Angular JS and Typescript",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "homepage": "https://github.com/smlombardi/gruvbox-syntax#readme",
+  "keywords": [
+    "syntax",
+    "theme",
+    "dark",
+    "colorful"
+  ],
+  "license": "MIT",
+  "name": "gruvbox-syntax",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smlombardi/gruvbox-syntax.git"
+  },
+  "theme": "syntax",
+  "version": "2.4.1",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

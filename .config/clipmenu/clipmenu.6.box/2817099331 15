@@ -1,0 +1,11 @@
+xer
+      slop
+      xclip
+      cachix
+      niv
+      acpi
+      fd
+      (ripgrep.override { withPCRE2 = true; })
+      gnutls
+      libtool
+      cmake

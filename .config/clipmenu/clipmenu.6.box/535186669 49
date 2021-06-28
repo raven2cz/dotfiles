@@ -1,0 +1,28 @@
+s(1, position.getPositionQuantity());
+        assertEquals(-50.0, position.getPl(), 1e-3);
+        assertEquals(9900.0, r.account.getAmount(), 1e-3);
+
+        processOpenPosition(id++, "2018/01/07 13:20", 100d, 1, -1, "@YM.D", 10d, null);
+        processClosePosition(position, "2018/01/07 13:25", 110d);
+        assertEquals(0, position.getPositionQuantity());
+        assertEquals(0.0, position.getPl(), 1e-3);
+        System.out.println(r.account);
+
+        processOpenPosition(id++, "2018/01/08 00:01", 100d, 2, 1, "@YM.D", 10d, null);
+        processClosePosition(position, "2018/01/08 11:00", 120d);
+        assertEquals(2, position.getPositionQuantity());
+        assertEquals(200.0, position.getPl(), 1e-3);
+        assertEquals(10100.0, r.account.getAmount(), 1e-3);
+
+        processOpenPosition(id++, "2018/01/08 11:15", 100d, 4, -1, "@YM.D", 10d, null);
+        processClosePosition(position, "2018/01/08 11:30", 120d);
+        assertEquals(4, position.getPositionQuantity());
+        assertEquals(-400.0, position.getPl(), 1e-3);
+        assertEquals(9700.0, r.account.getAmount(), 1e-3);
+
+        processOpenPosition(id++, "2018/01/08 12:00", 100d, 4, -1, "@YM.D", 10d, null);
+        processClosePosition(position, "2018/01/08 12:15", 120d);
+        assertEquals(0, position.getPositionQuantity());
+        assertEquals(0.0, position.getPl(), 1e-3);
+        assertEquals(9700.0, r.account.getAmount(), 1e-3);
+         */

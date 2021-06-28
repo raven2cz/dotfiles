@@ -1,0 +1,34 @@
+        // BATCH DEBUG ERROR
+        BatchConfig pyramidInstrumentLessTick10P35Error = () -> {
+            String testPrefix = "DEBUG-pyramid-instrument-higher-tick10";
+            ptfSelectQuery = "*p35-error";
+            test = String.format("%s-%s-test", testPrefix, FileUtils.sanitizeFileName(ptfSelectQuery));
+            ptfSubtypes = new StrategySubtype[] {
+                    StrategySubtype.PTFA_FAIL_UNCORR,
+            };
+            subtypesPerGroup = new int[][]{ // just for one DEFAULT group - one row for this one group
+                    ArrayUtils.toPrimitive(Arrays.stream(ptfSubtypes).map(StrategySubtype::getId).toArray(Integer[]::new))
+            };
+            plugins = new JtdPositionPlugin[] {
+                    new InstrumentSequenceServiceJtdPositionPlugin<>(new AttributeModel()
+                            .setAttribute(SequenceService.SEQUENCE_ID, testPrefix)
+                            .setAttribute(PyramidModifySequenceService.PYRAMID_CONTROL_TYPE, HIGHER_THRESHOLD_SAME_DAY)
+                            .setAttribute(PyramidModifySequenceService.PYRAMID_CONTROL_THRESHOLD_TICKS, 10),
+                            DummySequenceService.class,
+                            PyramidModifySequenceService.class)
+            };
+        };
+
+        // BATCH
+        BatchConfig pyramidInstrumentHigherTick10P20 = () -> {
+            String testPrefix = "pyramid-instrument-higher-tick10";
+            ptfSelectQuery = "*p20";
+            test = String.format("%s-%s-test", testPrefix, FileUtils.sanitizeFileName(ptfSelectQuery));
+            plugins = new JtdPositionPlugin[] {
+                    //new TimeMaxLossJtdPositionPlugin(MAX_LOSS_LIMIT__DAILY, ZERO_TRADES_EXCEEDING_LIMIT, 1.2, 3)
+                    new InstrumentSequenceServiceJtdPositionPlugin<>(new AttributeModel()
+                            .setAttribute(SequenceService.SEQUENCE_ID, testPrefix)
+                            .setAttribute(PyramidModifySequenceService.PYRAMID_CONTROL_TYPE, HIGHER_THRESHOLD_SAME_DAY)
+                            .setAttribute(PyramidModifySequenceService.PYRAMID_CONTROL_THRESHOLD_TICKS, 10),
+                            DummySequenceService.class,
+                            PyramidModifySequenceService.class)

@@ -1,0 +1,1 @@
+{"source":".color-preview {\n  display: inline-block;\n  width: 10px;\n  height: 10px;\n  vertical-align: middle;\n}\n.color-name {\n  display: inline-block;\n  vertical-align: middle;\n}\n"}

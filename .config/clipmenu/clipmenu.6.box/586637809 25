@@ -1,0 +1,3 @@
+    case 25b :
+    begin
+      F1Value1 = BBKCRatio(Filter1_N1 + 10, Filter1_N2 / 10 + 1);

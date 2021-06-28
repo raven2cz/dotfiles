@@ -1,0 +1,2 @@
+	case 4b: begin //High picture deployment - Chart pattern 4 - CloseD(1) <> OpenD(1) - REVERSE
+		modeLong =  CloseD(1) > OpenD(1);

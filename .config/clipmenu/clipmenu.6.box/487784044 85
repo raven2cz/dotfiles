@@ -1,0 +1,1 @@
+            logger.debug("The results are exported to " + exportResource);

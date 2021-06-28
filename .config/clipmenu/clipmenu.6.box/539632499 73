@@ -1,0 +1,5 @@
+        JtdPositionPlugin[] plugins = new JtdPositionPlugin[]{
+                //new TimeMaxLossJtdPositionPlugin(MAX_LOSS_LIMIT__DAILY, ZERO_TRADES_EXCEEDING_LIMIT, 1.2, 3)
+                new InstrumentSequenceServiceJtdPositionPlugin<>(new AttributeModel()
+                        .setAttribute(SequenceService.SEQUENCE_ID, "pyramid-instrument-higher")
+                        .setAttribute(PyramidModifySequenceService.PYRAMID_CONTROL_TYPE, HIGHER_THRESHOLD_SAME_DAY)

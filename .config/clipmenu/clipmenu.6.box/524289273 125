@@ -1,0 +1,2 @@
+[2020-10-12 04:55:11,049] INFO   970[main] - SystemCandidateExportLibrary.uploadContentToServer:76 - HTTP/1.1 200 
+[2020-10-12 04:55:11,051] INFO   972[main] - SystemCandidateExportLibrary.uploadContentToServer:79 - You failed to upload 2020-10-12-04-54-52-!DP-FESX-80M-GA-export.zip => f:\WFD-REPOSITORY\2020-10-12-04-54-52-!DP-FESX-80M-GA-export.zip

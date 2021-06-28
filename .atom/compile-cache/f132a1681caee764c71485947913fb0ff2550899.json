@@ -1,0 +1,1 @@
+{"context-menu":{"atom-text-editor":[{"label":"Format Lua","command":"atom-format-lua:format"}]},"menu":[{"label":"Packages","submenu":[{"label":"Format lua","submenu":[{"label":"Format Lua","command":"atom-format-lua:format"}]}]}]}

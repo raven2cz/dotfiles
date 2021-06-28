@@ -1,0 +1,6 @@
+       .setAttribute(AverageCorrelatedDataFilter.PERCENT_ACCEPTANCE_CORR_LEVEL, percentCorrLevel)
+//                    .setAttribute(AverageCorrelatedDataFilter.MIN_ALLOWED_CORRELATION_THRESHOLD, corrRange[0])
+//                    .setAttribute(AverageCorrelatedDataFilter.MAX_ALLOWED_CORRELATION_THRESHOLD, corrRange[1]);
+//            avgCorrelatedDataFilter.filter(candidates, context);
+
+            //showCorrelationEquityResults(candidates.subList(0, Math.min(40, candidates.size())).stream().map(this::getEquity).collect(Collectors.toList()), 0.1);

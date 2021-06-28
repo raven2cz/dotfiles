@@ -1,0 +1,246 @@
+{
+  "_from": "https://www.atom.io/api/packages/linter-lua-findglobals/versions/1.2.0/tarball",
+  "_id": "linter-lua-findglobals@1.2.0",
+  "_inBundle": false,
+  "_integrity": "sha512-aRfX725+R6A9O15EBRLvMeeRVpenWTHuOwAar2HrFOKmuupVNdVsF+X8JtM98sPHnvub3yIerOEV3rdWVViyQw==",
+  "_location": "/linter-lua-findglobals",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/linter-lua-findglobals/versions/1.2.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/linter-lua-findglobals/versions/1.2.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/linter-lua-findglobals/versions/1.2.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/linter-lua-findglobals/versions/1.2.0/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/linter-lua-findglobals/versions/1.2.0/tarball",
+  "_shasum": "839daa9633020f9ce3a2a4a3a1e2c0768371d3bc",
+  "_spec": "https://www.atom.io/api/packages/linter-lua-findglobals/versions/1.2.0/tarball",
+  "_where": "/tmp/apm-install-dir-2021431-21323-11mtph2.f5xg",
+  "bugs": {
+    "url": "https://github.com/nebularg/linter-lua-findglobals/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "atom-linter": "^4.3.4",
+    "atom-package-deps": "^2.0.5",
+    "xregexp": "~2.0.0"
+  },
+  "deprecated": false,
+  "description": "Check Lua global variable access on the fly.",
+  "engines": {
+    "atom": ">=0.175.0"
+  },
+  "homepage": "https://github.com/nebularg/linter-lua-findglobals#readme",
+  "keywords": [
+    "linter",
+    "lua"
+  ],
+  "license": "MIT",
+  "main": "./lib/init",
+  "name": "linter-lua-findglobals",
+  "package-deps": [
+    "linter"
+  ],
+  "providedServices": {
+    "linter": {
+      "versions": {
+        "1.0.0": "provideLinter"
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nebularg/linter-lua-findglobals.git"
+  },
+  "version": "1.2.0",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [
+      {
+        "name": "atom-linter",
+        "version": "4.7.0",
+        "path": "node_modules/atom-linter/lib/index.js"
+      },
+      {
+        "name": "atom-package-deps",
+        "version": "2.1.3",
+        "path": "node_modules/atom-package-deps/lib/main.js"
+      },
+      {
+        "name": "consistent-env",
+        "version": "1.3.1",
+        "path": "node_modules/consistent-env/lib/index.js"
+      },
+      {
+        "name": "extify",
+        "version": "1.0.0",
+        "path": "node_modules/extify/lib/index.js"
+      },
+      {
+        "name": "lodash.uniq",
+        "version": "4.5.0",
+        "path": "node_modules/lodash.uniq/index.js"
+      },
+      {
+        "name": "named-js-regexp",
+        "version": "1.3.5",
+        "path": "node_modules/named-js-regexp/lib/named-js-regexp.js"
+      },
+      {
+        "name": "os-tmpdir",
+        "version": "1.0.2",
+        "path": "node_modules/os-tmpdir/index.js"
+      },
+      {
+        "name": "sb-exec",
+        "version": "1.0.5",
+        "path": "node_modules/sb-exec/lib/index.js"
+      },
+      {
+        "name": "sb-memoize",
+        "version": "1.0.2",
+        "path": "node_modules/sb-memoize/lib/index.js"
+      },
+      {
+        "name": "sb-npm-path",
+        "version": "1.0.1",
+        "path": "node_modules/sb-npm-path/lib/index.js"
+      },
+      {
+        "name": "sb-promisify",
+        "version": "1.3.0",
+        "path": "node_modules/sb-promisify/lib/index.js"
+      },
+      {
+        "name": "tmp",
+        "version": "0.0.33",
+        "path": "node_modules/tmp/lib/tmp.js"
+      },
+      {
+        "name": "xregexp",
+        "version": "2.0.0",
+        "path": "node_modules/xregexp/xregexp-all.js"
+      }
+    ],
+    "extensions": {
+      ".coffee": [
+        "lib/init.coffee",
+        "lib/stds.coffee"
+      ],
+      ".js": [
+        "node_modules/atom-linter/lib/helpers.js",
+        "node_modules/atom-linter/lib/index.js",
+        "node_modules/atom-linter/lib/types.js",
+        "node_modules/atom-package-deps/lib/helper.js",
+        "node_modules/atom-package-deps/lib/main.js",
+        "node_modules/atom-package-deps/lib/view.js",
+        "node_modules/consistent-env/lib/helpers.js",
+        "node_modules/consistent-env/lib/index.js",
+        "node_modules/extify/lib/helpers.js",
+        "node_modules/extify/lib/index.js",
+        "node_modules/lodash.uniq/index.js",
+        "node_modules/named-js-regexp/lib/named-js-regexp.js",
+        "node_modules/os-tmpdir/index.js",
+        "node_modules/sb-exec/lib/helpers.js",
+        "node_modules/sb-exec/lib/index.js",
+        "node_modules/sb-exec/lib/types.js",
+        "node_modules/sb-memoize/lib/index.js",
+        "node_modules/sb-npm-path/lib/helpers.js",
+        "node_modules/sb-npm-path/lib/index.js",
+        "node_modules/sb-promisify/lib/index.js",
+        "node_modules/tmp/lib/tmp.js",
+        "node_modules/xregexp/xregexp-all.js"
+      ],
+      ".json": [
+        "node_modules/atom-linter/package.json",
+        "node_modules/atom-package-deps/package.json",
+        "node_modules/consistent-env/.eslintrc.json",
+        "node_modules/consistent-env/package.json",
+        "node_modules/extify/.eslintrc.json",
+        "node_modules/extify/package.json",
+        "node_modules/lodash.uniq/package.json",
+        "node_modules/named-js-regexp/package.json",
+        "node_modules/os-tmpdir/package.json",
+        "node_modules/sb-exec/.eslintrc.json",
+        "node_modules/sb-exec/package.json",
+        "node_modules/sb-memoize/.eslintrc.json",
+        "node_modules/sb-memoize/package.json",
+        "node_modules/sb-npm-path/.eslintrc.json",
+        "node_modules/sb-npm-path/package.json",
+        "node_modules/sb-promisify/package.json",
+        "node_modules/tmp/package.json",
+        "node_modules/xregexp/package.json",
+        "package.json"
+      ]
+    },
+    "folders": [
+      {
+        "paths": [
+          "lib",
+          ""
+        ],
+        "dependencies": {
+          "atom-linter": "^4.3.4",
+          "atom-package-deps": "^2.0.5",
+          "xregexp": "~2.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/atom-linter/lib",
+          "node_modules/atom-linter"
+        ],
+        "dependencies": {
+          "named-js-regexp": "^1.3.1",
+          "sb-exec": "^1.0.4",
+          "sb-promisify": "^1.0.0",
+          "tmp": "~0.0.28"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/consistent-env",
+          "node_modules/consistent-env/lib"
+        ],
+        "dependencies": {
+          "lodash.uniq": "^4.5.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/sb-exec",
+          "node_modules/sb-exec/lib"
+        ],
+        "dependencies": {
+          "consistent-env": "^1.0.1",
+          "extify": "^1.0.0",
+          "sb-npm-path": "^1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/sb-npm-path",
+          "node_modules/sb-npm-path/lib",
+          "node_modules/sb-npm-path/spec"
+        ],
+        "dependencies": {
+          "sb-memoize": "^1.0.1",
+          "sb-promisify": "^1.2.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/tmp/lib",
+          "node_modules/tmp"
+        ],
+        "dependencies": {
+          "os-tmpdir": "~1.0.2"
+        }
+      }
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 [remmina_pref]
 secret=guLFJ34QMAJlXY34Or316s/lhHECboKakK4VBmTil+Y=
-datadir_path=
+datadir_path=/home/box/.local/share/remmina
 remmina_file_name=%G_%P_%N_%h
 screenshot_path=/home/box/Pictures
 deny_screenshot_clipboard=true
@@ -25,8 +25,8 @@ small_toolbutton=false
 view_file_mode=0
 resolutions=640x480,800x600,1024x768,1152x864,1280x960,1400x1050,1920x1080
 keystrokes=Send hello world§hello world\\n
-main_width=800
-main_height=400
+main_width=1389
+main_height=866
 main_maximize=false
 main_sort_column_id=1
 main_sort_order=0
@@ -70,6 +70,18 @@ rdp_quality_9=80
 rdp_deviceScaleFactor=0
 rdp_desktopScaleFactor=0
 rdp_desktopOrientation=0
+screenshot_name=remmina_%p_%h_%Y%m%d-%H%M%S
+trust_all=false
+dark_theme=true
+shortcutkey_multimon=65365
+grab_color=#00ff00
+grab_color_switch=false
+vte_shortcutkey_copy=99
+vte_shortcutkey_paste=118
+vte_shortcutkey_select_all=97
+vte_shortcutkey_increase_font=65365
+vte_shortcutkey_decrease_font=65366
+vte_shortcutkey_search_text=103
 
 [ssh_colors]
 background=rgb(213,204,186)
@@ -91,17 +103,22 @@ color12=rgb(66,106,121)
 color13=rgb(151,82,44)
 color14=rgb(152,154,156)
 color15=rgb(213,204,186)
+bold=#45373c
+cursor_foreground=rgb(213,204,186)
+highlight=rgb(69,55,60)
+highlight_foreground=rgb(213,204,186)
+colorBD=rgb(69,55,60)
 
 [usage_stats]
 periodic_usage_stats_permitted=true
-periodic_usage_stats_last_sent=1594565001
+periodic_usage_stats_last_sent=1622660751
 periodic_usage_stats_uuid_prefix=PKSR36MV40Y3HQ
 
 [remmina_news]
-periodic_rmnews_last_get=1596039265
-periodic_rmnews_get_count=4
+periodic_rmnews_last_get=1597441016
+periodic_rmnews_get_count=6
 periodic_rmnews_uuid_prefix=EV8XZ2MQIUSOXR
-periodic_news_permitted=true
+periodic_news_permitted=false
 
 [remmina]
 name=

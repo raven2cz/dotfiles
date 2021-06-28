@@ -1,0 +1,1 @@
+throw new IllegalArgumentException("The syntax of image export dimension parameter has to be WIDTHxHEIGHT, e.g. 800x600, parameter -e 800x600");

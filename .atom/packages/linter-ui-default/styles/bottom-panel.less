@@ -1,0 +1,49 @@
+@import (inline) '../node_modules/solid-simple-table/dist/SimpleTable.css';
+@import 'ui-variables';
+
+.solid-simple-table.linter {
+  color: @text-color;
+  font-size: @font-size;
+}
+
+.solid-simple-table.linter thead {
+  background-color: darken(@base-background-color, 3%);
+  user-select: none;
+}
+
+.solid-simple-table.linter tbody {
+  background-color: @base-background-color;
+}
+
+.solid-simple-table.linter td,
+.solid-simple-table.linter th {
+  padding: 3px 10px;
+}
+
+.solid-simple-table.linter td {
+  min-width: 100px;
+  border: (@font-size / 7) solid darken(@base-background-color, 3%);
+}
+
+.solid-simple-table.linter td:nth-child(4),
+.solid-simple-table.linter td:nth-child(5) {
+  cursor: pointer;
+}
+
+.solid-simple-table.linter {
+  &.error {
+    .message-with-severity(@text-color-error);
+  }
+  &.warning {
+    .message-with-severity(@text-color-warning);
+  }
+  &.info {
+    .message-with-severity(@text-color-info);
+  }
+
+  // message severity function
+  .message-with-severity(@color) {
+    border-left: 4px solid @color;
+    padding-left: 8px;
+  }
+}

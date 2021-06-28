@@ -1,0 +1,3 @@
+        // set DH vertical line for equity by Candidate Domain Object
+        setDHverticalLineByCandidateDO(candidate, equity);
+

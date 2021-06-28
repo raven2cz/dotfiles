@@ -1,0 +1,6 @@
+Do you really way which you want to go, or it is just trying?
+I have bad feeling about it now, because it seems that this taking a freedom. 
+Any COMPLEX configuration which is build "on top" any standard configuration cannot survive in the evolution. To learn, find ways, hacks to add new specific parameters and selections to ensure correct configuration under it. 
+The main problem here is the weak mapping. Any mapping is just a projection of some point X to point Y. And if the Y is configuration of component which is complex and there is next complex configuration X which try to map Y, the projection will be every time broken and X will be discarded in the time. 
+You will see in next months or year if it is true or false. This is good test. But if you spend hours and hours with modifications this mapping, it seems that it doesn't work.
+I understand that configuration, installation to many stations and applying specific settings for other users is realistic problem. And nixos config can give some solution for it. But the projection is weak, in addition very specific to nixos only, because it is just mirror of real config.

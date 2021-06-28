@@ -1,0 +1,243 @@
+{
+  "_from": "https://www.atom.io/api/packages/atom-material-ui/versions/2.1.3/tarball",
+  "_id": "atom-material-ui@2.1.3",
+  "_inBundle": false,
+  "_integrity": "sha512-vTD4R1nOFN9j5CzpZy3Pn0Gbdgct1v9nvF6iLWiaSaEDAnqjuUHDDpQImpM5znNcqk+uS6/9nGxjrYe53Ex5eg==",
+  "_location": "/atom-material-ui",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/atom-material-ui/versions/2.1.3/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/atom-material-ui/versions/2.1.3/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/atom-material-ui/versions/2.1.3/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/atom-material-ui/versions/2.1.3/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/atom-material-ui/versions/2.1.3/tarball",
+  "_shasum": "f7c5a9f837d2ff5ccdb95d8e0a69589e01b57aa9",
+  "_spec": "https://www.atom.io/api/packages/atom-material-ui/versions/2.1.3/tarball",
+  "_where": "/tmp/apm-install-dir-202151-537697-1ag8z08.ih7q",
+  "bugs": {
+    "url": "https://github.com/atom-material/atom-material-ui/issues"
+  },
+  "bundleDependencies": false,
+  "configSchema": {
+    "colors": {
+      "order": 1,
+      "type": "object",
+      "title": "Colors",
+      "properties": {
+        "abaseColor": {
+          "title": "Primary color",
+          "description": "Changes the main theme color.",
+          "type": "color",
+          "default": "#009688"
+        },
+        "accentColor": {
+          "title": "Secondary color",
+          "description": "This color is used as an accent to the Primary Color.",
+          "type": "color",
+          "default": "#FFFFFF"
+        },
+        "genAccent": {
+          "title": "Generate complementary secondary color",
+          "description": "Generates a complementary color based on your selected Primary Color.",
+          "type": "boolean",
+          "default": false
+        },
+        "predefinedColor": {
+          "title": "Predefined colors",
+          "description": "Pick a predefined color from the Material Design palette. If you change the Primary Color it will override this settings.",
+          "type": "string",
+          "enum": [
+            "Amber",
+            "Blue",
+            "Blue Grey",
+            "Brown",
+            "Cyan",
+            "Green",
+            "Grey",
+            "Indigo",
+            "Lime",
+            "Orange",
+            "Pink",
+            "Purple",
+            "Red",
+            "Teal"
+          ],
+          "default": "Teal"
+        },
+        "paintCursor": {
+          "title": "Paint text editor's cursor",
+          "description": "Overrides the syntax theme's cursor color with the selected Primary Color.",
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "ui": {
+      "order": 2,
+      "type": "object",
+      "title": "User Interface",
+      "properties": {
+        "useAnimations": {
+          "title": "Use animations",
+          "description": "Enables animations for clicked tabs and other UI elements.",
+          "type": "boolean",
+          "default": true
+        },
+        "panelContrast": {
+          "title": "Contrasting panels",
+          "description": "Adds a little contrast between panels to differentiate where one starts and the other ends.",
+          "type": "boolean",
+          "default": false
+        },
+        "panelShadows": {
+          "title": "Panels cast shadows",
+          "description": "Adds depth to the user interface by using shadows.",
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "tabs": {
+      "order": 3,
+      "type": "object",
+      "title": "Tabs",
+      "properties": {
+        "compactTabs": {
+          "title": "Compact tab bar",
+          "description": "Reduces line height so the tab bar won't be too tall.",
+          "type": "boolean",
+          "default": false
+        },
+        "tintedTabBar": {
+          "title": "Tinted tab bar",
+          "description": "Paints the tab bar with the chosen primary color.",
+          "type": "boolean",
+          "default": false
+        },
+        "noTabMinWidth": {
+          "title": "No minimum width for tabs",
+          "description": "Prevents tabs from overflowing off the tab bar.",
+          "type": "boolean",
+          "default": false
+        },
+        "stretchedTabs": {
+          "title": "Stretched tabs",
+          "description": "Stretch tabs to full available width of the tab bar.",
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "fonts": {
+      "order": 5,
+      "type": "object",
+      "title": "Fonts",
+      "properties": {
+        "fontSize": {
+          "title": "User interface font size",
+          "description": "Scales the entire UI based on this value.",
+          "type": "number",
+          "default": 16,
+          "minimum": 10,
+          "maximum": 32
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "tinycolor2": "1.3.0"
+  },
+  "deprecated": false,
+  "description": "A dynamic UI theme for Atom that follows Google's Material Design Guidelines",
+  "devDependencies": {
+    "babel-eslint": "^7.1.1",
+    "eslint": "^3.17.1",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0"
+  },
+  "engines": {
+    "atom": ">=1.17.0 <2.0.0"
+  },
+  "homepage": "https://github.com/atom-material/atom-material-ui#readme",
+  "keywords": [
+    "ui",
+    "theme",
+    "material",
+    "md",
+    "dynamic",
+    "adaptive",
+    "adapt to syntax",
+    "material design"
+  ],
+  "license": "MIT",
+  "main": "./lib/main",
+  "name": "atom-material-ui",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atom-material/atom-material-ui.git"
+  },
+  "theme": "ui",
+  "version": "2.1.3",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [
+      {
+        "name": "tinycolor2",
+        "version": "1.3.0",
+        "path": "node_modules/tinycolor2/tinycolor.js"
+      }
+    ],
+    "extensions": {
+      ".js": [
+        ".eslintrc.js",
+        "lib/colors/build-color-settings.js",
+        "lib/colors/index.js",
+        "lib/fonts/index.js",
+        "lib/fonts/set-font-size.js",
+        "lib/helper/to-camel-case.js",
+        "lib/helper/toggle-class-name.js",
+        "lib/helper/write-config-file.js",
+        "lib/main.js",
+        "lib/tab-bar/index.js",
+        "lib/user-interface/index.js",
+        "node_modules/tinycolor2/Gruntfile.js",
+        "node_modules/tinycolor2/demo/jquery-1.9.1.js",
+        "node_modules/tinycolor2/dist/tinycolor-min.js",
+        "node_modules/tinycolor2/tinycolor.js"
+      ],
+      ".json": [
+        "lib/color-templates.json",
+        "node_modules/tinycolor2/bower.json",
+        "node_modules/tinycolor2/package.json",
+        "package.json"
+      ]
+    },
+    "folders": [
+      {
+        "paths": [
+          "",
+          "lib",
+          "lib/colors",
+          "lib/fonts",
+          "lib/helper",
+          "lib/tab-bar",
+          "lib/user-interface",
+          "spec/colors",
+          "spec/fonts",
+          "spec/helper"
+        ],
+        "dependencies": {
+          "tinycolor2": "1.3.0"
+        }
+      }
+    ]
+  }
+}

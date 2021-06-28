@@ -1,0 +1,4 @@
+# Fish greetings when the terminal is shown up
+function fish_greeting
+    #fish_logo
+    #colorscript random

@@ -1,0 +1,3 @@
+   	case 15b: begin //High picture deployment - Chart pattern 1 - CloseD(1) <> CloseW(1) - REVERSE
+   		modeLong = CloseD(1) < CloseW(1);
+   		modeShort = CloseD(1) > CloseW(1);

@@ -1,0 +1,9 @@
+        Set<Position> openedPositions = jtdPositionState.positionContainer.getFastOpenedPositionByMarketSymbol(position.getSymbol());
+        Double priceDiffTicks = null;
+        for (Position openedPosition : openedPositions) {
+            // check same day first
+            Asset asset = assetService.getAssetBySymbol(position.getSymbol());
+            if (DateUtils.isSameDay(position.getEntryTime(), openedPosition.getEntryTime())) {
+                priceDiffTicks = Math.abs(openedPosition.getEntryPrice() - position.getEntryPrice()) / asset.getMinimumMove();
+            }
+        }

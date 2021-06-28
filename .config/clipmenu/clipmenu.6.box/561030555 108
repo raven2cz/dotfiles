@@ -1,0 +1,11 @@
+        ////////////////////////////////////////////////////////////////////////////////////////
+        // analysis of zero trades - Map<Year, [tradeCount, positionLine]> -> print to txt file
+        Map<Integer, ZeroTrade> zeroTrades = new TreeMap<>();
+        Calendar cal = Calendar.getInstance();
+        for (List<String> row : tdResultsTable.getTable()) {
+            Date positionExitTime = dateFormat.parse(row.get(dateTimeExit));
+            cal.setTime(positionExitTime);
+            int year = cal.get(Calendar.YEAR);
+            ZeroTrade zeroTrade = zeroTrades.computeIfAbsent(year, k -> new ZeroTrade());
+            zeroTrade.tradeCount++;
+            if (Integer.parseInt(row.get(size)) == 0) {

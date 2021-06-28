@@ -1,0 +1,51 @@
+{
+  "_from": "https://www.atom.io/api/packages/zenburn/versions/3.1.0/tarball",
+  "_id": "zenburn@3.1.0",
+  "_inBundle": false,
+  "_integrity": "sha512-RxHLMWkz+pRRZhF0OqymrPUeF9LxaNy4qe6GAk8FFv8qvGFAW0EGf6f6zfHT+jmjcjAYUs410bkbgyl5c/D5Mw==",
+  "_location": "/zenburn",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/zenburn/versions/3.1.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/zenburn/versions/3.1.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/zenburn/versions/3.1.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/zenburn/versions/3.1.0/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/zenburn/versions/3.1.0/tarball",
+  "_shasum": "fe4e6c7f61b0a53c796b50c27d64b9c76e721cbe",
+  "_spec": "https://www.atom.io/api/packages/zenburn/versions/3.1.0/tarball",
+  "_where": "/tmp/apm-install-dir-202151-961634-a50jwh.fgzn",
+  "bugs": {
+    "url": "https://github.com/colindean/atom-zenburn/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Low contrast theme for long coding sessions, e.g. work",
+  "engines": {
+    "atom": ">=0.194.0"
+  },
+  "homepage": "https://github.com/colindean/atom-zenburn",
+  "license": "MIT",
+  "name": "zenburn",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/colindean/atom-zenburn.git"
+  },
+  "theme": "syntax",
+  "version": "3.1.0",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

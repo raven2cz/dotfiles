@@ -1,3 +1,4 @@
+#!/bin/sh
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 numlockx &
@@ -10,7 +11,13 @@ export DESKTOP_SESSION=plasma
 export XDG_CURRENT_DESKTOP=KDE
 #export XDG_CURRENT_DESKTOP=GNOME
 export XDG_CONFIG_HOME=$HOME/.config
-export EDITOR=vim
+export EDITOR=nvim
+export QT_SELECT=6
+
+# clipmenu rofi support
+export CM_LAUNCHER=rofi
+export CM_HISTLENGTH=50
+export CM_DIR=~/.config/clipmenu
 
 # Here AwesomeWM is kept as default
 session=${1:-awesome}

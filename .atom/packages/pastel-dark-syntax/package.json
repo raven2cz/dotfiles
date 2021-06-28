@@ -1,0 +1,57 @@
+{
+  "_from": "https://www.atom.io/api/packages/pastel-dark-syntax/versions/0.3.0/tarball",
+  "_id": "pastel-dark-syntax@0.3.0",
+  "_inBundle": false,
+  "_integrity": "sha512-UmATm+f/YWnODvLQrJSXgr6tsYDnLarwywGPmtI8+7UOPFlR5f5FMx92WTR7FovXWrC6FIR4nBxxcqNdYypCrA==",
+  "_location": "/pastel-dark-syntax",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/pastel-dark-syntax/versions/0.3.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/pastel-dark-syntax/versions/0.3.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/pastel-dark-syntax/versions/0.3.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/pastel-dark-syntax/versions/0.3.0/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/pastel-dark-syntax/versions/0.3.0/tarball",
+  "_shasum": "b49ad8d75cff7e64d1bbc0df879903c85ec3a099",
+  "_spec": "https://www.atom.io/api/packages/pastel-dark-syntax/versions/0.3.0/tarball",
+  "_where": "/tmp/apm-install-dir-202151-1017158-11tjiiy.2wy6",
+  "bugs": {
+    "url": "https://github.com/MojoBandit/pastel-dark-syntax/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "A calming syntax theme. Inspired by Base16 Eighties",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "homepage": "https://github.com/MojoBandit/pastel-dark-syntax#readme",
+  "keywords": [
+    "syntax",
+    "theme",
+    "pastel",
+    "calm"
+  ],
+  "license": "MIT",
+  "name": "pastel-dark-syntax",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MojoBandit/pastel-dark-syntax.git"
+  },
+  "theme": "syntax",
+  "version": "0.3.0",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

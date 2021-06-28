@@ -1,0 +1,89 @@
+atom-text-editor {
+  background-color: @background;
+  color: @foreground;
+
+  .wrap-guide {
+    background-color: @guide;
+  }
+
+  .indent-guide {
+    color: @guide;
+  }
+
+  .invisible-character, .invisible {
+    color: @invisibles;
+  }
+
+  .gutter {
+    background-color: @background;
+    color: @gray;
+
+    .line-number {
+      &.cursor-line {
+        background-color: @syntax-gutter-background-color-selected;
+        color: @gray;
+      }
+
+      &.cursor-line-no-selection {
+        color: @yellow;
+      }
+    }
+  }
+
+  .line.cursor-line {
+    background-color: fade(@bg2, 50%);
+    .invisible-character, .invisible {
+      color: @bg3;
+    }
+  }
+
+  .gutter .line-number.folded,
+  .gutter .line-number:after,
+  .fold-marker:after {
+    color: @gray;
+  }
+
+  .cursor {
+    color: @fg4;
+  }
+
+  .selection .region {
+    background-color: @bg1;
+  }
+
+  // Bracket Matcher Highlight
+  .bracket-matcher .region{
+    border-bottom: 1px solid @fg2;
+  }
+}
+
+atom-text-editor .find-result .region,
+atom-text-editor.editor .find-result .region {
+  background-color: transparent;
+  border: 1px solid @yellow;
+}
+
+atom-text-editor.editor .highlights .selection .region {
+  background-color: @bg2;
+}
+
+atom-text-editor.editor .current-result .region {
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+
+.editor--private {
+  .syntax--text {
+    color: inherit;
+  }
+}
+
+.indent-guide-improved {
+  background-color: @guide;
+  &.indent-guide-stack {
+    background-color: @bg3;
+    &.indent-guide-active {
+      background-color: @gray;
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "_from": "https://www.atom.io/api/packages/base16-eighties-dark/versions/2.1.1/tarball",
+  "_id": "base16-eighties-dark@2.1.1",
+  "_inBundle": false,
+  "_integrity": "sha512-VDeOYSwJfKSr5h7vrkilBminIK4p5M1PVpqdw8MKrYNZ8cLEyrSGR38EEsk7Pp9hMchp9iBwP6yIIhJKaLW2gw==",
+  "_location": "/base16-eighties-dark",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/base16-eighties-dark/versions/2.1.1/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/base16-eighties-dark/versions/2.1.1/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/base16-eighties-dark/versions/2.1.1/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/base16-eighties-dark/versions/2.1.1/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/base16-eighties-dark/versions/2.1.1/tarball",
+  "_shasum": "d820a4ae50842a2d4dab665223109aeb7de0a0d9",
+  "_spec": "https://www.atom.io/api/packages/base16-eighties-dark/versions/2.1.1/tarball",
+  "_where": "/tmp/apm-install-dir-202151-958648-kxdbw0.27ono",
+  "bugs": {
+    "url": "https://github.com/tyre/base16-eighties-dark/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Base16 Eighties Dark Theme for Atom",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "homepage": "https://github.com/tyre/base16-eighties-dark#readme",
+  "license": "MIT",
+  "name": "base16-eighties-dark",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tyre/base16-eighties-dark.git"
+  },
+  "theme": "syntax",
+  "version": "2.1.1",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

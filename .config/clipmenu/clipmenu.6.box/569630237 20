@@ -1,0 +1,42 @@
+<plugin>
+          <artifactId>maven-antrun-plugin</artifactId>
+          <version>1.8</version>
+          <executions>
+              <execution>
+                  <phase>package</phase>
+                  <goals>
+                    <goal>run</goal>
+                  </goals>
+                  <id>obfuscate</id>
+                  <configuration>
+                      <tasks>
+                        <property name="runtime_classpath" refid="maven.runtime.classpath"/>
+                        <taskdef name="yguard" classname="com.yworks.yguard.YGuardTask" classpath="${runtime_classpath}"/>
+                        <yguard>
+
+                          <inoutpair in="${project.build.directory}/${project.build.finalName}.jar" out="${project.build.directory}/${project.build.finalName}_obfuscated.jar" />
+                          <!-- don't let the obfuscator remove the "Deprecated" -->
+                          <!-- attributes from the .class file entries -->
+                          <attribute name="Deprecated"/>
+                          <shrink
+                                  logfile="${project.build.directory}/yshrink.log.xml">
+                            <keep>
+                              <class classes="protected"
+                                     methods="protected"
+                                     fields="protected"/>
+                            </keep>
+                          </shrink>
+                          <rename mainclass="com.yworks.example.HelloWorld"
+                                  logfile="${project.build.directory}/yguard.log.xml">
+                            <keep>
+                              <class classes="protected"
+                                     methods="protected"
+                                     fields="protected"/>
+                            </keep>
+                          </rename>
+                        </yguard>
+                      </tasks>
+                  </configuration>
+              </execution>
+          </executions>
+      </plugin>

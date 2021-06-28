@@ -1,0 +1,2 @@
+        EquityShowHelper.showEquityResults(true, equity, new EodPeriod(MONTHLY), true, false,
+                false, true, false, bootstrapDO.shuffledEqs.toArray(new CombinedEquity[0]));

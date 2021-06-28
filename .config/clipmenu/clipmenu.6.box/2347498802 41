@@ -1,0 +1,4 @@
+        // fromDate equity cut
+        if (commandLine.hasOption("f")) {
+            fromDate = dateFormat.parse(commandLine.getOptionValue("f"));
+        }

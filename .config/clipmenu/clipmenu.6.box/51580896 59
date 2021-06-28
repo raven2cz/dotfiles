@@ -1,0 +1,5 @@
+	case 5a : {&Filter2_N1=-3|3} {&Filter2_N2=-2|2}
+	begin
+		modeLong = AvgTrueRange(3 * Filter2_N1) of data(HTF) > AvgTrueRange(10 * Filter2_N2) of data(HTF);
+		modeShort = AvgTrueRange(3 * Filter2_N1) of data(HTF) > AvgTrueRange(10 * Filter2_N2) of data(HTF);
+	end;

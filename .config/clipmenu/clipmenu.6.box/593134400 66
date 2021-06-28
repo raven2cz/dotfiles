@@ -1,0 +1,57 @@
+    //****** PART 3 : VOLATILITY-LEVEL TIMING ********
+	case 27: begin //Volatility Bins - EXCLUDING ATR BIN 1, ATR BINS CALCULATION START
+		if ATR_BIN <> 1 then begin
+			modeLong = true; modeShort = true;
+		end;
+	end;
+	case 28: begin //Volatility Bins - EXCLUDING ATR BIN 2
+		if ATR_BIN <> 2 then begin
+			modeLong = true; modeShort = true;
+		end;
+	end;
+	case 29: begin //Volatility Bins - EXCLUDING ATR BIN 3
+		if ATR_BIN <> 3 then begin
+			modeLong = true; modeShort = true;
+		end;
+	end;
+	case 30: begin //Volatility Bins - EXCLUDING ATR BIN 4
+		if ATR_BIN <> 4 then begin
+			modeLong = true; modeShort = true;
+		end;
+	end;
+	case 31: begin //Volatility Bins - ATR BIN 1
+		if ATR_BIN = 1 then begin
+			modeLong = true; modeShort = true;
+		end;
+	end;
+	case 32: begin //Volatility Bins - ATR BIN 2
+		if ATR_BIN = 2 then begin
+			modeLong = true; modeShort = true;
+		end;
+	end;
+	case 33: begin //Volatility Bins - ATR BIN 3
+		if ATR_BIN = 3 then begin
+			modeLong = true; modeShort = true;
+		end;
+	end;
+	case 34: begin //Volatility Bins - ATR BIN 4
+		if ATR_BIN = 4 then begin
+			modeLong = true; modeShort = true;
+		end;
+	end;
+	case 35: begin //Adaptive Volatility Bins (Increasing Fract) - ATR BIN 1
+		if ATR_BIN = 1 then begin
+			modeLong = true; modeShort = true;
+		end;
+	end;
+	case 36: begin //Adaptive Volatility Bins (Increasing Fract) - ATR BIN 2
+		if ATR_BIN = 2 then begin
+			modeLong = true; modeShort = true; SFB_Fract = SFB_Fract + 0.1;
+		end;
+	end;
+	case 37: begin //Adaptive Volatility Bins (Increasing Fract) - ATR BIN 3
+		if ATR_BIN = 3 then begin
+			modeLong = true; modeShort = true; SFB_Fract = SFB_Fract + 0.2;
+		end;
+	end;
+	case 38: begin //Adaptive Volatility Bins (Increasing Fract) - ATR BIN 4

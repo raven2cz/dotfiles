@@ -1,0 +1,37 @@
+0 info it worked if it ends with ok
+1 verbose cli [
+1 verbose cli   '/usr/bin/node',
+1 verbose cli   '/usr/lib/node_modules/atom-package-manager/node_modules/npm/bin/npm-cli.js',
+1 verbose cli   '--globalconfig',
+1 verbose cli   '/home/box/.atom/.apm/.apmrc',
+1 verbose cli   '--userconfig',
+1 verbose cli   '/home/box/.atom/.apmrc',
+1 verbose cli   'install',
+1 verbose cli   'https://www.atom.io/api/packages/an-color-picker/versions/1.0.2/tarball',
+1 verbose cli   '--target=9.4.4',
+1 verbose cli   '--disturl=https://atom.io/download/electron',
+1 verbose cli   '--arch=x64',
+1 verbose cli   '--global-style'
+1 verbose cli ]
+2 info using npm@6.14.9
+3 info using node@v16.2.0
+4 verbose npm-session 74f189418e220459
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 http fetch GET 400 https://www.atom.io/api/packages/an-color-picker/versions/1.0.2/tarball 496ms
+8 silly fetchPackageMetaData error for https://www.atom.io/api/packages/an-color-picker/versions/1.0.2/tarball 400 Bad Request - GET https://www.atom.io/api/packages/an-color-picker/versions/1.0.2/tarball
+9 timing stage:rollbackFailedOptional Completed in 0ms
+10 timing stage:runTopLevelLifecycles Completed in 517ms
+11 verbose stack Error: 400 Bad Request - GET https://www.atom.io/api/packages/an-color-picker/versions/1.0.2/tarball
+11 verbose stack     at /usr/lib/node_modules/atom-package-manager/node_modules/npm/node_modules/npm-registry-fetch/check-response.js:117:15
+11 verbose stack     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+12 verbose statusCode 400
+13 verbose pkgid https://www.atom.io/api/packages/an-color-picker/versions/1.0.2/tarball
+14 verbose cwd /tmp/apm-install-dir-202151-154079-1hv8bii.f1d2
+15 verbose Linux 5.12.8-arch1-1
+16 verbose argv "/usr/bin/node" "/usr/lib/node_modules/atom-package-manager/node_modules/npm/bin/npm-cli.js" "--globalconfig" "/home/box/.atom/.apm/.apmrc" "--userconfig" "/home/box/.atom/.apmrc" "install" "https://www.atom.io/api/packages/an-color-picker/versions/1.0.2/tarball" "--target=9.4.4" "--disturl=https://atom.io/download/electron" "--arch=x64" "--global-style"
+17 verbose node v16.2.0
+18 verbose npm  v6.14.9
+19 error code E400
+20 error 400 Bad Request - GET https://www.atom.io/api/packages/an-color-picker/versions/1.0.2/tarball
+21 verbose exit [ 1, true ]

@@ -1,0 +1,253 @@
+
+{ Filter for the MAIN timeframe (0 = No Filter) }
+switch (Filter1_Switch)
+begin
+    case 0: begin
+        Filter1_Long = True;
+        Filter1_Short = True;
+    end;
+     { Volatility Based Filters }
+    case 1 : begin
+        Filter1_Long = AvgTrueRange(3 * Filter1_N1) > AvgTrueRange(5 * Filter1_N2);
+        Filter1_Short = AvgTrueRange(3 * Filter1_N1) > AvgTrueRange(5 * Filter1_N2);
+    end;
+     case 2 : begin
+        Filter1_Long = AvgTrueRange(3 * Filter1_N1) <= AvgTrueRange(5 * Filter1_N2);
+        Filter1_Short = AvgTrueRange(3 * Filter1_N1) <= AvgTrueRange(5 * Filter1_N2);
+    end;
+    case 3 : begin
+        Filter1_Long = AvgTrueRange(3 * Filter1_N1) < AvgTrueRange(5 * Filter1_N2);
+        Filter1_Short = AvgTrueRange(3 * Filter1_N1) > AvgTrueRange(5 * Filter1_N2);
+    end;
+    case 4 : begin
+        Filter1_Long = AvgTrueRange(3 * Filter1_N1) > AvgTrueRange(5 * Filter1_N2);
+        Filter1_Short = AvgTrueRange(3 * Filter1_N1) < AvgTrueRange(5 * Filter1_N2);
+    end;
+    case 5 : begin
+        Filter1_Long  = Range > AvgTrueRange(Filter1_N1 * 5);
+           Filter1_Short = Range > AvgTrueRange(Filter1_N1 * 5);
+    end;
+    case 6 : begin
+        Filter1_Long  = Range <= AvgTrueRange(Filter1_N1 * 5);
+        Filter1_Short = Range <= AvgTrueRange(Filter1_N1 * 5);
+    end;
+    case 7 : begin
+        Filter1_Long  = (Filter1_N2 * 0.2) * Range > AvgTrueRange(Filter1_N1 * 5);
+        Filter1_Short = (Filter1_N2 * 0.2) * Range >  AvgTrueRange(Filter1_N1 * 5);
+    end;
+    case 8 : begin
+        Filter1_Long  = Range <= (Filter1_N2 * 0.2) * AvgTrueRange(Filter1_N1 * 5);
+        Filter1_Short = Range <= (Filter1_N2 * 0.2) * AvgTrueRange(Filter1_N1 * 5);
+    end;
+     { Trend Indicator Based Filters }
+    case 9 : begin
+        Filter1_Long =  DMIplus(Filter1_N1 * 10) < DMIminus(Filter1_N1 * 10);
+        Filter1_Short = DMIplus(Filter1_N1 * 10) > DMIminus(Filter1_N1 * 10);
+    end;
+    case 10 : begin
+        Filter1_Long =  DMIplus(Filter1_N1 * 10) > DMIminus(Filter1_N1 * 10);
+        Filter1_Short = DMIplus(Filter1_N1 * 10) < DMIminus(Filter1_N1 * 10);
+    end;
+    case 11 : begin
+        Filter1_Long =  DMIplus(Filter1_N1 * 10) < DMIminus(Filter1_N2 * 10);
+        Filter1_Short = DMIplus(Filter1_N1 * 10) > DMIminus(Filter1_N2 * 10);
+    end;
+    case 12 : begin
+        Filter1_Long =  DMIplus(Filter1_N1 * 10) > DMIminus(Filter1_N2 * 10);
+        Filter1_Short = DMIplus(Filter1_N1 * 10) < DMIminus(Filter1_N2 * 10);
+    end;
+    case 13 : begin
+        Filter1_Long =  DMIplus(Filter1_N1 * 5) < DMIminus(Filter1_N2 * 5);
+        Filter1_Short = DMIplus(Filter1_N1 * 5) > DMIminus(Filter1_N2 * 5);
+    end;
+    case 14 : begin
+        Filter1_Long =  DMIplus(Filter1_N1 * 5) > DMIminus(Filter1_N2 * 5);
+        Filter1_Short = DMIplus(Filter1_N1 * 5) < DMIminus(Filter1_N2 * 5);
+    end;
+    case 15 : begin
+        Filter1_Long =  ADX(Filter1_N2 * 5) > Filter1_N1 * 2;
+        Filter1_Short = Filter1_Long;
+    end;
+    case 16 : begin
+        Filter1_Long =  ADX(Filter1_N2 * 5) < Filter1_N1 * 2;
+        Filter1_Short = Filter1_Long;
+    end;
+     { Pullback / Correction Based Filters }
+    case 17 : begin
+        Filter1_Long = TrueRange * (Filter1_N1 * 0.15) >= highest(H, Filter1_N2) - C;
+        Filter1_Short = TrueRange * (Filter1_N1 * 0.15) <= C - lowest(L, Filter1_N2);
+    end;
+    case 18 : begin
+        Filter1_Long = TrueRange * (Filter1_N1 * 0.15) <= highest(H, Filter1_N2) - C;
+        Filter1_Short = TrueRange * (Filter1_N1 * 0.15) >= C - lowest(L, Filter1_N2);
+    end;
+    case 19 : begin
+        Filter1_Long = AvgTrueRange(Filter1_N1 * 2) > CloseD(1) - Lowest(C, Filter1_N2);
+        Filter1_Short = AvgTrueRange(Filter1_N1  * 2) <  Highest(C, Filter1_N2) - CloseD(1);
+    end;
+    case 20 : begin
+        Filter1_Long = AvgTrueRange(Filter1_N1 * 2) < CloseD(1) - Lowest(C, Filter1_N2);
+        Filter1_Short = AvgTrueRange(Filter1_N1  * 2) >  Highest(C, Filter1_N2) - CloseD(1);
+    end;
+    case 21 :  begin
+        Filter1_Long = (Close - CloseD(1)) > 0;
+        Filter1_Short = (CloseD(1) - Close) > 0;
+    end;
+    case 22 :  begin
+        Filter1_Long = (Close - CloseD(1)) < 0;
+        Filter1_Short = (CloseD(1) - Close) < 0;
+    end;
+    case 23 : begin
+        Filter1_Long = AvgTrueRange(Filter1_N1 * 3) < CloseD(1) - LowD(0);
+        Filter1_Short = AvgTrueRange(Filter1_N1 * 3) < HighD(0) - CloseD(1);
+    end;
+    case 24 : begin
+        Filter1_Long = AvgTrueRange(Filter1_N1 * 3) > CloseD(1) - LowD(0);
+        Filter1_Short = AvgTrueRange(Filter1_N1 * 3) > HighD(0) - CloseD(1);
+    end;
+    { Price Action Filters }
+    case 25 : begin
+        Filter1_Long = (C - lowest(L,Filter1_N2)) > (AvgTrueRange (3*Filter1_N1) );
+        Filter1_Short = (C - highest(H,Filter1_N2)) < - (AvgTrueRange (3*Filter1_N1));
+    end;
+    case 26 : begin
+        Filter1_Long = (C - lowest(L,Filter1_N2)) < (AvgTrueRange (3*Filter1_N1) );
+        Filter1_Short = (C - highest(H,Filter1_N2 )) > - (AvgTrueRange (3*Filter1_N1));
+    end;
+    case 27 : begin
+        Filter1_Long = L[Filter1_N1] >= CloseD(1);
+        Filter1_Short = H[Filter1_N1] <= CloseD(1);
+    end;
+    case 28 : begin
+        Filter1_Long = close > OpenD(0);
+        Filter1_Short = close < OpenD(0);
+    end;
+    case 29 : begin
+        Filter1_Long = close < OpenD(0);
+        Filter1_Short = close > OpenD(0);
+    end;
+    case 30 : begin
+        Filter1_Long = TrueRange >= OpenD(0) - HighD(Filter1_N1);
+        Filter1_Short = TrueRange <= OpenD(0) - LowD(Filter1_N1);
+    end;
+    case 31 : begin
+        Filter1_Long = LowD(0) >= CloseD(1) - ((Filter1_N1 * 50) / BigPointValue);
+        Filter1_Short = HighD(0) <= closeD(1) + ((Filter1_N1 * 50) / BigPointValue);
+    end;
+    case 32 : begin
+        Filter1_Long = LowD(0) <= CloseD(1) - ((Filter1_N1 * 50) / BigPointValue);
+        Filter1_Short = HighD(0) >= closeD(1) + ((Filter1_N1 * 50) / BigPointValue);
+    end;
+    { Volume Based Filters }
+    case 33 : begin
+        Filter1_Long =  Volume  > average(volume, 3 * Filter1_N1);
+        Filter1_Short = Filter1_Long;
+    end;
+    case 34 : begin
+        Filter1_Long =  Volume  < average(volume, 3 * Filter1_N1);
+        Filter1_Short = Filter1_Long;
+    end;
+    case 35 : begin
+        Filter1_Long =  Volume  > average(volume, 3 * Filter1_N1);
+        Filter1_Short = Volume  > average(volume, 3 * Filter1_N2);
+    end;
+    case 36 : begin
+        Filter1_Long =  Volume  < average(volume, 3 * Filter1_N1);
+        Filter1_Short =  Volume  < average(volume, 3 * Filter1_N2);
+    end;
+    case 37 : begin
+        Filter1_Long =  Volume * (0.1 * Filter1_N2) > average(volume, 2 * Filter1_N1);
+        Filter1_Short = Volume * (0.1 * Filter1_N2) > average(volume, 2 * Filter1_N1);
+    end;
+    case 38 : begin
+        Filter1_Long =  Volume * (0.1 * Filter1_N2) < average(volume, 2 * Filter1_N1);
+        Filter1_Short = Volume * (0.1 * Filter1_N2) < average(volume, 2 * Filter1_N1);
+    end;
+    case 39 : begin
+          Filter1_Long =  Volume < Volume[1];
+          Filter1_Short = Volume < Volume[1];
+    end;
+    case 40 : begin
+        Filter1_Long =  Volume > Volume[1];
+        Filter1_Short = Volume > Volume[1];
+    end;
+
+//**************** SWINGS : CLOSE vs SWING MA *********************
+    case 41 : begin
+        Filter1_Long =  C < ELITE_MA_SWING_MEDIUM(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+        Filter1_Short = C > ELITE_MA_SWING_MEDIUM(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+    end;
+    case 42 : begin
+        Filter1_Long =  C > ELITE_MA_SWING_MEDIUM(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+        Filter1_Short = C < ELITE_MA_SWING_MEDIUM(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+    end;
+    case 43 : begin
+        Filter1_Long =  C < ELITE_MA_SWING_LOW(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+        Filter1_Short = C > ELITE_MA_SWING_HIGH(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+    end;
+    case 44 : begin
+        Filter1_Long =  C > ELITE_MA_SWING_LOW(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+        Filter1_Short = C < ELITE_MA_SWING_HIGH(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+    end;
+    case 45 : begin
+        Filter1_Long =  C < ELITE_MA_SWING_HIGH(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+        Filter1_Short = C > ELITE_MA_SWING_LOW(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+    end;
+    case 46 : begin
+        Filter1_Long =  C > ELITE_MA_SWING_HIGH(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+        Filter1_Short = C < ELITE_MA_SWING_LOW(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+    end;
+    case 47 : begin
+        Filter1_Long =  ELITE_SWING_LOW(minList(Filter1_N2,3), 0)>= ELITE_MA_SWING_HIGH(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+        Filter1_Short = ELITE_SWING_HIGH(minList(Filter1_N2,3), 0)<= ELITE_MA_SWING_LOW(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+    end;
+    case 48 : begin
+        Filter1_Long =  ELITE_SWING_LOW(minList(Filter1_N2,3), 0)<= ELITE_MA_SWING_HIGH(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+        Filter1_Short = ELITE_SWING_HIGH(minList(Filter1_N2,3), 0)>= ELITE_MA_SWING_LOW(minList(Filter1_N2,3), 0, maxlist(2, Filter1_N1));
+    end;
+    { SFB Adapted filters - ADX/MQ}
+    case 49: begin
+        Filter1_Long = ADX(30)<=20;
+        Filter1_Short = Filter1_Long;
+    end;
+    case 50: begin
+        Filter1_Long = ADX(30)>20;
+        Filter1_Short = Filter1_Long;
+    end;
+    { SFB Adapted filters - ATR BINS}
+    case 51 : begin
+        Filter1_Long = ATR_BIN=1;
+        Filter1_Short = Filter1_Long;
+    end;
+    case 52 : begin
+        Filter1_Long = ATR_BIN=2;
+        Filter1_Short = Filter1_Long;
+    end;
+    case 53 : begin
+        Filter1_Long = ATR_BIN=3;
+        Filter1_Short = Filter1_Long;
+    end;
+    case 54 : begin
+        Filter1_Long = ATR_BIN<>1;
+        Filter1_Short = Filter1_Long;
+    end;
+    case 55 : begin
+        Filter1_Long = ATR_BIN<>2;
+        Filter1_Short = Filter1_Long;
+    end;
+    case 56 : begin
+        Filter1_Long = ATR_BIN<>3;
+        Filter1_Short = Filter1_Long;
+    end;
+    {SFB Adapted filters - HOD/LOD and HOW/LOW}
+    case 57 : begin
+        Filter1_Long = High<>HighD(0);
+        Filter1_Short = Low<>LowD(0);
+    end;
+    case 58 : begin
+        Filter1_Long = High=HighD(0);
+        Filter1_Short = Low=LowD(0);
+    end;
+    case 59 : begin
+        Filter1_Long = High<>HighW(0);
+        

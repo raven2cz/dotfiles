@@ -1,0 +1,9 @@
+    protected void showEquityResults(CombinedEquity equity, EodPeriod period, boolean showPeaks, boolean showValleys,
+                                     boolean showRisk, boolean showContracts, boolean showEquityOnly, CombinedEquity... additionalEquities) {
+        if ( !showEquityOnly) {
+            // show equity performance statistics
+            EquityPerformanceStatisticsTableFrame equityTable = new EquityPerformanceStatisticsTableFrame(equity);
+            equityTable.setSize(550, 450);
+            RefineryUtilities.centerFrameOnScreen(equityTable);
+            equityTable.setVisible(true);
+

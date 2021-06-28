@@ -1,0 +1,28 @@
+    case 9 : {&Filter1_N1=-3|3} {&Filter1_N2=FIXED} //ID: 4.0  N1 -3/+3, N2 FIX
+    begin
+      filter1_long = (C - CloseD(0)) < (AvgTrueRange((3*Filter1_N1))) * (0.25 * Filter1_N2);
+      filter1_short = (CloseD(0) - C) < (AvgTrueRange((3*Filter1_N1))) * (0.25 * Filter1_N2);
+    end;
+    case 10 : {&Filter1_N1=-3|3} {&Filter1_N2=FIXED} //ID: 4.1 N1 -3/+3, N2 FIX
+    begin
+      filter1_long = (C - CloseD(0)) > (AvgTrueRange((3*Filter1_N1))) * (0.25 * Filter1_N2);
+      filter1_short = (CloseD(0) - C) > (AvgTrueRange((3*Filter1_N1))) * (0.25 * Filter1_N2);
+    end;
+    case 11 : {&Filter1_N1=FIXED} {&Filter1_N2=-3|3} //ID: 4.2  N1 fix, N2 -3/+3
+    begin
+      filter1_long = (C - CloseD(0)) > -(AvgTrueRange((3*Filter1_N1))) * (0.1 * Filter1_N2);
+      filter1_short = (CloseD(0) - C) > -(AvgTrueRange((3*Filter1_N1))) * (0.1 * Filter1_N2);
+    end;
+    case 12 : {&Filter1_N1=-3|3} {&Filter1_N2=FIXED} //ID: 4.3 N1 -3/+3, N2 FIX
+    begin
+      filter1_long = (C - CloseD(0)) < -(AvgTrueRange((3*Filter1_N1))) * (0.1 * Filter1_N2);
+      filter1_short = (CloseD(0) - C) < -(AvgTrueRange((3*Filter1_N1))) * (0.1 * Filter1_N2);
+    end;
+    case 13 : {&Filter1_N1=NONE} {&Filter1_N2=NONE} //ID: 4.4  NONE
+    begin
+      filter1_long = (C - CloseD(0)) > 0;
+      filter1_short = (CloseD(0) - C) > 0;
+    end;
+    case 14 : {&Filter1_N1=NONE} {&Filter1_N2=NONE} //ID: 4.5 NONE
+    begin
+      filter1_long = (C - CloseD(0)) < 0;

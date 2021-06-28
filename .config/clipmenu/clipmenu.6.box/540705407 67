@@ -1,0 +1,2 @@
+                    if (maxPriceDiffTicks < threshold) {
+                        position.setPositionQuantity(0);

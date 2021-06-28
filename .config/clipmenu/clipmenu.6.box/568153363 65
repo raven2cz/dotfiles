@@ -1,0 +1,4 @@
+;https://github.com/jaagr/polybar/wiki/Module:-network
+type = internal/network
+;interface = wlp3s0
+;interface = enp14s0

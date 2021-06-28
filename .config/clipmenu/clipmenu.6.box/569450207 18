@@ -1,0 +1,15 @@
+	@Bean
+	public AtmosphericRandom atmosphericRandom() {
+		return new AtmosphericRandom(closeableHttpClient(), httpPostFactory(), randomMapper());
+	}
+	/**********************************************************************************************/
+	/****************************************** PRIVATE	 ******************************************/
+	/**********************************************************************************************/
+	
+	private CloseableHttpClient closeableHttpClient() {
+		// Spring will automatically Invoke destroy method 'close' since it
+		// knows bean implements Closeable Interface. No need for boiler plate destroyMethod="close"
+		return HttpClients.createMinimal();
+	}
+
+	private HttpPostFactory httpPostFactory() {

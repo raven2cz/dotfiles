@@ -1,0 +1,65 @@
+@import 'ui-variables';
+
+#compare-files-status-bar.warn {
+  color   : @text-color-warning !important;
+  opacity : 1;
+}
+
+#compare-files-status-bar.info {
+  color   : @text-color-success !important;
+  opacity : 1;
+}
+
+.compare-files-spinner {
+  color               : #aaa;
+  margin              : auto;
+  background-image    : url(images/octocat-spinner-128.gif);
+  background-repeat   : no-repeat;
+  background-size     : 64px;
+  background-position : top center;
+  padding-top         : 70px;
+  text-align          : center;
+}
+
+.compare-files {
+  padding-left     : 60px;
+  overflow         : auto;
+  background-color : #1d1f21;
+  width            : auto;
+  counter-reset    : linenumbers;
+}
+
+.compare-files span:before, .compare-files ins:before, .compare-files del:before {
+  content           : counter(linenumbers);
+  counter-increment : linenumbers;
+  position          : absolute;
+  left              : 0;
+  color             : #555;
+  width             : 60px;
+  text-align        : center;
+}
+
+.compare-files span, .compare-files ins, .compare-files del {
+  display          : block;
+  white-space      : pre-wrap;
+  text-decoration  : none;
+  font-family      : Inconsolata, Monaco, Consolas, 'Courier New', Courier;
+  font-size        : 16px;
+  color            : #222;
+  background-color : #fff;
+  min-height       : 22px;
+}
+
+.compare-files del {
+  color      : #b30000;
+  background : #fadad7;
+}
+
+.compare-files ins {
+  color      : #406619;
+  background : #eaf2c2;
+}
+
+.compare-files .identical {
+  color: #999;
+}

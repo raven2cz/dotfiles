@@ -1,0 +1,38 @@
+     plot.setDomainCrosshairVisible(true);
+        plot.setRangeCrosshairVisible(true);
+        plot.getDomainAxis().setLowerMargin(0.0);
+        plot.getDomainAxis().setLabelFont(new Font(fontName, Font.BOLD, 14));
+        plot.getDomainAxis().setTickLabelFont(new Font(fontName, Font.PLAIN, 12));
+        plot.getRangeAxis().setLabelFont(new Font(fontName, Font.BOLD, 14));
+        plot.getRangeAxis().setTickLabelFont(new Font(fontName, Font.PLAIN, 12));
+        chart.getLegend().setItemFont(new Font(fontName, Font.PLAIN, 14));
+        chart.getLegend().setFrame(BlockBorder.NONE);
+        chart.getLegend().setHorizontalAlignment(HorizontalAlignment.CENTER);
+        XYBarRenderer barRenderer = new XYBarRenderer();
+        plot.setRenderer(barRenderer);
+        barRenderer.setSeriesPaint(0, Color.RED);
+        barRenderer.setSeriesPaint(1, new Color(24, 123, 58));
+        barRenderer.setSeriesPaint(2, new Color(149, 201, 136));
+        barRenderer.setSeriesPaint(3, new Color(1, 62, 29));
+        barRenderer.setSeriesPaint(4, new Color(81, 176, 86));
+        barRenderer.setSeriesPaint(5, new Color(0, 55, 122));
+        barRenderer.setSeriesPaint(6, new Color(0, 92, 165));
+
+        StandardChartTheme chartTheme = new StandardChartTheme("JFree/Shadow", true);
+        chartTheme.setXYBarPainter(new StandardXYBarPainter());
+
+        ChartFactory.setChartTheme(chartTheme);
+        ChartFactory.getChartTheme().apply(chart);
+
+        ChartPanel chartpanel = new ChartPanel(chart);
+        chartpanel.setDomainZoomable(true);
+        chartpanel.setRangeZoomable(true);
+        chartpanel.setPreferredSize(new java.awt.Dimension(1900, 1080));
+        chartpanel.setMinimumDrawWidth( 0 );
+        chartpanel.setMinimumDrawHeight( 0 );
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        chartpanel.setMaximumDrawWidth( screenSize.width );
+        chartpanel.setMaximumDrawHeight( screenSize.height );
+
+        return chartpanel;
+    }

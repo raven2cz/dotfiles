@@ -1,0 +1,12 @@
+            begin
+            print(" ");
+            print(" #################################");
+            print(" Closed Trade Bootstrap Evaluation");
+            print(" Symbol: ",Symbol);
+            value1=year(date)+1900;
+            Value2=month(date);
+            Value3=dayofmonth(date);
+            print(" Evaluation Date: ",numtostr(Value2,0),"/",numtostr(Value3,0),"/",numtostr(Value1,0));
+            print(" Repetitions: ",Repetitions:0:0);
+            print(" ");
+            print(" #################################");

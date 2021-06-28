@@ -1,0 +1,93 @@
+UI scale: 1.25 (gtk text scale)
+startup, version: 4107 linux x64 channel: stable
+executable: /opt/sublime_text/sublime_text
+application: /opt/sublime_text
+working dir: /mnt/intel120/OneCloud/trading/Analysis/StressTests/Al-EquityCheckBootstap
+packages path: /home/box/.config/sublime-text-3/Packages
+state path: /home/box/.config/sublime-text-3/Local
+zip path: /opt/sublime_text/Packages
+zip path: /home/box/.config/sublime-text-3/Installed Packages
+ignored_packages: ["Sublimerge Pro", "Vintage"]
+pre session restore time: 0.161569
+startup time: 0.253932
+first paint time: 0.262775
+reloading plugin Default.arithmetic
+reloading plugin Default.auto_indent_tag
+reloading plugin Default.block
+reloading plugin Default.colors
+reloading plugin Default.comment
+reloading plugin Default.convert_color_scheme
+reloading plugin Default.convert_syntax
+reloading plugin Default.copy_path
+reloading plugin Default.echo
+reloading plugin Default.exec
+reloading plugin Default.fold
+reloading plugin Default.font
+reloading plugin Default.goto_line
+reloading plugin Default.history_list
+reloading plugin Default.html_print
+reloading plugin Default.indentation
+reloading plugin Default.install_package_control
+reloading python 3.3 plugin 0_package_control_loader.00-package_control
+reloading python 3.3 plugin Color Highlight.ColorHighlight
+reloading python 3.3 plugin Color Highlight.colorizer
+reloading python 3.3 plugin Color Highlight.colors
+reloading python 3.3 plugin Color Highlight.settings
+reloading python 3.3 plugin Package Control.1_reloader
+reloading python 3.3 plugin Package Control.2_bootstrap
+reloading plugin Default.keymap
+reloading plugin Default.kill_ring
+reloading plugin Default.mark
+reloading plugin Default.new_templates
+reloading plugin Default.open_context_url
+reloading plugin Default.open_in_browser
+reloading plugin Default.pane
+reloading plugin Default.paragraph
+reloading plugin Default.paste_from_history
+reloading plugin Default.profile
+reloading plugin Default.quick_panel
+reloading plugin Default.rename
+reloading plugin Default.run_syntax_tests
+reloading plugin Default.save_on_focus_lost
+reloading plugin Default.scroll
+reloading plugin Default.set_unsaved_view_name
+reloading plugin Default.settings
+reloading plugin Default.show_scope_name
+reloading plugin Default.side_bar
+reloading plugin Default.sort
+reloading plugin Default.switch_file
+reloading plugin Default.symbol
+reloading plugin Default.transform
+reloading plugin Default.transpose
+reloading plugin Default.ui
+reloading plugin CSS.css_completions
+reloading plugin Diff.diff
+reloading plugin HTML.encode_html_entities
+reloading plugin HTML.html_completions
+reloading plugin ShellScript.ShellScript
+reloading python 3.3 plugin Package Control.Package Control
+reloading python 3.3 plugin Sublimerge 3.Sublimerge
+plugins loaded
+Package Control: No updated packages
+reloading settings Packages/User/Preferences.sublime-settings
+reloading settings Packages/User/Preferences.sublime-settings
+reloading settings Packages/User/Preferences.sublime-settings
+ignored packages updated to: ["Dracula Color Scheme", "Sublimerge Pro", "Vintage"]
+reloading settings Packages/User/Package Control.sublime-settings
+reloading settings Packages/User/Preferences.sublime-settings
+Package Control: Error downloading package. URL error _ssl.c:532: The handshake operation timed out downloading https://codeload.github.com/dracula/sublime/zip/master.
+error: Package Control
+
+Unable to download Dracula Color Scheme. Please view the console for more details.
+ignored packages updated to: ["Sublimerge Pro", "Vintage"]
+reloading settings Packages/User/Package Control.sublime-settings
+reloading settings Packages/User/Preferences.sublime-settings
+reloading settings Packages/User/Preferences.sublime-settings
+>>> clear
+Traceback (most recent call last):
+  File "__main__", line 1, in <module>
+NameError: name 'clear' is not defined
+>>> cls
+Traceback (most recent call last):
+  File "__main__", line 1, in <module>
+NameError: name 'cls' is not defined

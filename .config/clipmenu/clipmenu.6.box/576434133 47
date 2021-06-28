@@ -1,0 +1,33 @@
+            for (double th : ths) {
+                // SYSTEM CON_DHIDX
+//        AttributeModel systemDhidxConfig = (AttributeModel)context.clone();
+//        systemDhidxConfig.setAttribute(SequenceService.SEQUENCE_ID, "conDhidx");
+//        systemDhidxConfig.setAttribute(EquityServiceServant.EQUITY_SERVANT_TYPE, STRATEGY_BASED);
+//        systemDhidxConfig.setAttribute(ContinuousDhidxStudyService.WINDOW_LENGTH_IN_MONTHS, 3);
+
+                // SYSTEM WCORR I3
+//        AttributeModel systemI3Config = (AttributeModel)context.clone();
+//        systemI3Config.setAttribute(SequenceService.SEQUENCE_ID, "systemI3");
+//        systemI3Config.setAttribute(SegmentSequenceService.WINDOW_LENGTH, 50);
+//        systemI3Config.setAttribute(SegmentSequenceService.EQUITY_CALC_TYPE, WCORR_I3);
+//        systemI3Config.setAttribute(EquityServiceServant.EQUITY_SERVANT_TYPE, STRATEGY_BASED);
+//        systemI3Config.setAttribute(SegmentCorrModifySequenceService.THRESHOLD, 0.0);
+
+                // PORTFOLIO WCORR_PRIM
+                AttributeModel portfolioWcorrPrim05Config = (AttributeModel)context.clone();
+                portfolioWcorrPrim05Config.setAttribute(SequenceService.SEQUENCE_ID, "portfolioWcorr");
+                portfolioWcorrPrim05Config.setAttribute(SegmentSequenceService.WINDOW_LENGTH, winLen);
+                portfolioWcorrPrim05Config.setAttribute(SegmentSequenceService.EQUITY_CALC_TYPE, WCORR_PRIM);
+                portfolioWcorrPrim05Config.setAttribute(EquityServiceServant.EQUITY_SERVANT_TYPE, PORTFOLIO_BASED); // Portfolio processing!
+                portfolioWcorrPrim05Config.setAttribute(SegmentCorrModifySequenceService.THRESHOLD, th);
+
+                // BATCH
+                String testPrefix = String.format("serial-corr-winl%d-th%1.1f", winLen, th);
+                String batchId = String.format("%s-%s-test", testPrefix, FileUtils.sanitizeFileName(query));
+                BatchConfig serialCorr = () -> {
+                    ptfSelectQuery = query;
+                    test = batchId;
+                    plugins = new JtdPositionPlugin[] {
+                            new InitializePositionPlugin(initPositionsConfig),
+                            new GlobalSequenceServiceJtdPositionPlugin<>(portfolioWcorrPrim05Config, SegmentSequenceService.class, SegmentCorrModifySequenceService.class),
+//                new StrategyIdSequenceServiceJtdPositionPlugin<>(systemDhidxConfig, ContinuousDhidxSequenceService.class, ContinuousDhidxModifySequenceService.class),

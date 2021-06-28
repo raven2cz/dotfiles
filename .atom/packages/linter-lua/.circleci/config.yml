@@ -1,0 +1,125 @@
+version: 2
+
+defaults: &defaults
+  working_directory: /tmp/project
+  environment:
+    APM_TEST_PACKAGES: "language-lua"
+  docker:
+    - image: arcanemagus/atom-docker-ci:stable
+  steps:
+    # Restore project state
+    - attach_workspace:
+        at: /tmp
+    - run:
+        name: Install luac and luajit
+        command: |
+          sudo apt-get update && \
+          sudo apt-get install --assume-yes --quiet --no-install-suggests \
+            --no-install-recommends lua5.3 luajit && \
+          sudo update-alternatives --install /usr/bin/lua lua-interpreter \
+            /usr/bin/lua5.3 130 --slave /usr/share/man/man1/lua.1.gz lua-manual /usr/share/man/man1/lua5.3.1.gz && \
+          sudo update-alternatives --install /usr/bin/luac lua-compiler \
+            /usr/bin/luac5.3 130 --slave /usr/share/man/man1/luac.1.gz lua-compiler-manual /usr/share/man/man1/luac5.3.1.gz
+    - run:
+        name: Luac version
+        command: luac -v
+    - run:
+        name: Luajit version
+        command: luajit -v
+    - run:
+        name: Create VFB for Atom to run in
+        command: /usr/local/bin/xvfb_start
+    - run:
+        name: Atom version
+        command: ${ATOM_SCRIPT_PATH} --version
+    - run:
+        name: APM version
+        command: ${APM_SCRIPT_PATH} --version
+    - run:
+        name: Package APM package dependencies
+        command: |
+          if [ -n "${APM_TEST_PACKAGES}" ]; then
+            for pack in ${APM_TEST_PACKAGES}; do
+            ${APM_SCRIPT_PATH} install "${pack}"
+            done
+          fi;
+    - run:
+        name: Package dependencies
+        command: ${APM_SCRIPT_PATH} install
+    - run:
+        name: Cleaning package
+        command: ${APM_SCRIPT_PATH} clean
+    - run:
+        name: Package specs
+        command: ${ATOM_SCRIPT_PATH} --test spec
+    # Cache node_modules
+    - save_cache:
+        paths:
+          - node_modules
+        key: v1-dependencies-{{ .Branch }}-{{ checksum "package.json" }}-{{ checksum "package-lock.json"}}
+
+jobs:
+  checkout_code:
+    <<: *defaults
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      # Restore node_modules from the last build
+      - restore_cache:
+          keys:
+          # Get latest cache for this package.json and package-lock.json
+          - v1-dependencies-{{ .Branch }}-{{ checksum "package.json" }}-{{ checksum "package-lock.json"}}
+          # Fallback to the current package.json
+          - v1-dependencies-{{ .Branch }}-{{ checksum "package.json" }}-
+          # Fallback to the last build for this branch
+          - v1-dependencies-{{ .Branch }}-
+          # Fallback to the last available master branch cache
+          - v1-dependencies-master-
+          # Don't go further down to prevent dependency issues from other branches
+      # Save project state for next steps
+      - persist_to_workspace:
+          root: /tmp
+          paths:
+            - project
+  lint:
+    <<: *defaults
+    docker:
+      - image: circleci/node:lts
+    steps:
+      # Restore project state
+      - attach_workspace:
+          at: /tmp
+      - run:
+          name: Node.js Version
+          command: node --version
+      - run:
+          name: NPM Version
+          command: npm --version
+      - run:
+          name: Install any remaining dependencies
+          command: npm install
+      - run:
+          name: Lint code
+          command: npm run lint
+  stable:
+    <<: *defaults
+  beta:
+    <<: *defaults
+    docker:
+      - image: arcanemagus/atom-docker-ci:beta
+
+workflows:
+  version: 2
+  test_package:
+    jobs:
+      - checkout_code
+      - lint:
+          requires:
+            - checkout_code
+      - stable:
+          requires:
+            - lint
+      - beta:
+          requires:
+            - lint

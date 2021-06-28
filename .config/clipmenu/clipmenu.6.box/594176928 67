@@ -1,0 +1,8 @@
+                layout = wibox.layout.fixed.horizontal, 
+                 {
+                       {
+                           id     = 'icon_role',
+                           widget = wibox.widget.imagebox,
+                       },
+                       margins = 2,
+                       widget  = wibox.container.margin,

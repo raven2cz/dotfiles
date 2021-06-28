@@ -1,0 +1,2 @@
+ger.info("The equities are evaluated for next processing for " + candidate.id);
+    }

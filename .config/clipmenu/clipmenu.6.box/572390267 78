@@ -1,0 +1,3 @@
+    private static final String[] instrumentsDaily = new String[] {
+            "@CL-[TF1D]",
+//            "@CL-[TF1D]",

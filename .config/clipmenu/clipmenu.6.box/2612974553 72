@@ -1,0 +1,6 @@
+<!-- https://mvnrepository.com/artifact/com.yworks/yguard -->
+<dependency>
+    <groupId>com.yworks</groupId>
+    <artifactId>yguard</artifactId>
+    <version>3.0.0</version>
+</dependency>

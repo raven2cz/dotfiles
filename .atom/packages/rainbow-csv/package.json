@@ -1,0 +1,68 @@
+{
+  "_from": "https://www.atom.io/api/packages/rainbow-csv/versions/1.4.0/tarball",
+  "_id": "rainbow-csv@1.4.0",
+  "_inBundle": false,
+  "_integrity": "sha512-FX6PtQNzMcbe5fyVFdSJ922Rk/P+bIe84rmrG9geSHb7xxZw8bTap3SdSYEz8G46o+1SN0r0qb4Uhy9OY+EhOw==",
+  "_location": "/rainbow-csv",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/rainbow-csv/versions/1.4.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/rainbow-csv/versions/1.4.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/rainbow-csv/versions/1.4.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/rainbow-csv/versions/1.4.0/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/rainbow-csv/versions/1.4.0/tarball",
+  "_shasum": "941dd4c5883450256259b5cda74d3749a4bf6278",
+  "_spec": "https://www.atom.io/api/packages/rainbow-csv/versions/1.4.0/tarball",
+  "_where": "/tmp/apm-install-dir-2021417-191848-7rp7e2.64xtd",
+  "bugs": {
+    "url": "https://github.com/mechatroner/atom-rainbow-csv/issues"
+  },
+  "bundleDependencies": false,
+  "consumedServices": {
+    "status-bar": {
+      "versions": {
+        "^1.0.0": "consumeStatusBar"
+      }
+    }
+  },
+  "dependencies": {},
+  "deprecated": false,
+  "description": "Highlight CSV and TSV files in different colors; Run SQL-like queries",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "homepage": "https://github.com/mechatroner/atom-rainbow-csv#readme",
+  "keywords": [
+    "CSV",
+    "TSV",
+    "SQL",
+    "highlight"
+  ],
+  "license": "MIT",
+  "name": "rainbow-csv",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mechatroner/atom-rainbow-csv.git"
+  },
+  "version": "1.4.0",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        ".eslintrc.json",
+        "package.json"
+      ],
+      ".js": [
+        "index.js"
+      ]
+    },
+    "folders": []
+  }
+}

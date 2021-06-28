@@ -1,0 +1,4 @@
+
+            TreeMap<Double, String> slEquities = new TreeMap<>();
+            for (String techSlResource : eqsRes) {
+                int endIndex = techSlResource.lastIndexOf("-techsl");

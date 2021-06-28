@@ -1,0 +1,4 @@
+        }
+
+        // change the font
+        chart.getTitle().setFont(new Font("Segoe UI", Font.BOLD, 16));

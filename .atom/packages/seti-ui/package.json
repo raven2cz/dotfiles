@@ -1,0 +1,144 @@
+{
+  "_from": "https://www.atom.io/api/packages/seti-ui/versions/1.11.0/tarball",
+  "_id": "seti-ui@1.11.0",
+  "_inBundle": false,
+  "_integrity": "sha512-F5N4WuuHmlcQ4zTSWOMgtpm+3fiNZ+iC3ndwQYsw9ZvuQCteJaY2po5+UFBa6dgElJHAFMpjfbrlVxceXQpx1g==",
+  "_location": "/seti-ui",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/seti-ui/versions/1.11.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/seti-ui/versions/1.11.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/seti-ui/versions/1.11.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/seti-ui/versions/1.11.0/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/seti-ui/versions/1.11.0/tarball",
+  "_shasum": "dde74a99aeba1d80816fb40544445d39d7c6e043",
+  "_spec": "https://www.atom.io/api/packages/seti-ui/versions/1.11.0/tarball",
+  "_where": "/tmp/apm-install-dir-202151-540813-nmowtr.q2z3q",
+  "bugs": {
+    "url": "https://github.com/jesseweed/seti-ui/issues"
+  },
+  "bundleDependencies": false,
+  "configSchema": {
+    "themeColor": {
+      "title": "Theme Color",
+      "order": 1,
+      "description": "Select a default theme color. If you don't notice a difference, you may have to reload Atom to see them.",
+      "type": "string",
+      "enum": [
+        "Blue",
+        "Green",
+        "Orange",
+        "Pink",
+        "Purple",
+        "Red",
+        "Steel",
+        "Yellow"
+      ],
+      "default": "Blue"
+    },
+    "compactView": {
+      "title": "Compact Mode",
+      "order": 3,
+      "description": "Enable this is you prefer less padding in your workspace.",
+      "type": "boolean",
+      "default": false
+    },
+    "disableAnimations": {
+      "title": "Disable Animations",
+      "order": 4,
+      "description": "Select this if you want to disable animations.",
+      "type": "boolean",
+      "default": false
+    },
+    "fileIcons": {
+      "title": "Custom Icons",
+      "order": 5,
+      "description": "Disable this if you are using file-icons or another atom file icon package (or simply don't want custom icons)",
+      "type": "boolean",
+      "default": true
+    },
+    "displayIgnored": {
+      "title": "Display Ignored Files",
+      "order": 6,
+      "description": "Enable this if you would like to not see ignored files at all (as opposed to simple muting the style)",
+      "type": "boolean",
+      "default": true
+    },
+    "hideTabs": {
+      "title": "Hide Tabs",
+      "order": 7,
+      "description": "Enable this if you prefer to rely on the sidebar for nagivation and don't want to see tabs at all.",
+      "type": "boolean",
+      "default": false
+    },
+    "hideDocumentTitle": {
+      "title": "Hide Current Document Title",
+      "order": 8,
+      "description": "Enable this if you want to hide the main window title",
+      "type": "boolean",
+      "default": false
+    },
+    "hideTitleBar": {
+      "title": "Hide Title Bar",
+      "order": 9,
+      "description": "Enable this if you want to completely hide the main window title bar",
+      "type": "boolean",
+      "default": false
+    },
+    "hideProjectTab": {
+      "title": "Hide Project Tab",
+      "order": 10,
+      "description": "Enable this if you want to remove the 'project' tab from the sidebar",
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "deprecated": false,
+  "description": "A dark colored UI theme for Atom with custom file icons.",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-iconfont": "8.0.1",
+    "gulp-iconfont-css": "^2.1.0",
+    "gulp-svgmin": "^1.2.3"
+  },
+  "engines": {
+    "atom": ">1.13.0"
+  },
+  "homepage": "https://github.com/jesseweed/seti-ui#readme",
+  "license": "MIT",
+  "main": "lib/main",
+  "name": "seti-ui",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jesseweed/seti-ui.git"
+  },
+  "theme": "ui",
+  "version": "1.11.0",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".js": [
+        "gulpfile.js"
+      ],
+      ".coffee": [
+        "lib/dom.coffee",
+        "lib/headers.coffee",
+        "lib/main.coffee",
+        "lib/settings.coffee",
+        "lib/utility.coffee"
+      ],
+      ".json": [
+        "package-lock.json",
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

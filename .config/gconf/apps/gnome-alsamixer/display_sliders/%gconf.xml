@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="Realtek_ALCS1200A-Rear_Mic_Boost" mtime="1600244055" type="bool" value="true"/>
+	<entry name="Realtek_ALCS1200A-Rear_Mic" mtime="1600244055" type="bool" value="true"/>
+	<entry name="Realtek_ALCS1200A-Capture" mtime="1600244055" type="bool" value="true"/>
+	<entry name="Realtek_ALCS1200A-Beep" mtime="1600244055" type="bool" value="true"/>
+	<entry name="Realtek_ALCS1200A-Line_Boost" mtime="1600244055" type="bool" value="true"/>
+	<entry name="Realtek_ALCS1200A-Line" mtime="1600244055" type="bool" value="true"/>
+	<entry name="Realtek_ALCS1200A-LFE" mtime="1600244055" type="bool" value="true"/>
+	<entry name="Realtek_ALCS1200A-Center" mtime="1600244055" type="bool" value="true"/>
+	<entry name="Realtek_ALCS1200A-Surround" mtime="1600244055" type="bool" value="true"/>
+	<entry name="Realtek_ALCS1200A-Front_Mic_Boost" mtime="1600244055" type="bool" value="true"/>
+	<entry name="Realtek_ALCS1200A-Front_Mic" mtime="1600244055" type="bool" value="true"/>
+	<entry name="Realtek_ALCS1200A-Front" mtime="1600244055" type="bool" value="true"/>
+	<entry name="Realtek_ALCS1200A-PCM" mtime="1600244055" type="bool" value="true"/>
+	<entry name="Realtek_ALCS1200A-Headphone" mtime="1600244055" type="bool" value="true"/>
+	<entry name="Realtek_ALCS1200A-Master" mtime="1600244055" type="bool" value="true"/>
+</gconf>

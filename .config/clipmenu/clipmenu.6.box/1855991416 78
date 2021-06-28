@@ -1,0 +1,149 @@
+package org.javafish.trading.common.statistics.equity.stresstest;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.javafish.common.config.PropertiesConfiguration;
+import org.javafish.common.random.IRandom;
+import org.javafish.common.random.apache.config.UncommonsMathsRandomConfig;
+import org.javafish.common.sequence.CalendarInterval;
+import org.javafish.trading.common.equity.CombinedEquity;
+import org.javafish.trading.common.statistics.equity.library.EquityBasicOperationsLibrary;
+import org.javafish.trading.common.statistics.equity.library.EquityPerformanceAnalyticsLibrary;
+import org.javafish.trading.common.statistics.equity.library.EquityPerformanceAnalyticsLibrary.ReturnStatistics;
+import org.javafish.trading.common.statistics.equity.library.EquityShufflingLibrary;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import static org.javafish.common.random.apache.config.UncommonsMathsRandomConfig.AES_COUNTER_RNG;
+import static org.javafish.common.time.DateTimeConstants.SECURITY_HISTORY_FORMAT;
+/**
+ * <h4>Equity Check Bootstrap</h4>
+ * <p>Bootstrap method for quickly checking to see if the P&L of a strategy is "lucky" or if there's evidence of an edge.
+ * <br><br>
+ * <p>Method:
+ * <ol>
+ * <li>Record the P&L for each closed trade. For a User-specified date, calculate the Mean Return of all closed trades.</li>
+ * <li>Randomly sample with replacement from an array containing the close trade values and subtract the Mean of (1).</li>
+ * <li>Repeat this REPETITION times to get a distribution of trades that mimic the original but with a Mean of Zero.</li>
+ * <li>Calculate where the original strategy mean resides within the sequence of bootstrap means. If the strategy
+ * truly has an edge, we'd expect the original mean to meet or exceed most or all of the bootstrapped means.</li>
+ * </ol>
+ * <p>Hence, the final Bootstrap Score should ideally be 100%. If it isn't, then the strategy likely does *NOT* have an edge and was "lucky".
+ * <p>Original code is written in easylanguage. This is rewritten code to the java with usage javafish common lib.</p>
+ * <br><br>
+ * <p><i>Al Biddinger March 4, 2021</i>
+ */
+public class EquityCheckBootstrap {
+ private static final Log logger = LogFactory.getLog(EquityCheckBootstrap.class);
+ private final IRandom random;
+ /**
+ * Create new instance with random generator.
+ * Best choices are wrapper of UncommonMaths (AES_COUNTER_RNG, MERSENNE_TWISTER_RNG) or
+ * Random.org AtmosphericRandomConfig (need configure API_KEY and access to service).
+ *
+ * @param random instance of random generator
+ */
+ public EquityCheckBootstrap(IRandom random) {
+ this.random = random;
+ }
+ /**
+ * Create default instance with AES_COUNTER_RNG:
+ * Non-linear random number generator based on the AES block cipher in counter mode. Uses the seed as a key to encrypt a 128-bit counter using AES(Rijndael).
+ */
+ public EquityCheckBootstrap() {
+ this.random = new UncommonsMathsRandomConfig().createUncommonRandomness(AES_COUNTER_RNG);
+ }
+ /**
+ * Calculate Boot Score by defined algorithm in the class header javadoc.
+ * @param equity instance of equity for bootstrapping
+ * @param repetition count of simulations, minimal value is 100. Recommended 1_000..10_000
+ * @param interval date interval for equity cut (scoping), if null - full equity is taken
+ * @param provideShuffledEqs possibility to store shuffled equities for additional processing, visualization.
+ * @return EquityCheckBootstrapDO filled business object, bootScore double, shuffled equities, etc.
+ * @throws IllegalArgumentException equity is not correctly filled
+ */
+ public EquityCheckBootstrapDO computeBootScore(CombinedEquity equity, int repetition, CalendarInterval interval, boolean provideShuffledEqs) {
+ String id = equity.getTitle();
+ if (equity.size() == 0) {
+ throw new IllegalArgumentException("The equity has no trade. Cannot calculate BootScore. equity=" + id);
+ }
+ // support cut equity to required interval
+ if (interval != null) {
+ equity = EquityBasicOperationsLibrary.cutTimeRestrictionEquity(interval, equity, true);
+ if (equity.size() == 0) {
+ throw new IllegalArgumentException("The equity has no trade. Cannot calculate BootScore. equity=" + id);
+ }
+ }
+ // calc PL mean
+ ReturnStatistics returnStats = EquityPerformanceAnalyticsLibrary.computeReturnStatistics(equity);
+ // access data
+ assert returnStats != null;
+ double oPlMean = returnStats.plStat.getMean();
+ double[] pls = returnStats.plStat.getValues();
+ int tradeCount = pls.length;
+ int rndVals = repetition * tradeCount;
+ // generate random idxs
+ int[] rndIdxs = random.nextInt(rndVals, 0, tradeCount - 1);
+ // calculate exceed count
+ List<CombinedEquity> shuffledEqs = new ArrayList<>();
+ int exceed = 0;
+ for (int i = 0; i < repetition; i++) {
+ double bootMean = 0.0;
+ for (int j = 0; j < tradeCount; j++) {
+ bootMean += pls[rndIdxs[i * tradeCount + j]] - oPlMean;
+ }
+ bootMean /= tradeCount;
+ if (bootMean < oPlMean) {
+ exceed++;
+ }
+ // store shuffled equity to the list
+ if (provideShuffledEqs) {
+ int[] shuffledIdxs = new int[tradeCount];
+ System.arraycopy(rndIdxs, i * tradeCount, shuffledIdxs, 0, tradeCount);
+ shuffledEqs.add(EquityShufflingLibrary.fillEquityByShuffledPls(equity, shuffledIdxs, -oPlMean));
+ }
+ }
+ double bootScore = exceed / (double) repetition * 100.0;
+ double exceedDivTTrades = exceed / (double) repetition;
+ double perctConfidance = (1 - exceedDivTTrades) * 100.0;
+ if (logger.isDebugEnabled()) {
+ SimpleDateFormat sdf = new SimpleDateFormat(SECURITY_HISTORY_FORMAT);
+ logger.debug(String.format("Closed Trade Equity Check Bootstrap Evaluation: evalToDate=%s, repetitions=%d, origMeanReturn=%1.3f, bootScore=%1.3f, exceedDivTrades=%1.3f, perctConfidance=%1.3f",
+ sdf.format(equity.getTimeInterval()[1]), repetition, oPlMean, bootScore, exceedDivTTrades, perctConfidance));
+ }
+ return new EquityCheckBootstrapDO(id, bootScore, exceedDivTTrades, perctConfidance, shuffledEqs);
+ }
+ public static class EquityCheckBootstrapDO {
+ public String id;
+ public double bootScore;
+ public double exceedDivTTrades;
+ public double perctConfidance;
+ public List<CombinedEquity> shuffledEqs;
+ public EquityCheckBootstrapDO(String id, double bootScore, double exceedDivTTrades, double perctConfidance, List<CombinedEquity> shuffledEqs) {
+ this.id = id;
+ this.bootScore = bootScore;
+ this.exceedDivTTrades = exceedDivTTrades;
+ this.perctConfidance = perctConfidance;
+ this.shuffledEqs = shuffledEqs;
+ }
+ public PropertiesConfiguration getProps() {
+ PropertiesConfiguration props = new PropertiesConfiguration();
+ props.put("id", id);
+ props.put("bootScore", d3(bootScore));
+ props.put("exceedDivTTrades", d3(exceedDivTTrades));
+ props.put("perctConfidance", d3(perctConfidance));
+ return props;
+ }
+ @Override
+ public String toString() {
+ return "EquityCheckBootstrapDO{" +
+ "id='" + id + '\'' +
+ ", bootScore=" + bootScore +
+ ", exceedDivTTrades=" + exceedDivTTrades +
+ ", perctConfidance=" + perctConfidance +
+ '}';
+ }
+ private String d3(double val) {
+ return String.format("%1.3f", val);
+ }
+ }
+}

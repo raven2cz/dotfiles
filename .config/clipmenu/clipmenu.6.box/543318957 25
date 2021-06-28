@@ -1,0 +1,13 @@
+Hello Carson,
+
+Yes. SWFA/CA trains model on IS part and applies best parameters to near OOS block. Each OOS block equity is calculated and add to the final historical equity. The final history equity is assembled by OOS blocks only.
+
+The model is trained by IS+OOS blocks. Each this OOS interval is one re-optimization time range/period. Exactly this approach is used for next/future OOS period - live trading. You have to make optimization, find best parameters and apply it to next OOS cycle.
+
+There are several solutions to make it:
+
+- Standard optimization in TS with days back (according to IS block), selected fitness function, and take best row with parameters - use it for next OOS period
+
+- WFO/CA optimization in TS - there is row called "Recommended parameters..." These parameters are calculated from ACTUAL IS block which have to used for ACTUAL live OOS period (next OOS period).
+
+- EWFO - Enhanced WFO external app - External application designed for WFO and CA. There are several advantages for re-optimization processing and script processing.

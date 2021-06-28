@@ -1,0 +1,2 @@
+        // cut equity from historyFirstDate to end of OOS 1st, 2nd, 3rd and active OOS periods
+        // set correctly DH to start of OOS Xth period and calculate statistics

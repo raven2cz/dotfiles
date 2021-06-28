@@ -1,0 +1,13 @@
+❯ ./EqCheckBoot.sh
+Picked up _JAVA_OPTIONS: -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
+Bootstrap method for quickly checking to see if the P&L of a strategy is "lucky" or if there's evidence of an edge.
+The final Bootstrap Score should ideally be 100%. If it isn't, then the strategy likely does *NOT* have an edge and was "lucky".
+usage: EqCheckBoot [-e <arg>] [-f <arg>] [-h] [-i <arg>] [-o <arg>] [-r <arg>] [-t <arg>]
+  -e,--exportimgs <arg>    Export equity simulation images. Time consuming operation! Define image resolution. Input
+                           syntax: 1027x768
+  -f,--from <arg>          Equity cut from date. Not present; the equity beginning is taken. Input syntax: MM/dd/yyyy
+  -h,--help                Usage script help
+  -i,--input <arg>         Input directory for loading of WriteTrades32 equities files.
+  -o,--output <arg>        Output directory for result files. Not present; the input directory is used.
+  -r,--repetitions <arg>   Count of simulations for stress test. Default is 1_000.
+  -t,--to <arg>            Equity cut to date. Not present; the equity end is taken. Input syntax: MM/dd/yyyy

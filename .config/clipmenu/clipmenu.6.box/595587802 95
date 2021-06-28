@@ -1,0 +1,1 @@
+throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Cause description here");

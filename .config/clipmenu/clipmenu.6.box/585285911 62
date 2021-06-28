@@ -1,0 +1,2 @@
+    case 8b : {&Filter2_N1=-3|3} {&Filter2_N2=NONE}
+    begin

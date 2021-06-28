@@ -1,0 +1,2 @@
+	case 9a: begin //HOD/LOD
+		modeLong =  High <> HighD(0); //Not high of the day

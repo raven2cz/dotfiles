@@ -1,0 +1,11 @@
+[ignore]
+.*/lib/*
+.*/node_modules/*
+
+[include]
+
+[libs]
+
+[options]
+module.system=node
+suppress_comment= \\(.\\|\n\\)*\\$FlowIgnore

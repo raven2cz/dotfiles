@@ -1,0 +1,13 @@
+    case 1 : {&Filter1_N1=-4|4} {&Filter1_N2=-3|3} //ID: 1.1
+    begin
+        filter1_long = AvgTrueRange((10 + (Filter1_N1 * 3))) > AvgTrueRange((10 + (Filter1_N2 * 5)));
+        filter1_short = filter1_long;
+    end;
+    case 2 : {&Filter1_N1=-4|4} {&Filter1_N2=-3|3} //ID: 1.2
+    begin
+        filter1_long = AvgTrueRange((10 + (Filter1_N1 * 3))) <= AvgTrueRange((10 + (Filter1_N2 * 5)));
+        filter1_short = filter1_long;
+    end;
+    case 3 : {&Filter1_N1=-4|4} {&Filter1_N2=-3|3} //ID: 1.3
+    begin
+        filter1_long = AvgTrueRange((Filter1_N1 * 5)) >  Average(AvgTrueRange((Filter1_N1 * 5)), (Filter1_N2 * 2));

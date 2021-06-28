@@ -1,0 +1,2 @@
+double[] data = ArrayUtils.toPrimitive(entry.getValue().toArray(new Double[0]));
+            AosAutoUtil.showHistogramChart("OOS Period %d NPDH Histogram", data, 10);

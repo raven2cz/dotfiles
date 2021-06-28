@@ -1,0 +1,2 @@
+
+                        throw new IllegalArgumentException("The equity has no trade. Cannot 

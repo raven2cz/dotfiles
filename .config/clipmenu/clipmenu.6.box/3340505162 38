@@ -1,0 +1,6 @@
+        // output directory
+        if (commandLine.hasOption("o")) {
+            outputDir = commandLine.getOptionValue("o");
+        } else {
+            outputDir = inputDir;
+        }

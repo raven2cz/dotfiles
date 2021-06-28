@@ -1,0 +1,32 @@
+/**
+ * Max Daily or weekly allowed loss. The amount loss is defined on time interval: daily or weekly.
+ * The depended loss is almost cases in the same time, black swan. This plugin allows to open maximal allowed
+ * risk in the specific time.
+ */
+public class TimeMaxLossJtdPositionPlugin extends AbstractJtdPositionPlugin {
+    private static final Logger logger = LoggerFactory.getLogger(TimeMaxLossJtdPositionPlugin.class);
+
+    /** Define type of time interval for max loss, default Daily */
+    public static final AttributeKey<TimeIntervalMaxLossType> TIME_INTERVAL_MAX_LOSS_TYPE =
+            AttributeKey.create(TimeIntervalMaxLossType.class, "TIME_INTERVAL_MAX_LOSS_TYPE");
+
+    /** Define period count N days or N weeks, default is 1 */
+    public static final AttributeKey<Integer> TIME_INTERVAL_MAX_LOSS_PERIOD_COUNT =
+            AttributeKey.create(Integer.class, "TIME_INTERVAL_MAX_LOSS_PERIOD_COUNT");
+
+    /** Limit Maximal Loss in fraction (percent of account), default -1 ignored */
+    public static final AttributeKey<Double> LIMIT_MAX_LOSS_IN_FRACTION =
+            AttributeKey.create(Double.class, "LIMIT_MAX_LOSS_IN_FRACTION");
+
+    /** Type of handling of open position quantity, default is ZERO_TRADES_EXCEEDING_LIMIT */
+    public static final AttributeKey<OpenPositionQuantityHandlingType> OPEN_POSITION_QUANTITY_HANDLING_TYPE =
+            AttributeKey.create(OpenPositionQuantityHandlingType.class, "OPEN_POSITION_QUANTITY_HANDLING_TYPE");
+
+
+    // defines time interval for guarding the portfolio loss
+    public enum TimeIntervalMaxLossType {
+        /** time period for checking of max loss limit is ONE DAY */
+        MAX_LOSS_LIMIT__DAILY,
+
+        /** time period for checking of max loss limit is ONE WEEK */
+        MAX_LOSS_LIMIT__WEEKLY

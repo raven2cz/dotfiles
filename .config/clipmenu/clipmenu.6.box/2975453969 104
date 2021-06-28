@@ -1,0 +1,4 @@
+        byte[] image = SystemCandidateCommonLibrary.createEquityImage(null, portfolio, title,
+                new Dimension(1280, 720), true, false, new EodPeriod(MONTHLY), null);
+        File res1 = new File(resource.replaceAll(".png", suffix + ".png"));
+        FileUtils.writeByteArrayToFile(res1, image);

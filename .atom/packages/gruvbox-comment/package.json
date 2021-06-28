@@ -1,0 +1,59 @@
+{
+  "_from": "https://www.atom.io/api/packages/gruvbox-comment/versions/1.0.5/tarball",
+  "_id": "gruvbox-comment@0.1.0",
+  "_inBundle": false,
+  "_integrity": "sha512-9NsxI+CD94vjjtU03h8mw3l4TKneJmN/0C+kj4YSk2WYvMQ/u382NPHvlyL1owBi54j8VI1IVspBmu1SjcvlKA==",
+  "_location": "/gruvbox-comment",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/gruvbox-comment/versions/1.0.5/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/gruvbox-comment/versions/1.0.5/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/gruvbox-comment/versions/1.0.5/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/gruvbox-comment/versions/1.0.5/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/gruvbox-comment/versions/1.0.5/tarball",
+  "_shasum": "bccf77e20bff8e463c34300795b9657e50d72b48",
+  "_spec": "https://www.atom.io/api/packages/gruvbox-comment/versions/1.0.5/tarball",
+  "_where": "/tmp/apm-install-dir-202158-116105-kteq9z.4agd",
+  "bugs": {
+    "url": "https://github.com/gschnall/gruvbox-comment-syntax-atom/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "A Gruvbox theme for Atom that features easy-to-read comments",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "homepage": "https://github.com/gschnall/gruvbox-comment-syntax-atom#readme",
+  "keywords": [
+    "dark",
+    "green",
+    "orange",
+    "comments",
+    "gruvbox",
+    "syntax"
+  ],
+  "license": "MIT",
+  "name": "gruvbox-comment",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gschnall/gruvbox-comment-syntax-atom.git"
+  },
+  "theme": "syntax",
+  "version": "0.1.0",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

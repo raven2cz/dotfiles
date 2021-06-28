@@ -1,0 +1,72 @@
+package com.fin.frm.samples.study
+
+import java.util.*
+
+class Series {
+
+    constructor(values: List<Double>) {
+        series.addAll(values)
+    }
+
+    constructor(vararg values: Double) {
+        series.addAll(values.asList())
+    }
+
+    private val series = LinkedList<Double>()
+
+    fun current(): Double = series.last()
+    fun asReversedList(): MutableList<Double> = series.asReversed()
+    fun asList(): MutableList<Double> = series
+
+    fun size(): Int = series.size
+    fun empty(): Boolean = series.isEmpty()
+
+    operator fun get(index: Int): Double = series[series.lastIndex-index]
+    operator fun iterator() = series.iterator()
+    operator fun plusAssign(element: Double) {
+        series.add(element)
+    }
+
+    override fun toString(): String = "${javaClass.simpleName}(${size()})"
+}
+
+open class SeriesFunction(open val context: String) {
+
+    val series = Series()
+
+    fun current(): Double = series.current()
+    fun series(): Series = series
+    fun asReversed(): MutableList<Double> = series.asReversedList()
+    fun size(): Int = series.size()
+
+    operator fun get(index: Int): Double = series[index]
+    operator fun iterator() = series.iterator()
+
+    override fun toString(): String = "${javaClass.simpleName}(${series.size()})"
+}
+
+// helper functions for function series
+fun SeriesFunction.calc(fce: () -> Double): Double {
+    series += fce()
+    return series.current()
+}
+fun SeriesFunction.sum() = SummationFC(context)
+
+// study functions implementation
+
+class SummationFC(context: String) : SeriesFunction(context) {
+    fun f(source: Series, length: Int): Double {
+        return calc {
+            if (series.empty()) {
+                source.asList().takeLast(length).sum()
+            } else {
+                series[0] + source[0] - source[length]
+            }
+        }
+    }
+}
+
+class MovingAverage(context: String, var length: Int = 24): SeriesFunction(context) {
+
+    private val sum = sum()
+

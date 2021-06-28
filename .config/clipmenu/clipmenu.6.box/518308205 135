@@ -1,0 +1,1 @@
+SequenceService<ModifyPosition> modifySequenceService = getSequenceService(scope, modifySequenceServices, modifySequenceServiceClass);

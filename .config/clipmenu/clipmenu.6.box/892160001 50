@@ -1,0 +1,2 @@
+        chart.setEquityLineWidth(3.0f);
+        chart.setChartDimensions(new Dimension(1024, 768));

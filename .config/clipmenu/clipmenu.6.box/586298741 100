@@ -1,0 +1,8 @@
+                    new InstrumentSequenceServiceJtdPositionPlugin<>(new AttributeModel()
+                            .setAttribute(SequenceService.SEQUENCE_ID, testPrefix)
+                            .setAttribute(PyramidModifySequenceService.PYRAMID_CONTROL_TYPE, HIGHER_THRESHOLD_SAME_DAY)
+                            .setAttribute(PyramidModifySequenceService.PYRAMID_CONTROL_THRESHOLD_TICKS, 10),
+                            DummySequenceService.class,
+                            PyramidModifySequenceService.class)
+            };
+        };

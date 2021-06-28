@@ -1,0 +1,82 @@
+        // QPF needs ohlcv data
+//        IReadOHLCV wheatOhlcv = loadOhlcvQPF("@W-[TF1M]", 120);
+//        IReadOHLCV esOhlcv = loadOhlcvQPF("@ES-[TF1M]", 90);
+//        IReadOHLCV clOhlcv = loadOhlcvQPF("@CL-[TF1M]", 88);
+        IReadOHLCV sOhlcv = loadOhlcvQPF("@S-[TF1M]", 40);
+//        IReadOHLCV siOhlcv = loadOhlcvQPF("@SI-[TF1M]", 80);
+
+//        PSystem c7116_CL_80M = addPSystem(RESULT_FOLDER + "C7116-[@CL][TF80M][MSA]--DH-EQ");
+//        PSystem c11676_CL_88M = addPSystem(RESULT_FOLDER + "C11676-[@CL][TF88M][MSA]--DH-EQ");
+//        PSystem c47210_CL_80M = addPSystem(RESULT_FOLDER + "C47210-[@CL][TF80M][MSA]--DH-EQ");
+//        PSystem c44319_CL_88M = addPSystem(RESULT_FOLDER + "C44319-[@CL][TF88M][MSA]--DH-EQ", clOhlcv);
+//        PSystem c35878_CL_80M = addPSystem(RESULT_FOLDER + "C35878-[@CL][TF80M][MSA]--DH-EQ", clOhlcv);
+//        PSystem c16452_CL_88M = addPSystem(RESULT_FOLDER + "C13452-[@CL][TF88M][MSA]--DH-EQ");
+//        PSystem c1262_NG_30M = addPSystem(RESULT_FOLDER + "C1262-[@NG][TF30M][MSA]--DH-EQ");
+//        PSystem c2635_NG_30M = addPSystem(RESULT_FOLDER + "C2635-[@NG][TF30M][MSA]--DH-EQ");
+//        PSystem c16055_NG_240M = addPSystem(RESULT_FOLDER + "C16055-[@NG][TF240M][MSA]--DH-EQ");
+//        PSystem c13905_NG_30M = addPSystem(RESULT_FOLDER + "C13905-[@NG][TF30M][MSA]--DH-EQ");
+//        PSystem c19896_HO_60M = addPSystem(RESULT_FOLDER + "C19896-[@HO][TF60M][MSA]--DH-EQ");
+//        PSystem c871_GC_80M = addPSystem(RESULT_FOLDER + "C871-[@GC][TF80M][MSA]--DH-EQ");
+//        PSystem c6434_KC_30M = addPSystem(RESULT_FOLDER + "C6434-[@KC][TF30M][MSA]--DH-EQ");
+//        PSystem c26656_KC_80M = addPSystem(RESULT_FOLDER + "C26565-[@KC][TF80M][MSA]--DH-EQ");
+//        PSystem c19106_KC_30M = addPSystem(RESULT_FOLDER + "C19106-[@KC][TF30M][MSA]--DH-EQ");
+//        PSystem c27394_JY_60M = addPSystem(RESULT_FOLDER + "C27394-[@JY][TF60M][MSA]--DH-EQ");
+//        PSystem c31039_SI_80M = addPSystem(RESULT_FOLDER + "C31039-[@SI][TF80M][MSA]--DH-EQ", siOhlcv);
+//        PSystem c11907_SI_80M = addPSystem(RESULT_FOLDER + "C11907-[@SI][TF80M][MSA]--DH-EQ");
+//        PSystem c1205_US_80M = addPSystem(RESULT_FOLDER + "C1205-[@US][TF80M][MSA]--DH-EQ");
+//        PSystem c29332_US_80M = addPSystem(RESULT_FOLDER + "C29332-[@US][TF80M][MSA]--DH-EQ");
+//        PSystem c4911_TY_240M = addPSystem(RESULT_FOLDER + "C4911-[@TY][TF240M][MSA]--DH-EQ");
+//        PSystem c26944_TY_120M = addPSystem(RESULT_FOLDER + "C26944-[@TY][TF120M][MSA]--DH-EQ");
+//        PSystem c11204_TY_240M = addPSystem(RESULT_FOLDER + "C11204-[@TY][TF240M][MSA]--DH-EQ");
+//        PSystem c17671_ES_90M = addPSystem(RESULT_FOLDER + "C17671-[@ES][TF90M][MSA]--DH-EQ", esOhlcv);
+//        PSystem c47375_NQ_60M = addPSystem(RESULT_FOLDER + "C47375-[@NQ][TF60M][MSA]--DH-EQ");
+//        PSystem c41222_YM_80M = addPSystem(RESULT_FOLDER + "C41222-[@YM][TF80M][MSA]--DH-EQ");
+//        PSystem c38310_YM_80M = addPSystem(RESULT_FOLDER + "C38310-[@YM][TF80M][MSA]--DH-EQ");
+        PSystem c13316_S_80M = addPSystem(RESULT_FOLDER + "C13316-[@S][TF80M][MSA]--DH-EQ", sOhlcv);
+//        PSystem c24385_S_120M = addPSystem(RESULT_FOLDER + "C24385-[@S][TF120M][MSA]--DH-EQ");
+//        PSystem c34188_S_60M = addPSystem(RESULT_FOLDER + "C34188-[@S][TF60M][MSA]--DH-EQ");
+//        PSystem c2846_W_240M = addPSystem(RESULT_FOLDER + "C2846-[@W][TF240M][MSA]--DH-EQ");
+//        PSystem c6877_W_240M = addPSystem(RESULT_FOLDER + "C6877-[@W][TF240M][MSA]--DH-EQ", wheatOhlcv);
+//        PSystem c22165_W_240M = addPSystem(RESULT_FOLDER + "C22165-[@W][TF240M][MSA]--DH-EQ");
+
+        CombinedEquity equity = c13316_S_80M.equity;
+
+        if (calculateExactEntriesExits) {
+            logger.info("The finding of correct entries and exists times is started.");
+            // find correct entries and exists for each strategy
+            RangedOhlcvSimpleContinuousFutureIntradayDataSource.useCache = false;
+            for (var system : systems.values()) {
+                String relExportResource = RESULT_FOLDER + system.id + "-export.csv";
+                String exportResource = assemblyResource(relExportResource);
+                if (!new File(exportResource).exists()) {
+                    evaluateEntryTimesEquityService.evaluateEquityEntries(system.equity,
+                            (IntradayPeriod) system.resourceInfo.period, getOhlcv1M(system.instrument));
+                    // store result to export
+                    EquityImportExportOperationsLibrary.exportEquityToWriteTrade32Csv(
+                            system.equity, null, exportResource);
+                } else {
+                    system.equity = loadEquityFromWriteTrade32Csv(relExportResource);
+                }
+            }
+            logger.info("The finding of correct entries and exists times is finished.");
+        }
+
+        if (show) {
+            //CombinedEquity[] equities = systems.values().stream().map(s -> s.equity).toArray(CombinedEquity[]::new);
+            //CombinedEquity cta2g1 = mergeEquities(equities);
+            // usage of correlation matrix
+            //showCorrelationEquityResults(Arrays.asList(equities), 0.1);
+            //showEquityResults(cta2g1, new EodPeriod(MONTHLY), true, equities);
+
+            QuantumProfitFactorStatistics qpfStat = equity.getQuantumProfitFactorStatistics();
+
+            System.out.println(qpfStat);
+            exportQPFValsInTime(equity.getTitle()+"-QPF", qpfStat.timestamps, qpfStat.qpfVals);
+            exportQPFValsInTime(equity.getTitle()+"-QPF-Long", qpfStat.timestamps, qpfStat.qpfValsLong);
+            exportQPFValsInTime(equity.getTitle()+"-QPF-Short", qpfStat.timestamps, qpfStat.qpfValsShort);
+
+            double[] qpfVals = ArrayUtils.toPrimitive(qpfStat.qpfVals.toArray(Double[]::new));
+
+            showHistogramChart(equity.getTitle()+"-QPF-Histogram", qpfVals, 500);
+            showEquityResults(equity, new EodPeriod(MONTHLY), true);
+        }

@@ -1,0 +1,1 @@
+{"menu":[{"label":"Packages","submenu":[{"label":"Minimap","submenu":[{"label":"Toggle","command":"minimap:toggle"}]}]}],"context-menu":{"atom-text-editor":[{"label":"Toggle Minimap","command":"minimap:toggle"}]}}

@@ -1,0 +1,1 @@
+wibox.container.margin(wibox.widget { keyboardText, theme.mykeyboardlayout, layout = wibox.layout.al

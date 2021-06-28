@@ -1,0 +1,1 @@
+            throw new IllegalArgumentException("The output directory has to be defined! Fill -i parameter with input resource path.");

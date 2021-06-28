@@ -1,0 +1,28 @@
+        Map<StrategySubtype, EquityCompareSTypeDO> data = stypeContainer.apply(container -> {
+            // cycle per subtype - no aggregate per subtype
+            Map<StrategySubtype, EquityCompareSTypeDO> results = new LinkedHashMap<>();
+            // take all available subtypes from first candidate - there is necessary that this candidate has ALL subtypes of course.
+            for (StrategySubtype subtype : getSubtypesFromContainer(stypeContainer)) {
+                // cycle all candidates - aggregate by candidates mean and stdDev
+                for (Map<StrategySubtype, EquityCompareSTypeDO> map : container.getComparedEquities().values()) {
+                    EquityCompareSTypeDO typeDO = map.get(subtype);
+                    if (typeDO != null) {
+                        EquityCompareSTypeDO resultTypeDO = results.computeIfAbsent(subtype, s ->
+                                new EquityCompareSTypeDO(null, new ArrayList<>(), s, null, null));
+                        for (int i = 0; i < typeDO.equityCompareDOs.size(); i++) {
+                            EquityCompareDO equityCompareDO = typeDO.equityCompareDOs.get(i);
+                            if (resultTypeDO.aggDOs.size() - 1 < i) {
+                                StatAggCompareDO statAgg = new StatAggCompareDO();
+                                statAgg.name = equityCompareDO.name;
+                                statAgg.isDiff = equityCompareDO.isDiff;
+                                resultTypeDO.aggDOs.add(statAgg);
+                            }
+                            // aggregate per stat name
+                            resultTypeDO.aggDOs.get(i).stats.addValue(equityCompareDO.perct);
+                        }
+                    }
+                }
+            }
+            // propagate aggregation results to the expected EquityCompareDO object
+            for (EquityCompareSTypeDO typeDO : results.values()) {
+                for (StatAggCompareDO aggDO : typeDO.aggDOs) {

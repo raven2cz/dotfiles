@@ -1,0 +1,1 @@
+./EqCheckBoot.sh -i /home/box/.data/equities/equity-check-boot -r 500 -e 1920x1080 -f 01/01/2014 -t 12/31/2019

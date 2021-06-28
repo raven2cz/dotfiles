@@ -1,0 +1,9 @@
+{
+  "extends": "eslint-config-atomic/react",
+  "ignorePatterns": ["dist/", "node_modules/", "spec/fixtures"],
+  "rules": {
+    "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "react/react-in-jsx-scope": "off"
+  }
+}

@@ -1,0 +1,31 @@
+         </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Class-Path>config/</Class-Path>
+                        </manifestEntries>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <!-- mainClass>org.javafish.trading.backtest.excel.frontend.FimsExportFrame</mainClass-->
+                            <!-- mainClass>org.javafish.trading.backtest.aos.dp.DPAosAnalysisFrame</mainClass-->
+                            <!-- mainClass>org.javafish.trading.game.mm.MmTradingGameFrame</mainClass-->
+                            <!-- mainClass>org.javafish.trading.backtest.equity.TradeStationCAMEAFrame</mainClass-->
+                            <!-- mainClass>org.javafish.trading.backtest.aos.equity.WaCaEquityOosELExport</mainClass-->
+                            <!-- mainClass>org.javafish.trading.backtest.aos.elcut.ELCut</mainClass-->
+                            <!-- mainClass>org.javafish.trading.backtest.aos.frmex.FrmExBacktest</mainClass-->
+                            <!--mainClass>org.javafish.trading.backtest.aos.td.TdResultCsvAnalyser</mainClass-->
+                            <mainClass>org.javafish.trading.backtest.aos.stresstest.EquityCheckBootstrapScript
+                            </mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <!--            <plugin>-->
+            <!--                <groupId>org.apache.maven.plugins</groupId>-->
+            <!--                <artifactId>maven-assembly-plugin</artifactId>-->
+            <!--            </plugin>-->

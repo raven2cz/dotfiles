@@ -1,0 +1,466 @@
+@import "colors";
+
+
+atom-text-editor[mini], atom-text-editor.mini {
+ .scroll-view {
+    padding-left: 1px;
+  }
+}
+
+// MISC
+.syntax--source {
+  color: @color1;
+}
+
+.syntax--text {
+  color: @code-font-color;
+}
+
+&.syntax--complete_tag {
+  color: @variable;
+}
+
+
+// COMENTS
+.syntax--comment {
+  color: @comment;
+  background: @comment-bg;
+}
+
+
+// CONSTANTS
+.syntax--constant {
+
+  // true, false, null, undefined
+  color: @constant;
+
+  // \ of ("what\'s")
+  &.syntax--character.syntax--escape {
+    color: @constant;
+  }
+
+  &.syntax--name.syntax--attribute.syntax--tag {
+    color: @constant-name-attribute-tag;
+  }
+
+  // all the numbers!
+  &.syntax--numeric {
+    color: @numeric;
+  }
+
+  // can't tell what this does :/
+  &.syntax--other.syntax--color {
+    color: @constant;
+  }
+
+  // can't tell what this does :/
+  &.syntax--other.syntax--symbol {
+    color: @constant;
+  }
+}
+
+
+// ENTITY | exports of module.exports, <div id= of <div id="#id">, . of .className
+.syntax--entity {
+
+  color: @entity;
+
+
+  &.syntax--name {
+
+    &.syntax--class, &.syntax--type.syntax--class {
+      color: @support;
+    }
+    &.syntax--function {
+      color: @entity-name-function;
+    }
+    &.syntax--section {
+      color: @entity;
+    }
+    &.syntax--tag {
+      color: @entity-name-tag;
+      text-decoration: none;
+      &.syntax--block, &.syntax--inline, &.syntax--name {
+        color: @entity-name-tag;
+      }
+      &.syntax--structure {
+        color: @tag;
+      }
+      &.syntax--block {
+        color: @tag;
+      }
+    }
+    &.syntax--type {
+      color: @entity-name-type;
+      text-decoration: none;
+      &.syntax--tag {
+        color: @class;
+      }
+    }
+  }
+
+
+  &.syntax--other {
+    &.syntax--attribute-name, {
+      color: @entity-other-attribute-name;
+      &.syntax--id {
+        color: @entity-other-id;
+      }
+    }
+    &.syntax--inherited-class {
+      color: @entity;
+    }
+  }
+}
+
+
+// INVALID TEXT
+.syntax--invalid.syntax--illegal, .syntax--invalid.syntax--deprecated {
+  background: none;
+  color: @error;
+
+  &.syntax--whitespace {
+    background-color: @error;
+  }
+
+  .syntax--punctuation {
+    color: @error-punc;
+  }
+}
+
+
+// KEYWORDS
+.syntax--keyword {
+
+  color: @keyword;
+
+  &.syntax--control {
+    color: @keyword-control;
+  }
+
+  &.syntax--operator {
+    color: @keyword-operator;
+    &.syntax--assignment {
+      color: @keyword-operator-assignment;
+    }
+    &.syntax--new {
+      color: @keyword-operator-new;
+    }
+  }
+
+  &.syntax--other {
+    &.syntax--important {
+      color: @keyword-other-important;
+    }
+    &.syntax--special-method {
+      color: @keyword;
+    }
+    &.syntax--unit {
+      color: @keyword;
+    }
+  }
+
+}
+
+
+// MARKUP
+.syntax--markup {
+  &.syntax--bold {
+    color: @markup;
+    font-weight: bold;
+  }
+
+  &.syntax--changed {
+    color: @markup;
+  }
+
+  &.syntax--deleted {
+    color: @markup;
+  }
+
+  &.syntax--heading .syntax--punctuation.syntax--definition.syntax--heading {
+    color: @markup;
+  }
+
+  &.syntax--inserted {
+    color: @markup;
+  }
+
+  &.syntax--italic {
+    color: @markup;
+    font-style: italic;
+  }
+
+  &.syntax--list {
+    color: @markup;
+  }
+
+  &.syntax--quote {
+    color: @quotes;
+  }
+
+  &.syntax--raw.syntax--inline {
+    color: @markup;
+  }
+}
+
+
+// META
+.syntax--meta {
+
+  &.syntax--link {
+    color: @meta;
+  }
+
+  &.syntax--require {
+    color: @meta;
+  }
+
+
+  &.syntax--brace {
+    &.syntax--curly { color: @brackets; }
+    &.syntax--round { color: @code-font-color;}
+  }
+
+  &.syntax--control {
+    &.syntax--flow {
+      color: @meta-control-flow;
+    }
+  }
+
+  &.syntax--comma {
+    color: @punctuation;
+  }
+
+  &.syntax--selector {
+    color: @punctuation;
+  }
+
+  &.syntax--separator {
+    color: @punctuation;
+  }
+
+  &.syntax--tag {
+    color: @tag;
+  }
+}
+
+// NONE
+.syntax--none {
+  color: @code-font-color;
+}
+
+
+// PUNCTUATION
+.syntax--punctuation {
+  color: @punctuation;
+
+  &.syntax--terminator {
+    color: @punctuation;
+  }
+
+  &.syntax--separator {
+    color: @punctuation-separator;
+  }
+
+  &.syntax--definition {
+
+    color: @punctuation;
+
+    &.syntax--array {
+      color: @punctuation-definition-array;
+    }
+
+    &.syntax--bold {
+      color: @code-font-color;
+      font-weight: bold;
+    }
+
+    &.syntax--comment {
+      color: @comment-punc;
+    }
+
+    &.syntax--heading,
+    &.syntax--identity,
+    &.syntax--italic {
+      color: @code-font-color;
+    }
+
+    &.syntax--italic {
+      font-style: italic;
+    }
+
+    &.syntax--string {
+      color: @punctuation-definition-string;
+      &.syntax--begin, &.syntax--end {
+        color: @quotes;
+      }
+    }
+
+    &.syntax--variable {
+      color: @punctuation-definition-variable;
+    }
+
+    &.syntax--parameters {
+      color: @code-font-color;
+    }
+
+    &.syntax--tag {
+      color: @tag;
+    }
+  }
+
+  &.syntax--section.syntax--embedded {
+    color: @code-font-color;
+  }
+
+}
+
+
+
+// STRINGS
+.syntax--string {
+  color: @string;
+
+  .syntax--constant {
+    color: @constant;
+  }
+
+  &.syntax--interpolated {
+    color: @variable;
+  }
+
+  &.syntax--regexp {
+
+    // ?:input, select, textarea, button of  /^(?:input|select|textarea|button)$/i,
+    color: @regex;
+
+    .syntax--constant.syntax--character.syntax--escape,
+    .syntax--source.syntax--ruby.syntax--embedded,
+    .syntax--string.syntax--regexp.syntax--arbitrary-repitition {
+      color: @regex;
+    }
+
+    &.syntax--group {
+      color: @regex;
+    }
+
+    &.syntax--character-class {
+      color: @regex;
+    }
+
+    .syntax--source.syntax--ruby.syntax--embedded {
+      color: @regex;
+    }
+
+  }
+
+  &.syntax--quoted {
+    &.syntax--double { color: @string-quoted-double; }
+    &.syntax--single { color: @string-quoted-single; }
+  }
+
+  &.syntax--unquoted {
+    color: @string-unquoted;
+    &.syntax--heredoc, &.syntax--here-doc,
+    &.syntax--nowdoc, &.syntax--now-doc,
+    &.syntax--block, &.syntax--program-block {
+      color: @string;
+    }
+  }
+
+  &.syntax--other {
+    color: @string-other;
+  }
+
+  .syntax--variable {
+    color: @variable;
+  }
+
+  // can't tell what this does :/
+  &.syntax--other.syntax--link {
+    color: @string;
+  }
+}
+
+
+// STORAGE
+.syntax--storage {
+  color: @storage;
+
+  &.syntax--modifier {
+    color: @storage;
+  }
+
+  &.syntax--type {
+    &.syntax--class {
+      color: @storage-class;
+    }
+    &.syntax--function {
+      color: @storage-function;
+    }
+    &.syntax--var {
+      color: @storage-var;
+    }
+  }
+
+}
+
+
+// SUPPORT
+.syntax--support {
+
+  color: @support;
+
+  &.syntax--class {
+    color: @support;
+  }
+
+  &.syntax--function  {
+    color: @function;
+    &.syntax--decl {
+      color: @support-function-decl;
+    }
+  }
+
+  &.syntax--constant {
+    color: @constant;
+  }
+  &.syntax--type {
+    &.syntax--property-name {
+      color: @support-type-property-name;
+    }
+  }
+}
+
+// VARIABLES
+.syntax--variable {
+  color: @variable;
+
+  &.syntax--control.syntax--import.syntax--include {
+    color: @variable-import;
+  }
+
+  &.syntax--other {
+    color: @variable-other;
+
+    &.syntax--property {
+      color: @variable-other-property;
+    }
+    &.syntax--module {
+      color: @variable-other-module;
+    }
+    &.syntax--module-alias {
+      color: @variable-other-module-alias;
+    }
+    &.syntax--object {
+      color: @variable-other-object;
+    }
+  }
+
+  &.syntax--parameter {
+    &.syntax--function {
+      color: @obj-method;
+    }
+  }
+}

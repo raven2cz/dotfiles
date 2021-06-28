@@ -1,0 +1,16 @@
+[module/networkspeedup]
+;https://github.com/jaagr/polybar/wiki/Module:-network
+type = internal/network
+;interface = wlp3s0
+;interface = enp14s0
+interface = enp38s0
+;interface = eth0
+label-connected = "%upspeed:7%"
+format-connected = <label-connected>
+format-connected-prefix = " +"
+format-connected-prefix-foreground = ${color.cyan}
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/networkspeeddown]
+;https://github.com/jaagr/polybar/wiki/Module:-network

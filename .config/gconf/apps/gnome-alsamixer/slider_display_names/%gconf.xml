@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="Realtek_ALCS1200A-Rear_Mic_Boost" mtime="1600244055" type="string">
+		<stringvalue>Rear Mic</stringvalue>
+	</entry>
+	<entry name="Realtek_ALCS1200A-Rear_Mic" mtime="1600244055" type="string">
+		<stringvalue>Rear Mic</stringvalue>
+	</entry>
+	<entry name="Realtek_ALCS1200A-Capture" mtime="1600244055" type="string">
+		<stringvalue>Capture</stringvalue>
+	</entry>
+	<entry name="Realtek_ALCS1200A-Beep" mtime="1600244055" type="string">
+		<stringvalue>Beep</stringvalue>
+	</entry>
+	<entry name="Realtek_ALCS1200A-Line_Boost" mtime="1600244055" type="string">
+		<stringvalue>Line Boo</stringvalue>
+	</entry>
+	<entry name="Realtek_ALCS1200A-Line" mtime="1600244055" type="string">
+		<stringvalue>Line</stringvalue>
+	</entry>
+	<entry name="Realtek_ALCS1200A-LFE" mtime="1600244055" type="string">
+		<stringvalue>LFE</stringvalue>
+	</entry>
+	<entry name="Realtek_ALCS1200A-Center" mtime="1600244055" type="string">
+		<stringvalue>Center</stringvalue>
+	</entry>
+	<entry name="Realtek_ALCS1200A-Surround" mtime="1600244055" type="string">
+		<stringvalue>Surround</stringvalue>
+	</entry>
+	<entry name="Realtek_ALCS1200A-Front_Mic_Boost" mtime="1600244055" type="string">
+		<stringvalue>Front Mi</stringvalue>
+	</entry>
+	<entry name="Realtek_ALCS1200A-Front_Mic" mtime="1600244055" type="string">
+		<stringvalue>Front Mi</stringvalue>
+	</entry>
+	<entry name="Realtek_ALCS1200A-Front" mtime="1600244055" type="string">
+		<stringvalue>Front</stringvalue>
+	</entry>
+	<entry name="Realtek_ALCS1200A-PCM" mtime="1600244055" type="string">
+		<stringvalue>PCM</stringvalue>
+	</entry>
+	<entry name="Realtek_ALCS1200A-Headphone" mtime="1600244055" type="string">
+		<stringvalue>Headphon</stringvalue>
+	</entry>
+	<entry name="Realtek_ALCS1200A-Master" mtime="1600244055" type="string">
+		<stringvalue>Master</stringvalue>
+	</entry>
+</gconf>

@@ -1,0 +1,13 @@
+test = "pyramid-instrument-higher-tick10-p20-test";
+        ptfSelectQuery = "*p20";
+        ptfSubtypes = RandomPortfolioLoadServant.DEFAULT_PORTFOLIO_TEST; //new StrategySubtype[] { PTFA_FAIL_CORR }; // DEFAULT_PORTFOLIO_TEST
+        groups = DEFAULT_BAR_CHART_GROUPS;
+        subtypesPerGroup = new int[][]{ // just for one DEFAULT group - one row for this one group
+                ArrayUtils.toPrimitive(Arrays.stream(ptfSubtypes).map(StrategySubtype::getId).toArray(Integer[]::new))
+        };
+
+        // JTD context settings - Plugins Settings
+        // DEFINE ANALYSIS TEST FOR EVALUATION
+        plugins = new JtdPositionPlugin[]{
+                //new TimeMaxLossJtdPositionPlugin(MAX_LOSS_LIMIT__DAILY, ZERO_TRADES_EXCEEDING_LIMIT, 1.2, 3)
+                new InstrumentSequenceServiceJtdPositionPlug

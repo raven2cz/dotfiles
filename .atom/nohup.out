@@ -1,0 +1,31 @@
+/etc/profile.d/flatpak-bindir.sh:10: command not found: append_path
+(node:1435114) Electron: Loading non-context-aware native module in renderer: '/usr/lib/atom/node_modules/pathwatcher/build/Release/pathwatcher.node'. This is deprecated, see https://github.com/electron/electron/issues/18397.
+(node:1435114) Electron: Loading non-context-aware native module in renderer: '/usr/lib/atom/node_modules/oniguruma/build/Release/onig_scanner.node'. This is deprecated, see https://github.com/electron/electron/issues/18397.
+(node:1435114) Electron: Loading non-context-aware native module in renderer: '/usr/lib/atom/node_modules/superstring/build/Release/superstring.node'. This is deprecated, see https://github.com/electron/electron/issues/18397.
+(node:1435114) Electron: Loading non-context-aware native module in renderer: '/usr/lib/atom/node_modules/tree-sitter/build/Release/tree_sitter_runtime_binding.node'. This is deprecated, see https://github.com/electron/electron/issues/18397.
+(node:1435114) Electron: Loading non-context-aware native module in renderer: '/usr/lib/atom/node_modules/@atom/nsfw/build/Release/nsfw.node'. This is deprecated, see https://github.com/electron/electron/issues/18397.
+(node:1435114) Electron: Loading non-context-aware native module in renderer: '/usr/lib/atom/node_modules/git-utils/build/Release/git.node'. This is deprecated, see https://github.com/electron/electron/issues/18397.
+(node:1435114) Electron: Loading non-context-aware native module in renderer: '/usr/lib/atom/node_modules/scrollbar-style/build/Release/scrollbar-style-observer.node'. This is deprecated, see https://github.com/electron/electron/issues/18397.
+TERM environment variable not set.
+zsh: append_path: command not found...
+zsh: append_path: command not found...
+zsh: append_path: command not found...
+(eval):1: can't change option: zle
+(node:1435114) Electron: Loading non-context-aware native module in renderer: '/usr/lib/atom/node_modules/tree-sitter-bash/build/Release/tree_sitter_bash_binding.node'. This is deprecated, see https://github.com/electron/electron/issues/18397.
+(node:1435114) Electron: Loading non-context-aware native module in renderer: '/usr/lib/atom/node_modules/spellchecker/build/Release/spellchecker.node'. This is deprecated, see https://github.com/electron/electron/issues/18397.
+(node:1435114) Electron: Loading non-context-aware native module in renderer: '/usr/lib/atom/node_modules/tree-sitter-c/build/Release/tree_sitter_c_binding.node'. This is deprecated, see https://github.com/electron/electron/issues/18397.
+(node:1435114) Electron: Loading non-context-aware native module in renderer: '/usr/lib/atom/node_modules/tree-sitter-cpp/build/Release/tree_sitter_cpp_binding.node'. This is deprecated, see https://github.com/electron/electron/issues/18397.
+(node:1435114) Electron: Loading non-context-aware native module in renderer: '/usr/lib/atom/node_modules/tree-sitter-css/build/Release/tree_sitter_css_binding.node'. This is deprecated, see https://github.com/electron/electron/issues/18397.
+(node:1435114) Electron: Loading non-context-aware native module in renderer: '/usr/lib/atom/node_modules/tree-sitter-go/build/Release/tree_sitter_go_binding.node'. This is deprecated, see https://github.com/electron/electron/issues/18397.
+(node:1435114) Electron: Loading non-context-aware native module in renderer: '/usr/lib/atom/node_modules/tree-sitter-embedded-template/build/Release/tree_sitter_embedded_template_binding.node'. This is deprecated, see https://github.com/electron/electron/issues/18397.
+(node:1435114) Electron: Loading non-context-aware native module in renderer: '/usr/lib/atom/node_modules/tree-sitter-html/build/Release/tree_sitter_html_binding.node'. This is deprecated, see https://github.com/electron/electron/issues/18397.
+(node:1435114) Electron: Loading non-context-aware native module in renderer: '/usr/lib/atom/node_modules/tree-sitter-java-dev/build/Release/tree_sitter_java_binding.node'. This is deprecated, see https://github.com/electron/electron/issues/18397.
+(node:1435114) Electron: Loading non-context-aware native module in renderer: '/usr/lib/atom/node_modules/tree-sitter-javascript/build/Release/tree_sitter_javascript_binding.node'. This is deprecated, see https://github.com/electron/electron/issues/18397.
+(node:1435114) Electron: Loading non-context-aware native module in renderer: '/usr/lib/atom/node_modules/tree-sitter-jsdoc/build/Release/tree_sitter_jsdoc_binding.node'. This is deprecated, see https://github.com/electron/electron/issues/18397.
+(node:1435114) Electron: Loading non-context-aware native module in renderer: '/usr/lib/atom/node_modules/tree-sitter-regex/build/Release/tree_sitter_regex_binding.node'. This is deprecated, see https://github.com/electron/electron/issues/18397.
+(node:1435114) Electron: Loading non-context-aware native module in renderer: '/usr/lib/atom/node_modules/tree-sitter-json/build/Release/tree_sitter_json_binding.node'. This is deprecated, see https://github.com/electron/electron/issues/18397.
+(node:1435114) Electron: Loading non-context-aware native module in renderer: '/usr/lib/atom/node_modules/tree-sitter-python/build/Release/tree_sitter_python_binding.node'. This is deprecated, see https://github.com/electron/electron/issues/18397.
+(node:1435114) Electron: Loading non-context-aware native module in renderer: '/usr/lib/atom/node_modules/tree-sitter-ruby/build/Release/tree_sitter_ruby_binding.node'. This is deprecated, see https://github.com/electron/electron/issues/18397.
+(node:1435114) Electron: Loading non-context-aware native module in renderer: '/usr/lib/atom/node_modules/language-rust-bundled/node_modules/tree-sitter-rust/build/Release/tree_sitter_rust_binding.node'. This is deprecated, see https://github.com/electron/electron/issues/18397.
+(node:1435114) Electron: Loading non-context-aware native module in renderer: '/usr/lib/atom/node_modules/tree-sitter-typescript/build/Release/tree_sitter_tsx_binding.node'. This is deprecated, see https://github.com/electron/electron/issues/18397.
+(node:1435114) Electron: Loading non-context-aware native module in renderer: '/usr/lib/atom/node_modules/tree-sitter-typescript/build/Release/tree_sitter_typescript_binding.node'. This is deprecated, see https://github.com/electron/electron/issues/18397.

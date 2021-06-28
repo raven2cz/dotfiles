@@ -1,0 +1,46 @@
+                    .addComponentForThisId(new MetaComponent
+                        .Builder("CONTEXT{MQ3S}[DIRECTION,RISK]", "CTX-MQ3S")
+                        .setCodeResource("CONTEXT_BR_MQ3S.txt")
+                        .setVariable("UseCtxDirection", 1)
+                        .setVariable("UseCtxRisk", 1)
+                        .build())
+                    .addComponentForThisId(new MetaComponent
+                        .Builder("CONTEXT{MQ3S}[DIRECTION,NORISK]", "CTX-DMQ3S")
+                        .setCodeResource("CONTEXT_BR_MQ3S.txt")
+                        .setVariable("UseCtxDirection", 1)
+                        .setVariable("UseCtxRisk", 0)
+                        .build())
+                    .addComponentForThisId(new MetaComponent
+                        .Builder("CONTEXT{MQ3S}[NODIRECTION,RISK]", "CTX-RMQ3S")
+                        .setCodeResource("CONTEXT_BR_MQ3S.txt")
+                        .setVariable("UseCtxDirection", 0)
+                        .setVariable("UseCtxRisk", 1)
+                        .build())
+                    .addComponentForThisId(new MetaComponent
+                        .Builder("CONTEXT{SFB}[DIRECTION,NORISK]", "CTX-SFB")
+                        .setCodeResource("CONTEXT_BR_SFB.txt")
+                        .setVariable("UseCtxDirection", 1)
+                        .setVariable("UseCtxRisk", 0)
+                        .build())
+                    .addComponentForThisId(new MetaComponent
+                        .Builder("CONTEXT{SFB}[NODIRECTION,RISK]", "CTX-SFB")
+                        .setCodeResource("CONTEXT_BR_SFB.txt")
+                        .setVariable("UseCtxDirection", 0)
+                        .setVariable("UseCtxRisk", 1)
+                        .build())
+                    .addComponentForThisId(new MetaComponent
+                        .Builder("CONTEXT{NG}[DIRECTION,NORISK]", "CTX-DNG")
+                        .setCodeResource("CONTEXT_BR_NG.txt")
+                        .setVariable("UseCtxDirection", 1)
+                        .setVariable("UseCtxRisk", 0)
+                        .build())
+                    .addComponentForThisId(new MetaComponent
+                        .Builder("CONTEXT{NG}[NODIRECTION,RISK]", "CTX-RNG")
+                        .setCodeResource("CONTEXT_BR_NG.txt")
+                        .setVariable("UseCtxDirection", 0)
+                        .setVariable("UseCtxRisk", 1)
+                        .build())
+                    .addNoneForThisId()
+
+                .build();
+    }

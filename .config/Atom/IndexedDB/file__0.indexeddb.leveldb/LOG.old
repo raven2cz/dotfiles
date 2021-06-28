@@ -1,0 +1,6 @@
+2021/06/27-19:55:14.497 404de Reusing MANIFEST /home/box/.config/Atom/IndexedDB/file__0.indexeddb.leveldb/MANIFEST-000001
+2021/06/27-19:55:14.497 404de Recovering log #334
+2021/06/27-19:55:14.500 404de Reusing old log /home/box/.config/Atom/IndexedDB/file__0.indexeddb.leveldb/000334.log 
+2021/06/27-22:26:44.899 995ac Level-0 table #340: started
+2021/06/27-22:26:44.908 995ac Level-0 table #340: 1233594 bytes OK
+2021/06/27-22:26:44.909 995ac Delete type=0 #334

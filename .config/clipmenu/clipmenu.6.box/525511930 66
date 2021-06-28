@@ -1,0 +1,37 @@
+       int dhOosCount = -2; // know from configuration
+        Date maxLastDate = candidate.properties.getDate("Securities.Security.History.SetMaxLastDate", SECURITY_HISTORY_FORMAT);
+        System.out.println("MaxLastDate=" + sdfHistory.format(maxLastDate));
+
+        // minimal required DhDate -3MTH!
+        // original is set in Securities.Security.History.SetDH, but for IT tests are necessary both before/after modifications
+        // so in this case alternative test line with suffix is taken .DP-TEST (which is calculated before in DP)
+        Date dhDate = candidate.properties.getDate("Securities.Security.History.SetDH.DP-TEST", SECURITY_HISTORY_FORMAT);
+        System.out.println("DhDate=" + sdfHistory.format(dhDate));
+        Assert.assertEquals("11/10/2019", sdfHistory.format(dhDate));
+
+        Date historyFirstDate = candidate.properties.getDate("Securities.Security.History.SetFirstDate", SECURITY_HISTORY_FORMAT);
+        Date historyLastDate = dhDate;
+
+        // calculate OOS and IS intervals to get correct length of the OOS interval
+        String swfoRunsOOS = candidate.properties.getString("SwfoSettings.SwfoRunsOOS");
+        SWFO_INTERVAL_DO lastSwfoPeriod = getLastSWFOIntervalToDate(swfoRunsOOS, historyFirstDate, historyLastDate);
+        Date oosLastToDate = lastSwfoPeriod.interval.to;
+        String strOosLastToDate = sdfHistory.format(oosLastToDate);
+
+        // update DH Date to end of last OOS Period!
+        System.out.println("Updated to Securities.Security.History.SetDH=" + strOosLastToDate);
+        Assert.assertEquals("04/27/2019", strOosLastToDate);
+
+        // move the last date for DH support
+        Calendar dhDateValue = Calendar.getInstance();
+        dhDateValue.setTime(oosLastToDate);
+        dhDateValue.add(Calendar.DATE, dhOosCount * lastSwfoPeriod.oosLengthInDays);
+        System.out.println("Updated DH date for -2 OOS for REOPT=" + sdfHistory.format(dhDateValue.getTime()));
+
+        Date setLastDate = candidate.properties.getDate("Securities.Security.History.SetLastDate", SECURITY_HISTORY_FORMAT);
+
+        Assert.assertEquals("09/04/2017", sdfHistory.format(dhDateValue.getTime()));
+        Assert.assertEquals(sdfHistory.format(setLastDate.getTime()), sdfHistory.format(dhDateValue.getTime()));
+
+        // print OOS Periods
+        System.out.println("WFO defined for DP processing:");

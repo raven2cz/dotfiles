@@ -1,0 +1,32 @@
+'scopeName': 'text.rbcsm36'
+'name': 'Rainbow [$] Simple'
+'fileTypes': [
+	'rbcsm36'
+]
+'patterns': [
+ 	{
+		'match': '([^\\$]*\\$?)([^\\$]*\\$?)([^\\$]*\\$?)([^\\$]*\\$?)([^\\$]*\\$?)([^\\$]*\\$?)([^\\$]*\\$?)([^\\$]*\\$?)([^\\$]*\\$?)([^\\$]*\\$?)'
+		'name': 'rainbowline'
+		'captures':
+			'1':
+				'name': 'rainbow1'
+			'2':
+				'name': 'keyword.rainbow2'
+			'3':
+				'name': 'entity.name.rainbow3'
+			'4':
+				'name': 'comment.rainbow4'
+			'5': 
+				'name': 'string.rainbow5'
+			'6': 
+				'name': 'entity.rainbow6'
+			'7': 
+				'name': 'storage.type.rainbow7'
+			'8': 
+				'name': 'support.rainbow8'
+			'9': 
+				'name': 'constant.language.rainbow9'
+			'10':
+				'name': 'variable.language.rainbow10'
+	}
+]

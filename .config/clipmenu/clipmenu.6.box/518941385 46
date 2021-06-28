@@ -1,0 +1,17 @@
+
+
+  for ii = 0 to vect.Count-1 begin
+
+    Sum = Sum + vect.at(ii) astype double;
+
+  end;
+
+  firstSum = false;
+
+end 
+
+else Sum = Sum + Value - popValue; 
+
+
+
+AverageC = Sum/vect.Count;

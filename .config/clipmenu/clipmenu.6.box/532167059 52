@@ -1,0 +1,12 @@
+        asset.setExchange("CME Globex");
+        asset.setCurrency("USD");
+        asset.setContractSize(20);
+        asset.setContractUnit("NASDAQ-100 Index");
+        asset.setMinimumMove(0.25);
+        asset.setTicUnit("Points");
+        asset.setFullPointValue(20);
+        asset.setInitMargin(8250);
+        asset.setMaintMargin(7500);
+        asset.setMarketOpen(getTime("8:30"));
+        asset.setMarketClose(getTime("15:15"));
+        asset.setTimeTemplate("REGULAR");

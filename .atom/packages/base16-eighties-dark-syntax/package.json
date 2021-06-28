@@ -1,0 +1,51 @@
+{
+  "_from": "https://www.atom.io/api/packages/base16-eighties-dark-syntax/versions/0.1.0/tarball",
+  "_id": "base16-eighties-dark-syntax@0.1.0",
+  "_inBundle": false,
+  "_integrity": "sha512-qh64AhGuEm0buP1bgij66scDod/FXqcQu0aa3BuBAU1ABTTxvD5d59UZ+Gn0t+ryl3Qxkp9Oe5tg+CcLYkAPew==",
+  "_location": "/base16-eighties-dark-syntax",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/base16-eighties-dark-syntax/versions/0.1.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/base16-eighties-dark-syntax/versions/0.1.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/base16-eighties-dark-syntax/versions/0.1.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/base16-eighties-dark-syntax/versions/0.1.0/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/base16-eighties-dark-syntax/versions/0.1.0/tarball",
+  "_shasum": "94fc03f45f6f3ef963bf33dcb3397ffa4eccea72",
+  "_spec": "https://www.atom.io/api/packages/base16-eighties-dark-syntax/versions/0.1.0/tarball",
+  "_where": "/tmp/apm-install-dir-202151-959179-8ev135.ci3iq",
+  "bugs": {
+    "url": "https://github.com/josler/atom-base16-eighties-syntax/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Dark theme, based on base16-eighties",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "homepage": "https://github.com/josler/atom-base16-eighties-syntax#readme",
+  "license": "MIT",
+  "name": "base16-eighties-dark-syntax",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josler/atom-base16-eighties-syntax.git"
+  },
+  "theme": "syntax",
+  "version": "0.1.0",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

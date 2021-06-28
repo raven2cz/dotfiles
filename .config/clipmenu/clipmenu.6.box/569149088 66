@@ -1,0 +1,5 @@
+            chart = ChartFactory.createTimeSeriesChart(
+                    title,
+                    xaxisLabel,
+                    yaxisLabel,
+                    dataset);

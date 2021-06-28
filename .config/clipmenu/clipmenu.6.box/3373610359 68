@@ -1,0 +1,1 @@
+if test (random 1 10) = 1; fish_logo; else; colorscript random; end

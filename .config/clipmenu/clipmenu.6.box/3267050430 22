@@ -1,0 +1,4 @@
+seaudio = {
+      enable = true;
+      daemon.config.avoid-resampling = "yes";
+      support32Bit = true;

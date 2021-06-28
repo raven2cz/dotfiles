@@ -1,0 +1,2 @@
+DAILY, datetime=CalInterval [from=Thu Jan 09 00:00:00 CET 2014, to=Thu Jan 09 00:00:00 CET 2014], profitLoss=12.0, tradeCount=1]}, {EQUITY_X=PeriodicalReturnDO [periodicalReturnType=DAILY, datetime=CalInterval [from=Fri Jan 10 00:00:00 CET 2014, to=Fri Jan 10 00:00:00 CET 2014], profitLoss=13.0, tradeCount=1]}]
+Actual   :

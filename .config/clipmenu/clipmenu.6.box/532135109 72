@@ -1,0 +1,7 @@
+	    case 3 : {&Filter1_N1=-2|2} {&Filter1_N2=NONE} //ID: 1.3
+	    begin
+	       filter1_long = ADX(3 * Filter1_N1) > 20 AND ADX(3 * Filter1_N1) < 30;
+	       filter1_short = filter1_long;
+	    end;
+	    case 4 : {&Filter1_N1=NONE} {&Filter1_N2=NONE} //ID: 1.4
+	    begin

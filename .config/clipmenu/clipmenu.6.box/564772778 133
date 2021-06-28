@@ -1,0 +1,24 @@
+    private void showEquity(String equityName, boolean includeExtCostsEstimation, int plColumnId) throws ParseException {
+        CombinedEquity equity = new CombinedEquity(equityName);
+        double cumulativeSum = 0;
+        int i = 0;
+        for (List<String> row : tdResultsTable.getTable()) {
+            Date positionExitTime = dateFormat.parse(row.get(dateTimeExit));
+            int positionType = "Long".equals(row.get(position)) ? 1 : -1;
+
+            double pl = Double.parseDouble(row.get(plColumnId));
+            if (includeExtCostsEstimation) {
+                double[] costs = EquityBasicOperationsLibrary.getDefaultCostsOfContinuousSymbol(
+                        symbols.get(row.get(symbolId)), context);
+                pl -= costs[0] + costs[1];
+            }
+
+            cumulativeSum += pl;
+            equity.addTimeStampAndValue(new EquityIdent(positionExitTime, i++, positionType), cumulativeSum);
+        }
+        // find higher peaks
+        EquityBasicOperationsLibrary.findEquityPeaks(equity);
+
+        publishEquity(equity);
+        showEquityResults(equity);
+    }

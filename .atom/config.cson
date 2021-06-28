@@ -1,0 +1,18 @@
+"*":
+  "color-picker":
+    preferredFormat: "HEX"
+  core:
+    disabledPackages: [
+      "compare-files"
+    ]
+    telemetryConsent: "limited"
+    themes: [
+      "one-dark-ui"
+      "base16-eighties-one-dark"
+    ]
+  editor:
+    fontFamily: "FiraCode Nerd Font"
+  "exception-reporting":
+    userId: "e21770bb-ab47-4f78-8e4e-0ea896f54cc6"
+  welcome:
+    showOnStartup: false

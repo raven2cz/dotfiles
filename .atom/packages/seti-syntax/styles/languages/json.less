@@ -1,0 +1,24 @@
+@import "colors";
+
+.syntax--source.syntax--json {
+  .syntax--meta.syntax--structure.syntax--dictionary.syntax--json {
+    & > .syntax--string.syntax--quoted.syntax--json {
+      & > .syntax--punctuation.syntax--string {
+        color: @tag;
+      }
+      color: @tag;
+    }
+  }
+
+  .syntax--meta.syntax--structure.syntax--dictionary.syntax--json,
+  .syntax--meta.syntax--structure.syntax--array.syntax--json {
+    & > .syntax--value.syntax--json > .syntax--string.syntax--quoted.syntax--json,
+    & > .syntax--value.syntax--json > .syntax--string.syntax--quoted.syntax--json > .syntax--punctuation {
+      color: @code-font-color;
+    }
+
+    & > .syntax--constant.syntax--language.syntax--json {
+      color: @constant;
+    }
+  }
+}

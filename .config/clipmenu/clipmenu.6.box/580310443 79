@@ -1,0 +1,3 @@
+            # Cause the header to be fixed at the top of the browser
+header-animated: true         # Allows the fixed header to resize to a smaller header when scrolled
+header-dark: false            # Inverts the text/logo to work better on dark backgrounds

@@ -1,0 +1,3 @@
+        List<Date> timestamps = new LinkedList<>();
+        List<Double> qpfVals = new LinkedList<>();
+        List<Double> qpfValsLong = new LinkedList<>();

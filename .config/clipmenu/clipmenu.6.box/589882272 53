@@ -1,0 +1,4 @@
+     yOffset -= label.getBaselineOffset();
+        } else if (getLabelVerticalAnchor() == VPos.BOTTOM) {
+            yOffset -= height;
+        }

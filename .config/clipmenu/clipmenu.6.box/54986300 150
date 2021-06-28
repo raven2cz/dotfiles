@@ -1,0 +1,59 @@
+            logger.info(String.format("Portfolios random generation analysis is started. Preconf=[%s/%s]", preconfKey, batches.keySet()));
+            // configure settings for this test cycle
+            BatchConfig preconf = batches.get(preconfKey);
+            preconf.configure();
+
+            if (candidatesBagBackup == null) {
+                candidatesBag = loadCandidates(null, context);
+                // calculate equity stats
+                logger.info("Calculate equity stats...");
+                candidatesBag.forEach(this::calculateIndexEval);
+                candidatesBag.removeIf(c -> getEquity(c).getIdealEquityStatistics().dhidx == null);
+                candidatesBagBackup = new ArrayList<>(candidatesBag);
+                logger.info("Final candidates bag size=" + candidatesBag.size());
+            } else {
+                candidatesBag = new ArrayList<>(candidatesBagBackup);
+            }
+
+            exportTestPath = preconfKey;
+            portfoliosCids.clear();
+            int index = 0;
+            int bagFillingIter = 0;
+            int underMin = 0;
+            int prevBagSize = -1;
+            List<SystemCandidateDO> portfolioCids;
+            List<CombinedEquity> portfolios = new ArrayList<>();
+            List<SystemCandidateDO> removed = new ArrayList<>();
+            boolean addRemovedForNextCycle = false;
+
+            // main loop of the bag cycling
+            while (candidatesBag.size() > 0) {
+                // remove used systems from a bag
+                if (!removed.isEmpty()) {
+                    candidatesBag.removeIf(removed::contains);
+                }
+
+                logger.info("Processing id=" + index + "; cidSize=" + candidatesBag.size());
+                logger.info(String.format("Processing analysis bag id=%d...", index));
+
+                // prepare iteration
+                List<SystemCandidateDO> candidates = new ArrayList<>(candidatesBag);
+
+                // SORTING ALGORITHMS: sort by created index best-fail
+                sortCandidates(candidates);
+
+                // possibility to start next cycle with decreased required correlation in the bag
+                if (addRemovedForNextCycle) {
+                    candidates.addAll(0, removed);
+                }
+                addRemovedForNextCycle = false;
+
+                // advanced correlation grouping algorithm
+                boolean maxIterationExceeded = false;
+                try {
+                    context.setAttribute(CorrelatedDataFilter.MAX_ALLOWED_GROUP_SIZE, portfolioSize)
+                            .setAttribute(CorrelatedDataFilter.MAX_ITERATION_COUNT_SEARCH_CORRELATION, maxIterationCorrCount)
+                            .setAttribute(CorrelatedDataFilter.MIN_ALLOWED_CORRELATION_THRESHOLD, corrRange[0])
+                            .setAttribute(CorrelatedDataFilter.MAX_ALLOWED_CORRELATION_THRESHOLD, corrRange[1]);
+                    correlatedDataFilter.filter(candidates, context);
+

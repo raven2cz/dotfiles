@@ -1,0 +1,5 @@
+    case 9a : {&Filter1_N1=-3|3} {&Filter1_N2=-2|2} //ID: 1.9
+    begin
+        filter1_long  = BollingerBand(C, (Filter1_N2 * 5), 2) > BollingerBand(C, (Filter1_N1 * 3), 2);
+        filter1_short = BollingerBand(C, (Filter1_N2 * 5), -2) < BollingerBand(C, (Filter1_N1 * 3), -2);
+    end;

@@ -1,0 +1,16 @@
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      {
+        'label': 'Compare Files'
+        'submenu': [
+          {
+            'label': 'Compare'
+            'command': 'compare-files:compare'
+          }
+        ]
+      }
+    ]
+  }
+]

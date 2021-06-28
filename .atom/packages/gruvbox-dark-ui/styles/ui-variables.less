@@ -1,0 +1,143 @@
+
+// UI Variables
+// -------------------
+
+// gruvbox palette, from vim theme by Pavel Pertsev:
+// https://github.com/morhetz/gruvbox
+
+@ui-bg: @ui-bg0;
+@ui-bg0: #282828;
+@ui-bg0_h: #1d2021;
+@ui-bg0_s: #32302f;
+@ui-bg1: #3c3836;
+@ui-bg2: #504945;
+@ui-bg3: #665c54;
+@ui-bg4: #7c6f64;
+
+@ui-fg: @ui-fg2;
+@ui-fg0: #fbf1c7;
+@ui-fg1: #ebdbb2;
+@ui-fg2: #d5c4a1;
+@ui-fg3: #bdae93;
+@ui-fg4: #a89984;
+
+@ui-gray: #928374;
+@ui-gray-bright: #a89984;
+@ui-red: #cc241d;
+@ui-red-bright: #fb4934;
+@ui-green: #98971a;
+@ui-green-bright: #b8bb26;
+@ui-yellow: #d79921;
+@ui-yellow-bright: #fabd2f;
+@ui-blue: #458588;
+@ui-blue-bright: #83a598;
+@ui-purple: #b16286;
+@ui-purple-bright: #d3869b;
+@ui-aqua: #689d6a;
+@ui-aqua-bright: #8ec07c;
+@ui-orange: #d65d0e;
+@ui-orange-bright: #fe8019;
+
+
+// Text Colors
+@text-color:           @ui-fg;
+@text-color-subtle:    @ui-fg3;
+@text-color-highlight: @ui-fg0;
+@text-color-selected:  @ui-fg2;
+
+@base-ui-text-highlight: @ui-orange;
+
+@text-status-modified: @ui-green;
+
+@text-color-info:    @ui-blue-bright;
+@text-color-success: @ui-aqua-bright;
+@text-color-warning: @ui-yellow-bright;
+@text-color-error:   @ui-red-bright;
+
+// Background colors
+@background-color-info:    @ui-blue;
+@background-color-success: @ui-aqua;
+@background-color-warning: @ui-orange;
+@background-color-error:   @ui-red;
+
+@background-color-highlight: @ui-bg1;
+@background-color-selected: @ui-bg1;
+@app-background-color: @base-background-color;
+
+// Base colors
+@base-background-color: @ui-bg;
+@base-border-color:     @ui-bg0_h;
+
+// Component colors
+@pane-item-background-color: @base-background-color;
+@pane-item-border-color:     @base-border-color;
+
+@input-background-color: @ui-bg1;
+@input-border-color:     @base-border-color;
+
+@tool-panel-background-color: @ui-bg0_s;
+@tool-panel-border-color:     @base-border-color;
+
+@inset-panel-background-color: @ui-bg1;
+@inset-panel-border-color:     @base-border-color;
+
+@panel-heading-background-color: @ui-bg1;
+@panel-heading-border-color:     @base-border-color;
+
+@overlay-background-color: @ui-bg1;
+@overlay-background-color-selected: @ui-bg2;
+@overlay-border-color:     @base-border-color;
+
+@button-background-color:          @ui-bg2;
+@button-background-color-hover:    @ui-bg3;
+@button-background-color-selected: @button-background-color-hover;
+@button-border-color:              @base-border-color;
+
+@tab-bar-background-color:    @base-background-color;
+@tab-bar-border-color:        @base-border-color;
+@tab-background-color:        @tab-bar-background-color;
+@tab-background-color-active: @ui-bg1;
+@tab-border-color:            @base-border-color;
+
+@tree-view-background-color: @base-background-color;
+@tree-view-border-color:     @base-border-color;
+
+// Site colors
+@ui-site-color-1: @ui-blue;
+@ui-site-color-2: @ui-aqua;
+@ui-site-color-3: @ui-orange;
+@ui-site-color-4: @ui-purple;
+@ui-site-color-5: @ui-yellow;
+
+// Sizes
+@font-size: 12px;
+@input-font-size: 14px;
+
+@disclosure-arrow-size: 12px;
+
+@component-padding: 10px;
+@component-icon-padding: 5px;
+@component-icon-size: 16px;
+@component-line-height: 25px;
+
+// Tabs
+@tab-height: 25px;
+@tab-close-icon-modified: @ui-aqua;
+@tab-close-icon-modified-hover: @base-ui-text-highlight;
+
+// Tool-tips
+@tip-background-color: @ui-green;
+@tip-text-color: @ui-bg;
+
+// Status bar
+@status-bar-git-branch-color: @base-ui-text-highlight;
+@status-bar-grammar-picker-color: @ui-aqua;
+
+// Misc
+@component-border-radius: 2px;
+@font-family: '.SFNSText-Regular', 'SF UI Text', 'Lucida Grande', 'Segoe UI', Ubuntu, Cantarell, sans-serif;
+
+@color-picker-body-bg: @ui-bg2;
+@color-picker-tab-bg: @ui-bg2;
+@color-picker-tab-bg-active: @ui-bg3;
+@color-picker-tab-text: @ui-fg2;

@@ -1,0 +1,1 @@
+Do not call script with -r 10000 and export equities. It means to generate image file with 10000 simulations. Much more better is call the script twice. One with 10000 without export images, and second case with export images, but repetitions set to 500 or 1000 for example.

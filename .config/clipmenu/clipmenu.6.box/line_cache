@@ -1,0 +1,1002 @@
+1624362596683428449 es should equal the number of repetitions in the simulation, not the number of trades in strategy sequence.  I agree this naming convention is confusing and wou
+1624362596698045212 es should equal the number of repetitions in the simulation, not the number of trades in strategy sequence.  I agree this naming convention is confusing and w
+1624362597482872233 es should equal the number of repetitions in the simulation, not the number of trades in strat
+1624362597533332913 es should equal the number of repetitions in the simulation, not the number of trades in stra
+1624362597600216400 es should equal the number of repetitions in the simulation, not the number of trades in str
+1624362597700255080 es should equal the number of repetitions in the simulation, not the number of trades in strategy sequence.  I agree this naming convention is confusing and would be better written as: 
+1624362598850714093 es should equal the number of repetitions in the simulation, not the number of trades in strategy sequence.  I agree this naming convention is confusing and would be better written as: (1-Exceed/Repetitions)*100 for the percent confidence level. (edited) 
+1624362599367407856 es should equal the number of repetitions in the simulation, not the number of trades in strategy sequence.  I agree this naming convention is confusing and would be better written as: (1-Exceed/Repetitions)*100 for the percent confidence lev
+1624362616844886706 ttrades
+1624362646431045582 exceedDivTrades
+1624362654221108123 repetition
+1624362656270075513 tradeCount
+1624362671598188290 repetition
+1624362671618675881 exceedDivTrades
+1624362719268785908             EquityShowHelper.showEquityResults(true, equityPTF, new EodPeriod(MONTHLY), true, false, (3 lines)
+1624362731307040244 equityPTF
+1624362757902675994 equity
+1624362758707696432     /** (32 lines)
+1624362775025309549 inputDir
+1624362791540422240         File csvFile = new File(output); (3 lines)
+1624362794116248826         File txtResource = csvFile.getParentFile(); (2 lines)
+1624362795226482182         File csvFile = new File(output); (3 lines)
+1624362797503336378         String exportResource = FilenameUtils.getBaseName(csvFile.getName())+"-ECB.txt"; (3 lines)
+1624362813459202556 txtResource
+1624362817963751221         String exportResource = FilenameUtils.getBaseName(csvFile.getName())+"-ECB.txt"; (3 lines)
+1624362819228233061 csvFile.getName()
+1624362831858331318 id
+1624362834913842599 e
+1624362834926052143 id
+1624362835595581794 equity.getTitle()
+1624362840692754507 csvFile.getName()
+1624362844162119982 FilenameUtils.getBaseName(csvFile.getName())
+1624362850934793534 id + "-ECB.txt"
+1624362852419005330 exportResource
+1624362855450316496 id + "-ECB.txt"
+1624362855456332043 bootstrapDO
+1624362857804826228 s
+1624362858532132531 bootstrapDO
+1624362858539077789 sb.toString()
+1624362879103848640 new File(outputDir, id + "-ECB.txt"), sb.toString(), UTF_8); (2 lines)
+1624362879607934650 new File(outputDir, id + "-ECB.txt")
+1624362899675129292 e.printStackTrace();
+1624362997949621283 new File(outputDir, id + "-ECB.txt")
+1624362997957420412 exportResource
+1624363002958341513 ew
+1624363002975303273 exportResource
+1624363003150330280 ew File(outputDir, id + "-ECB.txt").getAbsolutePath()); (2 lines)
+1624363004922458760 ew File(outputDir, id + "-ECB.txt").getAbsolutePath()
+1624363185008475791 { (28 lines)
+1624363230899621549 ew File(outputDir, id + "-ECB.txt").getAbsolutePath()
+1624363232529478039     /** (23 lines)
+1624363250329233213 S
+1624363250344325862     /** (23 lines)
+1624363250375353141 Syste
+1624363250392952753     public static byte[] createEquityImage( (2 lines)
+1624363250960670172 SystemCandidateDO candidate, C
+1624363251634632654 SystemCandidateDO candidate, 
+1624363255049926964         // set DH vertical line for equity by Candidate Domain Object (4 lines)
+1624363258427632919      * @param candidate which includes equity (can be null) (2 lines)
+1624363328581844213         chart.setEquityLineWidth(3.0f); (3 lines)
+1624363431747567462 dimension
+1624363434679142375 dimension
+1624363435622174156 new Dimension(1024, 768))
+1624363435897770799 new Dimension(1024, 768)
+1624364507001498603 createEquityImage
+1624364556800226631 n
+1624364556818139845 createEquityImage
+1624364557217294465 new EodPeriod(MONTHLY), true, false, (2 lines)
+1624364557255863108 new EodPeriod(MONTHLY), true, false, (2 lines)
+1624364557329331527 new EodPeriod(MONTHLY), true, false, (2 lines)
+1624364558555026517 new EodPeriod(MONTHLY)
+1624364568547728449 ootstrapDO.shuffledEqs.toArray(new CombinedEquity[0])); (2 lines)
+1624364569248744478 ootstrapDO.shuffledEqs.toArray(new CombinedEquity[0])
+1624364576655971680 bootstrapDO
+1624364588835187636 bootstrapDO
+1624364588861742123 e.printStackTrace();
+1624364626825248768         EquityShowHelper.showEquityResults(true, equity, new EodPeriod(MONTHLY), true, false, (3 lines)
+1624364656260920845             logger.debug("The results are exported to " + exportResource); (2 lines)
+1624364662383504605 results
+1624364683584180289             logger.debug("The results are exported to " + exportResource); (2 lines)
+1624364683591463380 createEquityImage
+1624364691599670139         byte[] image = SystemCandidateCommonLibrary.createEquityImage(null, portfolio, title, (2 lines)
+1624364691843124409 createEquityImage
+1624364692471570321         byte[] image = SystemCandidateCommonLibrary.createEquityImage(null, portfolio, title, (5 lines)
+1624364700895124155 b
+1624364701553248028         byte[] image = SystemCandidateCommonLibrary.createEquityImage(null, portfolio, title, (5 lines)
+1624364702345184081 byte[] image = 
+1624364705712920559                 byte[] image = SystemCandidateCommonLibrary.createEquityImage(null, portfolio, title, (2 lines)
+1624364705892299552 byte[] image = 
+1624364705898130300                 byte[] image = SystemCandidateCommonLibrary.createEquityImage(null, portfolio, title, (3 lines)
+1624364713175532741 outputDir
+1624364756417739229 n
+1624364757285521374 outputDir
+1624364757505720920 new File(outputDir, id + "-ECB-EQS.png"))
+1624364759550388887 res1
+1624364774173575515 new File(outputDir, id + "-ECB-EQS.png"))
+1624364775091945009 new File(outputDir, id + "-ECB-EQS.png")
+1624364775215755705 DO.shuffledEqs.toArray(new CombinedEquity[0])); (2 lines)
+1624364777183900911 new File(outputDir, id + "-ECB-EQS.png")
+1624364777281674932 ; (2 lines)
+1624364777295943981 ; (2 lines)
+1624364777642129516 new File(outputDir, id + "-ECB-EQS.png")
+1624364780159877720 res1
+1624364788486203062 new File(outputDir, id + "-ECB-EQS.png")
+1624364793853024237 imageResource
+1624364795538502793 res1
+1624364795757518888                 FileUtils.writeByteArrayToFile(imageResource, image); (2 lines)
+1624364797416759849 exportResource
+1624364956280301946         // input directory (7 lines)
+1624364959362495354 input
+1624364968153553543         // input directory (7 lines)
+1624364968158979540 inputDir
+1624364972486888000 input
+1624364982480451754             throw new IllegalArgumentException("The output directory has to be defined! Fill -i parameter with input resource path."); (2 lines)
+1624364998482314750         // output directory (7 lines)
+1624365007611214613 o
+1624365007640161612         // output directory (7 lines)
+1624365020074515410 dateFormat
+1624365033106818838 o
+1624365033766630599 dateFormat
+1624365034369512853 outputDir
+1624365048270480659 fromDate
+1624365069894856952  else { (3 lines)
+1624365083091796946 output directory
+1624365089162555140         // fromDate equity cut (5 lines)
+1624365091941921027 fromDate
+1624365137911847716 introdu
+1624365139106188592 toDate
+1624365149687252862         // toDate equity cut (5 lines)
+1624365167115440096 repetitions
+1624365169086811863 repetions
+1624365209257478279 repetitions
+1624365210076608617 toDate
+1624365254443324248     private CalendarInterval interval = null; (2 lines)
+1624365307926191252             interval = new CalendarInterval(fromDate, toDate); (2 lines)
+1624365316678093058 t
+1624365317478503663             interval = new CalendarInterval(fromDate, toDate); (2 lines)
+1624365317484304410 toDate
+1624365336059497387 cal
+1624365367003671691 n
+1624365367015431727 cal
+1624365367509130626 new Date()
+1624365380390702005             cal.add(Calendar.YEAR, 1000); (3 lines)
+1624365423657778980         // repetitions : int (2 lines)
+1624365423808501205             cal.add(Calendar.YEAR, 1000); (3 lines)
+1624365424415845648         // repetitions : int (7 lines)
+1624365437449576581 I
+1624365442743568129         // repetitions : int (7 lines)
+1624365442893872113 else { (3 lines)
+1624365465955246937 repetitions
+1624365478437968797 commandLine.hasOption("e")
+1624365482207211270 isCalcRndEqs
+1624365484275619415 c
+1624365484292095757 isCalcRndEqs
+1624365484720859919 commandLine.hasOption("e"))
+1624365484985993039 commandLine.hasOption("e")
+1624365487377634803 repetitions
+1624365506231672587 public
+1624365569843817676 dimension
+1624365577729545647 dimension
+1624365578334912658 dimension.indexOf("x")
+1624365608158684765 structure
+1624365641118999544 dimension.indexOf("x")
+1624365641124898272 0
+1624365645967272675 idx
+1624365647961205932 d
+1624365647972211437 idx
+1624365648610741654 dimension.indexOf("x"))
+1624365648913983616 dimension.indexOf("x")
+1624365651751925318 dimension.substring(0, idx),
+1624365651977856285 dimension.substring(0, idx)
+1624365655148546379 0
+1624365675748111495 dimension.substring(0, idx)
+1624365676320682103 Integer.parseInt(
+1624365684518698403 parseDimension
+1624365693723853331 Integer.parseInt(
+1624365693729053198 introdu
+1624365696299091148 return new Dimension(Integer.parseInt(dimension.substring(0, idx)), Integer.parseInt(dimension.substring(idx + 1)));
+1624365699751964166 e.printStackTrace();
+1624365704575595096 throw new IllegalArgumentException("The syntax of image export dimension parameter has to be WIDTHxHEIGHT, e.g. 800x600, parameter -e 800x600");
+1624365706167545758 e.printStackTrace();
+1624365724435367183 parseDimension
+1624365735682326236 c
+1624365735694566443 parseDimension
+1624365736073627097 commandLine.get
+1624365736091628281             repetitions = Integer.parseInt( (2 lines)
+1624365736813981262 commandLine.getOptionValue("r"))
+1624365737105713399 commandLine.getOptionValue("r")
+1624365741004857804 r
+1624365759515059712 commandLine.getOptionValue("r")
+1624365759540288026 ne
+1624365837485818058         /* (2 lines)
+1624365838728749436                 */ (2 lines)
+1624365855817366811                 "-d", "c:\\AOS-AUTO\\TEMP\\td-db-export", (3 lines)
+1624365968371437221 addOption
+1624365970049559892 addRequiredOption
+1624366036469267018 addOption
+1624366036475569756 80
+1624366306635273980 file:///home/box/.data/equities/ussi/scaleout-[@ES][TF1D].csv (4 lines)
+1624366348325973348 file:///home/box/.data/equities/equity-check-boot
+1624366508574461386                         try { (6 lines)
+1624366509172151879 //                        try { (6 lines)
+1624366570790401500 //                        try { (6 lines)
+1624366571905037856 //                        try { (6 lines)
+1624366642975802457 getBaseName(fn))); (2 lines)
+1624366643426632190 getBaseName(fn))
+1624366643871102935 getBaseName(fn)
+1624366685778131604 ".csv"
+1624366691540093170 { (3 lines)
+1624366692201129019 ".csv"
+1624366692206814598 csvPath
+1624366694282560311 csvPath
+1624366695170559088 csvPath + ".csv")
+1624366695185404409 csvPath + ".csv"
+1624366793392535543 createEquityImage
+1624366795794380008 import
+1624366796392712530 Import
+1624366805522453931 importEquityFromWriteTrade32Csv
+1624366818782504063 importEquityFromCSV
+1624366947942050433 importEquityFromWriteTrade32Csv
+1624366947947896141 log4j.logger.org.javafish.trading.common.statistics.equity.stresstest.EquityCheckBootstrap=DEBUG (2 lines)
+1624366972135648915 log4j.properties
+1624366995412622084 log4j.logger.org.javafish.trading.common.statistics.equity.stresstest.EquityCheckBootstrap=DEBUG (2 lines)
+1624367865045573899 org.javafish.trading.backtest.aos.stresstest.EquityCheckBootstrapScript
+1624367874363631774 log4j.logger.
+1624367888944432211 /
+1624367889601269730 log4j.logger.
+1624367891246772972 /home/box/.data/equities/equity-check-boot"
+1624367892006795791 /home/box/.data/equities/equity-check-boot
+1624367898271386299 /home/box/.data/equities/equity-check-boot
+1624367943992682878 10000
+1624367952198507067 100
+1624368154858966772 exported
+1624368196592481223 10000
+1624368617563719838 e
+1624368625317002790 1024x768
+1624368630713592623 f
+1624368633101907378 01
+1624368634964140381 01
+1624368636688261102 4
+1624368647816686264 1000
+1624368728006014212             equity = EquityBasicOperationsLibrary.cutTimeRestrictionEquity(interval, equity, true); (2 lines)
+1624368753382709657         // support cut equity to required interval (8 lines)
+1624368791227559063 c
+1624368791235717466         // support cut equity to required interval (8 lines)
+1624368791257875633 ca
+1624368792228976727                         throw new IllegalArgumentException("The equity has no trade. Cannot  (2 lines)
+1624368792312709337 calculate BootScore
+1624368841673199132             try { (15 lines)
+1624368852999116761             try { (17 lines)
+1624368858122341846 surround
+1624368860912211855 extracted
+1624368881788092684 exportEquityBoot
+1624368895351365084 id
+1624368901867126985 S
+1624368901879959589 id
+1624368902811700650 String id, 
+1624368909149394732     } (2 lines)
+1624368909164154512 String id, 
+1624368909839270277     private void exportEquityBootImage(String id, CombinedEquity equity, EquityCheckBootstrapDO bootstrapDO) { (18 lines)
+1624368946286543671 dimenasion
+1624368951275003015     private void exportEquityBootImage(String id, CombinedEquity equity, EquityCheckBootstrapDO bootstrapDO) { (18 lines)
+1624368951280597954 WIDTHxHEIGHT
+1624368953327801716 WIDTH
+1624369040378227125  UncommonsMathsRandomConfig().mersenneTwisterRng()
+1624369140808890004         args = new String[] { (7 lines)
+1624369153707408431 delete this after tests
+1624369157205589044 delete this after
+1624369189751656467 org.javafish.trading.backtest.aos.stresstest.EquityCheckBootstrapScript
+1624369199423449450 org.javafish.trading.backtest.aos.td.TdResultCsvAnalyser
+1624369528274304881 startup
+1624369531013682217 bat
+1624369539315158277 startup
+1624369565484481330 EqCheckBoot
+1624369569391421966 startup
+1624369579094838746 EqCheckBoot.cmd
+1624369579664879714 EqCheckBoot
+1624369583024456850 cmd
+1624369623801729692 $@
+1624369635718929971 insert all arguments
+1624369645584984392 $@
+1624369645592034228 #!/bin/bash
+1624369972759303574 69
+1624370102564749817 #!/bin/bash
+1624370102582084762 192.168.88.41
+1624370740337696990 EqCheckBoot
+1624370786913327166 org.javafish.trading.backtest-public
+1624371566816384164 <finalName>${project.groupId}.${project.artifactId}</finalName> (2 lines)
+1624371567584496992 <finalName>${project.groupId}.${project.artifactId}</finalName>
+1624371671284877412 o
+1624371673771831130 <finalName>${project.groupId}.${project.artifactId}</finalName>
+1624371674751461064 maven-jar-plugin
+1624372134019576035 maven-jar-plugin
+1624372136360286511 maven-assembly-plugin
+1624372151558376178 maven-assembly-plugin
+1624372291824976061 fullname
+1624372296224029553 maven-assembly-plugin
+1624372296229860714 generate
+1624372298532878359 fullname
+1624372735179352836 -i", "/home/box/.data/equities/equity-check-boot
+1624372835770557251 -i", "/home/box/.data/equities/equity-check-boot
+1624372835776188361 1920×1080
+1624373281480148548 <!-- https://mvnrepository.com/artifact/com.yworks/yguard --> (7 lines)
+1624373281724943554 yguard
+1624373376950022883 <dependency> (6 lines)
+1624373402274877281 SNAPSHOT
+1624373434469297411 <dependency> (6 lines)
+1624373434475056461 <plugin> (42 lines)
+1624373457236774896 o
+1624373457248311119 <plugin> (42 lines)
+1624373457800034414 org.javafish.trading.backtest.aos.stresstest.EquityCheckBootstrapScript</ma
+1624373457947081921 org.javafish.trading.backtest.aos.stresstest.EquityCheckBootstrapScript</m
+1624373459352784750 org.javafish.trading.backtest.aos.stresstest.EquityCheckBootstrapScript
+1624373474293802891 com.yworks.example.HelloWorld
+1624373629278918043 .ModelVisitor has interface org.objectweb.asm.ClassVisitor as super class
+1624373687700272827 has interface org.objectweb.asm.ClassVisitor as super class
+1624373850169544188 <!-- https://mvnrepository.com/artifact/org.ow2.asm/asm --> (7 lines)
+1624373850751978436 <!-- https://mvnrepository.com/artifact/org.ow2.asm/asm --> (4 lines)
+1624373853559354157 <dependency> (5 lines)
+1624374515000395432 has interface org.objectweb.asm.ClassVisitor as super class
+1624374848135253810 <dependency> (5 lines)
+1624374848141378712 Koupaliště Rolava
+1624375519853532560 org.objectweb.asm.ClassVisitor
+1624375563995175780 Koupaliště Rolava
+1624375564000995891 dependency
+1624375859549309025 class com.yworks.yshrink.model.ModelVisitor has interface org.objectweb.asm.ClassVisitor as super class
+1624376123658892260 obfuscated java
+1624376201438658788 class com.yworks.yshrink.model.ModelVisitor has interface org.objectweb.asm.ClassVisitor as super class
+1624376201444325538 protected access library
+1624376215026806381 guard code
+1624376809734904913         <dependency> (5 lines)
+1624376813559565974         <dependency> (5 lines)
+1624376813819131777                     <dependency> (4 lines)
+1624377132721999602       <plugin> (18 lines)
+1624377161133472391       <plugin> (18 lines)
+1624377161710340000             <plugin> (4 lines)
+1624377178398812814 <groupId>org.apache.maven.plugins</groupId>
+1624377198807248335 m
+1624377198817737547 <groupId>org.apache.maven.plugins</groupId>
+1624377200661683762 maven-assembly-plugin
+1624377229403543244 assembly
+1624377418794264847 maven-assembly-plugin
+1624377418805936890 actId>maven-assembly-plugin</artifactId> (20 lines)
+1624377513640147814           <archive> (5 lines)
+1624377516703788557         <configuration> (8 lines)
+1624377533016245499 o
+1624377533028081412         <configuration> (8 lines)
+1624377533257283954 org.javafish.trading.backtest.aos.stresstest.EquityCheckBootstrapScript (2 lines)
+1624377533595706460 org.javafish.trading.backtest.aos.stresstest.EquityCheckBootstrapScript
+1624377536591216746 org.javafish.trading.backtest.aos.stresstest.EquityCheckBootstrapScript
+1624377537219174331 org.sample.App
+1624377541684295437                                                   methods="protected" (47 lines)
+1624377541824675073                </executions> (39 lines)
+1624377541893336188                   </dependency> (33 lines)
+1624377541917743286          </plugin> (31 lines)
+1624377541941971694              <groupId>org.apache.maven.plugins</groupId> (29 lines)
+1624377542954554215             <plugin> (30 lines)
+1624377646836930288 assembly.xml does not exist.
+1624377857795705526 Error reading assemblies: Error locating assembly descriptor: src/main/assembly/assembly.xml
+1624377990131679935 <inoutpair in="mydemo.jar" out="mydemo_obf.jar"/> (2 lines)
+1624378114205377907 Error reading assemblies: Error locating assembly descriptor: src/main/assembly/assembly.xml
+1624378115611658667 <mainClass>org.javafish.trading.backtest.aos.stresstest.EquityCheckBootstrapScript</mainClass>
+1624378190474304050 org.javafish.trading.backtest-public_obfuscated
+1624382245402852116 WriteTrades32MP.txt
+1624382442751038202 UI scale: 1.25 (gtk text scale) (94 lines)
+1624382576536789578 WriteTrades32MP
+1624382691423640956 value99 = WriteTrades32MP(1, 0, 0, 0, 10, 1, 0, "C:\AOS-AUTO\TEMP\"+_GetStrategyName+"-["+symbol+"][TF1D].txt"); 
+1624382691430316347 _GetStrategyName
+1624382716230694680 where the ELD code _GetStrategyName is following: (2 lines)
+1624382766389866623 _GetStrategyName
+1624382766396430735 +"-["+symbol+
+1624382773136639551 "-["+symbol+
+1624382801139719160 WriteTrades32MP
+1624382926314594187 Correct count of assets in the database.
+1624383081238337606 Original Code Easylanguage
+1624383092254884622 Original Code Easylanguage
+1624383093222127464 Original Code Easylanguage
+1624383185893263887 package org.javafish.trading.common.statistics.equity.stresstest; (168 lines)
+1624383208613421350 package org.javafish.trading.common.statistics.equity.stresstest; (149 lines)
+1624383219583159394 package org.javafish.trading.common.statistics.equity.stresstest; (168 lines)
+1624383396727764502 EquityCheckBootstrap
+1624383793936278914 dan
+1624383898511093761 https://1drv.ms/u/s!Aq_X66v0FnfLiqwAk67GFLxDGbLSXw?e=AhulvG
+1624383902407151335 e
+1624383962439594458 EqCheckBoot
+1624383969448205181 X
+1624383973576868639  EqCheckBoot.zip
+1624383973925223132 EqCheckBoot.zip
+1624383993368718851 WriteTrades32MP
+1624383998690342534 Y
+1624384003066464095 WriteTrades32MP.zip
+1624384039234654032 https://www.oracle.com/cz/java/technologies/javase-jdk11-downloads.html
+1624384159582907419 WriteTrades32MP.eld 
+1624384159895771978 WriteTrades32MP.eld
+1624384335670363459 WriteTrades32MP.txt
+1624384344102640625 WriteTrades32MP.txt (3 lines)
+1624384367447344958 WriteTrades32MP.zip
+1624384377234997988 EqCheckBoot.zip
+1624384440792094444 someone for example
+1624384444989345361 EqCheckBoot.zip
+1624384444996637283 b
+1624384447946330423 bin
+1624384528905057399 direcotry
+1624384616373832982 Optional
+1624384672342944399 EqCheckBoot.cmd
+1624384704037142149 EqCheckBoot.sh
+1624384712405884355 w
+1624384715558517946  EqCheckBoot.cmd
+1624384715904209501 EqCheckBoot.cmd
+1624384722249311564 EqCheckBoot.sh
+1624384745591637632 -h
+1624384779572750727 ❯ ./EqCheckBoot.sh (13 lines)
+1624384795388964322 Output without input parameters:
+1624384809041551557 ❯ ./EqCheckBoot.sh (13 lines)
+1624384809048170679 Picked up _JAVA_OPTIONS: -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true (2 lines)
+1624384938325901374 WriteTrades32MP
+1624384939733040917 script 
+1624384984999539257 WriteTrades32MP
+1624384985006871270 value99 = WriteTrades32MP(1, 0, 0, 0, 10, 1, 0, "C:\AOS-AUTO\TEMP\"+_GetStrategyName + ".csv"); 
+1624385058281259758 C:\AOS-AUTO\TEMP\
+1624385118084164738 ./EqCheckBoot.sh -i /home/box/.data/equities/equity-check-boot
+1624385144419364969 .data
+1624385147959460945 ./EqCheckBoot.sh -i /home/box/.data/equities/equity-check-boot
+1624385147967107278 x
+1624385150807719500 .data
+1624385156555263848 equities/equity-check-boot
+1624385159542817127 AOS-AUTO/TEMP
+1624385162502155926 /
+1624385163161132009 AOS-AUTO/TEMP
+1624385164946948065 /home/box/.data/equities/equity-check-boot (2 lines)
+1624385173787509997 C:\AOS-AUTO\TEMP\
+1624385176259667933 /home/box/.data/equities/equity-check-boot
+1624385178435810072 C:\AOS-AUTO\TEMP\
+1624385178443164995 \
+1624385317676453061 ]-ECB.txt
+1624385319577056968 -ECB.txt
+1624385323555445754 t
+1624385346442119019 bootScore=99.500 (5 lines)
+1624385417632907420 ./EqCheckBoot.sh -i /home/box/.data/equities/equity-check-boot -r 500 -e 1920x1080 -f 01/01/2014 -t 12/31/2019
+1624385676371651141 problematic
+1624385740455532033 ./EqCheckBoot.sh -i /home/box/.data/equities/equity-check-boot -r 500 -e 1920x1080 -f 01/01/2014 -t 12/31/2019
+1624385740461477063 1920px
+1624385745842752176 1200px
+1624385789236894241 -r 500
+1624385793961676317 500
+1624385799369916569 toDate
+1624385803617257875 fromDate
+1624385806657973877 toDate
+1624385823361258389 *-ECB.txt
+1624385837038729872 -h (--help)
+1624385902501546709 EquityCheckBootstrap
+1624386353532694931 5
+1624386599564314918 (cpu ryzen 7).
+1624386602823712919 Do not call script with -r 10000 and export equities. It means to generate image file with 10000 simulations. Much more better is call the script twice. One with 10000 without export images, and second case with export images, but repetitions set to 500 or 1000 for example. (2 lines)
+1624386610023340441 Do not call script with -r 10000 and export equities. It means to generate image file with 10000 simulations. Much more better is call the script twice. One with 10000 without export images, and second case with export images, but repetitions set to 500 or 1000 for example. (2 lines)
+1624386610029025491 Do not call script with -r 10000 and export equities. It means to generate image file with 1
+1624386611887268718 The export images with -r 1000 and fullhd resolution takes ~85s per system (cpu ryzen 7). (2 lines)
+1624386619527537397 1000
+1624386706296241007 The export images with -r 1000 and fullhd resolution takes ~85s per system (cpu ryzen 7). (2 lines)
+1624386706301857546 85s
+1624386834031979770 Equity Check Bootstrap Script
+1624386844040956187 Equity Check Bootstrap
+1624389891595963750 browserpass-extension
+1624390304877958957 make hosts-firefox-user
+1624390395866443511 .
+1624390699816467484 make hosts-firefox-user
+1624459936250198929 svatebni kosile
+1624462603475759361 en/blog-tech-art/pass-zx2c4-and-passff-for-wsl2-windows
+1624462648531631634 admin/pages/blog-tech-art/pass-zx2c4-and-passff-for-wsl2-windows
+1624465421316792380 reddit-logo-reddit-icon-115628658968pe8utyxjt
+1624465444504172089 115628658968pe8utyxjt
+1624465468781492242 en/blog-tech-art
+1624465887284502978 reddit-logo
+1624465906038491780 [![Dotfiles](dotfile.png?resize=50,50)](https://github.com/raven2cz/dotfiles/)
+1624465935488079187 ?resize=50,50
+1624465955772353366 [
+1624465962549054758 ](https://github.com/raven2cz/dotfiles/)
+1624465969380590732 https://www.reddit.com/user/raven2cz
+1624466247363472692 /@distrotube
+1624467011971515546 diasporg
+1624467060085219395 wiki
+1624467396014913297 diasporg
+1624467400228244450     public static void analyzeNormalizedEquity(SystemCandidateDO candidate, String ptfImagesPath, String ptfProjectPath, AttributeModel context) throws Exception { (66 lines)
+1624467400297350058     public static void analyzeNormalizedEquity(SystemCandidateDO candidate, String ptfImagesPath, String ptfProjectPath, AttributeModel context) throws Exception { (65 lines)
+1624467400954979938     public static void analyzeNormalizedEquity(SystemCandidateDO candidate, String ptfImagesPath, String ptfProjectPath, AttributeModel context) throws Exception { (64 lines)
+1624467400991253906     public static void analyzeNormalizedEquity(SystemCandidateDO candidate, String ptfImagesPath, String ptfProjectPath, AttributeModel context) throws Exception { (63 lines)
+1624467401030759794     public static void analyzeNormalizedEquity(SystemCandidateDO candidate, String ptfImagesPath, String ptfProjectPath, AttributeModel context) throws Exception { (62 lines)
+1624467401072480700     public static void analyzeNormalizedEquity(SystemCandidateDO candidate, String ptfImagesPath, String ptfProjectPath, AttributeModel context) throws Exception { (61 lines)
+1624467401113696337     public static void analyzeNormalizedEquity(SystemCandidateDO candidate, String ptfImagesPath, String ptfProjectPath, AttributeModel context) throws Exception { (60 lines)
+1624467401153631545     public static void analyzeNormalizedEquity(SystemCandidateDO candidate, String ptfImagesPath, String ptfProjectPath, AttributeModel context) throws Exception { (59 lines)
+1624467403206298930     public static void analyzeNormalizedEquity(SystemCandidateDO candidate, String ptfImagesPath, String ptfProjectPath, AttributeModel context) throws Exception { (57 lines)
+1624467415050147795 Normalized
+1624467691489157483 diasp.org
+1624467759078065474 Phie1bitei#
+1624467905853295767 ×
+1624467906175090999 Phie1bitei#
+1624467939171140495 l
+1624468317249523656  #freesoftware
+1624469246194129982 diasp
+1624481455808205085 INTERESTING GEMINI CAPSULES
+1624481462421406039 INTERESTING
+1624481649463221470 https://en.wikipedia.org/wiki/Gemini_(protocol)
+1624481676617342344 https://en.wikipedia.org/wiki/Gemini_space
+1624481781191914559 Mastodon
+1624482232623359423 mne
+1624482322494295129 Mastodon
+1624482394455424492 diceware --wordlist en_orig
+1624482541406455245 E{ono{is9ThrowingLucid
+1624482550617949712 diceware --wordlist en_orig
+1624482550623762562 4ndoneHuske7T^ice
+1624483127386234549 rt
+1624483160950927840 4ndoneHuske7T^ice
+1624483160956487702 #painting
+1624544830173267259 oje (19 lines)
+1624544942758537859 arch
+1624545088125897175 file:///home/box/Pictures/avatar/lion.jpg (7 lines)
+1624545182919897890 file:///home/box/OneCloud/linux/pictures/avatar/045-dracula.svg (34 lines)
+1624545230850292955 file:///home/box/OneCloud/linux/pictures/avatar/045-dracula.svg (34 lines)
+1624545237278547049 file:///home/box/OneCloud/linux/pictures/avatar/045-dracula.svg (34 lines)
+1624545355525592790 655
+1624545381256386752 418
+1624545566880943132 design
+1624545766853508667 tomcat 
+1624545887757979608 Taylor 
+1624545980108972883 171695426_10219461758913870_7222403809111897014_n
+1624546326301497385 1f427
+1624546340819308775 Creator of the DistroTube channel on YouTube and LBRY.
+1624546507089244910 1
+1624546585077474277 fishlive.org
+1624546646029497764 tonda
+1624546734702100123 andy
+1624546817435948386  :penguin:
+1624546817964757648 :penguin:
+1624546841629107212 painting
+1624546882413899984 LOVE
+1624547447198078397 GAzx)f#MnoQ
+1624547900342777117 https://fishlive.org
+1624547903723102163 OS
+1624547917960390045 https://fishlive.org
+1624547917965477156 arch
+1624547925305120670 trading
+1624547943110623481 https://fishlive.org/en/blog-tech-art
+1624547968063294572 ART
+1624547990303717816 https://github.com/raven2cz
+1624548033815721396 https://www.reddit.com/user/raven2cz
+1624548040496099346 STYLE
+1624548220642601046 distrotoot
+1624548222914965300 tech
+1624549096195706332 distrotoot
+1624549096202220681 Ubermosh
+1624553802312328460 mastodon
+1624554240624085027 image (114 lines)
+1624554242683130741 mastodon
+1624554243051361078 image (114 lines)
+1624554259187284765 Přeskočit na hlavní obsah (97 lines)
+1624554260832192930 image (114 lines)
+1624554266294769926 Let’s be honest: you just want to get one of those check marks ✅ next to your name. (3 lines)
+1624554377713914803 🍍
+1624554379523969557 Let’s be honest: you just want to get one of those check marks ✅ next to your name. (3 lines)
+1624554380649541024 🍍 
+1624554381069028293 🍍
+1624554433161408136 mastodon
+1624554616600165454 🦓
+1624554755645680246 :blobpats:
+1624554760337349397 https://fedimojis.feuerfuchs.dev/mastodon.social#
+1624554783914590376 :pika:
+1624554801372723432 _ /＼●_
+1624554828140289410 :arch: 
+1624554867468266352 :xmpp:
+1624554867702932490 :arch: 
+1624554867710560131  Zdenek Kreml :arch: :xmpp: 
+1624554869536493575 :xmpp:
+1624554869977353079  Zdenek Kreml :arch: :xmpp: 
+1624554875246678485 mastodon.arch-linux.cz 
+1624555011602357515 painting
+1624555052278761132 mastodon.arch-linux.cz 
+1624555052284618285 distrotube
+1624559122646813769 @raven2cz@distrotoot.com
+1624559206497922945 arch
+1624559276975901897 :arch:
+1624559295457693838 arch
+1624559356197008077 distrotoot.com 
+1624559389745970903 :arch_linux:
+1624559400631246669 h
+1624559534146560844 :linux:
+1624559593929706636 :arch:
+1624559775933789633 awesomewm
+1624559797699350757 :arch:
+1624559797704108454  distro linux
+1624559854468126927 JoyPixels (12 lines)
+1624559862649362375 🥸 Disguised Face (79 lines)
+1624559864619461183 U+1F978
+1624559870870027650 :disguised_face:
+1624559894257796383 t
+1624559894449131833 :disguised_face:
+1624559894986122324 tonda
+1624559903111172335 AF
+1624560072896972770 :suckless:
+1624560082469289011 :linux:
+1624560083437597625 linux
+1624560091133750903 t
+1624560103092997057 AF
+1624560151718493837 u
+1624560240405838096 @raven2cz@distrotoot.com
+1624560339039103590 l
+1624560339698646640 @raven2cz@distrotoot.com
+1624560340223323690 mastodon.social
+1624560478682429618 mastodon.social
+1624560478688553886 @arcolinux
+1624560668405452842 mxlinux
+1624560839414705079 @arcolinux
+1624560839420220706 ubuntunews
+1624560981175779676 @raven2cz@distrotoot.com
+1624561203279021967 /web/timelines/home
+1624561233737032888 @raven2cz@distrotoot.com
+1624561233744176627 auth/sign_in
+1624561239843459551 distrotoot.com
+1624562028838509983 oilpainting
+1624562069260249344 distrotoot.com
+1624562069267325689 root
+1624562084156826086 kernel
+1624562094987572929 linux
+1624562340182935507 painting
+1624562363067120063 java
+1624562382259882487 kotlin
+1624562500576970011 #awesomewm
+1624562907645581010 https://fishlive.org/en/blog-tech-art
+1624563057943131203 Fischer
+1624563078719101852 emoji arch linux
+1624563131173128788 font
+1624563174446409015 :slightly_smiling_face:
+1624564434125074900 https://github.com/basaran/awesomewm-machina.git
+1624564537518142953 local machina = require('awesomewm-machina')
+1624564582368433916 root.keys(gears.table.join(config.globalkeys, machina.keys))
+1624564598018448308 global
+1624564600329843873 root.keys(gears.table.join(config.globalkeys, machina.keys))
+1624564980160716853 root.keys(gears.table.join(
+1624565254980219608 a
+1624565254991879716 root.keys(gears.table.join(
+1624565255910487687 awful.keyboard.append_global_keybindings({
+1624565271229355636 machina.keys
+1624565467952430572 machina.keys
+1624565573196680820 gears.table.join(
+1624565743594542763 Hi, thanks a lot for the new release. I just checked and my module is not working with it :) Due to the change of your internal regions function. I will try to migrate myself next week and update the machina module accordingly so it works with both versions. (5 lines)
+1624565805765858289 Hi, thanks a lot for the new release. I just checked and my module is not working with it :) Due to the change of your internal regions function. I will try to migrate myself next week and update the machina module accordingly so it works with both versions. (8 lines)
+1624566493114384008 Hi, thanks a lot for the new release. I just checked and my module is not working with it :) Due to the change of your internal regions function. I will try to migrate myself next week and update the machina module accordingly so it works with both versions. (5 lines)
+1624566579077238929 gears.t
+1624566586433145650 local keys = gears.table.join(
+1624566611905823626 local keys = gears.table.join(
+1624566612060617512 local keys = { (2 lines)
+1624566612574489618 local keys = {
+1624566692366528986 awful.keyboard.append_global_keybindings(machina.keys) (2 lines)
+1624566692630087438 local keys = {
+1624566693111956397 awful.keyboard.append_global_keybindings(machina.keys)
+1624608268479182570 ### General information. Describe your environment (34 lines)
+1624608442288761595 Please consider changing the color of the icon. (3 lines)
+1624608479958806836 Please consider changing the color of the icon. (3 lines)
+1624608479965398316 #65b2e3
+1624608547483011817 #65b2e3
+1624608548117450817 #9580FF
+1624608568082879810 FFCA80
+1624608575803505416 #9580FF
+1624608575808946916 7970A9
+1624608589793190423 FFCA80
+1624608602694830813 ffCca80
+1624608614370575360 FFCA80
+1624608614377070166 70A99F
+1624608683201452819 #7970A9 (2 lines)
+1624608690431374340 70A99F
+1624608690439923722 #65b2e3 (4 lines)
+1624608915958586966 https://www.novinky.cz/krimi/clanek/na-stredni-skole-v-sokolove-hromadne-zkolabovali-studenti-40364402#dop_ab_variant=0&dop_source_zone_name=novinky.sznhp.box&dop_req_id=vpf7FcDN5ZH-202106250812&dop_id=40364402&source=hp&seq_no=2&utm_campaign=&utm_medium=z-boxiku&utm_source=www.seznam.cz
+1624609207623717647 be9458ba9ca2afbc2da8ace43861685ac9c7
+1624609352016538745 dracula
+1624611241280920264 Done
+1624611243298860439 DONE
+1624611244671750939 DONE!
+1624611666954681467 stability coarse value
+1624612158228894262 my professions and interests
+1624612304288013979 https://fishlive.org/en/blog-tech-art
+1624613614724454756 What's that skull with the rainbow coming out of its mouth?
+1624613683706772175 terminal color script
+1624613747772876973 https://gitlab.com/dwt1/shell-color-scripts
+1624623281629225123 37704853
+1624623350113557781 77048
+1624623352341126705 37704853
+1624623383968067557 Glaukomová poradna 
+1624623402385764443 77 104 853
+1624623406679188066 Glaukomová poradna 
+1624623406687020888 377 104 853
+1624623651037547442 29. čvn 2021
+1624623660682424384 11:30
+1624623663976629824 20. zář 2021
+1624625501947346428 1
+1624725220370535547 999 ]] ; then (2 lines)
+1624725603610292395 dravuj prosím svou rodinu. Přeji Ti mnoho úspěchů a v létě nádherné odpočinkové dny.
+1624728075688372837 fish install with fisher
+1624728327713523252 /usr/bin/xdg-open: line 622: kfmclient: command not found
+1624729025258266209 curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+1624729077483053642 fisher install ilancosman/tide
+1624729922067369429 fisher add jorgebucaran/fish-bax
+1624729985942461357 fisher add danhper/fish-ssh-agent
+1624730054666485569 throkuan / (2 lines)
+1624730056600517165 fisher add danhper/fish-ssh-agent
+1624730056605930257 jethrokuan/z
+1624730168126069467 PatrickF1/fzf.fish
+1624730570108785184 "f"
+1624730646055505797 PatrickF1/fzf.fish
+1624730646062776071 <Ctrl><Alt>F
+1624730648777620100 Ctrl
+1624730649587767416 <Ctrl><Alt>F
+1624730874756988395 franciscolourenco/done
+1624731047959307028 fisher install jorgebucaran/replay.fish
+1624731456426889942 fisher install jorgebucaran/fishtape
+1624731625455680723 0
+1624731625646410852 fisher install jorgebucaran/fishtape
+1624731625654411666 0x
+1624731629282360435 0x
+1624731632049667270 0x
+1624731633796734724 0x
+1624731635936864418 0x
+1624731637479517525 0x
+1624731642048414867 0x
+1624731643397250832 0x
+1624731644977634689 0x
+1624731646110467463 0x
+1624731648668277606 0x
+1624731651019512549 0x
+1624731652318964718 0x
+1624731653322765688 0x
+1624731658299793075 0x
+1624731660449394545 0x
+1624731661447101943 0x
+1624731855580100315 9AB8D7
+1624731889198252468 60B48A
+1624731898975294125 005fd7
+1624731898990253234 60B48A
+1624732086642346870 Gazorby/fish-abbreviation-tips
+1624732132287765320 chsh -l
+1624732387713526377 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.......... (9 lines)
+1624732387727073574 chsh -l
+1624732527829942233 alias mc="mc --nosubshell"
+1624733034559748052 Delfin
+1624733536357392907 Nově si můžete ve vlaku po cestě do Chorvatska nebo před cestou v sekci Doplňkových služeb u vaší jízdenky zakoupit online antigenní (jen za 60 Kč). Tento si uděláte před odjezdem do České republiky ve spolupráci s lékařem přes webkameru a ihned vám bude certifikát s výsledkem u zaslán do e-mailu. j (19 lines)
+1624733537052664717 Nově si můžete ve vlaku po cestě do Chorvatska nebo před cestou v sekci Doplňkových služeb u vaší jízdenky zakoupit online antigenní (jen za 60 Kč). Tento si uděláte před odjezdem do České republiky ve spolupráci s lékařem přes webkameru a ihned vám bude certifikát s výsledkem u zaslán do e-mailu. j (19 lines)
+1624733769773418090 Nově si můžete ve vlaku po cestě do Chorvatska nebo před cestou v sekci Doplňkových služeb u vaší jízdenky zakoupit online antigenní (jen za 60 Kč). Tento si uděláte před odjezdem do České republiky ve spolupráci s lékařem přes webkameru a ihned vám bude certifikát s výsledkem u zaslán do e-mailu. j (19 lines)
+1624733769779859694 d 24 300 Kč 
+1624733802952145598 Nově si můžete ve vlaku po cestě do Chorvatska nebo před cestou v sekci Doplňkových služeb u vaší jízdenky zakoupit online antigenní (jen za 60 Kč). Tento si uděláte před odjezdem do České republiky ve spolupráci s lékařem přes webkameru a ihned vám bude certifikát s výsledkem u zaslán do e-mailu. j (19 lines)
+1624733802959123193 Hotel Quercus
+1624733945374326156 Camping Park Soline - mobilní domky - balíček Regiojet (35 lines)
+1624733946569501955 Camping Park Soline - mobilní domky - balíček Regiojet (35 lines)
+1624734213293385446 ytování za osobu v mobilním domku, spotřebu vody a energií, povlečení, ručník, dopravu vlakem Regiojet, transfer na ubytování, poj. CK proti úpadku.
+1624734223480684638 u taxu, přihlášení, vratnou kauci, závěrečný úklid - platby na místě. Pobytová taxa 1,10 Eur/os./den (děti 12-18 let platí polovic), přihlášen
+1624734224507133006 0 Eur/os./po
+1624734226608835251 Camping Park Soline - mobilní domky - balíček Regiojet (35 lines)
+1624734226614397642 atná kauce 100 Eur. (Klient s pracovníkem kempu kontroluje inventární list MBH a podpisem stvrzuj
+1624734517380795354 Camping Park Soline - mobilní domky - balíček Regiojet (35 lines)
+1624734517389960853     JízdenkyJízdenky (257 lines)
+1624734599080929760 Camping Park Soline - mobilní domky - balíček Regiojet (35 lines)
+1624734605621753755 Rivijera Sunny Resort - balíček Regiojet 2021 (29 lines)
+1624734621403363369 Po příjezdu do České republiky je nutné absolvovat PCR , který máte od 1. června dvakrát měsíčně zdarma. (9 lines)
+1624734627223915428 Rivijera Sunny Resort - balíček Regiojet 2021 (29 lines)
+1624734640186616850 Rivijera Sunny Resort** (27 lines)
+1624734641084011000 Rivijera Sunny Resort** (41 lines)
+1624734641851901786 Rivijera Sunny Resort** (74 lines)
+1624734642024728685 Rivijera Sunny Resort** (73 lines)
+1624734642215891596 Rivijera Sunny Resort** (71 lines)
+1624734644282607765 Rivijera Sunny Resort** (65 lines)
+1624734644290694809 Rivijera Sunny Resort** (65 lines)
+1624735129067104866 osíme, mějte na paměti, že cenu zájezdu nám poskytuje pořadatelská cestovní kancelář. Nabídky a ceny služeb se neustále mění, proto je vždy nutné ověření specialistou. 
+1624735361063767520 Rivijera Sunny Resort** (65 lines)
+1624735361069864424 s
+1624735397326588908 Rivijera Sunny Resort** (65 lines)
+1624735397334290645 by, mořské plody nebo maso. Jsou jimi třeba r
+1624735459457460296 Rivijera Sunny Resort** (65 lines)
+1624735459462787518 Plánování letní dovolené bereme jako příjemné a taky jako malé přiblížení se k těm skvělým chvilkám oddechu a pohody. Ti, z vás, kteří jste se letos rozhodli trávit dovolenou v oblíbeném Chorvatsku, určitě řešíte otázku: „Je lepší jet do Chorvatska s polopenzí anebo si jídlo zajišťovat sami?“
+1624735474718672563 Dovolená v Chorvatsku s polop
+1624735486384538509 Doporučujeme především rodinám s dětmi. Zasloužený odpočinek si totiž dopřeje i celoročně vytížená mamin
+1624735535423062526 Rivijera Sunny Resort** (65 lines)
+1624735535430392583 Ti z vás, kteří se rozhodli se na dovolené vyhnout kuchyni velkým obloukem a využili možnost polopenze, mají jednu výhodu. Odpadá vám každodenní losování z klobouku, kdo půjde ráno nakoupit, kdo uvaří kávu a kdo po jídle umývá nádobí. Řekněme si to upřímně, komu z nás by se nelíbilo být na dovolené 
+1624735539035157323 Rivijera Sunny Resort** (65 lines)
+1624735539040526975 Ať už se rozhodnete pro pobyt se stravou či bez, přejeme vám krásnou dovolenou, přesně podle Vašich představ, s nezapomenutelnými chvilkami roku 2019. 
+1624736742072230237 slack
+1624738146417888191 spotify
+1624738263535496170 flatpak run com.spotify.Client
+1624738417867262614 #  ____ _____ # |  _ \_   _|  Derek Taylor (DistroTube) # | | | || |    http://www.youtube.com/c/DistroTube # | |_| || |    http://www.gitlab.com/dwt1/ # |____/ |_| # # My fish config. Not much to see here; just some pretty standard stuff. ### ADDING TO THE PATH # First line removes the path; second (5 lines)
+1624738418405971011 #  ____ _____ (355 lines)
+1624738486860359261 emacsclient -t -a ''
+1624738503037112111 emacsclient -c -a emacs
+1624738976616624432 set -l xdg_data_home $XDG_DATA_HOME ~/.local/share (8 lines)
+1624739009799474837 set -l xdg_data_home $XDG_DATA_HOME ~/.local/share (8 lines)
+1624739010031476503 set -l xdg_data_home $XDG_DATA_HOME ~/.local/share (9 lines)
+1624739198021439855 run
+1624739284944988173 set -l xdg_data_home $XDG_DATA_HOME ~/.local/share (9 lines)
+1624739284949843400 spotify fish
+1624739306809197914 fisher abaez/fish-flatpak
+1624739387530474856 flatpak fish
+1624739967794682638 fisher abaez/fish-flatpak
+1624740116252791528 alias mc="mc --nosubshell"
+1624740133709461908 # MC start reading solution
+1624740356239379904 if [[ $(ps --no-header --pid=$PPID --format=cmd) != "fish" ]] (4 lines)
+1624740517876095519 m
+1624740517888733617 if [[ $(ps --no-header --pid=$PPID --format=cmd) != "fish" ]] (4 lines)
+1624740518440466641 colorscript random
+1624740882057862589 letter
+1624740894548413526 color tux
+1624740905411604887 linux shell color header
+1624741718467490164 dd color script
+1624741731320808215 do once time
+1624741750833340716 command one time only
+1624741881093506916 if status is-login (3 lines)
+1624741893535918295 #colorscript random (2 lines)
+1624741898702060800   ssh-add (2 lines)
+1624741915099111879 #colorscript random (2 lines)
+1624741915106628426   colorscript random (2 lines)
+1624742026827773657 set -l xdg_data_home $XDG_DATA_HOME ~/.local/share (2 lines)
+1624742027299670005   colorscript random (2 lines)
+1624742028692431618 set -l xdg_data_home $XDG_DATA_HOME ~/.local/share (10 lines)
+1624742120845769206 fish start command one time on startup
+1624742136318689603 start
+1624742319535301333 on show
+1624771400327593497 fish command once time only
+1624771434430387261 function fish_greeting (3 lines)
+1624771526174650968 #colorscript random (2 lines)
+1624771611833667948 2 branches (118 lines)
+1624771711464675823 #colorscript random (2 lines)
+1624771711469780245 fish, version 3.2.2 (2 lines)
+1624771718471101182 F
+1624771721223857149 fish, version 3.2.2 (2 lines)
+1624771724044724961 Fish: [e.g. 3.2.2]
+1624771827315948035 .rw-r--r--  511 box 20 Apr 19:13 nw-autoupdater.log (15 lines)
+1624771931829832216  [e.g. 7.0]
+1624771939642291609 [e.g. fisher 4.3.0]
+1624771956675551527 [e.g. iTerm]
+1624771961794075610 [e.g. macOS 10.15.7]
+1624771968691460049 ## Additional context (4 lines)
+1624772075892733456 #if status is-login (3 lines)
+1624772154472818421 behavior
+1624772263049372870 # Or install it from the Arch User Repository: shell-color-scripts (2 lines)
+1624772263080149161 #colorscript random
+1624772435566599831 ## Steps to Reproduce (2 lines)
+1624772632942593481 #colorscript random
+1624772632950181084 Screenshot_20210627_074338
+1624772638453145962 /home/box/Pictures/fish-error.png
+1624772696275303328 If applicable, add screenshots to help explain the bug. (2 lines)
+1624772703643056808 - [ ] I have made sure my CLIs meet the [minimum version requirements](https://github.com/PatrickF1/fzf.fish#installation) (2 lines)
+1624774542599265422 function fish_greeting (3 lines)
+1624774546145590402 # Fish greetings when the terminal is shown up (5 lines)
+1624774555997674452 # Fish greetings when the terminal is shown up in interactive mode (6 lines)
+1624774857623066783 # Fish greetings when the terminal is shown up in interactive mode (6 lines)
+1624774858132610423 # Fish greetings when the terminal is shown up in interactive mode (6 lines)
+1624774865291672043     #fish_logo (2 lines)
+1624815570735617608 qlmanage
+1624815964499568583 status -i || exit
+1624815971517722213 ||
+1624815978041736613 atus -i || exit
+1624816106310008963 puffe
+1624816107363046250 ash.fis
+1624816108432179720 oxy.f
+1624816109498308107 g/plug.fish
+1624816111698199173 n/autopair.f
+1624816112664696878 an/tide
+1624816113765336232 ourenco/done
+1624816125631221419 https://github.com/kidonng/dotfiles.git
+1624816389432896341 status -i || exit
+1624816562377278517 ### RANDOM COLOR SCRIPT ### (2 lines)
+1624816563402807010 status -i || exit
+1624816563408709820 ### RANDOM COLOR SCRIPT ### (8 lines)
+1624816606040937396 fisher install laughedelic/fish_logo
+1624816650074233125 fish_logo f00 '' ff0
+1624817495892956291 random 10 2 20
+1624817652541093694 c
+1624817652569513361 random 10 2 20
+1624817652690475635 colorscript random
+1624818121798582724 random is zero bash
+1624818454755995425 colorscript random
+1624818454763227984 begin
+1624818455978742992 false
+1624818456978645935 true
+1624818457712415244 end
+1624818458242122401 or
+1624818458763455428 true
+1624818459685887811 echo
+1624818460960942022 false
+1624818479152455425 condition example fish
+1624818550069347803 fish
+1624818553608275433 call command in condition
+1624819381677298395  fish_logo; else; colorscript random; end (2 lines)
+1624819385124251589 if test (random 1 10) = 1; fish_logo; else; colorscript random; end
+1624819397069428772     colorscript random (2 lines)
+1624819616366991900 if test (random 1 10) = 1; fish_logo; else; colorscript random; end
+1624819616374105981 Termín:  (2 lines)
+1624819650422266900 fzf_preview_file_cmd
+1624819731526181420 e
+1624819731606503741 fzf_preview_file_cmd
+1624819731614893304 preview
+1624819792692234056 kidonng/preview.fish
+1624819811202297696 git
+1624819940637146730 kidonng/preview.fish
+1624819940643189958 __fzf_preview_file_content
+1624820121038828319 if test (random 1 10) = 1; fish_logo; else; colorscript random; end
+1624820323233195518 set -U fzf_preview_file_cmd __fzf_preview_file_content
+1624821054650592744 yay -S glow
+1624821744237373714 QuickLook
+1624821814453700708 quicklook
+1624822059183898257 qlmanage -t
+1624822284890701257 hi@xuann.wang, 
+1624822285294719059 qlmanage -t
+1624822287187613426 hi@xuann.wang
+1624822504854930647 the
+1624822599405778972 hi@xuann.wang
+1624822599411867786 for
+1624822644670310179 arch
+1624822771754084864 hawkeye-quicklook-git
+1624822893486784594 hawkeye 
+1624822966948486946 quicklook
+1624823046989746595 hawkeye 
+1624823046995710259 "qlmanage -t" linux
+1624823413655297134 $theme
+1624823872620636484 config.fish
+1624823897884915091 $theme
+1624823899020212043 colorscript random;
+1624823900486182728 colorscript random
+1624824077856119455 https://github.com/PatrickF1/fzf.fish/issues/181
+1624824105196804392 # Fish greetings when the terminal is shown up in interactive mode (5 lines)
+1624824108756122680 # Fish greetings when the terminal is shown up in interactive mode (5 lines)
+1624824109108566288 # Fish greetings when the terminal is shown up in interactive mode (5 lines)
+1624824148321588848 if test (random 1 10) = 1; fish_logo; else; 
+1624824155790081807 ``` (7 lines)
+1624824238905132816 fisher install laughedelic/fish_logo (2 lines)
+1624824250689272111 fisher install laughedelic/fish_logo
+1624824250940753047 # Fish greetings when the terminal is shown up in interactive mode (4 lines)
+1624824339813817386 # Exit configuration if it is not interactive mode - e.g. fzf preview (2 lines)
+1624824339963578990 # Fish greetings when the terminal is shown up in interactive mode (4 lines)
+1624824339969884308 # Exit configuration if it is not interactive mode - e.g. fzf preview (3 lines)
+1624824359319334328 the
+1624824383853031857 # Exit configuration if it is not interactive mode - e.g. fzf preview (3 lines)
+1624824384008785141 # Exit configuration if it is not interactive mode - e.g. fzf preview (3 lines)
+1624824668288953152 fish_logo f00 '' ff0
+1624824764664844716 fish_vi_key_bindings
+1624825215604779134 Hi DT, (45 lines)
+1624826129958650007 30, 50, 100,
+1624857360379975622 indow manager for X (3 lines)
+1624857697827735053 defaultSession = "none+awesome"; (2 lines)
+1624857701260475137 windowManager = { (3 lines)
+1624857703630115609 aModules = with pkgs.lua52Packages; [
+1624857704994606237 lua52Packages
+1624857706995595647 lgi
+1624857707619465992 ldbus
+1624857709682604401 uarocks-nix
+1624857711270558420  luadbi-mysql
+1624857723637801940 seaudio = { (4 lines)
+1624857725251002810  enable = true; (2 lines)
+1624857726772453588 pulseaudio
+1624857731400745014 odule module-switch-on-connect\n    ";
+1624857737668557181 networkmanager
+1624857738423290871 sudo
+1624857739381472110 audio
+1624857739887837564 docker
+1624857740429876100 mopidy
+1624857740930552390 adbusers
+1624857742959089076 "/home/javacafe01";
+1624857744567417086 "Gokul Swaminathan";
+1624857752322441924 olkit_gnome (7 lines)
+1624857756005864707 xer (11 lines)
+1624857795430084190 tSession = "none+awesome";
+1624857856198811671       emacs-all-the-icons-fonts (13 lines)
+1624858028246468827 22 015,25 USD (32 lines)
+1624858999969824857 https://www.youtube.com/watch?v=aYlfkUt6x_8
+1624859182553564175 Je to plytvani resources, casem, kvalitou a hlavne vecmi, ktere proste tam mit nechci a nejde s n
+1624863436803402002 https://github.com/JavaCafe01/awedots
+1624863597797747636 .
+1624863940966002092 Hi, first thank you for many ideas with Awesome. I have several ideas about system like you. And there are many things very similar. I looked few days to https://github.com/JavaCafe01/awedots too.
+1624864194762564460 c
+1624864195419016474 Hi, first thank you for many ideas with Awesome. I have several ideas about system like you. And there are many things very similar. I looked few days to https://github.com/JavaCafe01/awedots too.
+1624864195860353591 complex
+1624864274511189891 service
+1624864521850491994 We will see in next months, or one year, if it is true or not. 
+1624864613379510803 s
+1624864711269246093 Hi, first thank you for many ideas with AwesomeWM. I have several ideas about system like you. And there are many things very similar. I looked few days to https://github.com/JavaCafe01/awedots too. (9 lines)
+1624864835403179887 can give some solution for it. But the projection is weak, in addition very specific to nixos only, because it is just mirror of real config. (2 lines)
+1624864836064293043 Hi, first thank you for many ideas with AwesomeWM. I have several ideas about system like you. And there are many things very similar. I looked few days to https://github.com/JavaCafe01/awedots too. (9 lines)
+1624864836547009250 Hi, first thank you for many ideas with AwesomeWM. I have several ideas about system like you. And there are many things very similar. I looked few days to https://github.com/JavaCafe01/awedots too. (9 lines)
+1624864847604056160 Hi, first thank you for many ideas with Awesome. I have several ideas about system like you. And there are many things very similar. I looked few days to https://github.com/JavaCafe01/awedots too.
+1624865597531862765 Hi, first thank you for many ideas with AwesomeWM. I have several ideas about system like you. And there are many things very similar. I looked few days to https://github.com/JavaCafe01/awedots too. (9 lines)
+1624867120066778492 Zobrazeny výsledky pro dotaz awesome-git gentoo (20 lines)
+1624867124203622318 awesome-9999.ebuild « awesome « x11-wm - repo/gentoo.git ...
+1624867403925286622 awesome-9999.ebuild « awesome « x11-wm - repo/gentoo.git ...
+1624867403930474509 kniha
+1624867421986814837 obje
+1624867518967524202 lua book 
+1624867540074382180 objednavka 
+1624867572517965904 Programming in Lua, Fourth Edition
+1624868952655951225 e prilozit na whatsup, nebo jestli to mas pres mobil jenom, tak treba poslat ten obrazek emailem. 
+1624868952682517328 Programming in Lua, Fourth Edition
+1624868952804107867 Diky za info.  (3 lines)
+1624869514748757395 CTA Variants 15M, 50M, 100M
+1624869773602154496 v roce 
+1624872061237973632 serial-corr-wcorr_i3-system
+1624872137998024410 serial-corr-wcorr_i3-system-p20
+1624872580384406950 Tutorial (7 lines)
+1624877215618028833 Lichváři už skupují moduly TPM 2.0 (5 lines)
+1624878716794444402 Mgr. Eva Johánková

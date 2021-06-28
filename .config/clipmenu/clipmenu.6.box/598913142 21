@@ -1,0 +1,60 @@
+        {
+            layout = wibox.layout.fixed.vertical,
+            {
+                {
+                    left = 10,
+                    right = 10,
+                    top = 1,
+                    widget = wibox.container.margin
+                },
+                id = 'overline',
+                bg = '#ffffff',
+                shape = gears.shape.rectangle,
+                widget = wibox.container.background
+            },
+            {
+                {
+                    id = 'text_role',
+                    widget = wibox.widget.textbox
+                },
+                left = 7,
+                top = 3,
+                widget = wibox.container.margin
+            }
+        },
+        left = 1,
+        right = 1,
+        widget = wibox.container.margin
+    },
+    id = 'background_role',
+    widget = wibox.container.background,
+    shape = gears.shape.rectangle,
+    create_callback = function(self, c3, index, objects)
+        local focused = false
+        for _, x in pairs(awful.screen.focused().selected_tags) do
+            if x.index == index then
+                focused = true
+                break
+            end
+        end
+        if focused then
+            self:get_children_by_id("overline")[1].bg = "#80cbc4"
+        else 
+            self:get_children_by_id("overline")[1].bg = "#212121"
+        end
+    end,
+    update_callback = function(self, c3, index, objects)
+        local focused = false
+        for _, x in pairs(awful.screen.focused().selected_tags) do
+            if x.index == index then
+                focused = true
+                break
+            end
+        end
+        if focused then
+            self:get_children_by_id("overline")[1].bg = "#80cbc4"
+        else 
+            self:get_children_by_id("overline")[1].bg = "#212121"
+        end
+    end
+},

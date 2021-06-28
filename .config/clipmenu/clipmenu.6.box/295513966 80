@@ -1,0 +1,2 @@
+# Exit configuration if it is not interactive mode - e.g. fzf preview
+status -i || exit

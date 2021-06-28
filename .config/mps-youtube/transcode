@@ -1,0 +1,54 @@
+# transcoding presets for mps-youtube
+# VERSION 0
+
+# change ENCODER_PATH to the path of ffmpeg / avconv or leave it as auto
+# to let mps-youtube attempt to find ffmpeg or avconv
+ENCODER_PATH: auto
+
+# Delete original file after encoding it
+# Set to False to keep the original downloaded file
+DELETE_ORIGINAL: True
+
+# ENCODING PRESETS
+
+# Encode ogg or m4a to mp3 256k
+name: MP3 256k
+extension: mp3
+valid for: ogg,m4a
+command: ENCODER_PATH -i IN -codec:a libmp3lame -b:a 256k OUT.EXT
+
+# Encode ogg or m4a to mp3 192k
+name: MP3 192k
+extension: mp3
+valid for: ogg,m4a
+command: ENCODER_PATH -i IN -codec:a libmp3lame -b:a 192k OUT.EXT
+
+# Encode ogg or m4a to mp3 highest quality vbr
+name: MP3 VBR best
+extension: mp3
+valid for: ogg,m4a
+command: ENCODER_PATH -i IN -codec:a libmp3lame -q:a 0 OUT.EXT
+
+# Encode ogg or m4a to mp3 high quality vbr
+name: MP3 VBR good
+extension: mp3
+valid for: ogg,m4a
+command: ENCODER_PATH -i IN -codec:a libmp3lame -q:a 2 OUT.EXT
+
+# Encode m4a to ogg
+name: OGG 256k
+extension: ogg
+valid for: m4a
+command: ENCODER_PATH -i IN -codec:a libvorbis -b:a 256k OUT.EXT
+
+# Encode ogg to m4a
+name: M4A 256k
+extension: m4a
+valid for: ogg
+command: ENCODER_PATH -i IN -strict experimental -codec:a aac -b:a 256k OUT.EXT
+
+# Encode ogg or m4a to wma v2
+name: Windows Media Audio v2
+extension: wma
+valid for: ogg,m4a
+command: ENCODER_PATH -i IN -codec:a wmav2 -q:a 0 OUT.EXT

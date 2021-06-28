@@ -1,0 +1,36 @@
+        /////////////////////////////////////////////////
+        // print available systems in portfolio
+        StringBuilder sb = new StringBuilder();
+        sb.append("Available systems in portfolio:").append(EOL);
+        Set<String> systems = new TreeSet<>();
+        for (List<String> row : tdResultsTable.getTable()) {
+            systems.add(this.systems.get(row.get(systemId).substring(1))); //remove prefix S
+        }
+        for (String system : systems) {
+            sb.append(system).append(EOL);
+        }
+        sb.append(EOL);
+
+        ////////////////////////////////////////////////////////////////////////////////////////
+        // analysis of zero trades - Map<Year, [tradeCount, positionLine]> -> print to txt file
+        Map<Integer, ZeroTrade> zeroTrades = new TreeMap<>();
+        Calendar cal = Calendar.getInstance();
+        for (List<String> row : tdResultsTable.getTable()) {
+            Date positionExitTime = dateFormat.parse(row.get(dateTimeExit));
+            cal.setTime(positionExitTime);
+            int year = cal.get(Calendar.YEAR);
+            ZeroTrade zeroTrade = zeroTrades.computeIfAbsent(year, k -> new ZeroTrade());
+            zeroTrade.tradeCount++;
+            if (Integer.parseInt(row.get(size)) == 0) {
+                zeroTrade.zeroTradeCount++;
+            }
+            zeroTrade.positionRows.add(StringUtils.join(row, ","));
+        }
+        sb.append("Zero Trades statistics:").append(EOL);
+        for (Integer year : zeroTrades.keySet()) {
+            ZeroTrade zeroTrade = zeroTrades.get(year);
+            sb.append(String.format("%d: tradeCount=%d zeroTradeCount=%d",
+                    year, zeroTrade.tradeCount, zeroTrade.zeroTradeCount)).append(EOL);
+        }
+        sb.append(EOL);
+

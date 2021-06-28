@@ -1,0 +1,2 @@
+        String exportResource = FilenameUtils.getBaseName(csvFile.getName())+"-ECB.txt";
+        FileUtils.writeStringToFile(new File(txtResource, exportResource), sb.toString(), UTF_8);

@@ -1,0 +1,15 @@
+    case 25 : {&Filter1_N1=-5|5} {&Filter1_N2=FIXED} //ID: 2.12   N1 -5/+5, N2 FIX
+    begin
+      filter1_long = C - xAverage(L, Filter1_N1) > (AvgTrueRange(25) * (0.05 * Filter1_N2));
+      filter1_short = xAverage(H, Filter1_N1)  - C > (AvgTrueRange(25) * (0.05 * Filter1_N2));
+    end;
+    case 26 : {&Filter1_N1=-5|5} {&Filter1_N2=FIXED} //ID: 2.13  N1 -5/+5, N2 FIX
+    begin
+      filter1_long = C - xAverage(L, Filter1_N1) > (AvgTrueRange(5) * (0.05 * Filter1_N2));
+      filter1_short = xAverage(H, Filter1_N1) - C > (AvgTrueRange(5) * (0.05 * Filter1_N2));
+    end;
+    case 27 : {&Filter1_N1=-5|5} {&Filter1_N2=FIXED} //ID: 2.14   N1 -5/+5, N2 FIX
+    begin
+      filter1_long = C - xAverage(L, Filter1_N1)[1] > (AvgTrueRange(25) * (0.05 * Filter1_N2));
+      filter1_short = xAverage(H, Filter1_N1)[1]  - C > (AvgTrueRange(25) * (0.05 * Filter1_N2));
+    end;

@@ -1,0 +1,9 @@
+	case 45: begin //MQ Trend and NOT DOW 1
+		if MQ_Trend AND dayofweek(date) <> 1 then begin
+			modeLong = true; modeShort = true;
+		end;
+	end;
+	case 46: begin //MQ Trend and NOT DOW 2
+		if MQ_Trend AND dayofweek(date) <> 2 then begin
+			modeLong = true; modeShort = true;
+		end;

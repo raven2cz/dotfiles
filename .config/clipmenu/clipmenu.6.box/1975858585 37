@@ -1,0 +1,6 @@
+        // input directory
+        if (commandLine.hasOption("i")) {
+            inputDir = commandLine.getOptionValue("i");
+        } else {
+            throw new IllegalArgumentException("The input directory has to be defined! Fill -i parameter with input resource path.");
+        }

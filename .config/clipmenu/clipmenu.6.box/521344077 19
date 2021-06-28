@@ -1,0 +1,5 @@
+ * </ol>
+ * <p>Hence, the final Bootstrap Score should ideally be 100%. If it isn't, then the strategy likely does *NOT* have an edge and was "lucky".
+ * <p>Original code is written in easylanguage. This is rewritten code to the java with usage javafish common lib.</p>
+ * <br><br>
+ * <p><i>Al Biddinger March 4, 2021</i>

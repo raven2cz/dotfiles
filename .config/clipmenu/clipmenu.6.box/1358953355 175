@@ -1,0 +1,56 @@
+    public static void analyzeNormalizedEquity(SystemCandidateDO candidate, String ptfImagesPath, String ptfProjectPath, AttributeModel context) throws Exception {
+        // configuration consts
+        // no estimation by email. We use fixed norm risk with value 5000 USD.
+        double normRisk = 5000; //USD
+        // if the main stats are worst as -20% the normalization is not used!
+        double th = -20.0; //%
+
+        // create folder for images
+        File imageFileFolder = createPtfImageFolder(candidate, ptfImagesPath);
+        // get the equity with MAX TECH SL
+        CombinedEquity equity = getMaxTechSlEquity(candidate);
+
+        // calculate normalization
+        CombinedEquity normEquity = EquityNormalizationLibrary.normalizeByRisk(equity, normRisk, false);
+        computeEquityStats(normEquity, context);
+
+        // compare original and normalized equity
+        List<EquityCompareDO> equityCompareDOs = EquityCompareLibrary.compareEquity(equity, normEquity);
+
+        // decision about usage of normalization
+        boolean applyNormalization = true;
+        for (EquityCompareDO equityCompareDO : equityCompareDOs) {
+            if (equityCompareDO.perct < th) {
+                applyNormalization = false;
+                break;
+            }
+        }
+
+        // append changes against original to title
+        String title = createEquityTitle(candidate, normEquity.getTitle(), normEquity, false);
+        title += "\nvsORIG:: ";
+        for (EquityCompareDO equityCompareDO : equityCompareDOs) {
+            title += equityCompareDO;
+            if (equityCompareDO != equityCompareDOs.get(equityCompareDOs.size()-1)) {
+                title += ", ";
+            }
+        }
+        // append changes to the candidate statistics
+        candidate.properties.put("CPTFResults.ZPass.NormEqChng.Used", applyNormalization ? "true" : "false");
+        for (EquityCompareDO equityCompareDO : equityCompareDOs) {
+            candidate.properties.put("CPTFResults.ZPass.NormEqChng.Orig."+equityCompareDO.name, String.format("%1.2f", equityCompareDO.orig));
+            candidate.properties.put("CPTFResults.ZPass.NormEqChng.Actual."+equityCompareDO.name, String.format("%1.2f", equityCompareDO.actual));
+            candidate.properties.put("CPTFResults.ZPass.NormEqChng.Perct."+equityCompareDO.name, String.format("%1.2f", equityCompareDO.perct));
+        }
+
+        // create image of normalized equity
+        String fullEquityName = String.format("%s-NORMALIZED", candidate.id);
+        byte[] image = SystemCandidateCommonLibrary.createEquityImage(candidate, normEquity, title,
+                new Dimension(1280, 720), true, true, null, null);
+        String equityFileName = FilenameUtils.concat(imageFileFolder.getCanonicalPath(), fullEquityName + ".png");
+        FileUtils.writeByteArrayToFile(new File(equityFileName), image);
+
+        // export equity to csv
+        String continuousSymbol = candidate.getSymbol();
+        EquityImportExportOperationsLibrary.exportEquityToWriteTrade32Csv(normEquity, continuousSymbol, new File(ptfProjectPath, fullEquityName).getAbsolutePath());
+    }

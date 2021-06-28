@@ -1,0 +1,23 @@
+    /**
+     * Create nice image of requested equity. Supports specific visualization requirements.
+     * @param candidate which includes equity (can be null)
+     * @param equity CombinedEquity (belongs to the candidate!)
+     * @param title
+     * @param dimension of image
+     * @param showPeaks
+     * @param seriesColors - can be null for default
+     * @return image byte array
+     * @throws IOException
+     */
+    public static byte[] createEquityImage(SystemCandidateDO candidate, CombinedEquity equity, String title, Dimension dimension,
+            boolean showPeaks, boolean showRisk, EodPeriod eodPeriod, Color[] seriesColors, CombinedEquity... additionalEquities) throws IOException {
+        // set DH vertical line for equity by Candidate Domain Object
+        setDHverticalLineByCandidateDO(candidate, equity);
+
+        // assembly chart view and create base64 image
+        EquityChart chart = new EquityChart(equity, title, showPeaks, eodPeriod == null, showRisk, eodPeriod, seriesColors, additionalEquities);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ChartUtilities.writeChartAsPNG(baos, chart.getChartPanel().getChart(), dimension.width, dimension.height, null);
+
+        return baos.toByteArray();
+    }

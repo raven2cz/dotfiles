@@ -1,0 +1,1 @@
+set -U fzf_preview_file_cmd __fzf_preview_file_content

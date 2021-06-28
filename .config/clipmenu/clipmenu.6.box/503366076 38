@@ -1,0 +1,4 @@
+        // SYSTEM CON_DHIDX
+//        AttributeModel systemDhidxConfig = (AttributeModel)context.clone();
+//        systemDhidxConfig.setAttribute(SequenceService.SEQUENCE_ID, "conDhidx");
+//        systemDhidxConfig.setAttribute(EquityServiceServant.EQUITY_SERVANT_TYPE, STRATEGY_BASED);

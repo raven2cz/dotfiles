@@ -1,0 +1,23 @@
+local wiboxBox = function(icon, wbox, colorLine, leftIn, rightIn)
+  return {
+    {
+      wibox.container.margin(wibox.widget { icon, wbox, layout = wibox.layout.align.horizontal }, leftIn, rightIn),
+      bottom=underLineSize,
+      color=colorLine,
+      widget=wibox.container.margin
+    },
+    left = wiboxMargin,
+    right = wiboxMargin,
+    layout = wibox.container.margin
+  }
+end
+
+local wiboxBox0 = function(wbox, colorLine, leftIn, rightIn)
+  return {
+    {
+      wibox.container.margin(wibox.widget { wbox, layout = wibox.layout.align.horizontal }, leftIn, rightIn),
+      bottom=underLineSize,
+      color=colorLine,
+      widget=wibox.container.margin
+    },
+    left = wiboxMargin,

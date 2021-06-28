@@ -1,0 +1,20 @@
+        try (Stream<Path> streamFile = Files.walk(Paths.get(path), 2)) {
+            // define file walk algorithm
+            List<String> techSLResources = streamFile
+                    .map(f -> f.toFile().getName())
+                    .filter(fn -> fn.startsWith(candidate.id) && fn.endsWith("-techsl-DH-EQ.csv"))
+                    .collect(Collectors.toList());
+
+            TreeMap<Double, String> slEquities = new TreeMap<>();
+            for (String techSlResource : techSLResources) {
+                int endIndex = techSlResource.lastIndexOf("-techsl");
+                int startIndex = techSlResource.lastIndexOf("-", endIndex - 1) + 1;
+                double sl = Double.parseDouble(techSlResource.substring(startIndex, endIndex));
+                slEquities.put(sl, techSlResource);
+            }
+            Double techSL = takeMaxTechSL ?
+                    slEquities.lastEntry().getKey() : slEquities.firstEntry().getKey();
+            String maxMinTechSlFileName = takeMaxTechSL ?
+                    slEquities.lastEntry().getValue() : slEquities.firstEntry().getValue();
+            String maxMinTechSlResource = new File(path+"/SL", maxMinTechSlFileName).getAbsolutePath();
+            // backward compatibility

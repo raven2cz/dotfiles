@@ -1,0 +1,1 @@
+StrategySubtype stype = StrategySubtype.strategySubtypes.get(Integer.parseInt(eqname.substring(eqna

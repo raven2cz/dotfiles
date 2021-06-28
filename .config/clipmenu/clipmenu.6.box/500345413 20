@@ -1,0 +1,3 @@
+    @Bean
+    @Scope(BeanDefinition.SCOPE_PROTOTYPE)
+    public SegmentCorrModifySequenceService segmentCorrModifySequenceService() {

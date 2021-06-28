@@ -1,0 +1,20 @@
+                            if (resultTypeDO.aggDOs.size() - 1 < i) {
+                                StatAggCompareDO statAgg = new StatAggCompareDO();
+                                statAgg.name = equityCompareDO.name;
+                                statAgg.isDiff = equityCompareDO.isDiff;
+                                resultTypeDO.aggDOs.add(statAgg);
+                            }
+                            // aggregate per stat name
+                            resultTypeDO.aggDOs.get(i).stats.addValue(equityCompareDO.perct);
+                        }
+                    }
+                }
+            }
+            // propagate aggregation results to the expected EquityCompareDO object
+            for (EquityCompareSTypeDO typeDO : results.values()) {
+                for (StatAggCompareDO aggDO : typeDO.aggDOs) {
+                    typeDO.equityCompareDOs.add(new EquityCompareDO(aggDO.name, -1.0, -1.0,
+                            aggDO.stats.getMean(), aggDO.stats.getStandardDeviation(), aggDO.isDiff));
+                }
+            }
+            return results;

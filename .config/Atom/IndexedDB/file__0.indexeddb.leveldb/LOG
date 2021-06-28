@@ -1,0 +1,9 @@
+2021/06/28-13:31:27.815 15e592 Reusing MANIFEST /home/box/.config/Atom/IndexedDB/file__0.indexeddb.leveldb/MANIFEST-000001
+2021/06/28-13:31:27.815 15e592 Recovering log #339
+2021/06/28-13:31:27.815 15e592 Reusing old log /home/box/.config/Atom/IndexedDB/file__0.indexeddb.leveldb/000339.log 
+2021/06/28-13:31:29.873 15e8b9 Compacting 1@1 + 1@2 files
+2021/06/28-13:31:29.878 15e8b9 Generated table #342@1: 82 keys, 100760 bytes
+2021/06/28-13:31:29.878 15e8b9 Compacted 1@1 + 1@2 files => 100760 bytes
+2021/06/28-13:31:29.880 15e8b9 compacted to: files[ 0 0 1 0 0 0 0 ]
+2021/06/28-13:31:29.880 15e8b9 Delete type=2 #340
+2021/06/28-13:31:29.880 15e8b9 Delete type=2 #337

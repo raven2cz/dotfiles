@@ -1,0 +1,773 @@
+// Text and Source Base Colors
+.syntax--meta.syntax--arguments,
+.syntax--meta.syntax--method.syntax--syntax--body.syntax--syntax--java,
+.syntax--syntax--meta.syntax--syntax--method.syntax--body.syntax--source.syntax--cs,
+.syntax--none,
+.syntax--source,
+.syntax--text,
+.syntax--meta.syntax--set.syntax--variable,
+.syntax--meta.syntax--property-value .syntax--keyword.syntax--control.syntax--html.syntax--custom.syntax--elements,
+.syntax--markup.syntax--code .syntax--source,
+.syntax--variable.syntax--other.syntax--property,
+.syntax--constant.syntax--other.syntax--property,
+.syntax--meta.syntax--arguments .syntax--meta.syntax--function .syntax--variable {
+  color: @foreground;
+}
+
+// Punctuation
+.syntax--entity.syntax--quasi.syntax--element .syntax--meta.syntax--group.syntax--braces,
+.syntax--keyword.syntax--operator .syntax--keyword.syntax--operator.syntax--neon,
+.syntax--keyword.syntax--operator .syntax--operator.syntax--neon,
+.syntax--keyword.syntax--other.syntax--accessor,
+.syntax--meta.syntax--attribute-selector .syntax--keyword.syntax--operator.syntax--stylus,
+.syntax--meta.syntax--brace,
+.syntax--meta.syntax--delimiter,
+.syntax--meta.syntax--group.syntax--braces,
+.syntax--meta.syntax--punctuation.syntax--separator,
+.syntax--meta.syntax--separator,
+.syntax--punctuation,
+.syntax--punctuation.syntax--definition.syntax--string,
+.syntax--meta.syntax--delimiter.syntax--method.syntax--period {
+  color: @foreground;
+}
+
+// Comments
+.syntax--comment,
+.syntax--comment .syntax--text,
+.syntax--markup.syntax--strikethrough,
+.syntax--punctuation.syntax--definition.syntax--comment,
+.syntax--punctuation.syntax--whitespace.syntax--comment,
+.syntax--string.syntax--comment,
+.syntax--text.syntax--cancelled,
+.syntax--comment.syntax--block.syntax--documentation .syntax--entity,
+.syntax--comment.syntax--block.syntax--documentation .syntax--variable {
+  font-style: italic;
+  color: @gray;
+}
+
+// Keywords Inside Comments
+.syntax--comment.syntax--keyword,
+.syntax--comment.syntax--keyword.syntax--punctuation {
+  color: @fg2;
+}
+
+// DocBlockr & Other Keywords Inside Comments
+.syntax--comment.syntax--parameter,
+.syntax--comment.syntax--punctuation,
+.syntax--comment.syntax--string,
+.syntax--comment.syntax--type,
+.syntax--keyword.syntax--other.syntax--phpdoc.syntax--php,
+.syntax--punctuation.syntax--definition.syntax--keyword.syntax--javadoc,
+.syntax--source.syntax--groovy .syntax--keyword.syntax--other.syntax--documentation,
+.syntax--source.syntax--java .syntax--keyword.syntax--other.syntax--documentation,
+.syntax--storage.syntax--type.syntax--annotation.syntax--coffee,
+.syntax--storage.syntax--type.syntax--class.syntax--jsdoc {
+  color: @fg3;
+}
+
+// Entity
+.syntax--constant.syntax--language.syntax--name,
+.syntax--entity.syntax--name.syntax--type,
+.syntax--entity.syntax--other.syntax--inherited-class {
+  color: @yellow;
+}
+
+// Template String Punctuation
+.syntax--entity.syntax--name.syntax--tag.syntax--mustache,
+.syntax--entity.syntax--tag.syntax--tagbraces,
+.syntax--punctuation.syntax--definition.syntax--string.syntax--template,
+.syntax--string.syntax--quoted.syntax--template .syntax--punctuation.syntax--definition,
+.syntax--punctuation.syntax--definition.syntax--template-expression,
+.syntax--punctuation.syntax--quasi,
+.syntax--punctuation.syntax--section.syntax--embedded,
+.syntax--punctuation.syntax--section.syntax--embedded .syntax--source,
+.syntax--string.syntax--interpolated,
+.syntax--variable.syntax--other.syntax--interpolation.syntax--scss,
+.syntax--variable.syntax--interpolation.syntax--scss,
+.syntax--punctuation.syntax--definition.syntax--interpolation {
+  color: @aqua;
+}
+
+// Keywords
+.syntax--js.syntax--embedded.syntax--control.syntax--flow .syntax--keyword.syntax--operator.syntax--js,
+.syntax--keyword,
+.syntax--keyword.syntax--control,
+.syntax--keyword.syntax--operator.syntax--logical.syntax--python,
+.syntax--meta.syntax--at-rule.syntax--media .syntax--support.syntax--function.syntax--misc,
+.syntax--meta.syntax--prolog.syntax--haml,
+.syntax--meta.syntax--tag.syntax--sgml.syntax--doctype.syntax--html,
+.syntax--comment.syntax--other.syntax--doctype.syntax--jade,
+.syntax--source.syntax--cs .syntax--keyword.syntax--operator,
+.syntax--storage.syntax--type.syntax--function.syntax--jade,
+.syntax--storage.syntax--type.syntax--function.syntax--pug,
+.syntax--storage.syntax--type.syntax--import.syntax--haxe,
+.syntax--storage.syntax--type.syntax--import.syntax--include.syntax--jade,
+.syntax--storage.syntax--type.syntax--import.syntax--include.syntax--pug,
+.syntax--variable.syntax--documentroot,
+.syntax--meta.syntax--at-rule .syntax--keyword.syntax--control.syntax--at-rule,
+.syntax--punctuation.syntax--definition.syntax--directive,
+.syntax--variable.syntax--language.syntax--default.syntax--js {
+  color: @red;
+}
+
+// Reset Jade/Pug doctype italics
+.syntax--comment.syntax--other.syntax--doctype.syntax--jade {
+  font-style: normal;
+}
+
+// CSS At-Rule Punctuation (@) & At-Rule Vendor Prefixes
+.syntax--keyword.syntax--control.syntax--at-rule .syntax--support.syntax--type.syntax--property-vendor,
+.syntax--punctuation.syntax--definition.syntax--keyword {
+  color: @neutral-red;
+}
+
+// Operators
+.syntax--keyword.syntax--control.syntax--new,
+.syntax--keyword.syntax--control.syntax--operator,
+.syntax--keyword.syntax--operator,
+.syntax--keyword.syntax--other.syntax--arrow,
+.syntax--keyword.syntax--other.syntax--double-colon,
+.syntax--storage.syntax--type.syntax--arrow,
+.syntax--meta.syntax--attribute-selector .syntax--punctuation.syntax--separator.syntax--operator,
+.syntax--support.syntax--constant.syntax--mathematical-symbols,
+.syntax--entity.syntax--other.syntax--attribute-name.syntax--parent-selector .syntax--punctuation {
+  color: @aqua;
+}
+
+// Constants Punctuation
+.syntax--constant.syntax--other.syntax--color .syntax--punctuation.syntax--definition.syntax--constant,
+.syntax--constant.syntax--other.syntax--unit,
+.syntax--keyword.syntax--other.syntax--unit,
+.syntax--punctuation.syntax--section.syntax--flowtype {
+  color: @neutral-purple;
+}
+
+// Storage
+.syntax--storage,
+.syntax--storage.syntax--type.syntax--annotation,
+.syntax--storage.syntax--type.syntax--primitive {
+  color: @red;
+}
+
+.syntax--storage.syntax--modifier.syntax--import,
+.syntax--storage.syntax--modifier.syntax--package,
+.syntax--storage.syntax--type.syntax--import,
+.syntax--variable.syntax--import,
+.syntax--variable.syntax--package {
+  color: @foreground;
+}
+
+// Function Keyword
+.syntax--entity.syntax--quasi.syntax--tag.syntax--name,
+.syntax--meta.syntax--function .syntax--storage.syntax--type.syntax--matlab,
+.syntax--storage.syntax--type.syntax--function {
+  color: @aqua;
+}
+
+// Variables
+.syntax--entity.syntax--name.syntax--val.syntax--declaration,
+.syntax--entity.syntax--name.syntax--variable,
+.syntax--meta.syntax--definition.syntax--variable,
+.syntax--storage.syntax--type.syntax--variable,
+.syntax--variable,
+.syntax--variable.syntax--interpolation .syntax--variable,
+.syntax--variable.syntax--other.syntax--interpolation .syntax--variable,
+.syntax--variable.syntax--parameter.syntax--output.syntax--function.syntax--matlab,
+.syntax--variable.syntax--parameter.syntax--sass,
+.syntax--variable.syntax--other.syntax--interpolation.syntax--less,
+.syntax--variable.syntax--control.syntax--import.syntax--include.syntax--pug {
+  color: @blue;
+}
+
+// Variable - Punctuation
+.syntax--punctuation.syntax--definition.syntax--variable,
+.syntax--variable.syntax--interpolation,
+.syntax--variable.syntax--other.syntax--dollar .syntax--punctuation.syntax--dollar {
+  color: @neutral-blue;
+}
+
+// Object Properties
+.syntax--meta.syntax--property.syntax--object {
+  color: @foreground;
+}
+
+// Object Literal Properties
+.syntax--constant.syntax--other.syntax--object.syntax--key .syntax--string,
+.syntax--meta.syntax--object-literal.syntax--key {
+  color: @foreground;
+}
+
+// Parameters
+.syntax--meta.syntax--parameters,
+.syntax--variable.syntax--parameter {
+  color: @foreground;
+}
+
+// SASS Import URL
+.syntax--variable.syntax--parameter.syntax--url {
+  color: @green;
+}
+
+// Language Constants
+.syntax--constant,
+.syntax--constant.syntax--numeric,
+.syntax--constant.syntax--other,
+.syntax--constant.syntax--other.syntax--color,
+.syntax--constant.syntax--other.syntax--symbol,
+.syntax--support.syntax--constant.syntax--color,
+.syntax--variable.syntax--language {
+  color: @purple;
+}
+
+// User-Defined Constants
+.syntax--variable.syntax--other.syntax--constant,
+.syntax--constant.syntax--other.syntax--js {
+  color: @yellow;
+}
+
+// Escaped Characters
+.syntax--constant.syntax--character.syntax--escape,
+.syntax--constant.syntax--character.syntax--escaped,
+.syntax--constant.syntax--character.syntax--quoted,
+.syntax--constant.syntax--other.syntax--character-class.syntax--escape {
+  color: @red;
+}
+
+// Invalids and Illegals
+.syntax--invalid {
+  color: @foreground;
+  background-color: @red;
+}
+
+// Strings
+.syntax--string,
+.syntax--string.syntax--quoted.syntax--interpolated {
+  color: @green;
+}
+
+// Regular Expressions Text
+.syntax--source.syntax--regexp,
+.syntax--string.syntax--regexp {
+  color: @green;
+}
+
+// Regular Expressions Start & End Punctuation
+.syntax--string.syntax--regexp .syntax--punctuation.syntax--definition.syntax--string {
+  color: @fg3;
+}
+
+// Regular Expressions Character Class Punctuation ([])
+.syntax--keyword.syntax--control.syntax--set.syntax--regexp,
+.syntax--punctuation.syntax--definition.syntax--character-class,
+.syntax--string.syntax--regexp.syntax--character-class.syntax--ruby {
+  color: @purple;
+}
+
+// Regular Expressions Capturing Group
+.syntax--string.syntax--regexp.syntax--group {
+  color: @foreground;
+}
+
+// Regular Expressions Assertions
+.syntax--meta.syntax--assertion,
+.syntax--punctuation.syntax--definition.syntax--group.syntax--regexp {
+  color: @blue;
+}
+
+// Regular Expressions Character Class
+.syntax--constant.syntax--other.syntax--character-class.syntax--escape.syntax--backslash.syntax--regexp,
+.syntax--keyword.syntax--control.syntax--character-class.syntax--regexp,
+.syntax--string.syntax--regexp.syntax--character-class .syntax--constant.syntax--character.syntax--escape,
+.syntax--string.syntax--regexp .syntax--constant.syntax--character.syntax--character-class {
+  color: @yellow;
+}
+
+// Regular Expressions Quantifiers & Operators
+.syntax--string.syntax--regexp.syntax--arbitrary-repetition,
+.syntax--string.syntax--regexp.syntax--arbitrary-repetition .syntax--punctuation {
+  color: @aqua;
+}
+
+// Hyperlinks
+.syntax--constant.syntax--other.syntax--reference.syntax--link,
+.syntax--string.syntax--other.syntax--link,
+.syntax--link .syntax--entity {
+  color: @aqua;
+}
+
+// Hyperlink Punctuation
+.syntax--meta.syntax--image.syntax--inline .syntax--punctuation.syntax--definition.syntax--string,
+.syntax--meta.syntax--link.syntax--inline .syntax--punctuation.syntax--definition.syntax--string,
+.syntax--meta.syntax--link.syntax--reference .syntax--punctuation.syntax--definition.syntax--constant,
+.syntax--meta.syntax--link.syntax--reference.syntax--literal .syntax--punctuation.syntax--definition.syntax--constant,
+.syntax--meta.syntax--link.syntax--reference.syntax--literal .syntax--punctuation.syntax--definition.syntax--string,
+.syntax--link .syntax--punctuation.syntax--definition {
+  color: @neutral-aqua;
+}
+
+// Markup Tag Punctuation
+.syntax--punctuation.syntax--definition.syntax--tag {
+  color: @blue;
+}
+
+// Markdown Heading
+.syntax--markup.syntax--heading {
+  color: @green;
+}
+
+// Markdown Heading Punctuation
+.syntax--punctuation.syntax--definition.syntax--heading,
+.syntax--punctuation.syntax--definition.syntax--identity,
+.syntax--punctuation.syntax--definition.syntax--block.syntax--mustache {
+  color: @neutral-green;
+}
+
+// Markdown Bold Text
+.syntax--markup.syntax--bold {
+  font-weight: bold;
+  color: @orange;
+}
+
+// Markdown Bold Text Punctuation
+.syntax--punctuation.syntax--definition.syntax--bold {
+  font-weight: bold;
+  color: @neutral-orange;
+}
+
+// Markdown Italic Text
+.syntax--markup.syntax--italic {
+  font-style: italic;
+  color: @red;
+}
+
+// Markdown Italic Text Punctuation
+.syntax--punctuation.syntax--definition.syntax--italic {
+  font-style: italic;
+  color: @neutral-red;
+}
+
+// Markdown Inline Code
+.syntax--markup.syntax--raw.syntax--inline,
+.syntax--markup.syntax--raw,
+.syntax--markup.syntax--code {
+  color: @yellow;
+}
+
+// Markdown Inline Code Punctuation
+.syntax--markup.syntax--raw.syntax--inline .syntax--punctuation.syntax--definition.syntax--raw {
+  color: @neutral-yellow;
+}
+
+// Markdown Quoted
+.syntax--markup.syntax--quote,
+.syntax--comment.syntax--quote {
+  color: @purple;
+}
+
+// Markdown Quoted Punctuation
+.syntax--markup.syntax--quote .syntax--punctuation.syntax--definition.syntax--blockquote,
+.syntax--comment.syntax--quote .syntax--support.syntax--quote {
+  color: @neutral-purple;
+}
+
+// Markdown List
+.syntax--markup.syntax--list {
+  color: @blue;
+}
+
+// Markdown List Punctuation
+.syntax--markup.syntax--list .syntax--punctuation.syntax--definition.syntax--list_item {
+  color: @neutral-blue;
+}
+
+// Markdown Separators
+.syntax--meta.syntax--separator.syntax--markdown {
+  color: @gray;
+}
+
+// Support
+.syntax--support.syntax--class,
+.syntax--support.syntax--type,
+.syntax--variable.syntax--other.syntax--class {
+  color: @yellow;
+}
+
+// Function Calls
+.syntax--keyword.syntax--other.syntax--special-method,
+.syntax--meta.syntax--function-call .syntax--variable.syntax--function,
+.syntax--meta.syntax--function-call .syntax--entity.syntax--name.syntax--function,
+.syntax--support.syntax--function,
+.syntax--meta.syntax--at-rule.syntax--namespace .syntax--entity.syntax--name.syntax--function,
+.syntax--source.syntax--script.syntax--jade.syntax--entity.syntax--name.syntax--function.syntax--pug {
+  color: @aqua;
+}
+
+// Method Calls
+.syntax--meta.syntax--function-call.syntax--method .syntax--variable.syntax--function,
+.syntax--meta.syntax--function-call.syntax--static .syntax--variable.syntax--function,
+.syntax--meta.syntax--method-call,
+.syntax--meta.syntax--method-call .syntax--variable.syntax--function,
+.syntax--support.syntax--function.syntax--mutator,
+.syntax--meta.syntax--method-call .syntax--entity.syntax--name.syntax--function,
+.syntax--meta.syntax--method-call .syntax--support.syntax--function {
+  color: @neutral-aqua;
+}
+
+// Special Variables
+.syntax--support.syntax--module {
+  color: @purple;
+}
+
+// Entities
+.syntax--entity.syntax--name.syntax--accessor,
+.syntax--entity.syntax--name.syntax--function,
+.syntax--entity.syntax--name.syntax--section {
+  color: @green;
+}
+
+// Modules
+.syntax--entity.syntax--name.syntax--module,
+.syntax--entity.syntax--other.syntax--inherited-class.syntax--module {
+  color: @orange;
+}
+
+// HTML & CSS ID
+.syntax--constant.syntax--id.syntax--tag,
+.syntax--entity.syntax--name.syntax--tag.syntax--id,
+.syntax--entity.syntax--other.syntax--attribute-name.syntax--id,
+.syntax--meta.syntax--tag.syntax--attribute.syntax--id {
+  color: @orange;
+}
+
+// HTML & CSS ID Punctuation (#)
+.syntax--entity.syntax--other.syntax--attribute-name.syntax--id .syntax--punctuation.syntax--definition.syntax--entity {
+  color: @neutral-orange;
+}
+
+// HTML & CSS Class
+.syntax--entity.syntax--name.syntax--tag.syntax--class,
+.syntax--entity.syntax--other.syntax--attribute-name.syntax--class,
+.syntax--meta.syntax--tag.syntax--attribute.syntax--class {
+  color: @yellow;
+}
+
+// Jade/Pug Classname
+.syntax--meta.syntax--tag.syntax--attribute.syntax--class.syntax--jade {
+  color: @purple;
+}
+
+// HTML & CSS Class Punctuation (.syntax--)
+.syntax--entity.syntax--other.syntax--attribute-name.syntax--class .syntax--punctuation.syntax--definition.syntax--entity {
+  color: @neutral-yellow;
+}
+
+// CSS Attribute Selector Attribute Name
+.syntax--meta.syntax--attribute-selector .syntax--entity.syntax--other.syntax--attribute-name.syntax--attribute,
+.syntax--meta.syntax--attribute-selector .syntax--entity.syntax--other.syntax--attribute-name.syntax--stylus {
+  color: @neutral-yellow;
+}
+
+// HTML & XML Entity Punctuation
+.syntax--constant.syntax--character.syntax--entity .syntax--punctuation.syntax--definition.syntax--constant,
+.syntax--constant.syntax--character.syntax--entity .syntax--punctuation.syntax--definition.syntax--entity {
+  color: @neutral-purple;
+}
+
+// Class Names
+.syntax--entity.syntax--name.syntax--class,
+.syntax--entity.syntax--name.syntax--type.syntax--class {
+  color: @yellow;
+}
+
+// Markup Tag
+.syntax--entity.syntax--name.syntax--function.syntax--neon,
+.syntax--entity.syntax--name.syntax--tag,
+.syntax--entity.syntax--tag,
+.syntax--keyword.syntax--control.syntax--untitled,
+.syntax--keyword.syntax--doctype.syntax--xml,
+.syntax--keyword.syntax--operator .syntax--support.syntax--other.syntax--neon,
+.syntax--punctuation.syntax--definition.syntax--prolog.syntax--haml,
+.syntax--source.syntax--less .syntax--keyword.syntax--control.syntax--html.syntax--elements {
+  color: @blue;
+}
+
+// HTML Attribute Names
+.syntax--entity.syntax--name.syntax--attribute-name,
+.syntax--entity.syntax--other.syntax--attribute-name,
+.syntax--meta.syntax--section.syntax--attributes.syntax--haml .syntax--constant.syntax--other.syntax--symbol.syntax--ruby {
+  color: @yellow;
+}
+
+// CSS Pseudo Elements/Classes & Vendor Prefixes
+.syntax--entity.syntax--other.syntax--attribute-name.syntax--placeholder .syntax--punctuation.syntax--definition.syntax--entity,
+.syntax--entity.syntax--other.syntax--attribute-name.syntax--pseudo-class,
+.syntax--entity.syntax--other.syntax--attribute-name.syntax--pseudo-element,
+.syntax--entity.syntax--other.syntax--attribute-name.syntax--tag.syntax--pseudo-class,
+.syntax--entity.syntax--other.syntax--attribute-name.syntax--tag.syntax--pseudo-element,
+.syntax--support.syntax--type.syntax--vendor-prefix {
+  color: @neutral-yellow;
+}
+
+// CSS Animations & Keyframes
+.syntax--entity.syntax--function-name.syntax--stylus,
+.syntax--entity.syntax--other.syntax--animation-keyframe.syntax--stylus,
+.syntax--entity.syntax--other.syntax--animation-name,
+.syntax--keyword.syntax--language.syntax--function.syntax--misc.syntax--stylus,
+.syntax--meta.syntax--at-rule.syntax--keyframes .syntax--entity.syntax--name.syntax--function,
+.syntax--variable.syntax--other.syntax--animation-name {
+  color: @aqua;
+}
+
+.syntax--meta.syntax--class.syntax--body,
+.syntax--meta.syntax--tag {
+  color: @foreground;
+}
+
+// Markdown Image & Hyperlink
+.syntax--meta.syntax--image,
+.syntax--meta.syntax--link,
+.syntax--link .syntax--markup.syntax--underline.syntax--link {
+  color: @purple;
+}
+
+// Markdown Image & Hyperlink Punctuation
+.syntax--meta.syntax--image .syntax--punctuation.syntax--definition.syntax--metadata,
+.syntax--meta.syntax--link .syntax--punctuation.syntax--definition.syntax--metadata,
+.syntax--link .syntax--markup.syntax--underline.syntax--link .syntax--punctuation.syntax--definition {
+  color: @neutral-purple;
+}
+
+.syntax--meta.syntax--require {
+  color: @green;
+}
+
+// Function Call Braces
+.syntax--constant.syntax--name.syntax--attribute.syntax--tag.syntax--jade,
+.syntax--meta.syntax--brace.syntax--round,
+.syntax--punctuation.syntax--definition.syntax--parameters,
+.syntax--punctuation.syntax--definition.syntax--method-parameters,
+.syntax--punctuation.syntax--section.syntax--function.syntax--css,
+.syntax--meta.syntax--function-call .syntax--meta.syntax--group .syntax--punctuation.syntax--definition.syntax--group,
+.syntax--punctuation.syntax--separator.syntax--variable.syntax--ruby,
+.syntax--meta.syntax--function-call .syntax--punctuation.syntax--definition.syntax--arguments,
+.syntax--constant.syntax--name.syntax--attribute.syntax--tag.syntax--pug {
+  color: @fg3;
+}
+
+// CSS Property Names
+.syntax--meta.syntax--property-name,
+.syntax--support.syntax--type.syntax--property-name {
+  color: @green;
+}
+
+// CSS Property Name Vendor Prefixes
+.syntax--meta.syntax--property-name .syntax--support.syntax--type.syntax--vendor-prefix {
+  color: @neutral-green;
+}
+
+// CSS Property Values
+.syntax--constant.syntax--string.syntax--sass,
+.syntax--meta.syntax--property-value,
+.syntax--support.syntax--constant.syntax--property-value {
+  color: @foreground;
+}
+
+// CSS Property Value Vendor Prefixes
+.syntax--meta.syntax--property-value .syntax--support.syntax--type.syntax--vendor-prefix {
+  color: @fg3;
+}
+
+// Diff Foreground Text
+.syntax--source.syntax--diff {
+  color: @fg4;
+}
+
+// Diff Header Text From
+.syntax--meta.syntax--diff.syntax--header.syntax--from-file {
+  color: @blue;
+}
+
+// Diff Header Text From Punctuation
+.syntax--punctuation.syntax--definition.syntax--from-file {
+  color: @neutral-blue;
+}
+
+// Diff Header Text To
+.syntax--meta.syntax--diff.syntax--header.syntax--to-file {
+  color: @purple;
+}
+
+// Diff Header Text To Punctuation
+.syntax--punctuation.syntax--definition.syntax--to-file {
+  color: @neutral-purple;
+}
+
+// Diff Additions & Deletions Stats
+.syntax--meta.syntax--diff.syntax--range,
+.syntax--meta.syntax--toc-list.syntax--line-number {
+  color: @yellow;
+}
+
+// Diff Additions & Deletions Stats Punctuation
+.syntax--punctuation.syntax--definition.syntax--range.syntax--diff {
+  color: @neutral-yellow;
+}
+
+// GitGutter & Diff Deleted
+.syntax--markup.syntax--deleted,
+.syntax--punctuation.syntax--definition.syntax--deleted {
+  color: @red;
+}
+
+// GitGutter & Diff Inserted
+.syntax--markup.syntax--inserted,
+.syntax--punctuation.syntax--definition.syntax--inserted {
+  color: @green;
+}
+
+// GitGutter & Diff Changed
+.syntax--markup.syntax--changed,
+.syntax--punctuation.syntax--definition.syntax--changed {
+  color: @yellow;
+}
+
+// GitGutter ignored
+.syntax--markup.syntax--ignored {
+  color: @gray;
+}
+
+// GitGutter untracked
+.syntax--markup.syntax--untracked {
+  color: @gray;
+}
+
+.syntax--brackethighlighter.syntax--tag {
+  color: @fg3;
+}
+
+.syntax--brackethighlighter.syntax--curly {
+  color: @fg3;
+}
+
+.syntax--brackethighlighter.syntax--round {
+  color: @fg3;
+}
+
+.syntax--brackethighlighter.syntax--square {
+  color: @fg3;
+}
+
+.syntax--brackethighlighter.syntax--angle {
+  color: @fg3;
+}
+
+.syntax--brackethighlighter.syntax--quote {
+  color: @fg3;
+}
+
+.syntax--brackethighlighter.syntax--unmatched {
+  color: @red;
+}
+
+.syntax--sublimelinter.syntax--mark.syntax--error {
+  color: @red;
+}
+
+.syntax--sublimelinter.syntax--gutter-mark {
+  color: @gray;
+}
+
+.syntax--sublimelinter.syntax--mark.syntax--warning {
+  color: @yellow;
+}
+
+.syntax--raw.syntax--nibble.syntax--upper {
+  color: @foreground;
+}
+
+.syntax--raw.syntax--nibble.syntax--lower {
+  color: @foreground;
+}
+
+.syntax--hexviewer.syntax--highlight {
+  color: @background;
+  background-color: @yellow;
+}
+
+.syntax--hexviewer.syntax--highlight.syntax--edited {
+  color: @background;
+  background-color: @orange;
+}
+
+.syntax--glyph.syntax--carriage-return {
+  color: @guide;
+}
+
+.syntax--glyph.syntax--new-line {
+  color: @guide;
+}
+
+.syntax--keyword.syntax--control.syntax--header.syntax--todo {
+  color: @green;
+  background-color: @headingBackground;
+}
+
+.syntax--notes.syntax--todo {
+  color: @fg3;
+}
+
+.syntax--text.syntax--todo .syntax--punctuation.syntax--definition.syntax--bold,
+.syntax--text.syntax--todo .syntax--punctuation.syntax--definition.syntax--italic {
+  color: @bg4;
+}
+
+.syntax--meta.syntax--item.syntax--todo.syntax--pending {
+  color: @foreground;
+}
+
+.syntax--punctuation.syntax--definition.syntax--bullet.syntax--pending.syntax--todo {
+  color: @gray;
+}
+
+.syntax--punctuation.syntax--definition.syntax--bullet.syntax--completed.syntax--todo {
+  color: @aqua;
+}
+
+.syntax--punctuation.syntax--definition.syntax--bullet.syntax--cancelled.syntax--todo {
+  color: @red;
+}
+
+.syntax--string.syntax--other.syntax--tag.syntax--todo.syntax--critical {
+  font-weight: bold;
+  color: @red;
+}
+
+.syntax--string.syntax--other.syntax--tag.syntax--todo.syntax--high {
+  font-weight: bold;
+  color: @orange;
+}
+
+.syntax--string.syntax--other.syntax--tag.syntax--todo.syntax--low {
+  font-weight: bold;
+  color: @blue;
+}
+
+.syntax--string.syntax--other.syntax--tag.syntax--todo.syntax--today {
+  font-weight: bold;
+  color: @yellow;
+}
+
+.syntax--meta.syntax--tag.syntax--todo {
+  color: @purple;
+}
+
+.syntax--punctuation.syntax--definition.syntax--url,
+.syntax--todo.syntax--url {
+  color: @blue;
+}
+
+.syntax--meta.syntax--punctuation.syntax--archive.syntax--todo,
+.syntax--meta.syntax--punctuation.syntax--separator.syntax--todo {
+  font-style: italic;
+  color: @gray;
+}

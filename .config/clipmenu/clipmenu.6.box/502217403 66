@@ -1,0 +1,1 @@
+picom --experimental-backends --config $HOME/.config/picom/picom.

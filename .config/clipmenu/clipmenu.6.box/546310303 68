@@ -1,0 +1,32 @@
+           int quantity, int longShort, String symbol) {
+        try {
+            context.getRequiredAttribute(POSITIONS).addPosition(getClosedPosition(id, entryTimePattern, entryPrice, exitTimePattern, exitPrice, quantity, longShort, symbol));
+        } catch (ParseException e) {
+            throw new IllegalArgumentException("The time pattern is not correctly configured! e=" + e.getMessage(), e);
+        }
+    }
+
+    // Create opened position by basic attributes
+    private Position getClosedPosition(int id, String entryTimePattern, double entryPrice, String exitTimePattern, double exitPrice,
+            int quantity, int longShort, String symbol) throws ParseException {
+        return closePosition(getOpenedPosition(id, entryTimePattern, entryPrice, quantity, longShort, symbol), exitTimePattern, exitPrice);
+    }
+
+    // Create opened position by basic attributes
+    private Position getOpenedPosition(int id, String entryTimePattern, double entryPrice,
+            int quantity, int longShort, String symbol) throws ParseException {
+        return new Position(id, null, "strategy1",
+                CalendarUtils.createByDateTime(entryTimePattern).getTime(), longShort, symbol,
+                "account1", entryPrice, quantity);
+    }
+
+    // Close the position, new domain object is created.
+    private Position closePosition(Position position, String exitTimePattern, double exitPrice) throws ParseException {
+        Position positionClosed = position.copyDeep();
+        positionClosed.setExitTime(CalendarUtils.createByDateTime(exitTimePattern).getTime());
+        positionClosed.setPositionExitIndex(positionClosed.getExitTime().getTime()); // indices are driven by time for this example
+        positionClosed.setExitPrice(exitPrice);
+        positionClosed.setPositionStatus(PositionStatus.CLOSED);
+
+        return positionClosed;
+    }

@@ -1,0 +1,12 @@
+        filter1_short = BollingerBand(C, (10 + (Filter1_N2 * 5)), -2) > BollingerBand(C, (10 + (Filter1_N1 * 3)), -2);
+    end;
+    case 10a : {&Filter1_N1=FIXED} {&Filter1_N2=-2|2} //ID: 1.11
+    begin
+        filter1_long  = Range > (Filter1_N1 * 0.15) * AvgTrueRange((Filter1_N2 * 2));
+        filter1_short = Range < (Filter1_N1 * 0.15) * AvgTrueRange((Filter1_N2 * 2));
+    end;
+    case 10b : {&Filter1_N1=FIXED} {&Filter1_N2=-2|2} //ID: 1.12
+    begin
+       filter1_long  = Range < (Filter1_N1 * 0.15) * AvgTrueRange((Filter1_N2 * 2));
+       filter1_short = Range > (Filter1_N1 * 0.15) * AvgTrueRange((Filter1_N2 * 2));
+    end;

@@ -1,0 +1,80 @@
+        Filter1_Long = (Close - CloseD(1)) < 0;
+        Filter1_Short = (CloseD(1) - Close) < 0;
+    end;
+    case 23 : begin 
+        Filter1_Long = AvgTrueRange(Filter1_N1 * 3) < CloseD(1) - LowD(0); 
+        Filter1_Short = AvgTrueRange(Filter1_N1 * 3) < HighD(0) - CloseD(1);        
+    end; 
+    case 24 : begin 
+        Filter1_Long = AvgTrueRange(Filter1_N1 * 3) > CloseD(1) - LowD(0); 
+        Filter1_Short = AvgTrueRange(Filter1_N1 * 3) > HighD(0) - CloseD(1);     
+    end; 
+    { Price Action Filters }
+    case 25 : begin 
+        Filter1_Long = (C - lowest(L,Filter1_N2)) > (AvgTrueRange (3*Filter1_N1) );
+        Filter1_Short = (C - highest(H,Filter1_N2)) < - (AvgTrueRange (3*Filter1_N1)); 
+    end;  
+    case 26 : begin 
+        Filter1_Long = (C - lowest(L,Filter1_N2)) < (AvgTrueRange (3*Filter1_N1) );
+        Filter1_Short = (C - highest(H,Filter1_N2 )) > - (AvgTrueRange (3*Filter1_N1)); 
+    end;  
+    case 27 : begin 
+        Filter1_Long = L[Filter1_N1] >= CloseD(1); 
+        Filter1_Short = H[Filter1_N1] <= CloseD(1); 
+    end; 
+    case 28 : begin 
+        Filter1_Long = close > OpenD(0); 
+        Filter1_Short = close < OpenD(0); 
+    end; 
+    case 29 : begin 
+        Filter1_Long = close < OpenD(0); 
+        Filter1_Short = close > OpenD(0); 
+    end; 
+    case 30 : begin 
+        Filter1_Long = TrueRange >= OpenD(0) - HighD(Filter1_N1); 
+        Filter1_Short = TrueRange <= OpenD(0) - LowD(Filter1_N1); 
+    end; 
+    case 31 : begin 
+        Filter1_Long = LowD(0) >= CloseD(1) - ((Filter1_N1 * 50) / BigPointValue); 
+        Filter1_Short = HighD(0) <= closeD(1) + ((Filter1_N1 * 50) / BigPointValue); 
+    end; 
+    case 32 : begin 
+        Filter1_Long = LowD(0) <= CloseD(1) - ((Filter1_N1 * 50) / BigPointValue); 
+        Filter1_Short = HighD(0) >= closeD(1) + ((Filter1_N1 * 50) / BigPointValue); 
+    end;
+    { Volume Based Filters }        
+    case 33 : begin  
+        Filter1_Long =  Volume  > average(volume, 3 * Filter1_N1); 
+        Filter1_Short = Filter1_Long;
+    end; 
+    case 34 : begin  
+        Filter1_Long =  Volume  < average(volume, 3 * Filter1_N1); 
+        Filter1_Short = Filter1_Long; 
+    end;
+    case 35 : begin   
+        Filter1_Long =  Volume  > average(volume, 3 * Filter1_N1); 
+        Filter1_Short = Volume  > average(volume, 3 * Filter1_N2);
+    end; 
+    case 36 : begin  
+        Filter1_Long =  Volume  < average(volume, 3 * Filter1_N1); 
+        Filter1_Short =  Volume  < average(volume, 3 * Filter1_N2);  
+    end;
+    case 37 : begin  
+        Filter1_Long =  Volume * (0.1 * Filter1_N2) > average(volume, 2 * Filter1_N1); 
+        Filter1_Short = Volume * (0.1 * Filter1_N2) > average(volume, 2 * Filter1_N1); 
+    end;
+    case 38 : begin  
+        Filter1_Long =  Volume * (0.1 * Filter1_N2) < average(volume, 2 * Filter1_N1); 
+        Filter1_Short = Volume * (0.1 * Filter1_N2) < average(volume, 2 * Filter1_N1);  
+    end;            
+    case 39 : begin  
+        Filter1_Long =  Volume < Volume[1];
+        Filter1_Short = Volume < Volume[1];
+    end;
+    case 40 : begin  
+        Filter1_Long =  Volume > Volume[1];
+        Filter1_Short = Volume > Volume[1];    
+    end;  
+//@switch-group-end
+end; {$switch:Filter1_Switch}
+//@sectionEnd

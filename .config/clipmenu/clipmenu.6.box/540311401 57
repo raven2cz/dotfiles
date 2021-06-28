@@ -1,0 +1,1 @@
+awful.util.spawn(os.getenv("HOME") .. "/.config/polybar/

@@ -1,0 +1,30 @@
+        // CBOE Volatility Index: VX (VIX)
+        asset = new Asset();
+        asset.setType(AssetTypeEnum.FUTURE.name());
+        asset.setGroup(AssetGroupEnum.INDEXES.name());
+        asset.setSymbol("VX");
+        asset.setContinuousSymbol("@VX");
+        asset.setName("CBOE Volatility Index VIX");
+        asset.setExchange("CBOEF");
+        asset.setCurrency("USD");
+        asset.setContractSize(1000);
+        asset.setTicUnit("Points");
+        asset.setMinimumMove(0.05);
+        asset.setFullPointValue(1000);
+        asset.setInitMargin(13750);
+        asset.setMaintMargin(12500);
+        asset.setMarketOpen(getTime("8:30"));
+        asset.setMarketClose(getTime("15:15"));
+        asset.setTimeTemplate("REGULAR");
+        asset.setRecSession("8:30-15:15");
+        assets.add(asset);
+
+        // Mini CBOE Volatility Index : VXM
+        asset = new Asset();
+        asset.setType(AssetTypeEnum.FUTURE.name());
+        asset.setGroup(AssetGroupEnum.INDEXES.name());
+        asset.setSymbol("VXM");
+        asset.setContinuousSymbol("@VXM");
+        asset.setName("Mini CBOE Volatility Index");
+        asset.setExchange("CBOEF");
+        asset.setCurrency("USD");

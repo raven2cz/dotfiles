@@ -1,0 +1,69 @@
+	case 2: begin //High picture deployment - Chart pattern 2 - Close <> OpenD(1)
+		modeLong = C > OpenD(1);
+		modeShort = C < OpenD(1);
+	end;
+	case 3: begin //High picture deployment - Chart pattern 3 - Close <> OpenD(0)
+		modeLong = C > OpenD(0);
+		modeShort = C < OpenD(0);
+	end;
+	case 4: begin //High picture deployment - Chart pattern 4 - CloseD(1) <> OpenD(1)
+		modeLong = CloseD(1) < OpenD(1);
+		modeShort = CloseD(1) > OpenD(1);
+	end;
+	case 5: begin //High picture deployment - Chart pattern 5 - CloseD(1) <> OpenD(0)
+		modeLong =  CloseD(1) < OpenD(0);
+		modeShort = CloseD(1) > OpenD(0);
+	end;
+	case 6: begin //High picture deployment - Chart pattern 6 - OpenD(0) <> OpenD(1)
+		modeLong =  OpenD(0) < OpenD(1);
+		modeShort = OpenD(0) > OpenD(1);
+	end;
+	case 7: begin //High picture deployment - ADX (Main timeframe)
+		if ADX(30) <= 20 then begin
+			modeLong = true; modeShort = true;
+		end;
+	end;
+	case 8: begin //High picture deployment - ADX (Higher timeframe)
+		if ADX(30) of data(HTF) <= 20 then begin
+			modeLong = true; modeShort = true;
+		end;
+	end;
+    //****** PART 2: SYSTEM-LEVEL TIMING *******
+	case 9: begin //HOD/LOD
+		modeLong =  High <> HighD(0); //Not high of the day
+		modeShort = Low <> LowD(0); //Not low of the day
+	end;
+	case 10: begin //Entry bar quality 1
+		modeLong = C > O;
+		modeShort = C < O;
+	end;
+	case 11: begin //Entry bar quality 2
+		modeLong =  C > C[1];
+		modeShort = C < C[1];
+	end;
+    //****** PART 4 : MARKET QUALITY TIMING ********
+	case 12: begin //MQ Trend, MQ Trend CALCULATION START
+		if MQ_Trend then begin
+			modeLong = true; modeShort = true;
+		end;
+	end;
+	{ SFB Adapted filters - HOW/HOM}
+    case 13: begin
+       	modeLong = High of data(HTF) <> HighW(0);
+       	modeShort = Low of data(HTF) <> LowW(0);
+   	end;
+    case 14: begin
+       	modeLong = High of data(HTF) <> HighM(0);
+       	modeShort = Low of data(HTF) <> LowM(0);
+   	end;
+   	{ SFB Adapted filters - Higher Picture Deployment}
+   	case 15: begin //High picture deployment - Chart pattern 1 - CloseD(1) <> CloseW(1)
+   		modeLong = CloseD(1) > CloseW(1);
+   		modeShort = CloseD(1) < CloseW(1);
+   	end;
+   	case 16: begin //High picture deployment - Chart pattern 2 - CloseD(1) <> OpenW(1)
+   		modeLong = CloseD(1) > OpenW(1);
+   		modeShort = CloseD(1) < OpenW(1);
+   	end;
+   	case 17: begin //High picture deployment - Chart pattern 3 - CloseD(1) <> OpenW(0)
+   		modeLong = CloseD(1) > OpenW(0);

@@ -1,0 +1,17 @@
+    public static void analyzeNormalizedEquity(SystemCandidateDO candidate, String ptfImagesPath, String ptfProjectPath, AttributeModel context) throws Exception {
+        // configuration consts
+        // no estimation by email. We use fixed norm risk with value 5000 USD.
+        double normRisk = 5000; //USD
+        // if the main stats are worst as -20% the normalization is not used!
+        double th = -20.0; //%
+
+        // create folder for images
+        File imageFileFolder = createPtfImageFolder(candidate, ptfImagesPath);
+        // get the equity with MAX TECH SL
+        CombinedEquity equity = getMaxTechSlEquity(candidate);
+
+        // calculate normalization
+        CombinedEquity normEquity = EquityNormalizationLibrary.normalizeByRisk(equity, normRisk, false);
+        computeEquityStats(normEquity, context);
+
+        // compare original and normalized equity

@@ -1,0 +1,34 @@
+.syntax--source.syntax--css {
+  // highlight properties/values if they are supported
+  .syntax--property-name,
+  .syntax--property-value {
+    color: @mono-2;
+    &.syntax--support {
+      color: @hue-1;
+    }
+  }
+  .syntax--comment.syntax--block.syntax--css{
+    font-style: italic;
+  }
+
+  .syntax--type.syntax--vendored.syntax--property-name.syntax--css{
+    color: @hue-1;
+  }
+
+  .syntax--punctuation.syntax--separator.syntax--list.syntax--comma.syntax--css{
+    color: @mono-1;
+  }
+
+  .syntax--punctuation.syntax--definition.syntax--entity.syntax--begin.syntax--bracket.syntax--square.syntax--css{
+    color: @mono-1;
+  }
+
+  .syntax--punctuation.syntax--definition.syntax--entity.syntax--end.syntax--bracket.syntax--square.syntax--css{
+    color: @mono-1;
+  }
+
+  .syntax--support.syntax--constant.syntax--property-value.syntax--css{
+    color: @hue-6;
+  }
+  
+}

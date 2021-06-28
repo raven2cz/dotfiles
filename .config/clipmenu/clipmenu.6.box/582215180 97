@@ -1,0 +1,2 @@
+    case 13 : {&Filter1_N1=-4|4} {&Filter1_N2=FIXED} //ID: 2.0  N1 -4/+4, N2 zafixovat
+    begin

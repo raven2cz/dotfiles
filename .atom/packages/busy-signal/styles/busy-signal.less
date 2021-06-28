@@ -1,0 +1,50 @@
+// The ui-variables file is provided by base themes provided by Atom.
+//
+// See https://github.com/atom/atom-dark-ui/blob/master/styles/ui-variables.less
+// for a full listing of what's available.
+@import "ui-variables";
+
+busy-signal {
+  position: relative;
+  width: 16px;
+  height: 100%;
+
+  &.idle,
+  &.busy {
+    &::before {
+      content: '';
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      top: 50%;
+      left: 5px;
+      margin-top: -3px;
+      border-radius: 50%;
+
+      transition: background .5s linear;
+    }
+  }
+
+  &.idle {
+    &::before {
+      background: @text-color-success;
+    }
+  }
+
+  &.busy {
+    cursor: wait;
+
+    &::before {
+      background-color: @text-color-warning;
+      animation: bounce 1.0s infinite ease-in-out;
+    }
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: scale(1.0);
+  } 50% {
+    transform: scale(.6);
+  }
+}

@@ -1,0 +1,7 @@
+        // support cut equity to required interval
+        if (interval != null) {
+            equity = EquityBasicOperationsLibrary.cutTimeRestrictionEquity(interval, equity, true);
+            if (equity.size() == 0) {
+                throw new IllegalArgumentException("The equity has no trade. Cannot calculate BootScore. equity=" + id);
+            }
+        }

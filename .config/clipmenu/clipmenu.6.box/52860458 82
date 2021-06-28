@@ -1,0 +1,8 @@
+        List<ValueHighLow> values = createValuesHighLow(mainOOS, true);
+        // 3. create set of eqs which belongs to this group
+        for (ValueHighLow value : values) {
+            value.origSet = mainOOS.stream().filter(e -> groupPass(value, e)).collect(Collectors.toSet());
+        }
+        // 4. validate group performance in the Y1, Y2... OOS - print results
+        System.out.println("NPDH Stats:");
+        validateGroupPerformance(values, lists, true);

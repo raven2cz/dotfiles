@@ -1,0 +1,57 @@
+{
+  "_from": "https://www.atom.io/api/packages/atom-material-syntax/versions/1.0.8/tarball",
+  "_id": "atom-material-syntax@1.0.8",
+  "_inBundle": false,
+  "_integrity": "sha512-Sr9lYOlqNkLACOvVKQDgGdN8D+qRuhUjWmr9usWFNxKf/ec5WoYafUFah0M7UgdUZEa3CSbT2cBq6sK2rPX+Jw==",
+  "_location": "/atom-material-syntax",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/atom-material-syntax/versions/1.0.8/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/atom-material-syntax/versions/1.0.8/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/atom-material-syntax/versions/1.0.8/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/atom-material-syntax/versions/1.0.8/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/atom-material-syntax/versions/1.0.8/tarball",
+  "_shasum": "7e8a52dc55a491cd3d4338cea7ad769fb436c13d",
+  "_spec": "https://www.atom.io/api/packages/atom-material-syntax/versions/1.0.8/tarball",
+  "_where": "/tmp/apm-install-dir-202151-538201-zwu4p6.bvf8",
+  "bugs": {
+    "url": "https://github.com/silvestreh/atom-material-syntax/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "A dark syntax theme for Atom that uses Google's Material Design color palette",
+  "engines": {
+    "atom": ">=1.13.0 <2.0.0"
+  },
+  "homepage": "https://github.com/silvestreh/atom-material-syntax#readme",
+  "keywords": [
+    "syntax",
+    "theme",
+    "material",
+    "material design"
+  ],
+  "license": "MIT",
+  "name": "atom-material-syntax",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/silvestreh/atom-material-syntax.git"
+  },
+  "theme": "syntax",
+  "version": "1.0.8",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

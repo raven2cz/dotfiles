@@ -1,0 +1,47 @@
+    case 13 : {&Filter1_N1=-4|4} {&Filter1_N2=FIXED} //ID: 2.0  N1 -4/+4, N2 zafixovat
+    begin
+      filter1_long = C < xAverage(C, ((10 * Filter1_N2) + (3 * Filter1_N1)));
+      filter1_short = C > xAverage(C,((10 * Filter1_N2) + (3 * Filter1_N1)));
+    end;
+    case 14 : {&Filter1_N1=-4|4} {&Filter1_N2=FIXED} //ID: 2.1 N1 -4/+4, N2 zafixovat
+    begin
+      filter1_long = C > xAverage(C, ((10 * Filter1_N2) + (3 * Filter1_N1)));
+      filter1_short = C < xAverage(C,((10 * Filter1_N2) + (3 * Filter1_N1)));
+    end;
+    //----vyuziti dvou klouzavych prumeru
+    case 15 : {&Filter1_N1=-4|4} {&Filter1_N2=-4|4} //ID: 2.2 N1 -4/+4, N2 -4/+4
+    begin
+      filter1_long = xAverage(C, (2 + Filter1_N1)) < xAverage(C, (2 + Filter1_N2));
+      filter1_short = xAverage(C, (2 + Filter1_N1))> xAverage(C, (2 + Filter1_N2));
+    end;
+    case 16 : {&Filter1_N1=-4|4} {&Filter1_N2=-4|4} //ID: 2.3 N1 -4/+4, N2 -4/+4
+    begin
+      filter1_long = xAverage(C, (2 + Filter1_N1)) < xAverage(C, (2 + Filter1_N2));
+      filter1_short = xAverage(C, (2 + Filter1_N1))> xAverage(C, (2 + Filter1_N2));
+    end;
+    // rozdil mezi dvema indikatory - velikost a kladne/zaporne hodnoty kvuli Long/short (jedna bude mit kladne, druha zaporne)
+    case 17 : {&Filter1_N1=FIXED} {&Filter1_N2=-4|4} //ID: 2.4  N1 FIX, N2 -4/+4
+    begin
+      filter1_long = xAverage(C, Filter1_N2) - xAverage(C, 20) > (AvgTrueRange(25) * (0.1 * Filter1_N1));
+      filter1_short = xAverage(C, Filter1_N2)- xAverage(C, 20)  < -(AvgTrueRange(25) * (0.1 * Filter1_N1));
+    end;
+    case 18 : {&Filter1_N1=FIXED} {&Filter1_N2=-4|4} //ID: 2.5 N1 FIX, N2 -4/+4
+    begin
+      filter1_long = xAverage(C, Filter1_N2) - xAverage(C, 20) < (AvgTrueRange(25) * (0.1 * Filter1_N1));
+      filter1_short = xAverage(C, Filter1_N2)- xAverage(C, 20)  > -(AvgTrueRange(25) * (0.1 * Filter1_N1));
+    end;
+    case 19 : {&Filter1_N1=FIXED} {&Filter1_N2=-3|3} //ID: 2.6  N1 FIX, N2 -3/+3
+    begin
+      filter1_long = xAverage(C, (10 + (Filter1_N2 * 2))) - xAverage(C, 100) < (AvgTrueRange(25) * (0.1 * Filter1_N1));
+      filter1_short = xAverage(C, (10 + (Filter1_N2 * 2))) - xAverage(C, 100)  > -(AvgTrueRange(25) * (0.1 * Filter1_N1));
+    end;
+    case 20 : {&Filter1_N1=FIXED} {&Filter1_N2=-3|3} //ID: 2.7  N1 FIX, N2 -3/+3
+    begin
+      filter1_long = xAverage(C, 20) - xAverage(C, 100) < (AvgTrueRange(Filter1_N2 * 5) * (0.1 * Filter1_N1));
+      filter1_short = xAverage(C, 20) - xAverage(C, 100) > -(AvgTrueRange(Filter1_N2 * 5) * (0.1 * Filter1_N1));
+    end;
+    case 21 : {&Filter1_N1=-4|4} {&Filter1_N2=FIXED} //ID: 2.8  N1 -4/+4, N2 FIX
+    begin
+      filter1_long =  xAverage(C, (Filter1_N1 * 2)) - xAverage(C, (Filter1_N2 * 2)) <  AvgTrueRange(25);
+      filter1_short = xAverage(C, (Filter1_N1 * 2)) - xAverage(C, (Filter1_N2 * 2)) > -AvgTrueRange(25);
+    end;

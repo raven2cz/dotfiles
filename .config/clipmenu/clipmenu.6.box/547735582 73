@@ -1,0 +1,10 @@
+    private Map<String, SequenceService<T>> sequenceServices;
+    private Map<String, SequenceService<ModifyPosition>> modifySequenceServices;
+    private Map<String, ModifyPosition> openedModifiers;
+
+    private Class<? extends SequenceService<T>> sequenceServiceClass;
+    private Class<? extends SequenceService<ModifyPosition>> modifySequenceServiceClass;
+
+    private AttributeModel config;
+
+    @Autowired

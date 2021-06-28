@@ -1,0 +1,14 @@
+'use babel';
+
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+exports['default'] = setFontSize;
+
+function setFontSize(size) {
+    var fontSize = size ? size + 'px' : null;
+    document.documentElement.style.fontSize = fontSize;
+}
+
+module.exports = exports['default'];
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2JveC8uYXRvbS9wYWNrYWdlcy9hdG9tLW1hdGVyaWFsLXVpL2xpYi9mb250cy9zZXQtZm9udC1zaXplLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLFdBQVcsQ0FBQzs7Ozs7cUJBRVksV0FBVzs7QUFBcEIsU0FBUyxXQUFXLENBQUMsSUFBSSxFQUFFO0FBQ3RDLFFBQU0sUUFBUSxHQUFHLElBQUksR0FBTSxJQUFJLFVBQU8sSUFBSSxDQUFDO0FBQzNDLFlBQVEsQ0FBQyxlQUFlLENBQUMsS0FBSyxDQUFDLFFBQVEsR0FBRyxRQUFRLENBQUM7Q0FDdEQiLCJmaWxlIjoiL2hvbWUvYm94Ly5hdG9tL3BhY2thZ2VzL2F0b20tbWF0ZXJpYWwtdWkvbGliL2ZvbnRzL3NldC1mb250LXNpemUuanMiLCJzb3VyY2VzQ29udGVudCI6WyIndXNlIGJhYmVsJztcblxuZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gc2V0Rm9udFNpemUoc2l6ZSkge1xuICAgIGNvbnN0IGZvbnRTaXplID0gc2l6ZSA/IGAke3NpemV9cHhgIDogbnVsbDtcbiAgICBkb2N1bWVudC5kb2N1bWVudEVsZW1lbnQuc3R5bGUuZm9udFNpemUgPSBmb250U2l6ZTtcbn1cbiJdfQ==

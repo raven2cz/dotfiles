@@ -1,0 +1,57 @@
+{
+  "_from": "https://www.atom.io/api/packages/gruvbox-dark-ui/versions/1.1.0/tarball",
+  "_id": "gruvbox-dark-ui@1.1.0",
+  "_inBundle": false,
+  "_integrity": "sha512-E4ZsUcpiBUbllhfHGTTJn58O957gXmHeM2cZA7WLRI1lV+70nvgjdepn3zMGCdcPOxfk8hMwWP7hbLahxbpDIw==",
+  "_location": "/gruvbox-dark-ui",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/gruvbox-dark-ui/versions/1.1.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/gruvbox-dark-ui/versions/1.1.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/gruvbox-dark-ui/versions/1.1.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/gruvbox-dark-ui/versions/1.1.0/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/gruvbox-dark-ui/versions/1.1.0/tarball",
+  "_shasum": "a8ead6cd45b13ba3e343651ef04a5aaaaf35e5ff",
+  "_spec": "https://www.atom.io/api/packages/gruvbox-dark-ui/versions/1.1.0/tarball",
+  "_where": "/tmp/apm-install-dir-202151-377975-cvrbdv.j3ird",
+  "bugs": {
+    "url": "https://github.com/phantummm/gruvbox-dark-ui/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Atom UI theme to go with gruvbox syntax theme",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "homepage": "https://github.com/phantummm/gruvbox-dark-ui#readme",
+  "keywords": [
+    "ui",
+    "theme",
+    "gruvbox",
+    "dark"
+  ],
+  "license": "MIT",
+  "name": "gruvbox-dark-ui",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phantummm/gruvbox-dark-ui.git"
+  },
+  "theme": "ui",
+  "version": "1.1.0",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

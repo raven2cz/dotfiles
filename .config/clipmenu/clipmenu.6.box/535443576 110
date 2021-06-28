@@ -1,0 +1,49 @@
+ private CombinedEquity includeCosts(CombinedEquity equity, String symbol, Double commissionsRT) {
+        CombinedEquity equityCosts = new CombinedEquity(equity);
+
+        // involve costs to the QA P/L
+        double[] costs = SystemCandidateCommonLibrary.getDefaultCostsOfContinuousSymbol(symbol, context);
+        double commissionRT = commissionsRT == null ? costs[0] : commissionsRT;
+        double slippageRT = costs[1];
+        // calculate equity with costs
+        if (commissionRT != 0 || slippageRT != 0) {
+            equityCosts.applyCommissionsSlippage(commissionRT, slippageRT);
+            EquityBasicOperationsLibrary.findEquityPeaks(equityCosts);
+        }
+        return equityCosts;
+    }
+
+    private FeeResult includeHedgeFundFees(CombinedEquity equity, double hfMthFee, double hfYearFee, double initialAccount) {
+        CombinedEquity equityWithFee = new CombinedEquity(equity);
+        Calendar cal = Calendar.getInstance();
+        double account = initialAccount;
+        int prevMonth = -1;
+        int prevYear = -1;
+        double prevMonthsProfit = -1;
+        double prevYearsProfit = -1;
+        double yearFeeInMth = 0.0;
+        TreeMap<Date, Double> fees = new TreeMap<>();
+        for (int i = 0; i < equityWithFee.size(); i++) {
+            EquityIdent ident = equityWithFee.getIdents().get(i);
+            cal.setTime(ident.exitDate);
+
+            // new year
+            int year = cal.get(Calendar.YEAR);
+            // new month
+            if (year != prevYear && prevYear != -1) {
+                // recalculate all year fees
+                int lastYearIdx = i-1;
+                double yearProfit = equityWithFee.getValues().get(lastYearIdx);
+                double profit;
+                if (prevYearsProfit != -1) {
+                    profit = yearProfit - prevYearsProfit;
+                } else {
+                    profit = yearProfit;
+                }
+                // calculate year fees
+                //account += profit; // todo disable this if fixed to initial capital
+                yearFeeInMth = account * hfYearFee / 12.0;
+                System.out.println(ident.exitDate + "; account=" + account + "; YearFeeInMth=" + yearFeeInMth);
+                prevYearsProfit = yearProfit;
+            }
+            prevYear = year;

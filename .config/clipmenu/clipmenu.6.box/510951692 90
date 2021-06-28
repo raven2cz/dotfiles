@@ -1,0 +1,2 @@
+
+                equityServantType == STRATEGY_BASED ? position.getStrategy() : 

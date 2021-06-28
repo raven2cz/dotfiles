@@ -1,0 +1,56 @@
+{
+  "_from": "https://www.atom.io/api/packages/language-lua-wow/versions/0.2.0/tarball",
+  "_id": "language-lua-wow@0.2.0",
+  "_inBundle": false,
+  "_integrity": "sha512-Ms+kkltoJrsaomA6Pb2r9UjV1q+NImWQVfxSpKPdPJ+/nPPZGFUV3NHehnTGQEXkELcln9uvSSHUNxYVTDFZEg==",
+  "_location": "/language-lua-wow",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/language-lua-wow/versions/0.2.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/language-lua-wow/versions/0.2.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/language-lua-wow/versions/0.2.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/language-lua-wow/versions/0.2.0/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/language-lua-wow/versions/0.2.0/tarball",
+  "_shasum": "6fa601f7de476f4120a54666f6b4809637e9ef22",
+  "_spec": "https://www.atom.io/api/packages/language-lua-wow/versions/0.2.0/tarball",
+  "_where": "/tmp/apm-install-dir-2021431-21413-7kb61y.7bw85",
+  "bugs": {
+    "url": "https://github.com/nebularg/language-lua-wow/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Add syntax highlighting for the World of Warcraft API in Lua files in Atom.",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "homepage": "https://github.com/nebularg/language-lua-wow#readme",
+  "keywords": [
+    "language",
+    "grammar",
+    "wow",
+    "lua"
+  ],
+  "license": "Unlicense",
+  "name": "language-lua-wow",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nebularg/language-lua-wow.git"
+  },
+  "version": "0.2.0",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

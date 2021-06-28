@@ -1,0 +1,40 @@
+switch (Filter1_Switch)
+begin
+ //@switch-group-id=9
+ //@switch-group-name=COMPLEMENTARY FILTER1 CONDITIONS
+ // *********************** GROUP 9 : COMPLEMENTARY FILTER1 CONDITIONS ***********************************************
+    case 1 : {&Filter1_N1=-3|3} {&Filter1_N2=NONE} //ID: 1.1
+    begin
+       filter1_long = C = Highest(C, 5 + Filter1_N1);
+       filter1_short = C = Lowest(C, 5 + Filter1_N1);
+    end;
+    case 2 : {&Filter1_N1=-4|4} {&Filter1_N2=FIXED} //ID: 1.2
+    begin
+       filter1_long = Average(C, 4 + Filter1_N2) crosses below Average(C, 9 + Filter1_N1) and C < Average(C, 4 + Filter1_N2);
+       filter1_short = Average(C, 4 + Filter1_N2) crosses above Average(C, 9 + Filter1_N1) and C > Average(C, 4 + Filter1_N2);
+    end;
+    case 3 : {&Filter1_N1=-2|2} {&Filter1_N2=NONE} //ID: 1.3
+    begin
+       filter1_long = ADX(3 * Filter1_N1) > 20 AND ADX(3 * Filter1_N1) < 30;
+       filter1_short = filter1_long;
+    end;
+    case 4 : {&Filter1_N1=NONE} {&Filter1_N2=NONE} //ID: 1.4
+    begin
+       filter1_long = ADX(14) > 20 AND ADX(14) < 30;
+       filter1_short = filter1_long;
+    end;
+    case 5 : {&Filter1_N1=-1|1} {&Filter1_N2=NONE} //ID: 1.5
+    begin
+       filter1_long  = ADX(3 * Filter1_N1) >= 20 and (HighD(1)-LowD(1) > HighD(2)-LowD(2));
+       filter1_short = filter1_long;
+    end;
+    case 6 : {&Filter1_N1=-4|4} {&Filter1_N2=NONE} //ID: 1.6
+    begin
+       filter1_long  = H = Highest(H, 2 + Filter1_N1) and C = Highest(C, 2 + Filter1_N1);
+       filter1_short = L = Lowest(L, 2 + Filter1_N1) and C = Lowest(C, 2 + Filter1_N1);
+    end;
+    case 7 : {&Filter1_N1=-2|2} {&Filter1_N2=NONE} //ID: 1.7
+    begin
+       filter1_long  = RSI(C, 5 + Filter1_N1) < 50;
+       filter1_short = RSI(C, 5 + Filter1_N1) > 50;
+    end;

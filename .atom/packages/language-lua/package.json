@@ -1,0 +1,56 @@
+{
+  "_from": "https://www.atom.io/api/packages/language-lua/versions/0.9.11/tarball",
+  "_id": "language-lua@0.9.11",
+  "_inBundle": false,
+  "_integrity": "sha512-lHXtMGWW8asNSI371xhXy1L9cmlH/M5y7utvs2sCALv5Mj9mT11BgfFX/5pPiw4olgiIxcrh8YGAWOVF70MnhA==",
+  "_location": "/language-lua",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/language-lua/versions/0.9.11/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/language-lua/versions/0.9.11/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/language-lua/versions/0.9.11/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/language-lua/versions/0.9.11/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/language-lua/versions/0.9.11/tarball",
+  "_shasum": "1652b750590ac2b6f1a41e679ce4500477bedec6",
+  "_spec": "https://www.atom.io/api/packages/language-lua/versions/0.9.11/tarball",
+  "_where": "/tmp/apm-install-dir-2021431-21857-yojj1h.sfgz9",
+  "author": {
+    "name": "FireZenk",
+    "email": "firezenk@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/FireZenk/language-lua/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
+  "description": "Add syntax highlighting and snippets to Lua files in Atom",
+  "engines": {
+    "atom": ">=0.50.0"
+  },
+  "homepage": "https://github.com/FireZenk/language-lua#readme",
+  "license": "MIT",
+  "name": "language-lua",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FireZenk/language-lua.git"
+  },
+  "version": "0.9.11",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

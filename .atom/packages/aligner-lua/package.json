@@ -1,0 +1,69 @@
+{
+  "_from": "https://www.atom.io/api/packages/aligner-lua/versions/1.0.1/tarball",
+  "_id": "aligner-lua@1.0.1",
+  "_inBundle": false,
+  "_integrity": "sha512-s4Hi5UGrjSr4mvq/FtjulMffZRh8gqbMCjJpNd7Qb+2wnmTl1glmglmuV9js+erA7ej7HUf4fNasxKiiSxA4+w==",
+  "_location": "/aligner-lua",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/aligner-lua/versions/1.0.1/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/aligner-lua/versions/1.0.1/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/aligner-lua/versions/1.0.1/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/aligner-lua/versions/1.0.1/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/aligner-lua/versions/1.0.1/tarball",
+  "_shasum": "4cc50f762a4d569ae74aa43c6a65dd87818d63cf",
+  "_spec": "https://www.atom.io/api/packages/aligner-lua/versions/1.0.1/tarball",
+  "_where": "/tmp/apm-install-dir-2021431-21198-14takuu.jcnr",
+  "bugs": {
+    "url": "https://github.com/adrianlee44/atom-aligner-lua/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
+  "description": "Lua support for aligner",
+  "engines": {
+    "atom": ">=1.9.0"
+  },
+  "homepage": "https://github.com/adrianlee44/atom-aligner-lua#readme",
+  "keywords": [
+    "aligner",
+    "alignment",
+    "align",
+    "lua"
+  ],
+  "license": "MIT",
+  "main": "./lib/main",
+  "name": "aligner-lua",
+  "providedServices": {
+    "aligner.provider": {
+      "versions": {
+        "1.0.0": "getProvider"
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adrianlee44/atom-aligner-lua.git"
+  },
+  "version": "1.0.1",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".js": [
+        "lib/main.js",
+        "lib/provider.js"
+      ],
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

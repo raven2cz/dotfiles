@@ -1,0 +1,4 @@
+open class SeriesFunction(open val context: String) {
+
+    val series = Series()
+

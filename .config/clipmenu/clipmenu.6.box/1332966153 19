@@ -1,0 +1,1 @@
+colorscript random

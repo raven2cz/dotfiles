@@ -1,0 +1,11 @@
+                    eqs.add(typeDO.actualEq);
+                }
+            }
+        }
+        // merge equities to portfolios and store it
+        List<CombinedEquity> portfolios = new ArrayList<>();
+        for (StrategySubtype subtype : subtypes) {
+            portfolios.add(mergeEquities("portfolio-maemfe-S" + subtype.getId(), portfoliosMap.get(subtype)));
+        }
+        portfolios.forEach(this::exportPortfolio);
+    }

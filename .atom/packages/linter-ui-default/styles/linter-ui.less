@@ -1,0 +1,215 @@
+@import 'ui-variables';
+
+.wavy_border(@color) {
+  background-image: linear-gradient(45deg, transparent 65%, @color 80%, transparent 90%),
+    linear-gradient(135deg, transparent 5%, @color 15%, transparent 25%),
+    linear-gradient(135deg, transparent 45%, @color 55%, transparent 65%),
+    linear-gradient(45deg, transparent 25%, @color 35%, transparent 50%);
+  background-size: 8px 2px;
+  background-repeat: repeat-x;
+  background-position: left bottom;
+}
+
+#linter-panel {
+  overflow: auto;
+}
+
+#linter-tooltip {
+  margin-top: 3px;
+  max-width: 64em;
+  visibility: hidden; // controlled by JavaScript
+  padding: 5px 5px 2px 5px;
+  font-family: @font-family;
+
+  user-select: text;
+  pointer-events: all;
+
+  .linter-message {
+    padding: 10px;
+
+    color: #fff - @inset-panel-background-color; // invert;
+    background: @app-background-color;
+
+    .linter-excerpt {
+      padding: 5px;
+      display: flex;
+      align-items: center;
+
+      // border between messages
+      &:not(:last-child) {
+        border-bottom: 1px solid fade(contrast(@inset-panel-background-color), 5%);
+      }
+
+      &.error {
+        .message-with-severity(@text-color-error);
+      }
+      &.warning {
+        .message-with-severity(@text-color-warning);
+      }
+      &.info {
+        .message-with-severity(@text-color-info);
+      }
+
+      // message severity function
+      .message-with-severity(@color) {
+        border-left: 4px solid @color;
+
+        &:last-child::before {
+          border-color: transparent transparent @color @color;
+        }
+      }
+
+      .linter-text {
+        margin-left: 0.5em;
+      }
+
+      .provider-name {
+        display: inline;
+        font-weight: bolder;
+      }
+
+      // align button with message
+      .linter-buttons-right {
+        margin-left: 10px;
+
+        // url button
+        a {
+          color: @text-color;
+        }
+      }
+
+      .fix-btn {
+        margin-left: 5px;
+      }
+    }
+
+    // TODO: Arrow pointer does not fit in the new design
+    // // Arrow pointer
+    // &:last-child::after {
+    //   content: '';
+    //   // so the arrow does not take a row in the tooltip
+    //   display: block;
+    //   width: 0;
+    //   // position it below the tooltip
+    //   position: relative;
+    //   left: -20px;
+    //   top: 3px;
+    //   // triangle
+    //   border-top: 0 solid transparent;
+    //   border-right: 0 solid transparent;
+    //   border-bottom: 8px solid;
+    //   border-left: 8px solid transparent;
+    // }
+    // TODO arrow pointer for before
+
+    a {
+      font-weight: bold;
+    }
+    p {
+      margin-bottom: 0;
+    }
+    .linter-line {
+      display: block;
+    }
+    .badge {
+      color: @text-color-highlight;
+    }
+  }
+}
+
+.linter-message {
+  display: block;
+  padding: 2px 5px;
+}
+
+.icon.linter-icon::before {
+  font-size: 14px;
+}
+
+atom-text-editor.editor .linter-row {
+  /* Take up the full allowed width */
+  left: 0;
+  right: 0;
+  /* Align the linter dot in the middle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.linter-gutter {
+  .error_type(@color, @priority) {
+    color: @color;
+    z-index: @priority;
+  }
+  &.linter-gutter-info {
+    .error_type(@background-color-info, -1);
+  }
+  &.linter-gutter-warning {
+    .error_type(@background-color-warning, 0);
+  }
+  &.linter-gutter-error {
+    .error_type(@background-color-error, 1);
+  }
+}
+
+atom-text-editor.editor .linter-highlight,
+.linter-highlight {
+  &.linter-info {
+    .wavy_border(@background-color-info);
+  }
+  &.linter-warning {
+    .wavy_border(@background-color-warning);
+  }
+  &.linter-error {
+    .wavy_border(@background-color-error);
+  }
+}
+
+.tree-view {
+  span.name {
+    position: relative;
+  }
+  .error_type(@color) {
+    top: 0;
+    left: 1.8rem;
+    width: calc(~'100% - 1.8rem');
+    height: 100%;
+    position: absolute;
+    .wavy_border(@color);
+  }
+  .linter-info {
+    .error_type(@background-color-info);
+  }
+  .linter-warning {
+    .error_type(@background-color-warning);
+  }
+  .linter-error {
+    .error_type(@background-color-error);
+  }
+}
+.linter-gutter.icon::before {
+  width: 100%;
+  margin-right: 0px;
+  font-size: 1em;
+}
+
+.linter-status-count {
+  a {
+    padding: 2px;
+  }
+  a::before {
+    font-size: 12px;
+  }
+  &.hide-config,
+  &.hide-pane {
+    display: none;
+  }
+}
+.linter-cursor-line {
+  width: 100%;
+  padding-left: 0;
+}
+
+linter-decoration {
+  pointer-events: none;
+}

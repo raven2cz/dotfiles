@@ -1,0 +1,29 @@
+'context-menu':
+  'atom-text-editor': [
+    {
+      'label': 'Goto last edit - Back'
+      'command': 'goto-last-edit:back'
+    }
+    {
+      'label': 'Goto last edit - Forward'
+      'command': 'goto-last-edit:forward'
+    }
+  ]
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'Goto last edit'
+      'submenu': [
+        {
+          'label': 'Back'
+          'command': 'goto-last-edit:back'
+        }
+        {
+          'label': 'Forward'
+          'command': 'goto-last-edit:forward'
+        }
+      ]
+    ]
+  }
+]

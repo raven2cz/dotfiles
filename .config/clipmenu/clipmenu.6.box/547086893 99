@@ -1,0 +1,27 @@
+    case 11a : {&Filter1_N1=-4|4} {&Filter1_N2=FIXED} //ID: 2.0  N1 -4/+4, N2 zafixovat
+    begin
+      filter1_long = C < xAverage(C, ((10 * Filter1_N2) + (3 * Filter1_N1)));
+      filter1_short = C > xAverage(C,((10 * Filter1_N2) + (3 * Filter1_N1)));
+    end;
+    case 11b : {&Filter1_N1=-4|4} {&Filter1_N2=FIXED} //ID: 2.1 N1 -4/+4, N2 zafixovat
+    begin
+      filter1_long = C > xAverage(C, ((10 * Filter1_N2) + (3 * Filter1_N1)));
+      filter1_short = C < xAverage(C,((10 * Filter1_N2) + (3 * Filter1_N1)));
+    end;
+    case 12a : {&Filter1_N1=-4|4} {&Filter1_N2=-4|4} //ID: 2.2 N1 -4/+4, N2 -4/+4
+    begin
+      filter1_long = xAverage(C, (2 + Filter1_N1)) < xAverage(C, (2 + Filter1_N2));
+      filter1_short = xAverage(C, (2 + Filter1_N1)) > xAverage(C, (2 + Filter1_N2));
+    end;
+    case 12b : {&Filter1_N1=-4|4} {&Filter1_N2=-4|4} //ID: 2.3 N1 -4/+4, N2 -4/+4
+    begin
+      filter1_long = xAverage(C, (2 + Filter1_N1)) > xAverage(C, (2 + Filter1_N2));
+      filter1_short = xAverage(C, (2 + Filter1_N1)) < xAverage(C, (2 + Filter1_N2));
+    end;
+    case 13a : {&Filter1_N1=FIXED} {&Filter1_N2=-4|4} //ID: 2.4  N1 FIX, N2 -4/+4
+    begin
+      filter1_long = xAverage(C, Filter1_N2) - xAverage(C, 20) > (AvgTrueRange(25) * (0.1 * Filter1_N1));
+      filter1_short = xAverage(C, Filter1_N2)- xAverage(C, 20) < -(AvgTrueRange(25) * (0.1 * Filter1_N1));
+    end;
+    case 13b : {&Filter1_N1=FIXED} {&Filter1_N2=-4|4} //ID: 2.5 N1 FIX, N2 -4/+4
+    begin

@@ -1,0 +1,3 @@
+if status is-login
+  ssh-add
+end

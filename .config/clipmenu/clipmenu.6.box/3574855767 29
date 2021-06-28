@@ -1,0 +1,14 @@
+            try {
+                File imageResource = new File(outputDir, id + "-ECB-EQS.png");
+                logger.debug("The equity image is exporting to " + imageResource.getName());
+                // support cut equity to required interval
+                if (interval != null) {
+                    equity = EquityBasicOperationsLibrary.cutTimeRestrictionEquity(interval, equity, true);
+                    if (equity.size() == 0) {
+                        throw new IllegalArgumentException("The equity has no trade. Cannot export equity. equity=" + id);
+                    }
+                }
+                byte[] image = createEquityImage(equity, id, dimension, true, false,
+                        new EodPeriod(MONTHLY), null, bootstrapDO.shuffledEqs.toArray(new CombinedEquity[0]));
+                FileUtils.writeByteArrayToFile(imageResource, image);
+            } catch (IOException e) {

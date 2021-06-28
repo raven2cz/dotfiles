@@ -1,0 +1,81 @@
+{
+  "_from": "https://www.atom.io/api/packages/seti-syntax/versions/1.2.0/tarball",
+  "_id": "seti-syntax@1.2.0",
+  "_inBundle": false,
+  "_integrity": "sha512-AEk7mVrvmlTHfQr+C+TJjsrxK2FJip+EqWBV8GxOKhfM/tnzqjcISTMQZynSbjMJVpWZOLkelIPyXzuVkfJUeQ==",
+  "_location": "/seti-syntax",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/seti-syntax/versions/1.2.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/seti-syntax/versions/1.2.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/seti-syntax/versions/1.2.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/seti-syntax/versions/1.2.0/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/seti-syntax/versions/1.2.0/tarball",
+  "_shasum": "8e4e38420dea872cfc23717e95748e3b120dd3d7",
+  "_spec": "https://www.atom.io/api/packages/seti-syntax/versions/1.2.0/tarball",
+  "_where": "/tmp/apm-install-dir-202151-542292-her4tv.m2b1v",
+  "bugs": {
+    "url": "https://github.com/jesseweed/seti-syntax/issues"
+  },
+  "bundleDependencies": false,
+  "configSchema": {
+    "dynamicColor": {
+      "title": "Dynamic Theme",
+      "description": "Enable this to set syntax color dynamically based on seti ui theme.",
+      "type": "boolean",
+      "default": true
+    },
+    "themeColor": {
+      "title": "Theme Color",
+      "description": "Set your default syntax color (this will be ignored if dynamic theme is enabled above).",
+      "type": "string",
+      "enum": [
+        "Blue",
+        "Green",
+        "Orange",
+        "Pink",
+        "Purple",
+        "Red",
+        "Steel",
+        "Yellow"
+      ],
+      "default": "Blue"
+    }
+  },
+  "deprecated": false,
+  "description": "Seti Syntax - A subtle dark colored theme for Atom.",
+  "engines": {
+    "atom": ">1.6"
+  },
+  "homepage": "https://github.com/jesseweed/seti-syntax#readme",
+  "license": "MIT",
+  "main": "./lib/main",
+  "name": "seti-syntax",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jesseweed/seti-syntax.git"
+  },
+  "theme": "syntax",
+  "version": "1.2.0",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".coffee": [
+        "lib/dom.coffee",
+        "lib/main.coffee",
+        "lib/settings.coffee"
+      ],
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

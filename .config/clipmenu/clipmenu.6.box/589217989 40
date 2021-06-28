@@ -1,0 +1,5 @@
+                        try {
+                            //equities.add(importEquityFromCSV(fn));
+                        } catch (IOException | ParseException e) {
+                            throw new IllegalArgumentException(e.getMessage(), e);
+                        }

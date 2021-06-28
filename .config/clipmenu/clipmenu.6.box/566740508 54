@@ -1,0 +1,19 @@
+createTimeSeries(new GetTimeSeriesData() {
+                        @Override
+                        public int getSeriesCount() {
+                            return 2;
+                        }
+
+                        @Override
+                        public String getName(int id) {
+                            return id == 0 ? "PL" : "PT";
+                        }
+
+                        @Override
+                        public Collection<Date> getKeys(int id) {
+                            return data.keySet();
+                        }
+
+                        @Override
+                        public Double getValue(int id, Date key) {
+                            return 

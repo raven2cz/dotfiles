@@ -1,0 +1,10 @@
+
+
+Drzeni pres noc ES 30min
+
+vars:
+  double diff(0);
+  
+diff = date - entrydate;  
+
+If (Time = 1800) then begin

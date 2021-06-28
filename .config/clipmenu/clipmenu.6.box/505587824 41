@@ -1,0 +1,1 @@
+awful.tag(tags.names, scr.index, tags.la

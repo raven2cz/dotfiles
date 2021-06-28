@@ -1,0 +1,15 @@
+        // JTD context settings
+        context.setAttribute(JtdCommonAttributes.INITIAL_CAPITAL, 250000.0);
+        context.setAttribute(JtdCommonAttributes.FRACTION_CONTRACT_ROUNDING_TYPE, ROUND);
+        context.setAttribute(ACCOUNT_CALCULATION_TYPE, USE_RESETED_ACCOUNT_TO_INITIAL_BY_YEAR);
+        context.setAttribute(JtdCommonAttributes.MAX_ALLOWED_CONTRACT_LIMIT, 10);
+        context.setAttribute(IGNORE_ORIGINAL_FRACTION, false);
+        context.setAttribute(SequenceService.APPLY_FROM_YEAR, 2007);
+
+        // STATIC CONFIGURATION
+        // DEFINE EQUITY TYPES AND EQUITY DATA
+        // load equity types settings
+        context.setAttribute(PORTFOLIO_BASE_REPO, getDefaultAnalysisRes(REPO_RND_PTFS));
+        context.setAttribute(CALCULATE_PORTFOLIO_EQUITY, true); // time consumed - necessary for this evaluation analysis
+        context.setAttribute(LOAD_EQUITY_TYPE, EQUITY_TYPE);
+        context.setAttribute(LOAD_DH_EQUITY, EQUITY_OOS_DH.equals(EQUITY_TYPE));

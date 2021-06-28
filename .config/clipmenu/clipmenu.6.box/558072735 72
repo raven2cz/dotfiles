@@ -1,0 +1,4 @@
+	    case 8 : {&Filter1_N1=-2|2} {&Filter1_N2=NONE} //ID: 1.8
+	    begin
+	       filter1_long  = RSI(C, 5 + Filter1_N1) > 50;
+	       filter1_short = RSI(C, 5 + Filter1_N1) < 50;

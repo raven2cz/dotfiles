@@ -1,0 +1,3 @@
+        public static final String[] columnNames = new String[] {
+            "Period", "Net Profit", "Trades", "Return[%]"
+        };

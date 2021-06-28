@@ -1,0 +1,13 @@
+{
+  ".platform-darwin atom-text-editor:not([mini])": {
+    "ctrl-enter": "intentions:show",
+    "alt": "intentions:highlight"
+  },
+  ".platform-win32 atom-text-editor:not([mini]), .platform-linux atom-text-editor:not([mini])": {
+    "alt-enter": "intentions:show",
+    "ctrl": "intentions:highlight"
+  },
+  "atom-text-editor.intentions-list:not([mini])": {
+    "enter": "intentions:confirm"
+  }
+}

@@ -1,0 +1,40 @@
+
+
+//**************** SWINGS : CLOSE vs SWING MA *********************
+    case 41 : begin
+        Filter2_Long =  C of data(myData) <  ELITE_MA_SWING_MEDIUM(minList(Filter2_N2,3), 0, maxlist(2, Filter2_N1)) of data(myData);
+        Filter2_Short = C of data(myData) > ELITE_MA_SWING_MEDIUM(minList(Filter2_N2,3), 0, maxlist(2, Filter2_N1)) of data(myData);
+    end;
+    case 42 : begin
+        Filter2_Long =  C of data(myData) > ELITE_MA_SWING_MEDIUM(minList(Filter2_N2,3), 0, maxlist(2, Filter2_N1)) of data(myData);
+        Filter2_Short = C of data(myData) < ELITE_MA_SWING_MEDIUM(minList(Filter2_N2,3), 0, maxlist(2, Filter2_N1)) of data(myData);
+    end;
+    case 43 : begin
+        Filter2_Long =  C of data(myData) <  ELITE_MA_SWING_LOW(minList(Filter2_N2,3), 0, maxlist(2, Filter2_N1)) of data(myData);
+        Filter2_Short = C of data(myData) > ELITE_MA_SWING_HIGH(minList(Filter2_N2,3), 0, maxlist(2, Filter2_N1)) of data(myData);
+    end;
+    case 44 : begin
+        Filter2_Long =  C of data(myData) >  ELITE_MA_SWING_LOW(minList(Filter2_N2,3), 0, maxlist(2, Filter2_N1)) of data(myData);
+        Filter2_Short = C of data(myData) < ELITE_MA_SWING_HIGH(minList(Filter2_N2,3), 0, maxlist(2, Filter2_N1)) of data(myData);
+    end;
+    case 45 : begin
+        Filter2_Long =  C of data(myData) <  ELITE_MA_SWING_HIGH(minList(Filter2_N2,3), 0, maxlist(2, Filter2_N1)) of data(myData);
+        Filter2_Short = C of data(myData) > ELITE_MA_SWING_LOW(minList(Filter2_N2,3), 0, maxlist(2, Filter2_N1)) of data(myData);
+    end;
+    case 46 : begin
+        Filter2_Long =  C of data(myData) >  ELITE_MA_SWING_HIGH(minList(Filter2_N2,3), 0, maxlist(2, Filter2_N1)) of data(myData);
+        Filter2_Short = C of data(myData) < ELITE_MA_SWING_LOW(minList(Filter2_N2,3), 0, maxlist(2, Filter2_N1)) of data(myData);
+    end;
+    case 47 : begin
+        Filter2_Long =  ELITE_SWING_LOW(minList(Filter2_N2,3), 0) of data(myData) >= ELITE_MA_SWING_HIGH(minList(Filter2_N2,3), 0, maxlist(2, Filter2_N1)) of data(myData);
+        Filter2_Short = ELITE_SWING_HIGH(minList(Filter2_N2,3), 0) of data(myData) <= ELITE_MA_SWING_LOW(minList(Filter2_N2,3), 0, maxlist(2, Filter2_N1)) of data(myData);
+    end;
+    case 48 : begin
+        Filter2_Long =  ELITE_SWING_LOW(minList(Filter2_N2,3), 0) of data(myData) <= ELITE_MA_SWING_HIGH(minList(Filter2_N2,3), 0, maxlist(2, Filter2_N1)) of data(myData);
+        Filter2_Short = ELITE_SWING_HIGH(minList(Filter2_N2,3), 0) of data(myData) >= ELITE_MA_SWING_LOW(minList(Filter2_N2,3), 0, maxlist(2, Filter2_N1)) of data(myData);
+    end;
+    { SFB Adapted filters - ADX/MQ}
+    case 49: begin
+        Filter2_Long = ADX(30) of data(mydata)<=20;
+        Filter2_Short = Filter2_Long;
+    end;

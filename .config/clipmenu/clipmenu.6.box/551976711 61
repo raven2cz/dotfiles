@@ -1,0 +1,24 @@
+
+{ Filter for the MAIN timeframe (0 = No Filter) }
+switch (Filter1_Switch)
+begin
+    case 0: begin
+        Filter1_Long = True;
+        Filter1_Short = True;
+    end;
+     { Volatility Based Filters }
+    case 1 : begin
+        Filter1_Long = AvgTrueRange(3 * Filter1_N1) > AvgTrueRange(5 * Filter1_N2);
+        Filter1_Short = AvgTrueRange(3 * Filter1_N1) > AvgTrueRange(5 * Filter1_N2);
+    end;
+     case 2 : begin
+        Filter1_Long = AvgTrueRange(3 * Filter1_N1) <= AvgTrueRange(5 * Filter1_N2);
+        Filter1_Short = AvgTrueRange(3 * Filter1_N1) <= AvgTrueRange(5 * Filter1_N2);
+    end;
+    case 3 : begin
+        Filter1_Long = AvgTrueRange(3 * Filter1_N1) < AvgTrueRange(5 * Filter1_N2);
+        Filter1_Short = AvgTrueRange(3 * Filter1_N1) > AvgTrueRange(5 * Filter1_N2);
+    end;
+    case 4 : begin
+        Filter1_Long = AvgTrueRange(3 * Filter1_N1) > AvgTrueRange(5 * Filter1_N2);
+        Filter1_Short 

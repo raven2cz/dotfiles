@@ -1,0 +1,51 @@
+{
+  "_from": "https://www.atom.io/api/packages/base16-eighties-one-dark/versions/1.0.0/tarball",
+  "_id": "base16-eighties-one-dark@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-3EzZqHze9x88hjFK4uAx65t9LgA74cEbCB+MuKuHQJkbCsr8VY5x0U1znmT8i/eNNxlo7DedsgyIk6FIaZZ6yQ==",
+  "_location": "/base16-eighties-one-dark",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/base16-eighties-one-dark/versions/1.0.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/base16-eighties-one-dark/versions/1.0.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/base16-eighties-one-dark/versions/1.0.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/base16-eighties-one-dark/versions/1.0.0/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/base16-eighties-one-dark/versions/1.0.0/tarball",
+  "_shasum": "9c1edfe0e858dc83baebdad3536485261b5d53d0",
+  "_spec": "https://www.atom.io/api/packages/base16-eighties-one-dark/versions/1.0.0/tarball",
+  "_where": "/tmp/apm-install-dir-202151-958955-107wyet.qvso",
+  "bugs": {
+    "url": "https://github.com/robneu/base16-eighties-one-dark/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "A base16 eighies dark syntax theme for the one dark UI theme.",
+  "engines": {
+    "atom": ">=0.174.0 <2.0.0"
+  },
+  "homepage": "https://github.com/robneu/base16-eighties-one-dark#readme",
+  "license": "MIT",
+  "name": "base16-eighties-one-dark",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robneu/base16-eighties-one-dark.git"
+  },
+  "theme": "syntax",
+  "version": "1.0.0",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "_from": "https://www.atom.io/api/packages/goto-last-edit/versions/0.3.3/tarball",
+  "_id": "goto-last-edit@0.3.3",
+  "_inBundle": false,
+  "_integrity": "sha512-X7DtMyBJp11/SNXpuX/jKX/FtnLWMafLnya6/d6ZaDRFBdK4WPHNUZzN7STjxcB1lMAZiJ5UYmaBma4kEbuE7Q==",
+  "_location": "/goto-last-edit",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/goto-last-edit/versions/0.3.3/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/goto-last-edit/versions/0.3.3/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/goto-last-edit/versions/0.3.3/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/goto-last-edit/versions/0.3.3/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/goto-last-edit/versions/0.3.3/tarball",
+  "_shasum": "48671bd1b8b9681aded9958c41b041866ec25a14",
+  "_spec": "https://www.atom.io/api/packages/goto-last-edit/versions/0.3.3/tarball",
+  "_where": "/tmp/apm-install-dir-2021431-325845-3dcugx.vuiti",
+  "bugs": {
+    "url": "https://github.com/plrenaudin/goto-last-edit/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
+  "description": "Move the cursor to the last edited element",
+  "devDependencies": {
+    "coffeelint": "^1.9.7"
+  },
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "homepage": "https://github.com/plrenaudin/goto-last-edit#readme",
+  "keywords": [],
+  "license": "MIT",
+  "main": "./lib/goto-last-edit",
+  "name": "goto-last-edit",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/plrenaudin/goto-last-edit.git"
+  },
+  "version": "0.3.3",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "coffeelint.json",
+        "package.json"
+      ],
+      ".coffee": [
+        "lib/goto-last-edit.coffee"
+      ]
+    },
+    "folders": []
+  }
+}

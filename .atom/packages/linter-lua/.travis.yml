@@ -1,0 +1,53 @@
+### Project specific config ###
+
+language: generic
+
+matrix:
+  include:
+    - os: linux
+      env: ATOM_CHANNEL=stable
+
+    - os: linux
+      env: ATOM_CHANNEL=beta
+
+env:
+  global:
+    APM_TEST_PACKAGES: "language-lua"
+
+install:
+  - sudo apt-get update
+  - sudo apt-get install --assume-yes --quiet --no-install-suggests --no-install-recommends lua5.2 luajit
+
+before_script:
+  - luac -v
+  - luajit -v
+
+### Generic setup follows ###
+script:
+  - curl -s -O https://raw.githubusercontent.com/atom/ci/master/build-package.sh
+  - chmod u+x build-package.sh
+  - "./build-package.sh"
+
+notifications:
+  email:
+    on_success: never
+    on_failure: change
+
+branches:
+  only:
+    - master
+
+git:
+  depth: 10
+
+sudo: false
+
+dist: trusty
+
+addons:
+  apt:
+    packages:
+    - build-essential
+    - fakeroot
+    - git
+    - libsecret-1-dev

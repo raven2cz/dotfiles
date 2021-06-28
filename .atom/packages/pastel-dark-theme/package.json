@@ -1,0 +1,51 @@
+{
+  "_from": "https://www.atom.io/api/packages/pastel-dark-theme/versions/0.1.2/tarball",
+  "_id": "pastel-dark-theme@0.1.2",
+  "_inBundle": false,
+  "_integrity": "sha512-xDqqiebAs65JPaWpZfHOEjz+AiHbQ9YgufpqNPYTrgRRYI8wrpRILMTgTMd2uem3vA/84CYSeyTfQxGFmpT1VA==",
+  "_location": "/pastel-dark-theme",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/pastel-dark-theme/versions/0.1.2/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/pastel-dark-theme/versions/0.1.2/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/pastel-dark-theme/versions/0.1.2/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/pastel-dark-theme/versions/0.1.2/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/pastel-dark-theme/versions/0.1.2/tarball",
+  "_shasum": "94796f2e5441d92fddbddae72dac238ee40d1e18",
+  "_spec": "https://www.atom.io/api/packages/pastel-dark-theme/versions/0.1.2/tarball",
+  "_where": "/tmp/apm-install-dir-202151-469781-losl00.pzjgb",
+  "bugs": {
+    "url": "https://github.com/jenius/dark-pastel-atom-theme/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Dark subtle theme for Atom",
+  "engines": {
+    "atom": ">0.49.0"
+  },
+  "homepage": "https://github.com/jenius/dark-pastel-atom-theme#readme",
+  "license": "MIT",
+  "name": "pastel-dark-theme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jenius/dark-pastel-atom-theme.git"
+  },
+  "theme": "syntax",
+  "version": "0.1.2",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

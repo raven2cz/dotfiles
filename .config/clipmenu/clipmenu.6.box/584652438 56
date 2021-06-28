@@ -1,0 +1,4 @@
+        asset.setMarketOpen(getTime("8:30"));
+        asset.setMarketClose(getTime("15:15"));
+        asset.setTimeTemplate("REGULAR");
+        asset.setRecSession("REGULAR"); // 24H

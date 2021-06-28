@@ -1,0 +1,1 @@
+value99 = WriteTrades32MP(1, 0, 0, 0, 10, 1, 0, "C:\AOS-AUTO\TEMP\"+_GetStrategyName+"-["+symbol+"][TF1D].txt"); 

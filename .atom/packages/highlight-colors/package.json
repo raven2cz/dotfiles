@@ -1,0 +1,129 @@
+{
+  "_from": "https://www.atom.io/api/packages/highlight-colors/versions/0.9.0/tarball",
+  "_id": "highlight-colors@0.9.0",
+  "_inBundle": false,
+  "_integrity": "sha512-JZW9vMCTDQBFlV0wnBsofWJruQQF5f4flLEg23wP6U031QXWarmoNblu6Lr9Fr0O/ry8H2562vFYOhWxx4H5qw==",
+  "_location": "/highlight-colors",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/highlight-colors/versions/0.9.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/highlight-colors/versions/0.9.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/highlight-colors/versions/0.9.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/highlight-colors/versions/0.9.0/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/highlight-colors/versions/0.9.0/tarball",
+  "_shasum": "fda79697d66258ede4f7e0c972e1fbfac7efb32f",
+  "_spec": "https://www.atom.io/api/packages/highlight-colors/versions/0.9.0/tarball",
+  "_where": "/tmp/apm-install-dir-2021431-23390-1v2rxgt.ilhi",
+  "bugs": {
+    "url": "https://github.com/brumm/atom-highlight-colors/issues"
+  },
+  "bundleDependencies": false,
+  "consumedServices": {
+    "color-picker": {
+      "versions": {
+        "^1.0.0": "consumeColorPicker"
+      }
+    }
+  },
+  "dependencies": {
+    "css-color-list": "0.0.2",
+    "lodash.get": "^4.4.2",
+    "lodash.set": "^4.3.2"
+  },
+  "deprecated": false,
+  "description": "Simple and fast color highlighting",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "homepage": "https://github.com/brumm/atom-highlight-colors#readme",
+  "keywords": [
+    "color",
+    "colors",
+    "pigments",
+    "highlight",
+    "visualization",
+    "preview",
+    "picker",
+    "simple"
+  ],
+  "license": "MIT",
+  "main": "./lib/highlight-colors",
+  "name": "highlight-colors",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brumm/atom-highlight-colors.git"
+  },
+  "version": "0.9.0",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [
+      {
+        "name": "css-color-list",
+        "version": "0.0.2",
+        "path": "node_modules/css-color-list/index.js"
+      },
+      {
+        "name": "css-color-names",
+        "version": "0.0.4",
+        "path": "node_modules/css-color-names/css-color-names.json"
+      },
+      {
+        "name": "lodash.get",
+        "version": "4.4.2",
+        "path": "node_modules/lodash.get/index.js"
+      },
+      {
+        "name": "lodash.set",
+        "version": "4.3.2",
+        "path": "node_modules/lodash.set/index.js"
+      }
+    ],
+    "extensions": {
+      ".js": [
+        "lib/highlight-colors.js",
+        "lib/regexes.js",
+        "node_modules/css-color-list/index.js",
+        "node_modules/css-color-list/test.js",
+        "node_modules/lodash.get/index.js",
+        "node_modules/lodash.set/index.js"
+      ],
+      ".json": [
+        "node_modules/css-color-list/package.json",
+        "node_modules/css-color-names/css-color-names.json",
+        "node_modules/css-color-names/package.json",
+        "node_modules/lodash.get/package.json",
+        "node_modules/lodash.set/package.json",
+        "package-lock.json",
+        "package.json"
+      ]
+    },
+    "folders": [
+      {
+        "paths": [
+          "lib",
+          "",
+          "spec"
+        ],
+        "dependencies": {
+          "css-color-list": "0.0.2",
+          "lodash.get": "^4.4.2",
+          "lodash.set": "^4.3.2"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/css-color-list"
+        ],
+        "dependencies": {
+          "css-color-names": "0.0.4"
+        }
+      }
+    ]
+  }
+}

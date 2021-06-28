@@ -1,0 +1,3 @@
+    public static class AccountRequirementBlockStatistics {
+        public double totalCommission;
+        public double totalSlippage;

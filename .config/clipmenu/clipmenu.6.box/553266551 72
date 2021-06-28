@@ -1,0 +1,2 @@
+            renderer.setSeriesPaint(1, new Color(255, 0, 0));
+            renderer.setSeriesPaint(2, new Color(149, 201, 136));

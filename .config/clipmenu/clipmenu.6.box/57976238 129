@@ -1,0 +1,25 @@
+    protected void showEquityResults(CombinedEquity equity, EodPeriod period, boolean showPeaks, boolean showValleys,
+                                     boolean showRisk, boolean showContracts, boolean showEquityOnly, CombinedEquity... additionalEquities) {
+        if ( !showEquityOnly) {
+            // show equity performance statistics
+            EquityPerformanceStatisticsTableFrame equityTable = new EquityPerformanceStatisticsTableFrame(equity);
+            equityTable.setSize(550, 450);
+            RefineryUtilities.centerFrameOnScreen(equityTable);
+            equityTable.setVisible(true);
+
+            // show equity periodical returns
+            EquityPeriodicalReturnsTableFrame equityPeriodicalReturnsTable = new EquityPeriodicalReturnsTableFrame(equity);
+            equityPeriodicalReturnsTable.setSize(550, 450);
+            RefineryUtilities.centerFrameOnScreen(equityPeriodicalReturnsTable);
+            equityPeriodicalReturnsTable.setVisible(true);
+        }
+
+        // show equity
+        EquityChart chart = new EquityChart(true, equity, null, showPeaks, showValleys,
+                period == null, showRisk, showContracts, period, null, additionalEquities);
+        chart.setShowEquityAnnotations(context.getAttribute(EquityChartAttributes.SHOW_EQUITY_ANNOTATIONS, false));
+        chart.setChartDimensions(context.getAttribute(EquityChartAttributes.EQUITY_CHART_DIMENSIONS, new Dimension(800, 600)));
+        chart.setContentPane(chart.getChartPanel());
+        chart.pack();
+        RefineryUtilities.centerFrameOnScreen(chart);
+        chart.setVisible(true);

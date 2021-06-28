@@ -1,0 +1,1 @@
+gpg --output doc.sig --clearsign doc

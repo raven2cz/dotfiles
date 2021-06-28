@@ -1,0 +1,10 @@
+(function() {
+  module.exports = {
+    activate: function(state) {
+      return require(atom.packages.getLoadedPackage('seti-syntax').path + '/lib/settings').init(state);
+    }
+  };
+
+}).call(this);
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiL2hvbWUvYm94Ly5hdG9tL3BhY2thZ2VzL3NldGktc3ludGF4L2xpYi9tYWluLmNvZmZlZSJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUFBLE1BQU0sQ0FBQyxPQUFQLEdBQ0U7SUFBQSxRQUFBLEVBQVUsU0FBQyxLQUFEO2FBQ1IsT0FBQSxDQUFTLElBQUksQ0FBQyxRQUFRLENBQUMsZ0JBQWQsQ0FBK0IsYUFBL0IsQ0FBNkMsQ0FBQyxJQUE5QyxHQUFxRCxlQUE5RCxDQUE4RSxDQUFDLElBQS9FLENBQW9GLEtBQXBGO0lBRFEsQ0FBVjs7QUFERiIsInNvdXJjZXNDb250ZW50IjpbIm1vZHVsZS5leHBvcnRzID1cbiAgYWN0aXZhdGU6IChzdGF0ZSkgLT5cbiAgICByZXF1aXJlKCBhdG9tLnBhY2thZ2VzLmdldExvYWRlZFBhY2thZ2UoJ3NldGktc3ludGF4JykucGF0aCArICcvbGliL3NldHRpbmdzJykuaW5pdChzdGF0ZSlcbiJdfQ==

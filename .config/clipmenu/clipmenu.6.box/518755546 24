@@ -1,0 +1,8 @@
+            {
+                layout = wibox.layout.fixed.vertical,
+                {
+                    {
+                        id = 'text_role',
+                        markup = markup.fontfg(theme.font_larger, theme.bg_urgent, " "),
+                        widget = wibox.widget.textbox
+                    },

@@ -1,0 +1,7 @@
+new AbstractDataSet<PositionFinancialDataSetDummy>("testIllegalModel", 2) {
+            @Override
+            public double get(int dimIndex, int index) {
+                return 0;
+            }
+
+            @Over

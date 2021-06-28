@@ -1,0 +1,31 @@
+    -- Add widgets to the wibox
+    s.mywibox.widget = {
+        layout = wibox.layout.align.horizontal,
+        { -- Left widgets
+            layout = wibox.layout.fixed.horizontal,
+            mylauncher,
+            s.mytaglist,
+            s.mypromptbox,
+        },
+        s.mytasklist, -- Middle widget
+        { -- Right widgets
+            layout = wibox.layout.fixed.horizontal,
+            separator,
+            spotify_widget({
+                font = 'Play 9',
+                max_length = 50,
+                play_icon = '/usr/share/icons/Papirus-Light/24x24/categories/spotify.svg',
+                pause_icon = '/usr/share/icons/Papirus-Dark/24x24/panel/spotify-indicator.svg'
+            }),
+            separator,
+            todo_widget(),
+            separator,
+            wibox.widget.systray(),
+            separator,
+            arrow("alpha", theme.arrow2_bg),
+            wibox.container.background(wibox.container.margin(wibox.widget { keyboardText, theme.mykeyboardlayout, layout = wibox.layout.align.horizontal }, 3, 6), theme.arrow2_bg),
+            arrow(theme.arrow2_bg, theme.arrow1_bg),
+            wibox.container.background(wibox.container.margin(wibox.widget { fsicon, theme.fs.widget, layout = wibox.layout.align.horizontal }, 2, 3), theme.arrow1_bg),
+            arrow(theme.arrow1_bg, theme.arrow2_bg),
+            wibox.container.background(wibox.container.margin(wibox.widget { memicon, mem.widget, layout = wibox.layout.align.horizontal }, 2, 3), theme.arrow2_bg),
+            arrow(theme.arrow2_bg, theme.arrow1_bg),

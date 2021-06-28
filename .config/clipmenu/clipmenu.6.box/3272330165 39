@@ -1,0 +1,6 @@
+        // repetitions : int
+        if (commandLine.hasOption("r")) {
+            repetitions = Integer.parseInt(commandLine.getOptionValue("r"));
+        } else {
+            repetitions = 1000;
+        }

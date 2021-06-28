@@ -1,0 +1,122 @@
+    end;
+    case 4 : {&Filter1_N1=-3|3} {&Filter1_N2=NONE} //ID: 1.13
+    begin
+       filter1_long  = MoneyFlow(2 + Filter1_N1) crosses above 20;
+       filter1_short = MoneyFlow(2 + Filter1_N1) crosses below 80;
+    end;
+    case 5 : {&Filter1_N1=-4|4} {&Filter1_N2=-3|3} //ID: 1.1
+    begin
+        filter1_long = AvgTrueRange((10 + (Filter1_N1 * 3))) > AvgTrueRange((10 + (Filter1_N2 * 5)));
+        filter1_short = filter1_long;
+    end;
+    case 6 : {&Filter1_N1=-4|4} {&Filter1_N2=-3|3} //ID: 1.3
+    begin
+        filter1_long = AvgTrueRange((Filter1_N1 * 5)) >  Average(AvgTrueRange((Filter1_N1 * 5)), (Filter1_N2 * 2));
+        filter1_short = filter1_long;
+    end;
+    case 7 : {&Filter1_N1=-4|4} {&Filter1_N2=FIXED} //ID: 1.5
+    begin
+        filter1_long  = Average(Range, (Filter1_N1 * 2)) > Average(Range, (Filter1_N2 * 3));
+        filter1_short = filter1_long;
+    end;
+    case 8 : {&Filter1_N1=-2|2} {&Filter1_N2=-3|3} //ID: 1.7
+    begin
+        filter1_long  = Range > (Filter1_N1 * 0.15) * AvgTrueRange((Filter1_N2 * 2));
+        filter1_short = filter1_long;
+    end;
+    case 9 : {&Filter1_N1=-3|3} {&Filter1_N2=-2|2} //ID: 1.9
+    begin
+        filter1_long  = BollingerBand(C, (Filter1_N2 * 5), 2) > BollingerBand(C, (Filter1_N1 * 3), 2);
+        filter1_short = BollingerBand(C, (Filter1_N2 * 5), -2) < BollingerBand(C, (Filter1_N1 * 3), -2);
+    end;
+    case 10 : {&Filter1_N1=FIXED} {&Filter1_N2=-2|2} //ID: 1.11
+    begin
+        filter1_long  = Range > (Filter1_N1 * 0.15) * AvgTrueRange((Filter1_N2 * 2));
+        filter1_short = Range < (Filter1_N1 * 0.15) * AvgTrueRange((Filter1_N2 * 2));
+    end;
+    case 11 : {&Filter1_N1=-4|4} {&Filter1_N2=FIXED} //ID: 2.0  N1 -4/+4, N2 zafixovat
+    begin
+      filter1_long = C < xAverage(C, ((10 * Filter1_N2) + (3 * Filter1_N1)));
+      filter1_short = C > xAverage(C,((10 * Filter1_N2) + (3 * Filter1_N1)));
+    end;
+    case 12 : {&Filter1_N1=-4|4} {&Filter1_N2=-4|4} //ID: 2.2 N1 -4/+4, N2 -4/+4
+    begin
+      filter1_long = xAverage(C, (2 + Filter1_N1)) < xAverage(C, (2 + Filter1_N2));
+      filter1_short = xAverage(C, (2 + Filter1_N1)) > xAverage(C, (2 + Filter1_N2));
+    end;
+    case 13 : {&Filter1_N1=FIXED} {&Filter1_N2=-4|4} //ID: 2.4  N1 FIX, N2 -4/+4
+    begin
+      filter1_long = xAverage(C, Filter1_N2) - xAverage(C, 20) > (AvgTrueRange(25) * (0.1 * Filter1_N1));
+      filter1_short = xAverage(C, Filter1_N2)- xAverage(C, 20) < -(AvgTrueRange(25) * (0.1 * Filter1_N1));
+    end;
+    case 14 : {&Filter1_N1=FIXED} {&Filter1_N2=-2|2} //ID: 3.4  N1 FIX, N2 -2/+2
+    begin
+       filter1_long =  DMIplus((Filter1_N1 * 3))  < DMIplus((Filter1_N1 * Filter1_N2));
+       filter1_short = DMIminus((Filter1_N1 * 3)) > DMIminus((Filter1_N1 * Filter1_N2));
+    end;
+    case 15 : {&Filter1_N1=-3|3} {&Filter1_N2=FIXED} //ID: 3.6 N1 -3/+3 FIX, N2 FIX
+    begin
+       filter1_long =  ADX((Filter1_N2 * 2)) > (15 + Filter1_N1) ;
+       filter1_short = filter1_long;
+    end;
+    case 16 : {&Filter1_N1=-3|3} {&Filter1_N2=FIXED} //ID: 4.0  N1 -3/+3, N2 FIX
+    begin
+      filter1_long = (C - CloseD(0)) < (AvgTrueRange((3*Filter1_N1))) * (0.25 * Filter1_N2);
+      filter1_short = (CloseD(0) - C) < (AvgTrueRange((3*Filter1_N1))) * (0.25 * Filter1_N2);
+    end;
+    case 17 : {&Filter1_N1=FIXED} {&Filter1_N2=-3|3} //ID: 4.2  N1 fix, N2 -3/+3
+    begin
+      filter1_long = (C - CloseD(0)) > -(AvgTrueRange((3*Filter1_N1))) * (0.1 * Filter1_N2);
+      filter1_short = (CloseD(0) - C) > -(AvgTrueRange((3*Filter1_N1))) * (0.1 * Filter1_N2);
+    end;
+    case 18 : {&Filter1_N1=-3|3} {&Filter1_N2=NONE} //ID: 5.0   N1 -3/+3
+    begin
+      filter1_long =  Volume > average(Volume, (5 + (5 * Filter1_N1)));
+      filter1_short = filter1_long;
+    end;
+    case 19 : {&Filter1_N1=-3|3} {&Filter1_N2=FIXED} //ID: 5.2  N1 -3/+3, N2 Fix
+    begin
+      filter1_long =  Volume * (0.5 * Filter1_N2) > average(Volume, (10+ (5 * Filter1_N1)));
+      filter1_short = filter1_long;
+    end;
+    case 20 : {&Filter1_N1=NONE} {&Filter1_N2=NONE} //ID: 5.6 NONE
+    begin
+      filter1_long =  Volume < Volume[1];
+      filter1_short = filter1_long;
+    end;
+    case 21 : {&Filter1_N1=-3|3} {&Filter1_N2=FIXED} //ID: 6.0  N1 -3/+3, N2 fix
+    begin
+      filter1_long  = CCI((Filter1_N2 * 10)) < -1*((10 * Filter1_N1));
+      filter1_short = CCI((Filter1_N2 * 10)) > ((10 * Filter1_N1));
+    end;
+    case 22 : {&Filter1_N1=-3|3} {&Filter1_N2=NONE} //ID: 6.3  N1 -3/+3
+    begin
+      filter1_long  = CCI((Filter1_N1 * 5)) < 0;
+      filter1_short = CCI((Filter1_N1 * 5)) > 0;
+    end;
+    case 23 : {&Filter1_N1=FIXED} {&Filter1_N2=-4|4}
+    begin
+      filter1_long = BBKCRatio(Filter1_N1 + 10, Filter1_N2 / 10 + 1) < 0;
+      filter1_short = filter1_long;
+    end;
+    case 24 : {&Filter1_N1=FIXED} {&Filter1_N2=-4|4}
+    begin
+      F1Value1 = BBKCRatio(Filter1_N1 + 10, Filter1_N2 / 10 + 1);
+      filter1_long = F1Value1 > F1Value1[1];
+      filter1_short = filter1_long;
+    end;
+    case 25 : {&Filter1_N1=FIXED} {&Filter1_N2=-4|4}
+    begin
+      F1Value1 = BBKCRatio(Filter1_N1 + 10, Filter1_N2 / 10 + 1);
+      filter1_long = F1Value1 > F1Value1[1] and F1Value1 < 0;
+      filter1_short = filter1_long;
+    end;
+    case 26 : {&Filter1_N1=FIXED} {&Filter1_N2=-4|4}
+    begin
+      F1Value1 = BBKCRatio(Filter1_N1 + 10, Filter1_N2 / 10 + 1);
+      filter1_long = F1Value1 > F1Value1[1] and F1Value1 > 0;
+      filter1_short = filter1_long;
+    end;
+ //@switch-group-end
+end; {$switch:Filter1_Switch}
+//@sectionEnd

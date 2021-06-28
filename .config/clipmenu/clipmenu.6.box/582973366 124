@@ -1,0 +1,7 @@
+            if (ohlcvItem.getOhlcvItemAddon() != null && ohlcvItem.getOhlcvItemAddon().getParameters() != null) {
+                idents[idx] = ohlcvItem.getOhlcvItemAddon()
+                        .getParameters().getRequiredAttribute(OHLCVItemAddonParams.EQUITY_IDENT);
+            } else {
+                int longShort = ohlcvItem.getClose() - ohlcvItem.getOpen() > 0 ? 1 : -1;
+                idents[idx] = new EquityIdent(ohlcvItem.getTimeStamp(), idx, longShort);
+                idents[idx].risk = ohlcvItem.getOpenInterest();

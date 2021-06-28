@@ -1,0 +1,5 @@
+    case 1 : {&Filter1_N1=-4|4} {&Filter1_N2=FIXED} //ID: 3.0  N1 -4/+4, N2 FIX
+    begin
+       filter1_long =  DMIplus((5 * (Filter1_N1 + Filter1_N2))) < DMIminus((5 * (Filter1_N1 + Filter1_N2)));
+       filter1_short = DMIplus((5 * (Filter1_N1 + Filter1_N2))) > DMIminus((5 * (Filter1_N1 + Filter1_N2)));
+    end;

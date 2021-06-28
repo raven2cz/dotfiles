@@ -1,0 +1,75 @@
+    @BeforeEach
+    public void setup() {
+        context = new JtdAppContextService().createContext();
+        pluginTested = new TimeMaxLossJtdPositionPlugin();
+    }
+
+    @Test
+    void processPosition_ZERO_TRADES_EXCEEDING_LIMIT_DAILY() throws Exception {
+        //-------------------------------
+        // define plugin configuration
+        //-------------------------------
+        pluginTested = new TimeMaxLossJtdPositionPlugin(MAX_LOSS_LIMIT__DAILY, ZERO_TRADES_EXCEEDING_LIMIT, 1.0);
+
+        reqRes = createBlockingJtd(10000, pluginTested);
+
+        int id = 1;
+
+        // do test
+        processOpenPosition(id++, "2018/01/07 12:00", 100d, 1, -1, "@YM.D", 10d, null);
+        processClosePosition(position, "2018/01/07 13:00", 110d);
+        assertEquals(1, position.getPositionQuantity());
+        assertEquals(-50.0, position.getPl(), 1e-3);
+        assertEquals(9950.0, r.account.getAmount(), 1e-3);
+
+        processOpenPosition(id++, "2018/01/07 13:10", 100d, 1, -1, "@YM.D", 10d, null);
+        processClosePosition(position, "2018/01/07 13:15", 110d);
+        assertEquals(1, position.getPositionQuantity());
+        assertEquals(-50.0, position.getPl(), 1e-3);
+        assertEquals(9900.0, r.account.getAmount(), 1e-3);
+
+        processOpenPosition(id++, "2018/01/07 13:20", 100d, 1, -1, "@YM.D", 10d, null);
+        processClosePosition(position, "2018/01/07 13:25", 110d);
+        assertEquals(0, position.getPositionQuantity());
+        assertEquals(0.0, position.getPl(), 1e-3);
+        System.out.println(r.account);
+
+        processOpenPosition(id++, "2018/01/08 00:01", 100d, 2, 1, "@YM.D", 10d, null);
+        processClosePosition(position, "2018/01/08 11:00", 120d);
+        assertEquals(2, position.getPositionQuantity());
+        assertEquals(200.0, position.getPl(), 1e-3);
+        assertEquals(10100.0, r.account.getAmount(), 1e-3);
+
+        processOpenPosition(id++, "2018/01/08 11:15", 100d, 4, -1, "@YM.D", 10d, null);
+        processClosePosition(position, "2018/01/08 11:30", 120d);
+        assertEquals(4, position.getPositionQuantity());
+        assertEquals(-400.0, position.getPl(), 1e-3);
+        assertEquals(9700.0, r.account.getAmount(), 1e-3);
+
+        processOpenPosition(id++, "2018/01/08 12:00", 100d, 4, -1, "@YM.D", 10d, null);
+        processClosePosition(position, "2018/01/08 12:15", 120d);
+        assertEquals(0, position.getPositionQuantity());
+        assertEquals(0.0, position.getPl(), 1e-3);
+        assertEquals(9700.0, r.account.getAmount(), 1e-3);
+
+        if (r.exception != null) throw r.exception;
+        System.out.println(r.toLineString());
+        System.out.println(r.positionContainer.toLineString());
+        System.out.println(r.account);
+    }
+
+    @Test
+    void processPosition_ZERO_TRADES_EXCEEDING_LIMIT_DAILY_3DAYS() throws Exception {
+        //-------------------------------
+        // define plugin configuration
+        //-------------------------------
+        pluginTested = new TimeMaxLossJtdPositionPlugin(MAX_LOSS_LIMIT__DAILY, ZERO_TRADES_EXCEEDING_LIMIT, 1.0, 3);
+
+        reqRes = createBlockingJtd(10000, pluginTested);
+
+        int id = 1;
+
+        // do test
+        processOpenPosition(id++, "2018/01/07 12:00", 100d, 1, -1, "@YM.D", 10d, null);
+        processClosePosition(position, "2018/01/07 13:00", 110d);
+        assertEquals(1, position.getPositionQuantity());

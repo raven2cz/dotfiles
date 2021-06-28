@@ -1,0 +1,25 @@
+
+        # This determines the styling of the current selection.
+        selection:
+            text-colour: '#FFFFFFFF'
+            background-colour: '[accent]'
+            border-colour: '#FF000000'
+            border-width: [0]
+
+# Used to determine whether a config upgrade is needed.
+# Do not change this value manually.
+config-version: 1.7
+
+    © 2021 GitHub, Inc.
+    Terms
+    Privacy
+    Security
+    Status
+    Docs
+
+    Contact GitHub
+    Pricing
+    API
+    Training
+    Blog
+    About

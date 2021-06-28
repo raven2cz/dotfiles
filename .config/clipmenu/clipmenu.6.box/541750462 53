@@ -1,0 +1,6 @@
+    private TableStructure tdSymbolsTable;
+    private TableStructure tdSystemsTable;
+
+    // <StrategyId=4, Name=1>
+    private Map<String, String> systems;
+    // <Id=0, Name=1>

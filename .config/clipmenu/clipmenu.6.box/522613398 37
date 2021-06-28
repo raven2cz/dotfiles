@@ -1,0 +1,9 @@
+        int equityId = 0;
+        for (int i = 1; i < table.size(); i++) {
+            // ignore other accounts
+            if (!table.get(i).get(2).equals(solAccount)) continue;
+
+            if (logger.isTraceEnabled()) logger.trace("Row >> " + table.get(i));
+            String plStr = table.get(i).get(9);
+            if (!StringUtils.isEmpty(plStr)) {
+                double pl = Double.parseDouble(plStr);

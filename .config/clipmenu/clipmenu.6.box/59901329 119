@@ -1,0 +1,3 @@
+    /** StrategySubtypes which is process per defined group in the statistical bar chart, param REQUIRED  */
+    public static final AttributeKey<int[][]> STAT_BAR_CHART_SUBTYPES =
+            AttributeKey.create(int[][].class, "STAT_BAR_CHART_SUBTYPES");

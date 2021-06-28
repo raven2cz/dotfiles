@@ -1,0 +1,6 @@
+    @BeforeEach
+    public void setup() {
+        context = new JtdAppContextService().createContext();
+        pluginTested = new TimeMaxLossJtdPositionPlugin();
+    }
+

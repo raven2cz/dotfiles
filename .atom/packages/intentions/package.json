@@ -1,0 +1,164 @@
+{
+  "_from": "https://www.atom.io/api/packages/intentions/versions/1.1.5/tarball",
+  "_id": "intentions@1.1.5",
+  "_inBundle": false,
+  "_integrity": "sha512-572U1d0QpahVXL8jdR3vp+TYN1qrrvOf/hev5c1KlKNSRTNR6BxPMDOYRlv1/MV7Yg/5biUl4cI+xFgfElN0gg==",
+  "_location": "/intentions",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/intentions/versions/1.1.5/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/intentions/versions/1.1.5/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/intentions/versions/1.1.5/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/intentions/versions/1.1.5/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/intentions/versions/1.1.5/tarball",
+  "_shasum": "c8414cacc55c400cc2172716ec3178ccea02abb4",
+  "_spec": "https://www.atom.io/api/packages/intentions/versions/1.1.5/tarball",
+  "_where": "/tmp/apm-install-dir-2021431-5807-g26dog.gkzcn",
+  "bugs": {
+    "url": "https://github.com/steelbrain/intentions/issues"
+  },
+  "bundleDependencies": false,
+  "consumedServices": {
+    "intentions:list": {
+      "versions": {
+        "^1.0.0": "consumeListIntentions"
+      }
+    },
+    "intentions:highlight": {
+      "versions": {
+        "^1.0.0": "consumeHighlightIntentions"
+      }
+    }
+  },
+  "dependencies": {
+    "disposable-event": "^1.0.1",
+    "sb-event-kit": "^3.0.0",
+    "vanilla-jsx": "^3.0.2"
+  },
+  "deprecated": false,
+  "description": "Base package for showing intentions in Atom",
+  "devDependencies": {
+    "eslint-config-steelbrain": "^2.0.0",
+    "flow-bin": "^0.46.0",
+    "jasmine-fix": "^1.0.1"
+  },
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "homepage": "https://github.com/steelbrain/intentions#readme",
+  "keywords": [],
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "name": "intentions",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steelbrain/intentions.git"
+  },
+  "scripts": {
+    "test": "(apm test) && (flow check) && (eslint . )"
+  },
+  "version": "1.1.5",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [
+      {
+        "name": "disposable-event",
+        "version": "1.1.0",
+        "path": "node_modules/disposable-event/lib/index.js"
+      },
+      {
+        "name": "escape-html",
+        "version": "1.0.3",
+        "path": "node_modules/escape-html/index.js"
+      },
+      {
+        "name": "sb-event-kit",
+        "version": "3.0.0",
+        "path": "node_modules/sb-event-kit/lib/main.js"
+      },
+      {
+        "name": "vanilla-jsx",
+        "version": "3.0.2",
+        "path": "node_modules/vanilla-jsx/lib/main.js"
+      }
+    ],
+    "extensions": {
+      ".json": [
+        ".eslintrc.json",
+        "node_modules/disposable-event/package.json",
+        "node_modules/escape-html/package.json",
+        "node_modules/sb-event-kit/.eslintrc.json",
+        "node_modules/sb-event-kit/package.json",
+        "node_modules/vanilla-jsx/package.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      ".js": [
+        "lib/commands.js",
+        "lib/elements/highlight.js",
+        "lib/elements/list.js",
+        "lib/helpers.js",
+        "lib/index.js",
+        "lib/main.js",
+        "lib/providers-highlight.js",
+        "lib/providers-list.js",
+        "lib/types.js",
+        "lib/validate.js",
+        "lib/view-list.js",
+        "node_modules/disposable-event/lib/index.js",
+        "node_modules/escape-html/index.js",
+        "node_modules/sb-event-kit/decls/jasmine.js",
+        "node_modules/sb-event-kit/lib/composite-disposable.js",
+        "node_modules/sb-event-kit/lib/disposable.js",
+        "node_modules/sb-event-kit/lib/emitter.js",
+        "node_modules/sb-event-kit/lib/helpers.js",
+        "node_modules/sb-event-kit/lib/main.js",
+        "node_modules/vanilla-jsx/lib/main.js",
+        "node_modules/vanilla-jsx/src/main.js"
+      ]
+    },
+    "folders": [
+      {
+        "paths": [
+          "",
+          "decls",
+          "keymaps",
+          "lib",
+          "lib/elements",
+          "spec"
+        ],
+        "dependencies": {
+          "disposable-event": "^1.0.1",
+          "sb-event-kit": "^3.0.0",
+          "vanilla-jsx": "^3.0.2"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/disposable-event/lib",
+          "node_modules/disposable-event"
+        ],
+        "dependencies": {
+          "sb-event-kit": "^3.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/vanilla-jsx/lib",
+          "node_modules/vanilla-jsx",
+          "node_modules/vanilla-jsx/spec",
+          "node_modules/vanilla-jsx/src"
+        ],
+        "dependencies": {
+          "escape-html": "^1.0.3"
+        }
+      }
+    ]
+  }
+}

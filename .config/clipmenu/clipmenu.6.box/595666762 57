@@ -1,0 +1,2 @@
+{ Profit-target - for SWING strategies only } 
+if PT_switch = 1 then setprofittarget(PT);

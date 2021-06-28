@@ -1,0 +1,1527 @@
+let taskIdCounter = 1,
+    isCallbackScheduled = false,
+    isPerformingWork = false,
+    taskQueue = [],
+    currentTask = null,
+    shouldYieldToHost = null,
+    yieldInterval = 5,
+    deadline = 0,
+    maxYieldInterval = 300,
+    scheduleCallback = null,
+    scheduledCallback = null;
+const maxSigned31BitInt = 1073741823;
+function setupScheduler() {
+  if (window && window.MessageChannel) {
+    const channel = new MessageChannel(),
+          port = channel.port2;
+    scheduleCallback = () => port.postMessage(null);
+    channel.port1.onmessage = () => {
+      if (scheduledCallback !== null) {
+        const currentTime = performance.now();
+        deadline = currentTime + yieldInterval;
+        const hasTimeRemaining = true;
+        try {
+          const hasMoreWork = scheduledCallback(hasTimeRemaining, currentTime);
+          if (!hasMoreWork) {
+            scheduledCallback = null;
+          } else port.postMessage(null);
+        } catch (error) {
+          port.postMessage(null);
+          throw error;
+        }
+      }
+    };
+  } else {
+    let _callback;
+    scheduleCallback = () => {
+      if (!_callback) {
+        _callback = scheduledCallback;
+        setTimeout(() => {
+          const currentTime = performance.now();
+          deadline = currentTime + yieldInterval;
+          const hasMoreWork = _callback(true, currentTime);
+          _callback = null;
+          if (hasMoreWork) scheduleCallback();
+        }, 0);
+      }
+    };
+  }
+  if (navigator && navigator.scheduling && navigator.scheduling.isInputPending) {
+    const scheduling = navigator.scheduling;
+    shouldYieldToHost = () => {
+      const currentTime = performance.now();
+      if (currentTime >= deadline) {
+        if (scheduling.isInputPending()) {
+          return true;
+        }
+        return currentTime >= maxYieldInterval;
+      } else {
+        return false;
+      }
+    };
+  } else {
+    shouldYieldToHost = () => performance.now() >= deadline;
+  }
+}
+function enqueue(taskQueue, task) {
+  function findIndex() {
+    let m = 0;
+    let n = taskQueue.length - 1;
+    while (m <= n) {
+      let k = n + m >> 1;
+      let cmp = task.expirationTime - taskQueue[k].expirationTime;
+      if (cmp > 0) m = k + 1;else if (cmp < 0) n = k - 1;else return k;
+    }
+    return m;
+  }
+  taskQueue.splice(findIndex(), 0, task);
+}
+function requestCallback(fn, options) {
+  if (!scheduleCallback) setupScheduler();
+  let startTime = performance.now(),
+      timeout = maxSigned31BitInt;
+  if (options && options.timeout) timeout = options.timeout;
+  const newTask = {
+    id: taskIdCounter++,
+    fn,
+    startTime,
+    expirationTime: startTime + timeout
+  };
+  enqueue(taskQueue, newTask);
+  if (!isCallbackScheduled && !isPerformingWork) {
+    isCallbackScheduled = true;
+    scheduledCallback = flushWork;
+    scheduleCallback();
+  }
+  return newTask;
+}
+function cancelCallback(task) {
+  task.fn = null;
+}
+function flushWork(hasTimeRemaining, initialTime) {
+  isCallbackScheduled = false;
+  isPerformingWork = true;
+  try {
+    return workLoop(hasTimeRemaining, initialTime);
+  } finally {
+    currentTask = null;
+    isPerformingWork = false;
+  }
+}
+function workLoop(hasTimeRemaining, initialTime) {
+  let currentTime = initialTime;
+  currentTask = taskQueue[0] || null;
+  while (currentTask !== null) {
+    if (currentTask.expirationTime > currentTime && (!hasTimeRemaining || shouldYieldToHost())) {
+      break;
+    }
+    const callback = currentTask.fn;
+    if (callback !== null) {
+      currentTask.fn = null;
+      const didUserCallbackTimeout = currentTask.expirationTime <= currentTime;
+      callback(didUserCallbackTimeout);
+      currentTime = performance.now();
+      if (currentTask === taskQueue[0]) {
+        taskQueue.shift();
+      }
+    } else taskQueue.shift();
+    currentTask = taskQueue[0] || null;
+  }
+  return currentTask !== null;
+}
+
+const equalFn = (a, b) => a === b;
+let ERROR = null;
+let runEffects = runQueue;
+const NOTPENDING = {};
+const STALE = 1;
+const PENDING = 2;
+const UNOWNED = {
+  owned: null,
+  cleanups: null,
+  context: null,
+  owner: null
+};
+const [transPending, setTransPending] = createSignal(false, true);
+var Owner = null;
+var Listener = null;
+let Pending = null;
+let Updates = null;
+let Effects = null;
+let Transition = null;
+let ExecCount = 0;
+function createRoot(fn, detachedOwner) {
+  detachedOwner && (Owner = detachedOwner);
+  const listener = Listener,
+        owner = Owner,
+        root = fn.length === 0 && !false ? UNOWNED : {
+    owned: null,
+    cleanups: null,
+    context: null,
+    owner,
+    attached: !!detachedOwner
+  };
+  Owner = root;
+  Listener = null;
+  let result;
+  try {
+    runUpdates(() => result = fn(() => cleanNode(root)), true);
+  } finally {
+    Listener = listener;
+    Owner = owner;
+  }
+  return result;
+}
+function createSignal(value, areEqual, options) {
+  const s = {
+    value,
+    observers: null,
+    observerSlots: null,
+    pending: NOTPENDING,
+    comparator: areEqual ? typeof areEqual === "function" ? areEqual : equalFn : undefined
+  };
+  return [readSignal.bind(s), writeSignal.bind(s)];
+}
+function createComputed(fn, value) {
+  updateComputation(createComputation(fn, value, true));
+}
+function createRenderEffect(fn, value) {
+  updateComputation(createComputation(fn, value, false));
+}
+function createEffect(fn, value) {
+  if (globalThis._$HYDRATION && globalThis._$HYDRATION.asyncSSR) return;
+  runEffects = runUserEffects;
+  const c = createComputation(fn, value, false),
+        s = SuspenseContext && lookup(Owner, SuspenseContext.id);
+  if (s) c.suspense = s;
+  c.user = true;
+  Effects && Effects.push(c);
+}
+function resumeEffects(e) {
+  Transition && (Transition.running = true);
+  Effects.push.apply(Effects, e);
+  e.length = 0;
+}
+function createMemo(fn, value, areEqual) {
+  const c = createComputation(fn, value, true);
+  c.pending = NOTPENDING;
+  c.observers = null;
+  c.observerSlots = null;
+  c.state = 0;
+  c.comparator = areEqual ? typeof areEqual === "function" ? areEqual : equalFn : undefined;
+  updateComputation(c);
+  return readSignal.bind(c);
+}
+function createDeferred(source, options) {
+  let t,
+      timeout = options ? options.timeoutMs : undefined;
+  const [deferred, setDeferred] = createSignal();
+  const node = createComputation(() => {
+    if (!t || !t.fn) t = requestCallback(() => setDeferred(node.value), timeout !== undefined ? {
+      timeout
+    } : undefined);
+    return source();
+  }, undefined, true);
+  updateComputation(node);
+  setDeferred(node.value);
+  return deferred;
+}
+function createSelector(source, fn = equalFn) {
+  let subs = new Map();
+  const node = createComputation(p => {
+    const v = source();
+    for (const key of subs.keys()) if (fn(key, v) || p && fn(key, p)) {
+      const c = subs.get(key);
+      c.state = STALE;
+      if (c.pure) Updates.push(c);else Effects.push(c);
+    }
+    return v;
+  }, undefined, true);
+  updateComputation(node);
+  return key => {
+    if (Listener) {
+      subs.set(key, Listener);
+      onCleanup(() => subs.delete(key));
+    }
+    return fn(key, node.value);
+  };
+}
+function batch(fn) {
+  if (Pending) return fn();
+  const q = Pending = [],
+        result = fn();
+  Pending = null;
+  runUpdates(() => {
+    for (let i = 0; i < q.length; i += 1) {
+      const data = q[i];
+      if (data.pending !== NOTPENDING) {
+        const pending = data.pending;
+        data.pending = NOTPENDING;
+        writeSignal.call(data, pending);
+      }
+    }
+  }, false);
+  return result;
+}
+function useTransition() {
+  return [transPending, fn => {
+    if (SuspenseContext) {
+      Transition || (Transition = {
+        sources: new Set(),
+        effects: [],
+        promises: new Set(),
+        disposed: new Set(),
+        running: true
+      });
+      Transition.running = true;
+    }
+    batch(fn);
+  }];
+}
+function untrack(fn) {
+  let result,
+      listener = Listener;
+  Listener = null;
+  result = fn();
+  Listener = listener;
+  return result;
+}
+function on(...args) {
+  const fn = args.pop();
+  let deps;
+  let isArray = true;
+  let prev;
+  if (args.length < 2) {
+    deps = args[0];
+    isArray = false;
+  } else deps = args;
+  return prevResult => {
+    let value;
+    if (isArray) {
+      value = [];
+      if (!prev) prev = [];
+      for (let i = 0; i < deps.length; i++) value.push(deps[i]());
+    } else value = deps();
+    const result = untrack(() => fn(value, prev, prevResult));
+    prev = value;
+    return result;
+  };
+}
+function onMount(fn) {
+  createEffect(() => untrack(fn));
+}
+function onCleanup(fn) {
+  if (Owner === null) ;else if (Owner.cleanups === null) Owner.cleanups = [fn];else Owner.cleanups.push(fn);
+  return fn;
+}
+function onError(fn) {
+  ERROR || (ERROR = Symbol("error"));
+  if (Owner === null) ;else if (Owner.context === null) Owner.context = {
+    [ERROR]: [fn]
+  };else if (!Owner.context[ERROR]) Owner.context[ERROR] = [fn];else Owner.context[ERROR].push(fn);
+}
+function getListener() {
+  return Listener;
+}
+function getContextOwner() {
+  return Owner;
+}
+function serializeGraph(owner) {
+  return {};
+}
+function createContext(defaultValue) {
+  const id = Symbol("context");
+  return {
+    id,
+    Provider: createProvider(id),
+    defaultValue
+  };
+}
+function useContext(context) {
+  return lookup(Owner, context.id) || context.defaultValue;
+}
+let SuspenseContext;
+function getSuspenseContext() {
+  return SuspenseContext || (SuspenseContext = createContext({}));
+}
+function createResource(init, options = {}) {
+  const contexts = new Set(),
+        h = globalThis._$HYDRATION || {},
+        [s, set] = createSignal(init, true),
+        [track, trigger] = createSignal(),
+        [loading, setLoading] = createSignal(false, true);
+  let err = null,
+      pr = null,
+      ctx;
+  function loadEnd(p, v, e) {
+    if (pr === p) {
+      err = e;
+      pr = null;
+      if (Transition && p && Transition.promises.has(p)) {
+        Transition.promises.delete(p);
+        runUpdates(() => {
+          Transition.running = true;
+          if (!Transition.promises.size) {
+            Effects.push.apply(Effects, Transition.effects);
+            Transition.effects = [];
+          }
+          completeLoad(v);
+        }, false);
+      } else completeLoad(v);
+    }
+    return v;
+  }
+  function completeLoad(v) {
+    batch(() => {
+      if (ctx) h.context = ctx;
+      if (h.asyncSSR && options.name) h.resources[options.name] = v;
+      set(v);
+      setLoading(false);
+      for (let c of contexts.keys()) c.decrement();
+      contexts.clear();
+    });
+    if (ctx) h.context = ctx = undefined;
+  }
+  function read() {
+    const c = SuspenseContext && lookup(Owner, SuspenseContext.id),
+          v = s();
+    if (err) throw err;
+    if (Listener && !Listener.user && c) {
+      createComputed(() => {
+        track();
+        if (pr) {
+          if (c.resolved && Transition) Transition.promises.add(pr);else if (!contexts.has(c)) {
+            c.increment();
+            contexts.add(c);
+          }
+        }
+      });
+    }
+    return v;
+  }
+  function load(fn) {
+    err = null;
+    let p;
+    const hydrating = h.context && !!h.context.registry;
+    if (hydrating) {
+      if (h.loadResource && !options.notStreamed) {
+        fn = h.loadResource;
+      } else if (options.name && h.resources && options.name in h.resources) {
+        fn = () => {
+          const data = h.resources[options.name];
+          delete h.resources[options.name];
+          return data;
+        };
+      }
+    } else if (h.asyncSSR && h.context) ctx = h.context;
+    p = fn();
+    if (typeof p !== "object" || !("then" in p)) {
+      loadEnd(pr, p);
+      return Promise.resolve(p);
+    }
+    pr = p;
+    batch(() => {
+      setLoading(true);
+      trigger();
+    });
+    return p.then(v => loadEnd(p, v), e => loadEnd(p, undefined, e));
+  }
+  Object.defineProperty(read, "loading", {
+    get() {
+      return loading();
+    }
+  });
+  return [read, load];
+}
+function readSignal() {
+  if (this.state && this.sources) {
+    const updates = Updates;
+    Updates = null;
+    this.state === STALE ? updateComputation(this) : lookDownstream(this);
+    Updates = updates;
+  }
+  if (Listener) {
+    const sSlot = this.observers ? this.observers.length : 0;
+    if (!Listener.sources) {
+      Listener.sources = [this];
+      Listener.sourceSlots = [sSlot];
+    } else {
+      Listener.sources.push(this);
+      Listener.sourceSlots.push(sSlot);
+    }
+    if (!this.observers) {
+      this.observers = [Listener];
+      this.observerSlots = [Listener.sources.length - 1];
+    } else {
+      this.observers.push(Listener);
+      this.observerSlots.push(Listener.sources.length - 1);
+    }
+  }
+  if (Transition && Transition.running && Transition.sources.has(this)) return this.tValue;
+  return this.value;
+}
+function writeSignal(value, isComp) {
+  if (this.comparator) {
+    if (Transition && Transition.running && Transition.sources.has(this)) {
+      if (this.comparator(this.tValue, value)) return value;
+    } else if (this.comparator(this.value, value)) return value;
+  }
+  if (Pending) {
+    if (this.pending === NOTPENDING) Pending.push(this);
+    this.pending = value;
+    return value;
+  }
+  if (Transition) {
+    if (Transition.running || !isComp && Transition.sources.has(this)) {
+      Transition.sources.add(this);
+      this.tValue = value;
+    }
+    if (!Transition.running) this.value = value;
+  } else this.value = value;
+  if (this.observers && (!Updates || this.observers.length)) {
+    runUpdates(() => {
+      for (let i = 0; i < this.observers.length; i += 1) {
+        const o = this.observers[i];
+        if (Transition && Transition.running && Transition.disposed.has(o)) continue;
+        if (o.observers && o.state !== PENDING) markUpstream(o);
+        o.state = STALE;
+        if (o.pure) Updates.push(o);else Effects.push(o);
+      }
+      if (Updates.length > 10e5) {
+        Updates = [];
+        throw new Error("Potential Infinite Loop Detected.");
+      }
+    }, false);
+  }
+  return value;
+}
+function updateComputation(node) {
+  if (!node.fn) return;
+  cleanNode(node);
+  const owner = Owner,
+        listener = Listener,
+        time = ExecCount;
+  Listener = Owner = node;
+  runComputation(node, node.value, time);
+  if (Transition && !Transition.running && Transition.sources.has(node)) {
+    Transition.running = true;
+    runComputation(node, node.tValue, time);
+    Transition.running = false;
+  }
+  Listener = listener;
+  Owner = owner;
+}
+function runComputation(node, value, time) {
+  let nextValue;
+  try {
+    nextValue = node.fn(value);
+  } catch (err) {
+    handleError(err);
+  }
+  if (!node.updatedAt || node.updatedAt <= time) {
+    if (node.observers && node.observers.length) {
+      writeSignal.call(node, nextValue, true);
+    } else if (Transition && Transition.running && node.pure) {
+      Transition.sources.add(node);
+      node.tValue = nextValue;
+    } else node.value = nextValue;
+    node.updatedAt = time;
+  }
+}
+function createComputation(fn, init, pure) {
+  const c = {
+    fn,
+    state: STALE,
+    updatedAt: null,
+    owned: null,
+    sources: null,
+    sourceSlots: null,
+    cleanups: null,
+    value: init,
+    owner: Owner,
+    context: null,
+    pure
+  };
+  if (Owner === null) ;else if (Owner !== UNOWNED) {
+    if (Transition && Transition.running && Owner.pure) {
+      if (!Owner.tOwned) Owner.tOwned = [c];else Owner.tOwned.push(c);
+    } else {
+      if (!Owner.owned) Owner.owned = [c];else Owner.owned.push(c);
+    }
+  }
+  return c;
+}
+function runTop(node) {
+  let top = node.state === STALE && node,
+      pending;
+  if (node.suspense && untrack(node.suspense.inFallback)) return node.suspense.effects.push(node);
+  const runningTransition = Transition && Transition.running;
+  while ((node.fn || runningTransition && node.attached) && (node = node.owner)) {
+    if (runningTransition && Transition.disposed.has(node)) return;
+    if (node.state === PENDING) pending = node;else if (node.state === STALE) {
+      top = node;
+      pending = undefined;
+    }
+  }
+  if (pending) {
+    const updates = Updates;
+    Updates = null;
+    lookDownstream(pending);
+    Updates = updates;
+    if (!top || top.state !== STALE) return;
+    if (runningTransition) {
+      node = top;
+      while ((node.fn || node.attached) && (node = node.owner)) {
+        if (Transition.disposed.has(node)) return;
+      }
+    }
+  }
+  top && updateComputation(top);
+}
+function runUpdates(fn, init) {
+  if (Updates) return fn();
+  let wait = false;
+  if (!init) Updates = [];
+  if (Effects) wait = true;else Effects = [];
+  ExecCount++;
+  try {
+    fn();
+  } catch (err) {
+    handleError(err);
+  } finally {
+    if (Updates) {
+      runQueue(Updates);
+      Updates = null;
+    }
+    if (wait) return;
+    if (Transition && Transition.running) {
+      if (Transition.promises.size) {
+        Transition.running = false;
+        Transition.effects.push.apply(Transition.effects, Effects);
+        Effects = null;
+        setTransPending(true);
+        return;
+      }
+      const sources = Transition.sources;
+      Transition = null;
+      batch(() => {
+        sources.forEach(v => {
+          v.value = v.tValue;
+          if (v.owned) {
+            for (let i = 0, len = v.owned.length; i < len; i++) cleanNode(v.owned[i]);
+          }
+          if (v.tOwned) v.owned = v.tOwned;
+          delete v.tValue;
+          delete v.tOwned;
+        });
+        setTransPending(false);
+      });
+    }
+    if (Effects.length) batch(() => {
+      runEffects(Effects);
+      Effects = null;
+    });else {
+      Effects = null;
+    }
+  }
+}
+function runQueue(queue) {
+  for (let i = 0; i < queue.length; i++) runTop(queue[i]);
+}
+function runUserEffects(queue) {
+  let i,
+      userLength = 0;
+  for (i = 0; i < queue.length; i++) {
+    const e = queue[i];
+    if (!e.user) runTop(e);else queue[userLength++] = e;
+  }
+  const resume = queue.length;
+  for (i = 0; i < userLength; i++) runTop(queue[i]);
+  for (i = resume; i < queue.length; i++) runTop(queue[i]);
+}
+function lookDownstream(node) {
+  node.state = 0;
+  for (let i = 0; i < node.sources.length; i += 1) {
+    const source = node.sources[i];
+    if (source.sources) {
+      if (source.state === STALE) runTop(source);else if (source.state === PENDING) lookDownstream(source);
+    }
+  }
+}
+function markUpstream(node) {
+  for (let i = 0; i < node.observers.length; i += 1) {
+    const o = node.observers[i];
+    if (!o.state) {
+      o.state = PENDING;
+      o.observers && markUpstream(o);
+    }
+  }
+}
+function cleanNode(node) {
+  let i;
+  if (node.sources) {
+    while (node.sources.length) {
+      const source = node.sources.pop(),
+            index = node.sourceSlots.pop(),
+            obs = source.observers;
+      if (obs && obs.length) {
+        const n = obs.pop(),
+              s = source.observerSlots.pop();
+        if (index < obs.length) {
+          n.sourceSlots[s] = index;
+          obs[index] = n;
+          source.observerSlots[index] = s;
+        }
+      }
+    }
+  }
+  if (Transition && Transition.running && node.pure) {
+    if (node.tOwned) {
+      for (i = 0; i < node.tOwned.length; i++) cleanNode(node.tOwned[i]);
+      delete node.tOwned;
+    }
+    reset(node, true);
+  } else if (node.owned) {
+    for (i = 0; i < node.owned.length; i++) cleanNode(node.owned[i]);
+    node.owned = null;
+  }
+  if (node.cleanups) {
+    for (i = 0; i < node.cleanups.length; i++) node.cleanups[i]();
+    node.cleanups = null;
+  }
+  node.state = 0;
+  node.context = null;
+}
+function reset(node, top) {
+  if (!top) {
+    node.state = 0;
+    Transition.disposed.add(node);
+  }
+  if (node.owned) {
+    for (let i = 0; i < node.owned.length; i++) reset(node.owned[i]);
+  }
+}
+function handleError(err) {
+  const fns = ERROR && lookup(Owner, ERROR);
+  if (!fns) throw err;
+  fns.forEach(f => f(err));
+}
+function lookup(owner, key) {
+  return owner && (owner.context && owner.context[key] || owner.owner && lookup(owner.owner, key));
+}
+function resolveChildren(children) {
+  if (typeof children === "function") return resolveChildren(children());
+  if (Array.isArray(children)) {
+    const results = [];
+    for (let i = 0; i < children.length; i++) {
+      let result = resolveChildren(children[i]);
+      Array.isArray(result) ? results.push.apply(results, result) : results.push(result);
+    }
+    return results;
+  }
+  return children;
+}
+function createProvider(id) {
+  return function provider(props) {
+    return createMemo(() => {
+      Owner.context = {
+        [id]: props.value
+      };
+      const children = createMemo(() => props.children);
+      return createMemo(() => resolveChildren(children()));
+    });
+  };
+}
+
+const $RAW = Symbol("state-raw"),
+      $NODE = Symbol("state-node"),
+      $PROXY = Symbol("state-proxy"),
+      $NAME = Symbol("state-name");
+function wrap(value, name, processProps, traps) {
+  let p = value[$PROXY];
+  if (!p) {
+    Object.defineProperty(value, $PROXY, {
+      value: p = new Proxy(value, traps || proxyTraps)
+    });
+    if (processProps) {
+      let keys = Object.keys(value),
+          desc = Object.getOwnPropertyDescriptors(value);
+      for (let i = 0, l = keys.length; i < l; i++) {
+        const prop = keys[i];
+        if (desc[prop].get) {
+          const get = createMemo(desc[prop].get.bind(p), undefined, true);
+          Object.defineProperty(value, prop, {
+            get
+          });
+        }
+        if (desc[prop].set) {
+          const og = desc[prop].set,
+                set = v => batch(() => og.call(p, v));
+          Object.defineProperty(value, prop, {
+            set
+          });
+        }
+      }
+    }
+  }
+  return p;
+}
+function isWrappable(obj) {
+  return obj != null && typeof obj === "object" && (!obj.__proto__ || obj.__proto__ === Object.prototype || Array.isArray(obj));
+}
+function unwrap(item, skipGetters) {
+  let result, unwrapped, v, prop;
+  if (result = item != null && item[$RAW]) return result;
+  if (!isWrappable(item)) return item;
+  if (Array.isArray(item)) {
+    if (Object.isFrozen(item)) item = item.slice(0);
+    for (let i = 0, l = item.length; i < l; i++) {
+      v = item[i];
+      if ((unwrapped = unwrap(v, skipGetters)) !== v) item[i] = unwrapped;
+    }
+  } else {
+    if (Object.isFrozen(item)) item = Object.assign({}, item);
+    let keys = Object.keys(item),
+        desc = skipGetters && Object.getOwnPropertyDescriptors(item);
+    for (let i = 0, l = keys.length; i < l; i++) {
+      prop = keys[i];
+      if (skipGetters && desc[prop].get) continue;
+      v = item[prop];
+      if ((unwrapped = unwrap(v, skipGetters)) !== v) item[prop] = unwrapped;
+    }
+  }
+  return item;
+}
+function getDataNodes(target) {
+  let nodes = target[$NODE];
+  if (!nodes) Object.defineProperty(target, $NODE, {
+    value: nodes = {}
+  });
+  return nodes;
+}
+function proxyDescriptor(target, property) {
+  const desc = Reflect.getOwnPropertyDescriptor(target, property);
+  if (!desc || desc.get || property === $PROXY || property === $NODE || property === $NAME) return desc;
+  delete desc.value;
+  delete desc.writable;
+  desc.get = () => target[property];
+  return desc;
+}
+const proxyTraps = {
+  get(target, property, receiver) {
+    if (property === $RAW) return target;
+    if (property === $PROXY) return receiver;
+    const value = target[property];
+    if (property === $NODE || property === "__proto__") return value;
+    const wrappable = isWrappable(value);
+    if (Listener && (typeof value !== "function" || target.hasOwnProperty(property))) {
+      let nodes, node;
+      if (wrappable && (nodes = getDataNodes(value))) {
+        node = nodes._ || (nodes._ =  createSignal());
+        node[0]();
+      }
+      nodes = getDataNodes(target);
+      node = nodes[property] || (nodes[property] =  createSignal());
+      node[0]();
+    }
+    return wrappable ? wrap(value) : value;
+  },
+  set() {
+    return true;
+  },
+  deleteProperty() {
+    return true;
+  },
+  getOwnPropertyDescriptor: proxyDescriptor
+};
+function setProperty(state, property, value) {
+  if (state[property] === value) return;
+  const notify = Array.isArray(state) || !(property in state);
+  if (value === undefined) {
+    delete state[property];
+  } else state[property] = value;
+  let nodes = getDataNodes(state),
+      node;
+  (node = nodes[property]) && node[1](value);
+  notify && (node = nodes._) && node[1]();
+}
+function mergeState(state, value) {
+  const keys = Object.keys(value);
+  for (let i = 0; i < keys.length; i += 1) {
+    const key = keys[i];
+    setProperty(state, key, value[key]);
+  }
+}
+function updatePath(current, path, traversed = []) {
+  let part,
+      prev = current;
+  if (path.length > 1) {
+    part = path.shift();
+    const partType = typeof part,
+          isArray = Array.isArray(current);
+    if (Array.isArray(part)) {
+      for (let i = 0; i < part.length; i++) {
+        updatePath(current, [part[i]].concat(path), [part[i]].concat(traversed));
+      }
+      return;
+    } else if (isArray && partType === "function") {
+      for (let i = 0; i < current.length; i++) {
+        if (part(current[i], i)) updatePath(current, [i].concat(path), [i].concat(traversed));
+      }
+      return;
+    } else if (isArray && partType === "object") {
+      const {
+        from = 0,
+        to = current.length - 1,
+        by = 1
+      } = part;
+      for (let i = from; i <= to; i += by) {
+        updatePath(current, [i].concat(path), [i].concat(traversed));
+      }
+      return;
+    } else if (path.length > 1) {
+      updatePath(current[part], path, [part].concat(traversed));
+      return;
+    }
+    prev = current[part];
+    traversed = [part].concat(traversed);
+  }
+  let value = path[0];
+  if (typeof value === "function") {
+    value = value(prev, traversed);
+    if (value === prev) return;
+  }
+  if (part === undefined && value == undefined) return;
+  value = unwrap(value);
+  if (part === undefined || isWrappable(prev) && isWrappable(value) && !Array.isArray(value)) {
+    mergeState(prev, value);
+  } else setProperty(current, part, value);
+}
+function createState(state, options) {
+  const unwrappedState = unwrap(state || {}, true);
+  const wrappedState = wrap(unwrappedState, false , true);
+  function setState(...args) {
+    batch(() => updatePath(unwrappedState, args));
+  }
+  return [wrappedState, setState];
+}
+
+function createResourceNode(v, name) {
+  const [r, load] = createResource(v, {
+    name
+  });
+  return [() => r(), v => load(() => v), load, () => r.loading];
+}
+function createResourceState(state, options = {}) {
+  const loadingTraps = {
+    get(nodes, property) {
+      const node = nodes[property] || (nodes[property] = createResourceNode(undefined, options.name && `${options.name}:${property}`));
+      return node[3]();
+    },
+    set() {
+      return true;
+    },
+    deleteProperty() {
+      return true;
+    }
+  };
+  const resourceTraps = {
+    get(target, property, receiver) {
+      if (property === $RAW) return target;
+      if (property === $PROXY) return receiver;
+      if (property === "loading") return new Proxy(getDataNodes(target), loadingTraps);
+      const value = target[property];
+      if (property === $NODE || property === "__proto__") return value;
+      const wrappable = isWrappable(value);
+      if (Listener && (typeof value !== "function" || target.hasOwnProperty(property))) {
+        let nodes, node;
+        if (wrappable && (nodes = getDataNodes(value))) {
+          node = nodes._ || (nodes._ =  createSignal());
+          node[0]();
+        }
+        nodes = getDataNodes(target);
+        node = nodes[property] || (nodes[property] = createResourceNode(value, `${options.name}:${property}`));
+        node[0]();
+      }
+      return wrappable ? wrap(value) : value;
+    },
+    set() {
+      return true;
+    },
+    deleteProperty() {
+      return true;
+    },
+    getOwnPropertyDescriptor: proxyDescriptor
+  };
+  const unwrappedState = unwrap(state || {}, true),
+        wrappedState = wrap(unwrappedState, false , true, resourceTraps);
+  function setState(...args) {
+    batch(() => updatePath(unwrappedState, args));
+  }
+  function loadState(v, r) {
+    const nodes = getDataNodes(unwrappedState),
+          keys = Object.keys(v);
+    for (let i = 0; i < keys.length; i++) {
+      const k = keys[i],
+            node = nodes[k] || (nodes[k] = createResourceNode(unwrappedState[k], `${options.name}:${k}`)),
+            resolver = v => (r ? setState(k, r(v)) : setProperty(unwrappedState, k, v), unwrappedState[k]);
+      node[2](() => {
+        const p = v[k]();
+        return typeof p === "object" && "then" in p ? p.then(resolver) : resolver(p);
+      });
+    }
+  }
+  return [wrappedState, loadState, setState];
+}
+
+const proxyTraps$1 = {
+  get(target, property, receiver) {
+    if (property === $RAW) return target;
+    if (property === $PROXY) return receiver;
+    const value = target[property];
+    if (property === $NODE || property === "__proto__") return value;
+    const wrappable = isWrappable(value);
+    if (Listener && (typeof value !== "function" || target.hasOwnProperty(property))) {
+      let nodes, node;
+      if (wrappable && (nodes = getDataNodes(value))) {
+        node = nodes._ || (nodes._ =  createSignal());
+        node[0]();
+      }
+      nodes = getDataNodes(target);
+      node = nodes[property] || (nodes[property] =  createSignal());
+      node[0]();
+    }
+    return wrappable ? wrap(value, false  , false, proxyTraps$1) : value;
+  },
+  set(target, property, value) {
+    setProperty(target, property, unwrap(value));
+    return true;
+  },
+  deleteProperty(target, property) {
+    setProperty(target, property, undefined);
+    return true;
+  },
+  getOwnPropertyDescriptor: proxyDescriptor
+};
+function createMutable(state, options) {
+  const unwrappedState = unwrap(state || {}, true);
+  const wrappedState = wrap(unwrappedState, false , true, proxyTraps$1);
+  return wrappedState;
+}
+
+function applyState(target, parent, property, merge, key) {
+  let previous = parent[property];
+  if (target === previous) return;
+  if (!isWrappable(target) || !isWrappable(previous) || key && target[key] !== previous[key]) {
+    target !== previous && setProperty(parent, property, target);
+    return;
+  }
+  if (Array.isArray(target)) {
+    if (target.length && previous.length && (!merge || key && target[0][key] != null)) {
+      let i, j, start, end, newEnd, item, newIndicesNext, keyVal;
+      for (start = 0, end = Math.min(previous.length, target.length); start < end && (previous[start] === target[start] || key && previous[start][key] === target[start][key]); start++) {
+        applyState(target[start], previous, start, merge, key);
+      }
+      const temp = new Array(target.length),
+            newIndices = new Map();
+      for (end = previous.length - 1, newEnd = target.length - 1; end >= start && newEnd >= start && (previous[end] === target[newEnd] || key && previous[end][key] === target[newEnd][key]); end--, newEnd--) {
+        temp[newEnd] = previous[end];
+      }
+      if (start > newEnd || start > end) {
+        for (j = start; j <= newEnd; j++) setProperty(previous, j, target[j]);
+        for (; j < target.length; j++) {
+          setProperty(previous, j, temp[j]);
+          applyState(target[j], previous, j, merge, key);
+        }
+        if (previous.length > target.length) setProperty(previous, "length", target.length);
+        return;
+      }
+      newIndicesNext = new Array(newEnd + 1);
+      for (j = newEnd; j >= start; j--) {
+        item = target[j];
+        keyVal = key ? item[key] : item;
+        i = newIndices.get(keyVal);
+        newIndicesNext[j] = i === undefined ? -1 : i;
+        newIndices.set(keyVal, j);
+      }
+      for (i = start; i <= end; i++) {
+        item = previous[i];
+        keyVal = key ? item[key] : item;
+        j = newIndices.get(keyVal);
+        if (j !== undefined && j !== -1) {
+          temp[j] = previous[i];
+          j = newIndicesNext[j];
+          newIndices.set(keyVal, j);
+        }
+      }
+      for (j = start; j < target.length; j++) {
+        if (j in temp) {
+          setProperty(previous, j, temp[j]);
+          applyState(target[j], previous, j, merge, key);
+        } else setProperty(previous, j, target[j]);
+      }
+    } else {
+      for (let i = 0, len = target.length; i < len; i++) {
+        applyState(target[i], previous, i, merge, key);
+      }
+    }
+    if (previous.length > target.length) setProperty(previous, "length", target.length);
+    return;
+  }
+  const targetKeys = Object.keys(target);
+  for (let i = 0, len = targetKeys.length; i < len; i++) {
+    applyState(target[targetKeys[i]], previous, targetKeys[i], merge, key);
+  }
+  const previousKeys = Object.keys(previous);
+  for (let i = 0, len = previousKeys.length; i < len; i++) {
+    if (target[previousKeys[i]] === undefined) setProperty(previous, previousKeys[i], undefined);
+  }
+}
+function reconcile(value, options = {}) {
+  const {
+    merge,
+    key = "id"
+  } = options,
+        v = unwrap(value);
+  return state => {
+    if (!isWrappable(state)) return v;
+    applyState(v, {
+      state
+    }, "state", merge, key);
+    return state;
+  };
+}
+const setterTraps = {
+  get(target, property) {
+    if (property === $RAW) return target;
+    const value = target[property];
+    return isWrappable(value) ? new Proxy(value, setterTraps) : value;
+  },
+  set(target, property, value) {
+    setProperty(target, property, unwrap(value));
+    return true;
+  },
+  deleteProperty(target, property) {
+    setProperty(target, property, undefined);
+    return true;
+  }
+};
+function produce(fn) {
+  return state => {
+    if (isWrappable(state)) fn(new Proxy(state, setterTraps));
+    return state;
+  };
+}
+
+const FALLBACK = Symbol("fallback");
+function mapArray(list, mapFn, options = {}) {
+  let items = [],
+      mapped = [],
+      disposers = [],
+      len = 0,
+      indexes = mapFn.length > 1 ? [] : null,
+      ctx = Owner;
+  onCleanup(() => {
+    for (let i = 0, length = disposers.length; i < length; i++) disposers[i]();
+  });
+  return () => {
+    let newItems = list() || [],
+        i,
+        j;
+    return untrack(() => {
+      let newLen = newItems.length,
+          newIndices,
+          newIndicesNext,
+          temp,
+          tempdisposers,
+          tempIndexes,
+          start,
+          end,
+          newEnd,
+          item;
+      if (newLen === 0) {
+        if (len !== 0) {
+          for (i = 0; i < len; i++) disposers[i]();
+          disposers = [];
+          items = [];
+          mapped = [];
+          len = 0;
+          indexes && (indexes = []);
+        }
+        if (options.fallback) {
+          items = [FALLBACK];
+          mapped[0] = createRoot(disposer => {
+            disposers[0] = disposer;
+            return options.fallback();
+          }, ctx);
+          len = 1;
+        }
+      }
+      else if (len === 0) {
+          for (j = 0; j < newLen; j++) {
+            items[j] = newItems[j];
+            mapped[j] = createRoot(mapper, ctx);
+          }
+          len = newLen;
+        } else {
+          temp = new Array(newLen);
+          tempdisposers = new Array(newLen);
+          indexes && (tempIndexes = new Array(newLen));
+          for (start = 0, end = Math.min(len, newLen); start < end && items[start] === newItems[start]; start++);
+          for (end = len - 1, newEnd = newLen - 1; end >= start && newEnd >= start && items[end] === newItems[newEnd]; end--, newEnd--) {
+            temp[newEnd] = mapped[end];
+            tempdisposers[newEnd] = disposers[end];
+            indexes && (tempIndexes[newEnd] = indexes[end]);
+          }
+          newIndices = new Map();
+          newIndicesNext = new Array(newEnd + 1);
+          for (j = newEnd; j >= start; j--) {
+            item = newItems[j];
+            i = newIndices.get(item);
+            newIndicesNext[j] = i === undefined ? -1 : i;
+            newIndices.set(item, j);
+          }
+          for (i = start; i <= end; i++) {
+            item = items[i];
+            j = newIndices.get(item);
+            if (j !== undefined && j !== -1) {
+              temp[j] = mapped[i];
+              tempdisposers[j] = disposers[i];
+              indexes && (tempIndexes[j] = indexes[i]);
+              j = newIndicesNext[j];
+              newIndices.set(item, j);
+            } else disposers[i]();
+          }
+          for (j = start; j < newLen; j++) {
+            if (j in temp) {
+              mapped[j] = temp[j];
+              disposers[j] = tempdisposers[j];
+              if (indexes) {
+                indexes[j] = tempIndexes[j];
+                indexes[j](j);
+              }
+            } else mapped[j] = createRoot(mapper, ctx);
+          }
+          len = mapped.length = newLen;
+          items = newItems.slice(0);
+        }
+      return mapped;
+    });
+    function mapper(disposer) {
+      disposers[j] = disposer;
+      if (indexes) {
+        const [s, set] = createSignal(j, true);
+        indexes[j] = set;
+        return mapFn(newItems[j], s);
+      }
+      return mapFn(newItems[j]);
+    }
+  };
+}
+function indexArray(list, mapFn, options = {}) {
+  let items = [],
+      mapped = [],
+      disposers = [],
+      signals = [],
+      len = 0,
+      i,
+      ctx = Owner;
+  onCleanup(() => {
+    for (let i = 0, length = disposers.length; i < length; i++) disposers[i]();
+  });
+  return () => {
+    const newItems = list() || [];
+    return untrack(() => {
+      if (newItems.length === 0) {
+        if (len !== 0) {
+          for (i = 0; i < len; i++) disposers[i]();
+          disposers = [];
+          items = [];
+          mapped = [];
+          len = 0;
+          signals = [];
+        }
+        if (options.fallback) {
+          items = [FALLBACK];
+          mapped[0] = createRoot(disposer => {
+            disposers[0] = disposer;
+            return options.fallback();
+          }, ctx);
+          len = 1;
+        }
+        return mapped;
+      }
+      if (items[0] === FALLBACK) {
+        disposers[0]();
+        disposers = [];
+        items = [];
+        mapped = [];
+        len = 0;
+      }
+      for (i = 0; i < newItems.length; i++) {
+        if (i < items.length && items[i] !== newItems[i]) {
+          signals[i](newItems[i]);
+        } else if (i >= items.length) {
+          mapped[i] = createRoot(mapper, ctx);
+        }
+      }
+      for (; i < items.length; i++) {
+        disposers[i]();
+      }
+      len = mapped.length = signals.length = disposers.length = newItems.length;
+      items = newItems.slice(0);
+      return mapped;
+    });
+    function mapper(disposer) {
+      disposers[i] = disposer;
+      const [s, set] = createSignal(newItems[i]);
+      signals[i] = set;
+      return mapFn(s, i);
+    }
+  };
+}
+
+function createComponent(Comp, props) {
+  return untrack(() => Comp(props));
+}
+function assignProps(target, ...sources) {
+  for (let i = 0; i < sources.length; i++) {
+    const descriptors = Object.getOwnPropertyDescriptors(sources[i]);
+    Object.defineProperties(target, descriptors);
+  }
+  return target;
+}
+function splitProps(props, ...keys) {
+  const descriptors = Object.getOwnPropertyDescriptors(props),
+        split = k => {
+    const clone = {};
+    for (let i = 0; i < k.length; i++) {
+      const key = k[i];
+      if (descriptors[key]) {
+        Object.defineProperty(clone, key, descriptors[key]);
+        delete descriptors[key];
+      }
+    }
+    return clone;
+  };
+  return keys.map(split).concat(split(Object.keys(descriptors)));
+}
+function lazy(fn) {
+  let p;
+  return props => {
+    const h = globalThis._$HYDRATION || {},
+          hydrating = h.context && h.context.registry,
+          ctx = nextHydrateContext(),
+          [s, l] = createResource(undefined, {
+      notStreamed: true
+    });
+    if (hydrating && h.resources) {
+      (p || (p = fn())).then(mod => {
+        setHydrateContext(ctx);
+        l(() => mod.default);
+        setHydrateContext(undefined);
+      });
+    } else l(() => (p || (p = fn())).then(mod => mod.default));
+    let Comp;
+    return createMemo(() => (Comp = s()) && untrack(() => {
+      if (!ctx) return Comp(props);
+      const c = h.context;
+      setHydrateContext(ctx);
+      const r = Comp(props);
+      setHydrateContext(c);
+      return r;
+    }));
+  };
+}
+function setHydrateContext(context) {
+  globalThis._$HYDRATION.context = context;
+}
+function nextHydrateContext() {
+  const hydration = globalThis._$HYDRATION;
+  return hydration && hydration.context ? {
+    id: `${hydration.context.id}.${hydration.context.count++}`,
+    count: 0,
+    registry: hydration.context.registry
+  } : undefined;
+}
+
+function For(props) {
+  const fallback = "fallback" in props && {
+    fallback: () => props.fallback
+  };
+  return createMemo(mapArray(() => props.each, props.children, fallback ? fallback : undefined));
+}
+function Index(props) {
+  const fallback = "fallback" in props && {
+    fallback: () => props.fallback
+  };
+  return createMemo(indexArray(() => props.each, props.children, fallback ? fallback : undefined));
+}
+function Show(props) {
+  const childDesc = Object.getOwnPropertyDescriptor(props, "children").value,
+        callFn = typeof childDesc === "function" && childDesc.length,
+        condition = createMemo(callFn ? () => props.when : () => !!props.when, undefined, true);
+  return createMemo(() => {
+    const c = condition();
+    return c ? callFn ? untrack(() => props.children(c)) : props.children : props.fallback;
+  });
+}
+function Switch(props) {
+  let conditions = props.children;
+  Array.isArray(conditions) || (conditions = [conditions]);
+  const evalConditions = createMemo(() => {
+    for (let i = 0; i < conditions.length; i++) {
+      const c = conditions[i].when;
+      if (c) return [i, conditions[i].keyed ? c : !!c];
+    }
+    return [-1];
+  }, undefined, (a, b) => a && a[0] === b[0] && a[1] === b[1]);
+  return createMemo(() => {
+    const [index, when] = evalConditions();
+    if (index < 0) return props.fallback;
+    const c = conditions[index].children;
+    return typeof c === "function" && c.length ? untrack(() => c(when)) : c;
+  });
+}
+function Match(props) {
+  const childDesc = Object.getOwnPropertyDescriptor(props, "children").value;
+  props.keyed = typeof childDesc === "function" && !!childDesc.length;
+  return props;
+}
+function ErrorBoundary(props) {
+  const [errored, setErrored] = createSignal(),
+        fallbackDesc = Object.getOwnPropertyDescriptor(props, "fallback").value,
+        callFn = typeof fallbackDesc === "function" && !!fallbackDesc.length;
+  onError(setErrored);
+  let e;
+  return createMemo(() => (e = errored()) != null ? callFn ? untrack(() => props.fallback(e)) : props.fallback : props.children);
+}
+
+const SuspenseListContext = createContext();
+let trackSuspense = false;
+function awaitSuspense(fn) {
+  const SuspenseContext = getSuspenseContext();
+  if (!trackSuspense) {
+    let count = 0;
+    const [active, trigger] = createSignal(false);
+    SuspenseContext.active = active;
+    SuspenseContext.increment = () => count++ === 0 && trigger(true);
+    SuspenseContext.decrement = () => --count <= 0 && trigger(false);
+    trackSuspense = true;
+  }
+  return () => new Promise(resolve => {
+    const res = fn();
+    createRenderEffect(() => !SuspenseContext.active() && resolve(res));
+  });
+}
+function SuspenseList(props) {
+  let index = 0,
+      suspenseSetter,
+      showContent,
+      showFallback;
+  const listContext = useContext(SuspenseListContext);
+  if (listContext) {
+    const [inFallback, setFallback] = createSignal(false, true);
+    suspenseSetter = setFallback;
+    [showContent, showFallback] = listContext.register(inFallback);
+  }
+  const registry = [],
+        comp = createComponent(SuspenseListContext.Provider, {
+    value: {
+      register: inFallback => {
+        const [showingContent, showContent] = createSignal(false, true),
+              [showingFallback, showFallback] = createSignal(false, true);
+        registry[index++] = {
+          inFallback,
+          showContent,
+          showFallback
+        };
+        return [showingContent, showingFallback];
+      }
+    },
+    get children() {
+      return props.children;
+    }
+  });
+  createComputed(() => {
+    const reveal = props.revealOrder,
+          tail = props.tail,
+          visibleContent = showContent ? showContent() : true,
+          visibleFallback = showFallback ? showFallback() : true,
+          reverse = reveal === "backwards";
+    if (reveal === "together") {
+      const all = registry.every(i => !i.inFallback());
+      suspenseSetter && suspenseSetter(!all);
+      registry.forEach(i => {
+        i.showContent(all && visibleContent);
+        i.showFallback(visibleFallback);
+      });
+      return;
+    }
+    let stop = false;
+    for (let i = 0, len = registry.length; i < len; i++) {
+      const n = reverse ? len - i - 1 : i,
+            s = registry[n].inFallback();
+      if (!stop && !s) {
+        registry[n].showContent(visibleContent);
+        registry[n].showFallback(visibleFallback);
+      } else {
+        const next = !stop;
+        if (next && suspenseSetter) suspenseSetter(true);
+        if (!tail || next && tail === "collapsed") {
+          registry[n].showFallback(visibleFallback);
+        } else registry[n].showFallback(false);
+        stop = true;
+        registry[n].showContent(next);
+      }
+    }
+    if (!stop && suspenseSetter) suspenseSetter(false);
+  });
+  return comp;
+}
+function Suspense(props) {
+  let counter = 0,
+      showContent,
+      showFallback;
+  const [inFallback, setFallback] = createSignal(false),
+        SuspenseContext = getSuspenseContext(),
+        store = {
+    increment: () => {
+      if (++counter === 1) {
+        setFallback(true);
+        trackSuspense && SuspenseContext.increment();
+      }
+    },
+    decrement: () => {
+      if (--counter === 0) {
+        setFallback(false);
+        trackSuspense && setTimeout(SuspenseContext.decrement);
+      }
+    },
+    inFallback,
+    effects: [],
+    resolved: false
+  };
+  const listContext = useContext(SuspenseListContext);
+  if (listContext) [showContent, showFallback] = listContext.register(store.inFallback);
+  return createComponent(SuspenseContext.Provider, {
+    value: store,
+    get children() {
+      const rendered = untrack(() => props.children);
+      return createMemo(() => {
+        const inFallback = store.inFallback(),
+              visibleContent = showContent ? showContent() : true,
+              visibleFallback = showFallback ? showFallback() : true;
+        if (!inFallback && visibleContent) {
+          store.resolved = true;
+          resumeEffects(store.effects);
+          return rendered;
+        }
+        if (!visibleFallback) return;
+        return props.fallback;
+      });
+    }
+  });
+}
+
+export { $RAW, ErrorBoundary, For, Index, Match, Show, Suspense, SuspenseList, Switch, assignProps, awaitSuspense, batch, cancelCallback, createComponent, createComputed, createContext, createDeferred, createEffect, createMemo, createMutable, createRenderEffect, createResource, createResourceState, createRoot, createSelector, createSignal, createState, equalFn, getContextOwner, getListener, indexArray, lazy, mapArray, on, onCleanup, onError, onMount, produce, reconcile, requestCallback, serializeGraph, splitProps, untrack, unwrap, useContext, useTransition };

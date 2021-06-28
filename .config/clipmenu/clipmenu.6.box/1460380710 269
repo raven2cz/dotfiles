@@ -1,0 +1,7 @@
+
+
+Hi, thanks a lot for the new release. I just checked and my module is not working with it :) Due to the change of your internal regions function. I will try to migrate myself next week and update the machina module accordingly so it works with both versions.
+
+I also implemented a simple incremental and decremental region relocation without the use of internal the switcher which I will push that into the updated module as well. I think I can also make it directional if I add something to look around the active_region. But didn't have the time yet.
+
+The new features of layout-machi look great, thank you again and have a nice week coming up.

@@ -1,0 +1,44 @@
+Hi DT,
+
+`config.fish`
+last lines, usage calling `colorscript random` directly in the config.fish is not good idea.
+
+This causes several problems with fish plugins, like fzf etc. Because for example fzf previews creates new fish terminal in not interactive modes for preview, but it means that it calls config.fish. The preview shows colorscript and after that preview line or other processes are not visible anymore.
+
+The colorscript has to be called different way for fish against bash and zsh.
+
+I asked developers of fzf and there is my issue about it:
+https://github.com/PatrickF1/fzf.fish/issues/181
+
+I finally using this function:
+```
+# Fish greetings when the terminal is shown up in interactive mode
+function fish_greeting
+    colorscript random
+end
+```
+
+fish_greeting is called once time, that the interactive mode and fish shell is shown.
+
+In addition, if you want to original fish ascii art too, you can install fish_logo by fisher:
+`fisher install laughedelic/fish_logo`
+
+and finally I attached this:
+```
+# Fish greetings when the terminal is shown up in interactive mode
+function fish_greeting
+    if test (random 1 10) = 1; fish_logo; else; colorscript random; end
+end
+```
+So there is 1:10 when the fish_logo is shown, or your script is called in 9:10 probability.
+
+Finally important point is the problem that whole config.fish is too long. 
+You think about to append to after your set commands (before functions) to add this line:
+```
+# Exit configuration if it is not interactive mode - e.g. fzf preview
+status -i || exit
+```
+see the issue from devs.
+It skips whole configuration again if it is not interactive mode. Or move your functions to the right place, not in default config file.
+
+

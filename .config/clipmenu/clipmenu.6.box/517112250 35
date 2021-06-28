@@ -1,0 +1,2 @@
+if CPLTF2 = 0 then begin
+  filter1_long = true;

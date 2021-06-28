@@ -1,0 +1,1 @@
+has interface org.objectweb.asm.ClassVisitor as super class

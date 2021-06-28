@@ -1,0 +1,5 @@
+        SystemCandidateStorageLibrary.mkdirs(exportPath);
+        // set export charts configuration - for additional details look to default values in servant class!
+        AttributeModel chartExportConfig = new AttributeModel()
+                .setAttribute(StrategyTypeSelectionServant.EXPORT_PATH, exportPath)
+                .setAttribute(StrategyTypeSelectionServant.STAT_BAR_CHART_GROUPS, groups);

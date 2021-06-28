@@ -1,0 +1,2 @@
+vstupy generované tak, že se provedl empirický odhad distribuce pro BSE (barsSinceEntry). Touto distribucí se náhodně generují vstupy tak, že se odečte náhodný BSE od výstupů strategie. 
+

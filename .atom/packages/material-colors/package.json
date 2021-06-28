@@ -1,0 +1,81 @@
+{
+  "_from": "https://www.atom.io/api/packages/material-colors/versions/0.1.0/tarball",
+  "_id": "material-colors@0.1.0",
+  "_inBundle": false,
+  "_integrity": "sha512-citpzVi97luWVuG1hR/YGkz35sahsQxZC/TXXMDztM6k94biBiqb1j8/VAd2R50iaORPS2sbza2CK5K8di2joA==",
+  "_location": "/material-colors",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/material-colors/versions/0.1.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/material-colors/versions/0.1.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/material-colors/versions/0.1.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/material-colors/versions/0.1.0/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/material-colors/versions/0.1.0/tarball",
+  "_shasum": "9ea5ea6134ccccdc256a09345e8e7bb1b7c11fda",
+  "_spec": "https://www.atom.io/api/packages/material-colors/versions/0.1.0/tarball",
+  "_where": "/tmp/apm-install-dir-2021431-23515-15wel0w.he0ph",
+  "activationHooks": [
+    "language-css:grammar-used",
+    "language-less:grammar-used",
+    "language-sass:grammar-used",
+    "language-scss:grammar-used",
+    "Stylus:grammar-used"
+  ],
+  "author": {
+    "name": "Jeremy Fields",
+    "email": "badatfun@gmail.com",
+    "url": "http://jfields.me"
+  },
+  "bugs": {
+    "url": "https://github.com/delafields/atom-material-colors/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Autocomplete material design colors for Atom editor",
+  "engines": {
+    "atom": ">=1.15.0 <2.0.0"
+  },
+  "homepage": "https://github.com/delafields/atom-material-colors#readme",
+  "keywords": [
+    "autocomplete",
+    "material color",
+    "material design",
+    "css",
+    "color"
+  ],
+  "license": "MIT",
+  "main": "./lib/main",
+  "name": "material-colors",
+  "providedServices": {
+    "autocomplete.provider": {
+      "versions": {
+        "2.0.0": "getProvider"
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/delafields/atom-material-colors.git"
+  },
+  "version": "0.1.0",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".js": [
+        "lib/main.js",
+        "lib/provider.js"
+      ],
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

@@ -1,0 +1,4 @@
+    case 3b : {&Filter1_N1=-3|3} {&Filter1_N2=NONE} //ID: 1.12
+    begin
+       filter1_long  = UltimateOscillator(7,14,28) = Highest(UltimateOscillator(7,14,28), 5 + Filter1_N1);
+       filter1_short = UltimateOscillator(7,14,28) = Lowest(UltimateOscillator(7,14,28), 5 + Filter1_N1);

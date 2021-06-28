@@ -1,0 +1,14 @@
+        begin
+          filter1_long =  Volume * (0.25 * Filter1_N2) < average(Volume, (3 * Filter1_N1));
+          filter1_short = filter1_long;
+        end;
+        case 20a : {&Filter1_N1=NONE} {&Filter1_N2=NONE} //ID: 5.6 NONE
+        begin
+          filter1_long =  Volume  < Volume[1];
+          filter1_short = filter1_long;
+        end;
+        case 20b : {&Filter1_N1=NONE} {&Filter1_N2=NONE} //ID: 5.7 NONE
+        begin
+          filter1_long =  Volume  > Volume[1];
+          filter1_short = filter1_long;
+        end;

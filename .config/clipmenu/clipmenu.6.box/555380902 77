@@ -1,0 +1,7 @@
+    private static final String[] ptfResources15M = new String[] {
+//            "CA_RINGROBUST1/uncorrP120/I1/P_C01_S120_ID1/export-cids.txt",
+//            "CA_RINGROBUST1/uncorrP120/I1/P_C01_S120_ID0/export-cids.txt",
+//            "CA_RINGROBUST1/uncorrP120/I2/P_C01_S120_ID0/export-cids.txt",
+//            "CA_RINGNPDDRTOTAL/uncorrP120/P_C01_S120_ID0/export-cids.txt",
+//            "CA_OPTWFCONSIST/uncorrP120/P_C01_S120_ID0/export-cids.txt",
+    };

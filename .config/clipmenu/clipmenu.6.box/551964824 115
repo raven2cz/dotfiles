@@ -1,0 +1,4 @@
+                        .setAttribute(PyramidModifySequenceService.PYRAMID_CONTROL_THRESHOLD_TICKS, 10),
+                        DummySequenceService.class,
+                        PyramidModifySequenceService.class)
+        };

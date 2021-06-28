@@ -1,0 +1,10 @@
+       BatchConfig uncorrP120 = () -> {
+            portfolioSize = 120;
+            minPortfolioSize = 90;
+            corrRange = new double[] { -0.8, 0.1 };
+            maxIterationCorrCount = 20;
+            tryModifyBoundary = true;
+            decreaseOrIncreaseBoundary = 0.1;
+            bagSorting = BagSortingType.RANDOM_WITH_RETURN;
+            maxIterationRandomnessCount = 2;
+ 

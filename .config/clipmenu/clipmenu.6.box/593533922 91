@@ -1,0 +1,27 @@
+    case 1 : {&Filter1_N1=-4|4} {&Filter1_N2=FIXED} //ID: 3.0  N1 -4/+4, N2 FIX
+    begin
+       filter1_long =  DMIplus((5 * (Filter1_N1 + Filter1_N2))) < DMIminus((5 * (Filter1_N1 + Filter1_N2)));
+       filter1_short = DMIplus((5 * (Filter1_N1 + Filter1_N2))) > DMIminus((5 * (Filter1_N1 + Filter1_N2)));
+    end;
+    case 2 : {&Filter1_N1=-6|6} {&Filter1_N2=FIXED} //ID: 3.1   N1 -6/+6, N2 FIX
+    begin
+       filter1_long =  DMIplus((3 * (Filter1_N1 + Filter1_N2))) < DMIminus((3 * (Filter1_N1 + Filter1_N2)));
+       filter1_short = DMIplus((3 * (Filter1_N1 + Filter1_N2))) > DMIminus((3 * (Filter1_N1 + Filter1_N2)));
+    end;
+    case 3 : {&Filter1_N1=-3|3} {&Filter1_N2=-3|3} //ID: 3.2    N1 -3/+3, N2 -3/+3
+    begin
+       filter1_long =  DMIplus((30 + (5 * Filter1_N2))) < DMIminus((30 + (5 * Filter1_N1)));
+       filter1_short = DMIplus((30 + (5 * Filter1_N2))) > DMIminus((30 + (5 * Filter1_N1)));
+    end;
+    case 4 : {&Filter1_N1=-2|2} {&Filter1_N2=-3|3} //ID: 3.3  N1 -2/+2, N2 -3/+3
+    begin
+       filter1_long =  DMIplus((Filter1_N1 * 3)) < DMIplus(((Filter1_N1 * 3) + (3* Filter1_N2)));
+       filter1_short = DMIminus((Filter1_N1 * 3)) > DMIminus(((Filter1_N1 * 3) + (3* Filter1_N2)));
+    end;
+    case 5 : {&Filter1_N1=FIXED} {&Filter1_N2=-2|2} //ID: 3.4  N1 FIX, N2 -2/+2
+    begin
+       filter1_long =  DMIplus((Filter1_N1 * 3))  < DMIplus((Filter1_N1 * Filter1_N2));
+       filter1_short = DMIminus((Filter1_N1 * 3)) > DMIminus((Filter1_N1 * Filter1_N2));
+    end;
+    case 6 : {&Filter1_N1=FIXED} {&Filter1_N2=-2|2} //ID: 3.5 N1 FIX, N2 -2/+2
+    begin

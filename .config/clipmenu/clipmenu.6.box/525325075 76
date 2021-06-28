@@ -1,0 +1,8 @@
+
+            TreeMap<Double, String> slEquities = new TreeMap<>();
+            for (String techSlResource : eqsRes) {
+                int endIndex = techSlResource.lastIndexOf("-techsl");
+                int startIndex = techSlResource.lastIndexOf("-", endIndex - 1) + 1;
+                double sl = Double.parseDouble(techSlResource.substring(startIndex, endIndex));
+                slEquities.put(sl, techSlResource);
+            }

@@ -1,0 +1,12 @@
+{
+  "indentSize": {
+    "description": "Indent size",
+    "type": "integer",
+    "default": 2
+  },
+  "lua51": {
+    "description": "Lua 5.1 location",
+    "type": "string",
+    "default": ""
+  }
+}

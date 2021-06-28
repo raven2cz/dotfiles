@@ -1,0 +1,7 @@
+        if focused then
+            self:get_children_by_id("overline")[1].bg = "#80cbc4"
+        else 
+            self:get_children_by_id("overline")[1].bg = "#212121"
+        end
+    end
+},

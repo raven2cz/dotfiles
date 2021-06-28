@@ -1,0 +1,1 @@
+        logger.info(String.format("Show results for portfolios count=%d...", portfolios.size()));

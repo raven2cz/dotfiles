@@ -10,6 +10,7 @@ local lain  = require("lain")
 local awful = require("awful")
 local wibox = require("wibox")
 local dpi   = require("beautiful.xresources").apply_dpi
+local fs_widget = require("awesome-wm-widgets.fs-widget.fs-widget")
 
 local os = os
 local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
@@ -93,7 +94,7 @@ theme.cal = lain.widget.cal({
 })
 
 -- Mail IMAP check
---[[ commented because it needs to be set before use
+--[[ to be set before use
 theme.mail = lain.widget.imap({
     timeout  = 180,
     server   = "server",
@@ -178,13 +179,16 @@ theme.volume = lain.widget.alsa({
 })
 
 -- Weather
+--[[ to be set before use
 theme.weather = lain.widget.weather({
+    --APPID =
     city_id = 2643743, -- placeholder (London)
     settings = function()
         units = math.floor(weather_now["main"]["temp"])
         widget:set_markup(" " .. units .. " ")
     end
 })
+--]]
 
 -- Separators
 local first     = wibox.widget.textbox('<span font="Terminus 4"> </span>')
@@ -260,10 +264,11 @@ function theme.at_screen_connect(s)
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.systray(),
             first,
+            fs_widget(),
             theme.mpd.widget,
             --theme.mail.widget,
-            theme.weather.icon,
-            theme.weather.widget,
+            --theme.weather.icon,
+            --theme.weather.widget,
             --theme.fs.widget,
             bat,
             theme.volume.widget,

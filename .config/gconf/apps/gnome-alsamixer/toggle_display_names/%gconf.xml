@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="Realtek_ALCS1200A-Loopback_Mixing" mtime="1600244055" type="string">
+		<stringvalue>Loopback Mixing</stringvalue>
+	</entry>
+	<entry name="Realtek_ALCS1200A-Input_Source" mtime="1600244055" type="string">
+		<stringvalue>Input Source</stringvalue>
+	</entry>
+	<entry name="Realtek_ALCS1200A-Auto-Mute_Mode" mtime="1600244055" type="string">
+		<stringvalue>Auto-Mute Mode</stringvalue>
+	</entry>
+	<entry name="Realtek_ALCS1200A-IEC958_Default_PCM" mtime="1600244055" type="string">
+		<stringvalue>IEC958 Default PCM</stringvalue>
+	</entry>
+	<entry name="Realtek_ALCS1200A-IEC958" mtime="1600244055" type="string">
+		<stringvalue>IEC958</stringvalue>
+	</entry>
+</gconf>

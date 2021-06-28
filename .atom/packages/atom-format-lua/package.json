@@ -1,0 +1,64 @@
+{
+  "_from": "https://www.atom.io/api/packages/atom-format-lua/versions/0.1.5/tarball",
+  "_id": "atom-format-lua@0.1.5",
+  "_inBundle": false,
+  "_integrity": "sha512-sGUOijZgcWCqVDgmnag6bDlQ/dRU+DveGBRN9eiy9zAmaEEfbpMjEu3CDomYI5nzYJeDOB/OpoMn6W84KuK/Kw==",
+  "_location": "/atom-format-lua",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/atom-format-lua/versions/0.1.5/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/atom-format-lua/versions/0.1.5/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/atom-format-lua/versions/0.1.5/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/atom-format-lua/versions/0.1.5/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/atom-format-lua/versions/0.1.5/tarball",
+  "_shasum": "4bccee5fdf458594ed67a314af9919ef557c4faf",
+  "_spec": "https://www.atom.io/api/packages/atom-format-lua/versions/0.1.5/tarball",
+  "_where": "/tmp/apm-install-dir-2021431-19062-1waityd.rmum",
+  "activationCommands": {
+    "atom-workspace": "atom-format-lua:format"
+  },
+  "bugs": {
+    "url": "https://github.com/mingjunyang/atom-format-lua/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
+  "description": "Atom Format Lua",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "homepage": "https://github.com/mingjunyang/atom-format-lua#readme",
+  "keywords": [
+    "Lua",
+    "Format"
+  ],
+  "license": "MIT",
+  "main": "./lib/atom-format-lua",
+  "name": "atom-format-lua",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mingjunyang/atom-format-lua.git"
+  },
+  "version": "0.1.5",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".js": [
+        "lib/atom-format-lua.js",
+        "lib/help.js"
+      ],
+      ".json": [
+        "lib/config-schema.json",
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

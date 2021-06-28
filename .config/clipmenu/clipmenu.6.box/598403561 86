@@ -1,0 +1,35 @@
+   private List<PortfolioDO> loadPortfolios(PortfolioPrepare ptfPrepare) {
+        List<PortfolioDO> portfolios = new ArrayList<>();
+        Set<String> cids = new HashSet<>();
+
+        ptfPrepare.prepare();
+
+        // load required data from repo
+        List<SystemCandidateDO> candidates;
+        try {
+            candidates = owner.loadCandidates(config, new ArrayList<>(cids));
+        } catch (IOException e) {
+            throw new IllegalArgumentException(e.getMessage(), e);
+        }
+        Map<String, SystemCandidateDO> candidateMap = new HashMap<>();
+        for (SystemCandidateDO candidate : candidates) {
+            candidateMap.put(candidate.id, candidate);
+        }
+
+        // fill candidates to the portfolio structure
+        for (PortfolioDO portfolio : portfolios) {
+            for (String cid : portfolio.cids) {
+                portfolio.candidates.add(candidateMap.get(cid));
+            }
+        }
+
+        // create final portfolio assembly
+        logger.info("Creating of random portfolios by configuration is started...");
+        int id = 1;
+        int size = portfolios.size();
+        for (PortfolioDO portfolio : portfolios) {
+            String title = String.format("%s-%s(size=%d)",
+                    portfolio.subtype.getDes(), portfolio.id, portfolio.candidates.size());
+            portfolio.strategyEqs = portfolio.candidates.stream().map(this::getEquity).toArray(CombinedEquity[]::new);
+            if (calcPortfolioEq) {
+                logger.info(String.format("Create portfolio equity for %s [%d/%d]", title, id++, size));

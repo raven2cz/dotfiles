@@ -1,0 +1,13 @@
+    private void calculateIndexEval2(SystemCandidateDO candidate) {
+        // DH start date attachment
+        Date dhStartDate = null;
+        SimpleDateFormat sdf = new SimpleDateFormat(StandardServiceConstants.SECURITY_HISTORY_FORMAT);
+        String dhDate = candidate.properties.getString("Securities.Security.History.SetDH");
+        String lastDate = candidate.properties.getString("Securities.Security.History.SetLastDate");
+        String maxLastDate = candidate.properties.getString("Securities.Security.History.SetMaxLastDate");
+        // higher prio has the exact FROM FIRST OOS DH interval (included REOPT testing in CPTF stress test)
+        if (dhDate != null) {
+            try {
+                dhStartDate = sdf.parse(dhDate);
+            } catch (ParseException e) {
+                throw new IllegalArgumentException(e.getMessage(), e);

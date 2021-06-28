@@ -1,0 +1,3 @@
+
+                "-d", "c:\\AOS-AUTO\\TEMP\\td-db-export",
+                "-f", "c:\\AOS-AUTO\\TEMP\\portfolio4-rol50-max4k-100k.csv"

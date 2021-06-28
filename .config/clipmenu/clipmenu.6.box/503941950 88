@@ -1,0 +1,3 @@
+                    bindTimeSeries(createTimeSeries(new GetTimeSeriesData() {
+                        @Override
+                        public int getSeriesCount() {

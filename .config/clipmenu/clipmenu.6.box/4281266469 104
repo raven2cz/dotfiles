@@ -1,0 +1,1 @@
+class com.yworks.yshrink.model.ModelVisitor has interface org.objectweb.asm.ClassVisitor as super class

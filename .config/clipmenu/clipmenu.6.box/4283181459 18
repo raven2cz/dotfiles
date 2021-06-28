@@ -1,0 +1,114 @@
+image
+Qina Liu Hacker Noon profile picture
+@qinaliu
+Qina Liu
+
+Digital Engagement Editor
+Twitter social icon
+Where I attempt to explain Mastodon through Harry Potter gifs
+
+Mastodon’s been around for six months, but chances are, you’re just joining now because you’ve seen the articles about “anti-Twitter” in Verge, Vice, Mashable, Quartz or some other tech publication — not to mention the quality Twitter trolling from Mastodon the heavy metal band.
+
+As of April 9, 2017, more than 130,000 Mastodon accounts have been made. More than 42,000 of those accounts are registered on Mastodon.social.
+
+But while Mastodon feels familiar as Twitter, it’s different enough that it initially feels like an episode of “Black Mirror.”
+
+Here’s what I learned in the past 48 hours of joining Mastodon and what I wish I knew before joining:
+What are instances and which one should I join:
+
+Since signing up for Mastodon.social is closed until future notice, you might have noticed a message that says “Choose one of the various public instances to sign up!”
+
+Even though Mastodon.social has been limiting the amount of new users temporarily, you can still sign up for Mastodon by joining any instance.
+
+Instances are sort of like subreddits in that each are moderated by a dedicated team of volunteers and each may have their own specific rules, interests, themes or cultures. But unlike Reddit, each Mastodon instance is hosted on different servers by an independent team of administrators and developers who enforce the Mastodon instance’s rules.
+
+Here’s a good list of some of the available instances, whether registration is open and how to find them.
+tootsuite/mastodon
+mastodon - A GNU Social-compatible microblogging servergithub.com
+
+But you can learn more about any Mastodon instance before joining by visiting the instances’ about me page.
+
+The instance that you join matters since this might determine who you initially meet.
+
+If you’re looking for a site to suggest a randomized instance that’s accepting new users, try this:
+tooter.today — Find a nice Mastodon instance
+This tool makes it easy to find a Mastodon instance if you’re not sure where to start.tooter.today
+
+Instances with more members might be more connected to other instances and you will see completely different local and federated timelines depending on which instance you join (more on this later).
+
+You can still contact and connect with people who’ve joined Mastodon from other instances, but like an email address, the instance you join follows you around.
+
+For example, if you want to message me on Mastodon, you have to type @qinaliu@mastodon.social in a toot (more on this later).
+
+Since each user is tied to an instance, people can also steal your username and identity on another instance (it’s sort of like how email addresses at @gmail.com and @yahoo.com and @aol.com are all different). And since you can join and log into as many Mastodon instances as you’d like, you can technically be in multiple places at the same time.
+How Mastodon compares to Twitter:
+
+Mastodon, while prehistoric in some regards (the timeline is thankfully still chronological and you “Favourite” rather than “Like” posts here), feels intuitive since it resembles Twitter so much.
+
+The interface looks like TweetDeck — except the columns aren’t customizable, you can’t schedule posts, you can’t build lists, trends are harder to track or search, and well, Mastodon isn’t Twitter.
+On Mastodon:
+
+    Tweets are called toots.
+    Retweets are called boosts.
+    Likes are Favourites.
+    Toots are seen in chronological order with the latest toots appearing in the top of your feed.
+    A chick replaces the default Twitter egg/profile.
+    You have a 500-character limit compared to Twitter’s 140.
+    And Twitter’s known as the birdsite.
+
+But those are some of the more obvious differences. Mastodon.social is built as a “Twitter user’s utopia”: one where advertising, racism and hate speech is strictly prohibited and equality is key.
+
+To limit potential harassment, Mastodon is only searchable by hashtags (this might change in the future) and you can’t “quote-toot.” Mastodon also features customizable privacy filters for each toot.
+
+Additionally, Rochko also introduced a content warning filter…
+
+…which users have used to hide punchlines to jokes:
+
+Another major difference is how toots are received. Since the number of replies, boosts and favourites on a toot are hidden until you click on a toot, it’s not as important for a toot to get boosted or favourited. Since timelines are in chronological order rather than the algorithmic one Twitter, Facebook and Instagram have adopted, every toot also has an equal shot of being seen.
+
+The point of all this isn’t to collect likes or follows, but perhaps so people might actually have conversations.
+
+But if a part of you gets joy from building a following, know that your follower count looks different depending on which instance someone’s on.
+
+Unlike Twitter, Mastodon also doesn’t suggest people you should follow anymore (although that was a feature when the social network first launched). You find people by seeing what they’re tooting.
+
+And you click on toots to see threads of conversations.
+The difference between a local timeline and a federated timeline
+
+Mastodon gives you the option to toggle between your local and federated timelines.
+
+Toots from your instance appear in chronological order in your local timeline while toots from accounts people in your instance follow might appear in the federated timeline.
+
+Getting people to show up in your federated timelines takes a bit of exploration and world building. As accounts in your instance follow more people from other instances, the more accounts can potentially show up in your instance’s federated timeline. There’s a bunch of Followbots that seemed to have been created for the purpose of globalization and connecting people across instances.
+
+This means that depending on what instance you’re on, your local and federated timelines could look completely different as someone else’s on another Mastodon instance.
+
+But if you still don’t get it, here’s another explanation of local and federated timelines:
+Who should I follow on Mastodon?
+
+While the local and federated timelines can help you find accounts that might be interesting to follow, Mastodon isn’t as fun until you follow some accounts. Like Twitter, you can curate your “Home” timeline, but unlike Twitter, it’s harder to search for people to follow unless you know their Mastodon handle.
+
+I’m at @qinaliu@mastodon.social if you want to give me a follow, but here’s a list of other journalists and influencers:
+
+    Eugen Rochko, founder of Mastodon.social: @Gargron@mastodon.social
+    TrendingBot: @TrendingBot@Mastodon.social (This is clearly a bot and not a person, but this account is worth following because it tracks trending hashtags and periodically toots them out.)
+    Nolan Lawson, admin of Toot.Cafe: @nolan@toot.cafe (He’s super helpful to newbies and toots lots of tips)
+    Dan Harmon, producer of “Community”: @danharmon@mastodon.social
+    Graham Lineham, creator of “The IT Crowd”: @glinner@mastodon.social
+    William Shatner, actor known for his role as Captain Kirk in “Star Trek”: @WilliamShatner@mastodon.club (Who can’t delete his Mastodon account.)
+    Sarah Jeong, contributing editor at “Vice”: @sarahjeong@mastodon.social (Twitter-addict who wrote the Vice article about Mastodon that you probably read.)
+    Casey Newton, editor at The Verge: @caseynewton@mastodon.social
+    Micah Lee, reporter at The Intercept: @micahflee@mastodon.social
+    Wong Joon Ian, tech reporter at Quartz: @joonian@social.tchncs.de (He wrote this guide to Mastodon.)
+    Lance Ulanoff, editor at Mashable: @LanceUlanoff@mastodon.cloud (Here’s his take on why Mastodon won’t survive.)
+    Nicole Lee, senior editor for Engadget: @Nicole@mastodon.cloud
+    Sonya Mann, tech reporter at Inc.: @sonya@maly.io
+
+Someone also started a public Google Doc database for artists, musicians and filmmakers on Mastodon:
+Mastodon Creatives / Artists / Musicians / Illustrators / Animators / Filmmakers
+Sheet1 Handle, Interests, Notes/ URLs/ etc., Birdsite/ other handle @ pseudomichael@ mastodon. network, motion graphics…docs.google.com
+How to get “verified” on Mastodon
+
+Let’s be honest: you just want to get one of those check marks ✅ next to your name.
+
+It’s super easy to do on Mastodon and it’s not just limited to celebrities, journalists and other influencers like on Twitter. All you really have to do is insert a check emoji next to your display name.

@@ -1,0 +1,1 @@
+double[] dataDhidx = ArrayUtils.toPrimitive(entry.getValue().stream().map(e

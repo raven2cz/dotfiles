@@ -1,0 +1,1 @@
+es should equal the number of repetitions in the simulation, not the number of trades in strategy sequence.  I agree this naming convention is confusing and would be better written as: 
