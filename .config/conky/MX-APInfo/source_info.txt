@@ -1,0 +1,14 @@
+Source:
+
+Attribution text taken from pre-modified conky config file:
+
+#-- Informant Conky
+#-- Date    : 26/10/2017
+#-- Editor  : Erik Dubois
+#-- Version : v3.0.4
+
+#-- By Addy
+#-- https://plus.google.com/+AdhiPambudi
+#-- http://addy-dclxvi.deviantart.com/
+#-- https://github.com/addy-dclxvi
+

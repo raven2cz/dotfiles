@@ -1,0 +1,139 @@
+conky.config = {
+-- Conky settings #
+	background = false,
+	update_interval = 1,
+
+	cpu_avg_samples = 2,
+	net_avg_samples = 2,
+
+	override_utf8_locale = true,
+
+	double_buffer = true,
+	no_buffers = true,
+
+	text_buffer_size = 2048,
+--imlib_cache_size 0
+
+	temperature_unit = 'fahrenheit',
+
+-- Window specifications #
+
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_transparent = true,
+	own_window_hints = 'undecorated,skip_taskbar,skip_pager,below',
+
+	border_inner_margin = 0,
+	border_outer_margin = 10,
+
+	minimum_width = 200, minimum_height = 250,
+	maximum_width = 200,
+
+	alignment = 'top_right',
+	gap_x = 65,
+	gap_y = 55,
+
+-- Graphics settings #
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = false,
+
+-- Text settings #
+	use_xft = true,
+	override_utf8_locale = true,
+	font = 'Roboto:size=8',
+	xftalpha = 0.8,
+	uppercase = false,
+
+	temperature_unit = 'celsius',
+
+--
+	default_color = 'FFFFFF',
+	color0 = 'FFFFFF',  -- FFFFFF
+	color1 = 'FE0055',  -- FE0055 
+	color2 = 'FF0055',  -- FF0055
+
+-- Lua Load  #
+	lua_load = './clock_rings.lua',
+	lua_draw_hook_pre = 'clock_rings',
+
+--own_window_argb_value 0
+--own_window_argb_visual no
+--own_window_colour 000000
+	own_window_argb_value = 0,
+	own_window_argb_visual = true,
+	own_window_colour = '000000',
+
+
+-- if_up_strictness link:  up | link | address
+    if_up_strictness = 'address',
+
+-- network templates
+   template0 = 'eth0',
+   template1 = 'eth1',
+   template2 = 'wlan0',
+   template3 = 'wlan1',
+
+-- time template
+   template7 = '%H:%M',
+
+
+
+};
+
+-- fluxbox adjustment
+
+return_code = os.execute('pidof -q fluxbox')
+if _VERSION == 'Lua 5.1' and math.floor(return_code/256) == 0 or
+   _VERSION ~= 'Lua 5.1' and return_code then
+   conky.config.own_window_transparent = true
+   conky.config.own_window_argb_visual = false
+end
+
+conky.text = [[
+${font Roboto:size=42}${time %e}
+${goto 100}${font Roboto:size=18}${color1}${voffset -75}${time %b}
+${font Roboto:size=10}${color1}${voffset 5}${time %A}${color1}
+${hr}
+${goto 100}${font Roboto:size=15}${color0}${voffset -40}${offset 50}${time %Y}
+${font Roboto:size=30}${voffset 20}${alignc}${if_match "pmfix${time %p}" == "pmfix"}${time $template7}${else}${time %I:%M}${endif}
+${goto 175}${voffset -30}${font Roboto:size=10}${time %S}
+${hr}
+${image ./logo.png -p 150,10 -s 30x30}
+${color0}${font Roboto:size=8}Uptime: ${uptime_short}
+${color0}${font Roboto:size=8}Processes: ${processes}
+${color0}${font Roboto:size=8}Running: ${running_processes}
+
+${color1}${goto 75}${voffset 5}CPU
+${color0}${goto 75}${cpu cpu0}%
+${color1}${goto 75}${voffset 60}RAM
+${color0}${goto 75}${memperc}%
+${color1}${goto 75}${voffset 55}Root
+${color0}${goto 75}${fs_used_perc /}%
+${color1}${goto 75}${voffset 60}Home
+${color0}${goto 75}${fs_used_perc /home}%
+${color1}${goto 75}${voffset 55}Net
+${if_up $template0}\
+${color0}${goto 75}${downspeed $template0}
+${color0}${goto 75}${upspeed $template0}\
+${else}\
+${if_up $template1}\
+${color0}${goto 75}${downspeed $template1}
+${color0}${goto 75}${upspeed $template1}\
+${else}\
+${if_up $template2}\
+${color0}${goto 75}${downspeed $template2}
+${color0}${goto 75}${upspeed $template2}\
+${else}\
+${if_up $template3}\
+${color0}${goto 75}${downspeed $template3}
+${color0}${goto 75}${upspeed $template3}\
+${endif}${endif}${endif}${endif}\
+${voffset 30}
+${voffset 0}${color1}${font Roboto:size=8}${nodename}
+${color1}${font Roboto:size=8}${execi 84600 awk 'NF{NF-=3}1' /etc/mx-version} $machine
+${color1}${font Roboto:size=8}Kernel: ${kernel}
+${hr}
+]];
+

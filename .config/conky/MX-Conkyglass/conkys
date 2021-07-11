@@ -1,0 +1,132 @@
+conky.config = {
+-- Use Xft?
+	use_xft = true,
+	font = 'cure:size=8',
+	minimum_width = 320, minimum_height = 5,
+	maximum_width = 200,
+
+-- Update interval in seconds
+	update_interval = 3,
+
+-- This is the number of times Conky will update before quitting.
+-- Set to zero to run forever.
+	total_run_times = 0,
+
+-- Create own window instead of using desktop (required in nautilus)
+	own_window = true,
+	own_window_transparent = true,
+	own_window_type = 'normal',
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+-- Use double buffering (reduces flicker, may not work for everyone)
+	double_buffer = true,
+
+-- Minimum size of text area
+
+-- Draw shades?
+	draw_shades = false,
+
+-- Draw outlines?
+	draw_outline = false,
+
+-- Draw borders around text
+	draw_borders = false,
+
+-- Stippled borders?
+	stippled_borders = 0,
+
+
+
+-- Default colors and also border colors
+	default_color = 'CACACA',
+--default_shade_color white
+--default_outline_color black
+	own_window_colour = '000000',
+
+-- Text alignment, other possible values are commented
+--alignment bottom_left
+	alignment = 'top_right',
+
+-- Gap between borders of screen and text
+-- same thing as passing -x at command line
+	gap_x = 45,
+	gap_y = 25,
+
+-- Subtract file system buffers from used memory?
+	no_buffers = true,
+
+-- set to yes if you want all text to be in uppercase
+	uppercase = false,
+
+-- number of cpu samples to average
+-- set to 1 to disable averaging
+	cpu_avg_samples = 2,
+
+-- number of net samples to average
+-- set to 1 to disable averaging
+	net_avg_samples = 2,
+	if_up_strictness = 'address',
+
+-- Force UTF8? note that UTF8 support required XFT
+	override_utf8_locale = true,
+
+-- Add spaces to keep things from moving about?  This only affects certain objects.
+	use_spacer = 'right',
+
+	own_window_argb_value = 0,
+	own_window_argb_visual = true,
+
+-- network templates
+
+   template0 = 'eth0',
+   template1 = 'eth1',
+   template2 = 'wlan0',
+   template3 = 'wlan1',
+
+};
+
+-- fluxbox adjustment
+return_code = os.execute('pidof -q fluxbox')
+if _VERSION == 'Lua 5.1' and math.floor(return_code/256) == 0 or
+   _VERSION ~= 'Lua 5.1' and return_code then
+   conky.config.own_window_transparent = true
+   conky.config.own_window_argb_visual = false
+end
+
+conky.text = [[
+${image ./conkyground.png  -s 220x320 -p 10,10}
+
+${alignc}${voffset 10}${alignc}${color FFFFFF}$kernel
+
+${alignc} UpTime: ${alignc}${color FFFFFF}$uptime
+
+${alignc}CPU:${color ffffff} ${offset 2}${cpu cpu0}%  ${alignc}${voffset 1}${cpugraph cpu0 6,40 f1f1f1 000000}
+
+${alignc} MEM: ${alignc}${color ffffff}$mem
+${alignc} ${membar 6,80} 
+
+${alignc} NET: 
+${alignc}Up:  \
+${if_up ${template0}}${upspeedgraph ${template0} 6,40 f1f1f1} ${else}\
+${if_up ${template1}}${upspeedgraph ${template1} 6,40 f1f1f1} ${else}\
+${if_up ${template2}}${upspeedgraph ${template2} 6,40 f1f1f1} ${else}\
+${if_up ${template3}}${upspeedgraph ${template3} 6,40 f1f1f1} ${else}\
+${endif}${endif}${endif}${endif}
+
+${alignc}Dwn: \
+${if_up ${template0}}${downspeedgraph ${template0} 6,40 f1f1f1} ${else}\
+${if_up ${template1}}${downspeedgraph ${template1} 6,40 f1f1f1} ${else}\
+${if_up ${template2}}${downspeedgraph ${template2} 6,40 f1f1f1} ${else}\
+${if_up ${template3}}${downspeedgraph ${template3} 6,40 f1f1f1} ${else}\
+${endif}${endif}${endif}${endif}
+
+${alignc} HDD: ${color ffffff}${fs_free_perc /}% ${alignc} ${fs_bar 6,60 /}
+
+${alignc} TOP: ${alignc}${color FFFFFF}%
+${alignc} ${top name 1}${color ffffff} ${top cpu 1} 
+${alignc} ${top name 2}${color ffffff} ${top cpu 2} 
+${alignc} ${top name 3}${color ffffff} ${top cpu 3} 
+
+
+
+]];

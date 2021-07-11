@@ -1,0 +1,4 @@
+ Music
+ | + ${exec deadbeef --nowplaying "%a"}
+ | + ${exec deadbeef --nowplaying "%t"}
+ | + ${exec deadbeef --nowplaying "%e"}${offset 2}${alignr}${exec deadbeef --nowplaying "%l"}

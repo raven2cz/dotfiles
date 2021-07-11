@@ -1,0 +1,44 @@
+17c17
+< xftfont Dinreg:size=180
+---
+> xftfont Dinreg:size=100
+
+29c29
+< own_window_hints undecorated,below,skip_taskbar,skip_pager
+---
+> own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+34,35c34,35
+< gap_x 50
+< gap_y 40
+---
+> gap_x 0
+> gap_y 30
+
+50c50
+< color2 b73e5c
+---
+> color2 af872f
+
+53a54,56
+> #lua_load ~/.conky/conkybg.lua
+> #lua_draw_hook_pre conky_draw_bg
+> 
+
+58,61c61,66
+< 
+< ${voffset -350}${if_match "pmfix${time %p}" == "pmfix"}${time %H}${else}${time %I}${endif}
+< ${color2}${voffset -170}${offset 100}${time %M}${color}
+< ${offset 30}${voffset -250}${font Droid Sans:size=12}${time %A} ${time %B %d}
+---
+> ${font Dinreg:size=12}
+> ${font}
+> ${voffset -180}${if_match "pmfix${time %p}" == "pmfix"}${time %H}${else}${time %I}${endif}
+> ${color2}${offset 30}${voffset -100}${time %M}
+> ${voffset -140}${offset 10}${font Roboto-Light:size=12 :bold}${color}${time %A} ${offset 10}${color2}${color}${time %B %d}
+> ${offset 150}${voffset -175}${font Roboto-Light:size=12}${color2}${time %p}
+63,64c68
+< ${offset 30}${voffset 20}${font Roboto-Light:pixelsize=18}${color2}USED:${offset 9} ${color3}hdd ${offset 9}${color4}${fs_used_perc /}%${offset 9}${color3}mem ${offset 9}${color4}${memperc}%${offset 9}${color3}cpu ${offset 9}${color4}${cpu cpu0}%
+< 
+---
+> ${offset 10}${voffset 160}${font Roboto-Light:pixelsize=18}USED:${offset 9} ${color3}hdd ${offset 9}${color4}${fs_used_perc /}%${offset 9}${color3}cpu ${offset 9}${color4}${cpu cpu0}%

@@ -1,0 +1,3 @@
+Source:
+
+Conky slightly modified from original found on Voyager Linux 13.04 release circa 2013

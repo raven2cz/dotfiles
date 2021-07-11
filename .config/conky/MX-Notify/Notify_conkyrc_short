@@ -1,0 +1,124 @@
+conky.config = {
+--#####################
+-- - Conky settings - #
+--#####################
+	update_interval = 1,
+	total_run_times = 0,
+	net_avg_samples = 1,
+	cpu_avg_samples = 1,
+
+	imlib_cache_size = 0,
+	double_buffer = true,
+	no_buffers = true,
+
+--####################
+-- - Text settings - #
+--####################
+	use_xft = true,
+	font = 'Rotobo-Light:size=9',
+	override_utf8_locale = true,
+	text_buffer_size = 2048,
+
+--############################
+-- - Window specifications - #
+--############################
+	own_window_class = 'Conky',
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_transparent = true,
+	own_window_hints = 'undecorated,below,skip_taskbar,skip_pager',
+--own_window_argb_visual yes
+--own_window_argb_value 100
+
+	alignment = 'top_right',
+	gap_x = 28,
+	gap_y = 100,
+	minimum_width = 350, minimum_height = 300,
+
+
+	default_bar_width = 60, default_bar_height = 8,
+
+--########################
+-- - Graphics settings - #
+--########################
+	draw_shades = false,
+
+	default_color = 'efefef',
+	default_shade_color = '1d1d1d',
+	color0 = 'ffffff',
+	color1 = 'ffffff',
+	color2 = 'ffffff',
+
+
+--lua_load ~/.conky/conkybg.lua
+--lua_draw_hook_pre conky_draw_bg
+
+	own_window_argb_value = 0,
+	own_window_argb_visual = true,
+	own_window_colour = '000000',
+
+-- if_up_strictness link:  up | link | address
+    if_up_strictness = 'address',
+
+-- network templates
+   template0 = 'wlan0',
+   template1 = 'wlan1',
+   template3 = 'eth0',
+   template2 = 'eth1',
+
+};
+
+-- fluxbox adjustment
+
+return_code = os.execute('pidof -q fluxbox')
+if _VERSION == 'Lua 5.1' and math.floor(return_code/256) == 0 or
+   _VERSION ~= 'Lua 5.1' and return_code then
+   conky.config.own_window_transparent = true
+   conky.config.own_window_argb_visual = false
+end
+
+conky.text = [[
+${voffset 5}
+${goto 92}CPU1  ${font Rotobo-Light:style=Bold:size=9}${color1}${cpu cpu1}%${font}${color}${goto 215}${cpubar cpu1}
+
+${goto 92}CPU2  ${font Rotobo-Light:style=Bold:size=9}${color1}${cpu cpu2}%${font}${color} ${goto 215}${cpubar cpu2}
+
+
+${goto 92}RAM:${color1} ${font Rotobo-Light:style=Bold:size=9}${memperc}%${font}${color}${font Rotobo-Light:style=Bold:size=9}${font}${goto 180}${mem} / ${memeasyfree} ${color}${font}
+
+${goto 92}HDD:${color1} ${font Rotobo-Light:style=Bold:size=9}${fs_used_perc /home}%${font}${color}${goto 180}${fs_used /home} / ${fs_free /home}${color}${color2}${color}${font}
+
+${if_up $template0}
+#${voffset -4}${color0}${font VariShapes Solid:size=14}q${font}${color}${goto 92}${voffset -6}Up: ${font Rotobo-Light:style=Bold:size=9}${color1}${upspeed $template0}${color}${font} ${goto 200}Total: ${font Rotobo-Light:style=Bold:size=9}${color2}${totalup $template0}${color}${font}
+${voffset -4}${color0}${font PizzaDude Bullets:size=14}N${font}${color}${goto 92}${voffset -6}Up: ${font Rotobo-Light:style=Bold:size=9}${color1}${upspeed $template0}${color}${font} ${goto 200}Total: ${font Rotobo-Light:style=Bold:size=9}${color2}${totalup $template0}${color}${font}
+${voffset 4}${goto 92}Signal:   ${font Rotobo-Light:style=Bold:size=9}${color1}${wireless_link_qual $template0}%${color}${font} ${alignr 15}
+${voffset 4}${font PizzaDude Bullets:size=14}T${font}${goto 92}Down:   ${font Rotobo-Light:style=Bold:size=9}${color1}${downspeed $template0}${color}${font} ${goto 200}Total: ${font Rotobo-Light:style=Bold:size=9}${color2}${totaldown $template0}${color}${font}
+${voffset 8}${color}${goto 92}${voffset -4}$template0: ${goto 200}${color2}${addr $template0}${color}
+${else}\
+${if_up $template1}
+#${voffset -4}${color0}${font VariShapes Solid:size=14}q${font}${color}${goto 92}${voffset -6}Up: ${font Rotobo-Light:style=Bold:size=9}${color1}${upspeed $template1}${color}${font} ${goto 200}Total: ${font Rotobo-Light:style=Bold:size=9}${color2}${totalup $template1}${color}${font}
+${voffset -4}${color0}${font PizzaDude Bullets:size=14}N${font}${color}${goto 92}${voffset -6}Up: ${font Rotobo-Light:style=Bold:size=9}${color1}${upspeed $template1}${color}${font} ${goto 200}Total: ${font Rotobo-Light:style=Bold:size=9}${color2}${totalup $template1}${color}${font}
+${voffset 4}${goto 92}Signal:   ${font Rotobo-Light:style=Bold:size=9}${color1}${wireless_link_qual $template1}%${color}${font} ${alignr 15}
+${voffset 4}${font PizzaDude Bullets:size=14}T${font}${goto 92}Down:   ${font Rotobo-Light:style=Bold:size=9}${color1}${downspeed $template1}${color}${font} ${goto 200}Total: ${font Rotobo-Light:style=Bold:size=9}${color2}${totaldown $template1}${color}${font}
+${voffset 8}${color}${goto 92}${voffset -4}$template1: ${goto 200}${color2}${addr $template1}${color}
+${else}
+${if_up $template2}
+#${voffset -4}${color0}${font VariShapes Solid:size=14}q${font}${color}${goto 92}${voffset -6}Up: ${font Rotobo-Light:style=Bold:size=9}${color1}${upspeed $template2}${color}${font} ${goto 215}${color2}${upspeedgraph $template2 8,60 92B6F1 CCDFFF}${color}
+${voffset -4}${color0}${font PizzaDude Bullets:size=14}N${font}${color}${goto 92}${voffset -6}Up: ${font Rotobo-Light:style=Bold:size=9}${color1}${upspeed $template2}${color}${font} ${goto 215}${color2}${upspeedgraph $template2 8,60 92B6F1 CCDFFF}${color}
+${goto 92}Total: ${color2}${totalup $template2}${color}
+${voffset 4}${color0}${font PizzaDude Bullets:size=14}T${font}${color}${goto 92}${voffset -6}Down: ${font Rotobo-Light:style=Bold:size=9}${color1}${downspeed $template2}${color}${font} ${goto 215}${color2}${downspeedgraph $template2 8,60 92B6F1 CCDFFF}${color}
+${goto 92}Total: ${color2}${totaldown $template2}${color}
+${voffset 4}${color}${goto 92}${voffset -4}$template2: ${goto 200}${color2}${addr $template2}${color}
+${else}
+#${voffset -4}${color0}${font VariShapes Solid:size=14}q${font}${color}${goto 92}${voffset -6}Up: ${font Rotobo-Light:style=Bold:size=9}${color1}${upspeed $template3}${color}${font} ${goto 215}${color2}${upspeedgraph $template3 8,60 92B6F1 CCDFFF}${color}
+${voffset -4}${color0}${font PizzaDude Bullets:size=14}N${font}${color}${goto 92}${voffset -6}Up: ${font Rotobo-Light:style=Bold:size=9}${color1}${upspeed $template3}${color}${font} ${goto 215}${color2}${upspeedgraph $template3 8,60 92B6F1 CCDFFF}${color}
+${goto 92}Total: ${color2}${totalup $template3}${color}
+${voffset 4}${color0}${font PizzaDude Bullets:size=14}T${font}${color}${goto 92}${voffset -6}Down: ${font Rotobo-Light:style=Bold:size=9}${color1}${downspeed $template3}${color}${font} ${goto 215}${color2}${downspeedgraph $template3 8,60 92B6F1 CCDFFF}${color}
+${goto 92}Total: ${color2}${totaldown $template3}${color}
+${voffset 4}${color}${goto 92}${voffset -4}$template3: ${goto 200}${color2}${addr $template3}${color}
+${endif}${endif}${endif}\
+${voffset -8}${color0}${font Poky:size=13}w${font}${goto 92}WANIP: ${goto 200}${color2}\
+${if_gw}${eval ${execi 10800 dig @resolver1.opendns.com myip.opendns.com +short -4 2>/dev/null}}${endif}${color}
+
+${image ./images/base.png -p 10,0 -s 339x86}${image ./images/base.png -p 10,146 -s 339x86}${image ./images/base.png -p 10,73 -s 339x86}${image ./images/Task_Manager.png -p 32,20 -s 45x45}${image ./images/Memory.png -p 32,93 -s 45x45}${image ./images/wlan100.png -p 32,166 -s 45x45}
+]];

@@ -1,0 +1,79 @@
+Setting up Conky OR Things to check before running...
+-----------------------------------------------------
+All Ways run this FIRST!! if you have not already..
+
+Run Sensors Detect = ( "yes | sudo sensors-detect" ) + enter (OR) ( "sudo sensors-detect" ) + yes enter & so on.
+
+-----------
+
+HddTemp
+
+If you want to have Hard drive Temperatures in your Conky you MAY need to edit as root (etc/hddtemp.db) and add your hard drive to the list under your brand of drive.
+
+
+1 = Install hddtemp 
+To run hddtemp without sudo on startup type = chmod u+s /usr/sbin/hddtemp
+
+2 = Find your drive list. type = lsblk -f 
+
+(You only need to do below if your drive temp is NOT working with Conky as in most ssd & m2 drives)
+
+example = hddtemp /dev/sdb 
+/dev/sdb: Samsung SSD 850 EVO 500G B        WARNING: Drive /dev/sda doesn't seem to have a temperature sensor
+
+3 = sudo smartctl /dev/sdb -a | grep -i Temp  (Change /dev/sdb to your drive , you need the first number of the read out mine was 190)
+
+example below under SAMSUNG
+"Samsung SSD 840 EVO 250G B"        190  C  "Samsung SSD 840 EVO 250G B"
+"Samsung SSD 850 EVO 250G B"        190  C  "Samsung SSD 850 EVO 250G B"
+"Samsung SSD 850 EVO 500G B"        190  C  "Samsung SSD 850 EVO 500G B"
+"Samsung SSD 850 EVO M.2"           190  C  "Samsung SSD 850 EVO M.2"
+"Samsung SSD 860 EVO 250G B"        190  C  "Samsung SSD 860 EVO 250G B"
+"Samsung SSD 860 EVO 500G B"        190  C  "Samsung SSD 860 EVO 500G B"
+
+The read out from hddtemp /dev/sdb is Samsung SSD 850 EVO 500G B this must be added to your hddtemp.db exactly the same NOTE upper and lower case and the gap between 250G B as above..
+
+-------------
+
+FanSpeeds
+
+
+
+If your fan speed is not reading change hwmon number 1,2,etc until you have the RPM reading saving conkyrc each time.
+
+If you have more then one fan just add fan 2,3 etc.
+${hwmon 3 fan 1} rpm ${hwmon 3 fan 2} rpm ${hwmon 3 fan 3} rpm
+
+examples=
+
+${alignc}${color}RaD-Fan: ${alignc}${color #F0FF00}${hwmon 3 fan 1} RPM
+${alignc}${color}PumP: ${alignc}${color #F0FF00}${hwmon 3 fan 2} RPM
+
+From my bar conky.
+{ "full_text": "  * ${hwmon 3 fan 1} rpm : ${hwmon 3 fan 2} rpm : ${hwmon 3 fan 3} rpm" , "color": "\#33FF99"
+
+
+OR
+
+
+---------------
+To run the below command you must install FANSPEED
+
+To find out which fans you have and speed in RPM
+just say no to every thing until you get the reading below then Control C to exit....
+
+sudo pwmconfig
+
+Found the following fan sensors:
+   hwmon1/fan1_input     current speed: 0 ... skipping!
+   hwmon3/fan1_input     current speed: 1053 RPM
+   hwmon3/fan2_input     current speed: 2551 RPM
+   hwmon3/fan3_input     current speed: 1072 RPM
+   hwmon3/fan4_input     current speed: 0 ... skipping!
+   hwmon3/fan5_input     current speed: 0 ... skipping!
+
+
+---------------
+
+
+

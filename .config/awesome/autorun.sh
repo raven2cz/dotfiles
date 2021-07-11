@@ -20,6 +20,8 @@ run xautolock -time 60 -locker blurlock -notify 30 -notifier "notify-send -u cri
 run clipit
 run clipmenud
 run volumeicon
-run conky -c ~/.config/conky
+#run conky -c ~/.config/conky
+run ~/.config/conky/start_conky ~/.config/conky/MX-CoreBlue/conkyrc2core 
 run remmina -i
+run pa-applet
 run picom --experimental-backends --config $HOME/.config/picom/picom.conf

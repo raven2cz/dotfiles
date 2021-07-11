@@ -1,0 +1,15 @@
+How to install!
+Go to a terminal and type:
+sudo apt-get update
+sudo apt-get install --yes conky-all
+
+Download and extract the conkypatch.tar.gz and type in terminal as user:
+chmod +x install.sh
+sh install.sh
+fc-cache -v -f
+
+Now restart your session
+finaly, alt+f2 and type:
+conky -c ~/.conkypatch/conky.conf
+
+Inspired by: CONKY-colors

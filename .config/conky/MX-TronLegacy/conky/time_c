@@ -1,0 +1,65 @@
+conky.config = {
+-- conky configrued by Qaisar Nawaz
+-- for more like visit : myconkys.blogspot.com
+-- Conky settings #
+	background = false,
+	update_interval = 1,
+	double_buffer = true,
+	no_buffers = true,
+
+-- Window specifications #
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	own_window_title = '',
+	own_window_colour = 'FFFFFF',
+	own_window_transparent = true,
+	own_window_argb_visual = false,
+--own_window_argb_value 255
+
+	minimum_width = 200, minimum_height = 100,
+-- Alignment #
+	alignment = 'top_right',
+	gap_x = 50,
+	gap_y = 80,
+
+	border_inner_margin = 0,
+	border_outer_margin = 0,
+
+-- Graphics settings #
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = false,
+
+-- Text settings #
+	use_xft = true,
+	xftalpha = 0,
+	font = 'future:size=10',
+
+
+-- Color scheme #
+	default_color = '66eafb',
+	color1 = 'fa4f6a',
+
+--own_window_argb_value 0
+
+-- time template
+   template7 = '%H',
+
+};
+
+-- fluxbox adjustment
+
+return_code = os.execute('pidof -q fluxbox')
+if _VERSION == 'Lua 5.1' and math.floor(return_code/256) == 0 or
+   _VERSION ~= 'Lua 5.1' and return_code then
+   conky.config.own_window_transparent = true
+   conky.config.own_window_argb_visual = false
+end
+
+conky.text = [[
+${image ./conky_icons/circle.png -s 200x100}${voffset 10}${offset 10}Time & Date
+${voffset 10}${offset 10}${font future:size=26}${if_match "pmfix${time %p}" == "pmfix"}${time $template7}${else}${time %I}${endif} ${time %M} ${time %S} ${alignr 10}${time %p}$font
+${voffset 10}${offset 10}${time %A}$color${alignr 10}${color1}${time %d}${color} ${time  %B} ${time %Y}
+]];

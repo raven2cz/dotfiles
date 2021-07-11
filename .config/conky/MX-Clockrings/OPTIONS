@@ -1,0 +1,13 @@
+UPDATE: (by fehlix, May, 2020)
+adjusted to recognise wlan0, wlan1, eth0 and eth1
+
+
+The conky is set to wlan0 by the clock_rings.lua script. To change it, 
+--open that file in the text editor (Featherpad by default) 
+--click Search > Replace
+--type "wlan0" in the Find space, and "eth0" in the Replace space
+--click the double down arrow (Featherpad) or otherwise execute the replacement
+
+The color of the rings is also set in that lua script. Look for bg_color or fg_color to change. Text color can be easily adjusted with MX Conky.
+
+

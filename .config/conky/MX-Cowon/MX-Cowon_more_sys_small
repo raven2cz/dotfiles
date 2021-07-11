@@ -1,0 +1,82 @@
+conky.config = {
+--#####################
+-- - Conky settings - #
+--#####################
+	update_interval = 1,
+	total_run_times = 0,
+	net_avg_samples = 1,
+	cpu_avg_samples = 1,
+
+	imlib_cache_size = 0,
+	double_buffer = true,
+	no_buffers = true,
+
+--####################
+-- - Text settings - #
+--####################
+	use_xft = true,
+	font = 'Dinreg:size=100',
+	override_utf8_locale = true,
+	text_buffer_size = 2048,
+	xftalpha = 0.9,
+
+--############################
+-- - Window specifications - #
+--############################
+	own_window_class = 'Conky',
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_transparent = true,
+
+	own_window_hints = 'undecorated,below,skip_taskbar,skip_pager',
+--own_window_argb_visual yes
+--own_window_argb_value 100
+
+	alignment = 'top_right',
+	gap_x = 40,
+	gap_y = 40,
+	minimum_width = 220, minimum_height = 220,
+
+
+
+
+--########################
+-- - Graphics settings - #
+--########################
+	draw_shades = false,
+
+	default_color = '025101',
+	default_shade_color = '1d1d1d',
+	color0 = '90ac11',
+	color1 = '0f0c03',
+	color2 = '0f225d',
+	color3 = '1c1911',
+	color4 = '782f9f',
+
+
+--lua_load ~/.conky/conkybg.lua
+--lua_draw_hook_pre conky_draw_bg
+
+	own_window_argb_value = 0,
+	own_window_argb_visual = true,
+	own_window_colour = '000000',
+	lua_load = 'conky_hours.lua',
+};
+
+-- fluxbox adjustment
+
+return_code = os.execute('pidof -q fluxbox')
+if _VERSION == 'Lua 5.1' and math.floor(return_code/256) == 0 or
+   _VERSION ~= 'Lua 5.1' and return_code then
+   conky.config.own_window_transparent = true
+   conky.config.own_window_argb_visual = false
+end
+
+conky.text = [[
+${voffset -20}${lua hours}
+${color2}${offset 40}${voffset -100}${time %M}
+${voffset -140}${offset 10}${font Roboto-Light:bold:size=12}${color2}${time %A} ${offset 10}${color2}${time %B %d}
+${offset 150}${voffset -175}${font Roboto-Light:size=12}${color2}${lua AM_PM}
+#system
+${offset 0}${voffset 160}${font Roboto-Light:bold:pixelsize=12}${offset 14}${color3}hdd ${offset 4}${color4}${fs_used_perc /}%${offset 4}${color3} mem ${offset 4}${color4}${memperc}%${offset 4} ${color3}cpu ${offset 4}${color4}${cpu cpu0}%
+]];

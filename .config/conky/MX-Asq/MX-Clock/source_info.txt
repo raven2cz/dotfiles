@@ -1,0 +1,3 @@
+https://forum.mxlinux.org/memberlist.php?mode=viewprofile&u=3649
+
+Modified from a conky script of hhh from bunsenlabs.org

@@ -1,0 +1,67 @@
+conky.config = {
+-- conky package by qaisar nawaz - all rights reserved.
+-- Conky settings #
+	background = false,
+	update_interval = 2,
+	double_buffer = true,
+	no_buffers = true,
+
+-- Window specifications #
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	own_window_title = '',
+	own_window_colour = '000000',
+	own_window_transparent = true,
+--own_window_argb_visual yes
+--own_window_argb_value 255
+
+	minimum_width = 232, minimum_height = 200,
+-- Alignment #
+	alignment = 'top_right',
+	gap_x = 60,
+	gap_y = 80,
+
+	border_inner_margin = 0,
+	border_outer_margin = 0,
+
+-- Graphics settings #
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = false,
+
+-- Text settings #
+	use_xft = true,
+	xftalpha = 0,
+	font = 'ubuntu:size=8',
+-- Color scheme #
+	default_color = 'ffffff',
+
+	color1 = '0099CC',
+	color2 = '9933CC',
+	color3 = 'FFFFFF',
+	color4 = 'FF8800',
+	color5 = 'FFC000',
+	color6 = '000000',
+	color7 = 'DDDDDD',
+
+	own_window_argb_value = 0,
+	own_window_argb_visual = true,
+};
+
+-- fluxbox adjustment
+
+return_code = os.execute('pidof -q fluxbox')
+if _VERSION == 'Lua 5.1' and math.floor(return_code/256) == 0 or
+   _VERSION ~= 'Lua 5.1' and return_code then
+   conky.config.own_window_transparent = true
+   conky.config.own_window_argb_visual = false
+end
+
+conky.text = [[
+${image ./colors/orange.png -s 205x154}${voffset 40}${offset 64}${color7}${time %A}${color6}
+${voffset -2}${offset 40}${font ubuntu:pixelsize=40}${time %H}${color}${font ubuntu light:pixelsize=38}:${color6}${time %M}$font$color
+${voffset 3}${offset 54}${font ubuntu:bold}${color}${time %d}${voffset -2}${color7}$font ${time  %B} ${time %Y}${voffset -33}
+
+]];

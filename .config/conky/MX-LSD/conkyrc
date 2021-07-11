@@ -1,0 +1,68 @@
+conky.config = {
+	update_interval = 1,
+	total_run_times = 0,
+	net_avg_samples = 1,
+	cpu_avg_samples = 1,
+	imlib_cache_size = 0,
+	double_buffer = true,
+	no_buffers = true,
+	use_xft = true,
+	font = 'Zekton:size=9',
+	override_utf8_locale = true,
+	text_buffer_size = 2048,
+	own_window_class = 'Conky',
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_transparent = true,
+	own_window_hints = 'undecorated,sticky,skip_taskbar,skip_pager',
+	alignment = 'top_right',
+	gap_x = 50,
+	gap_y = 80,
+	minimum_width = 265, minimum_height = 412,
+	default_bar_width = 30, default_bar_height = 8,
+	draw_shades = false,
+	default_color = 'ffffff',
+	default_shade_color = '000000',
+	color0 = '00d9ff',
+	color1 = 'ffffff',
+	color2 = 'ffffff',
+
+	lua_load = './lsd_rings.lua',
+	lua_draw_hook_post = 'main',
+
+	own_window_argb_value = 0,
+	own_window_argb_visual = true,
+	own_window_colour = '000000',
+-- time template
+   template7 = '%H:%M',
+
+
+
+};
+
+-- fluxbox adjustment
+
+return_code = os.execute('pidof -q fluxbox')
+if _VERSION == 'Lua 5.1' and math.floor(return_code/256) == 0 or
+   _VERSION ~= 'Lua 5.1' and return_code then
+   conky.config.own_window_transparent = true
+   conky.config.own_window_argb_visual = false
+end
+
+conky.text = [[
+${goto 185}${voffset -8}${color0}${font Zekton:style=bold:size=12}${execi 3600 echo $USER}
+${goto 60}${voffset 20}${color}${font}Temperature: 
+${goto 10}${voffset 75}${font Zekton:style=bold:size=30}\
+${if_match "pmfix${time %p}" == "pmfix"}${time $template7}${else}${time %I:%M}${endif}${font}
+${goto 166}${voffset -10}${font Zekton:style=Bold:size=9}Battery
+${alignc -48}${font Zekton:style=Bold:size=9}\
+${if_existing /sys/class/power_supply/BAT0}${battery_percent BAT0}%\
+${else}\
+${if_existing /sys/class/power_supply/BAT1}${battery_percent BAT1}%${else}%${endif}${endif}
+${goto 49}${voffset 45}CPU${voffset -5}${color}${goto 128}RAM
+${goto 130}${font Zekton:style=Bold:size=9}${memperc}%
+${goto 75}${voffset 20}${font Zekton:style=Bold:size=9}HDused
+${goto 80}${font Zekton:style=Bold:size=9}${fs_used /home}
+
+${image ./lsd.png -p 10,0 -s 255x412}
+]];

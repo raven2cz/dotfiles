@@ -1,0 +1,6 @@
+Source:
+
+1. Conky modified from original found on a BBQLinux XFCE release circa 2014-2015
+
+2. media player python script by Amish Naidu
+https://github.com/amhndu/conky-cards

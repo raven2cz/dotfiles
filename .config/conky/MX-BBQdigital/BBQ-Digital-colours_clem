@@ -1,0 +1,164 @@
+conky.config = {
+--alignment tl
+	alignment = 'top_right',
+	background = false,
+	border_inner_margin = 0,
+	border_width = 0,
+	default_color = 'FFFFFF',
+	default_outline_color = 'black',
+	default_shade_color = 'black',
+	double_buffer = true,
+	draw_borders = false,
+	draw_graph_borders = false,
+	draw_outline = false,
+	draw_shades = false,
+	gap_x = 26,
+	gap_y = 6,
+	minimum_width = 250, minimum_height = 0,
+	no_buffers = true,
+	override_utf8_locale = true,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	own_window_transparent = true,
+	own_window = true,
+--own_window_type desktop
+	pad_percents = 2,
+	short_units = true,
+	stippled_borders = 0,
+	top_name_width = 5,
+	update_interval = 1,
+	uppercase = true,
+	use_spacer = 'right',
+	use_xft = true,
+	xftalpha = 1.0,--0.2
+	font = 'Terminus:bold:size=7',
+
+-- Color scheme #
+	default_color = 'ffffff',
+
+	color1 = 'FFFFFF',
+	color2 = 'FF9616',
+	color3 = '1CE3BB',
+	color4 = 'FF0000',
+--##########################
+
+
+	own_window_argb_value = 0,
+	own_window_argb_visual = true,
+	own_window_colour = '000000',
+
+-- network templates
+   template0 = 'wlan0',
+   template1 = 'wlan1',
+   template2 = 'eth0',
+   template3 = 'eth1',
+
+
+};
+
+-- fluxbox adjustment
+
+return_code = os.execute('pidof -q fluxbox')
+if _VERSION == 'Lua 5.1' and math.floor(return_code/256) == 0 or
+   _VERSION ~= 'Lua 5.1' and return_code then
+   conky.config.own_window_transparent = true
+   conky.config.own_window_argb_visual = false
+end
+
+conky.text = [[
+${goto 12}+----${color2}${nodename}${color}
+${goto 15}|${goto 40}|
+${goto 15}|${goto 38}+-- OS${goto 125}${sysname}
+${goto 15}|${goto 38}+-- Kernel ${goto 125}${kernel}
+${goto 15}|${goto 38}+-- Machine${goto 125}${machine}
+${goto 15}|
+${goto 12}+----${color3}Memory${color}
+${goto 15}|${goto 38}+-- Total${goto 125}${memmax}
+${goto 15}|${goto 38}+-- In Use${color}${goto 125}${mem} (${memperc}%)
+${goto 15}|${goto 38}+-- Free${goto 125}${memfree}
+${goto 15}|${goto 38}+-- Up to${goto 125}${memeasyfree} freed easily
+${goto 15}|${goto 38}+-- Swap
+${goto 15}|${goto 60}+-- Total${goto 125}${swapmax}
+${goto 15}|${goto 60}+-- Used${goto 125}${swap} - ${swapperc}%
+${goto 15}|${goto 60}+-- Free${goto 125}${swapfree}
+${goto 15}|
+${goto 12}+----${color3}Status${color}
+${goto 15}|${goto 40}|
+${goto 15}|${goto 38}+-- CPU${goto 125}${cpu cpu0}% - ${freq_g}GHz
+${goto 15}|${goto 38}+-- Ram${goto 125}${memperc}%
+${goto 15}|${goto 38}+-- LoadAvg${goto 125}${loadavg}
+${goto 15}|${goto 38}+-- Disk${goto 125}${fs_used_perc /}% Used
+${goto 15}|${goto 38}+-- Diskio ${goto 125}${diskio}
+${goto 15}|${goto 60}+-- Read${goto 125}${diskio_read}
+${goto 15}|${goto 60}+-- Write${goto 125}${diskio_write}
+${goto 15}|
+${goto 12}+----${color3}Storage (Free)${color}
+${goto 15}|${goto 40}|
+${goto 15}|${goto 38}+-- /ROOT${goto 125}${fs_free /} / ${fs_size /}
+${goto 15}|${goto 38}+-- /HOME${goto 125}${fs_free /home} / ${fs_size /home}
+${goto 15}|
+${goto 12}+----${color3}Processes${color}
+${goto 15}|${goto 40}|
+${goto 15}|${goto 38}+-- Total${goto 125}${processes}
+${goto 15}|${goto 38}+-- Running${goto 125}${running_processes}
+${goto 15}|${goto 40}|
+${goto 15}|${goto 38}+-- CPU
+${goto 15}|${goto 40}|${goto 60}+-- ${top name 1}${goto 125}${top cpu 1}${top mem 1}
+${goto 15}|${goto 40}|${goto 60}+-- ${top name 2}${goto 125}${top cpu 2}${top mem 2}
+${goto 15}|${goto 40}|${goto 60}+-- ${top name 3}${goto 125}${top cpu 3}${top mem 3}
+${goto 15}|${goto 40}|
+${goto 15}|${goto 38}+-- MEM
+${goto 15}|${goto 60}+-- ${top_mem name 1}${goto 125}${top_mem cpu 1}${top_mem mem 1}
+${goto 15}|${goto 60}+-- ${top_mem name 2}${goto 125}${top_mem cpu 2}${top_mem mem 2}
+${goto 15}|${goto 60}+-- ${top_mem name 3}${goto 125}${top_mem cpu 3}${top_mem mem 3}
+${goto 15}|
+${goto 12}+----${color3}Net${color}
+${goto 15}|${goto 40}|
+${if_up $template3}\
+${goto 15}|${goto 38}+-- $template3${goto 125}${addr $template3}${else}\
+${goto 15}|${goto 38}+-- $template2${goto 125}${addr $template2}${endif}
+${if_up $template1}\
+${goto 15}|${goto 38}+-- $template1${goto 125}${addr $template1}${else}\
+${goto 15}|${goto 38}+-- $template0${goto 125}${addr $template0}${endif}
+${if_up $template1}\
+${goto 15}|${goto 38}+-- Up
+${goto 15}|${goto 40}|${goto 60}+-- Speed${goto 125}${upspeedf $template1}KiB
+${goto 15}|${goto 40}|${goto 60}+-- Total${goto 125}${totalup  $template1}KiB
+${goto 15}|${goto 40}|
+${goto 15}|${goto 38}+-- Down
+${goto 15}|${goto 40} ${goto 60}+-- Speed${goto 125}${downspeedf $template1}KiB
+${goto 15}|${goto 40} ${goto 60}+-- Total${goto 125}${totaldown  $template1}KiB${else}\
+${if_up $template0}\
+${goto 15}|${goto 38}+-- Up
+${goto 15}|${goto 40}|${goto 60}+-- Speed${goto 125}${upspeedf $template0}KiB
+${goto 15}|${goto 40}|${goto 60}+-- Total${goto 125}${totalup  $template0}KiB
+${goto 15}|${goto 40}|
+${goto 15}|${goto 38}+-- Down
+${goto 15}|${goto 40} ${goto 60}+-- Speed${goto 125}${downspeedf $template0}KiB
+${goto 15}|${goto 40} ${goto 60}+-- Total${goto 125}${totaldown  $template0}KiB${else}\
+${if_up $template3}\
+${goto 15}|${goto 38}+-- Up
+${goto 15}|${goto 40}|${goto 60}+-- Speed${goto 125}${upspeedf $template3}KiB
+${goto 15}|${goto 40}|${goto 60}+-- Total${goto 125}${totalup  $template3}KiB
+${goto 15}|${goto 40}|
+${goto 15}|${goto 38}+-- Down
+${goto 15}|${goto 40} ${goto 60}+-- Speed${goto 125}${downspeedf $template3}KiB
+${goto 15}|${goto 40} ${goto 60}+-- Total${goto 125}${totaldown  $template3}KiB${else}\
+${goto 15}|${goto 38}+-- Up
+${goto 15}|${goto 40}|${goto 60}+-- Speed${goto 125}${upspeedf $template2}KiB
+${goto 15}|${goto 40}|${goto 60}+-- Total${goto 125}${totalup  $template2}KiB
+${goto 15}|${goto 40}|
+${goto 15}|${goto 38}+-- Down
+${goto 15}|${goto 40} ${goto 60}+-- Speed${goto 125}${downspeedf $template2}KiB
+${goto 15}|${goto 40} ${goto 60}+-- Total${goto 125}${totaldown  $template2}KiB\
+${endif}${endif}${endif}
+${goto 15}|
+${goto 12}+----${color3}Music (Clementine)${color}
+${goto 15} ${goto 40}|
+${if_match "${execi 10 python3 mediaplayer.py clementine -i}"=="yes"}${goto 15} ${goto 38}+-- ${execpi 4 python3 mediaplayer.py clementine -a -w 45}
+${goto 15} ${goto 38}+-- ${execpi 4 python3 mediaplayer.py clementine -m -w 43}
+${goto 15} ${goto 38}+-- ${execpi 4 python3 mediaplayer.py clementine -t -w 43}
+${goto 15} ${goto 40} ${goto 60}+-- ${execpi 4 python3 mediaplayer.py clementine -l -w 43}
+${goto 15} ${goto 40} ${goto 60}+-- ${execpi 4 python3 mediaplayer.py clementine -e -w 43}
+${else}${goto 15} ${goto 38}+-- Clementine Not Running\
+${endif}
+]];

@@ -1,0 +1,68 @@
+conky.config = {
+--#############################################
+-- Settings
+--#############################################
+	background = false,
+	use_xft = true,
+--xftfont Infini Sans:size=9
+	xftalpha = 1,
+	update_interval = 1.0,
+	total_run_times = 0,
+	own_window = true,
+	own_window_transparent = true,
+	own_window_type = 'normal',
+	own_window_argb_visual = true,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	double_buffer = true,
+	minimum_width = 100, minimum_height = 250,
+	maximum_width = 5000,
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = false,
+--default_shade_color 000000
+--default_outline_color 828282
+	alignment = 'top_right',
+	gap_x = -30,
+	gap_y = 30,
+	no_buffers = true,
+	uppercase = false,
+	cpu_avg_samples = 2,
+	override_utf8_locale = false,
+
+--###########Colors#########
+	default_color = 'cfcfcf',
+	color1 = 'ffffff',
+	color2 = 'fcfcfc',
+--##########################
+
+--#############################################
+--  Output
+--#############################################
+
+	own_window_argb_value = 0,
+	own_window_colour = '000000',
+
+-- time template
+    
+    template0 = [[${if_match "pmfix${time %p}" == "pmfix"}${time \1}${else}${time %l:%M}${endif}]],
+
+
+};
+
+-- fluxbox adjustment
+
+return_code = os.execute('pidof -q fluxbox')
+if _VERSION == 'Lua 5.1' and math.floor(return_code/256) == 0 or
+   _VERSION ~= 'Lua 5.1' and return_code then
+   conky.config.own_window_transparent = true
+   conky.config.own_window_argb_visual = false
+end
+
+conky.text = [[
+${voffset 10}${font Infini:pixelsize=90}${template0 %k:%M}${font}${voffset -84}${offset 40}${font Infini:pixelsize=42}${time %d} ${voffset -15}${font Infini:pixelsize=22}${time  %b} ${time '%y}${font}${voffset 24}${font Infini:pixelsize=58}${offset -140}${time %a}${font}
+
+${font Infini:pixelsize=17}${color1}${offset 30}${execi 1000 cat /etc/mx-version}
+#bottom system line
+${offset 30}${font Infini:pixelsize=22}RAM ${voffset 12}${font Infini:pixelsize=21}$mem${voffset -11}${offset 60}    ${font Infini:pixelsize=20}${color2}CPU ${voffset 12}${font Infini:pixelsize=19}${cpu cpu0}% 
+]];

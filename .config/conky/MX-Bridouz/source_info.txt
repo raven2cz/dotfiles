@@ -1,0 +1,9 @@
+Source:
+
+1. Conky modified from one posted on Solus forum by BridouZ:
+https://getsol.us/forums/viewtopic.php?f=12&t=1395&p=13040&hilit=bridouz#p13015
+
+2. media player python script by Amish Naidu
+https://github.com/amhndu/conky-cards
+
+3. MX logo in style of Ardis-icons by Antechdesigns (Ardis original creator: Kotusworks) 

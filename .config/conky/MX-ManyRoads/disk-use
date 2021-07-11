@@ -1,0 +1,78 @@
+conky.config = {
+	double_buffer = true,
+	update_interval = 2,
+	background = true,
+
+	own_window = true,
+
+-- own_window_type desktop
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+--own_window_type override
+	own_window_argb_visual = true,
+	own_window_argb_value = 140,
+	out_to_console = false,
+	own_window_transparent = false,
+	own_window_class = 'conky-semi',
+	use_xft = true,
+	font = 'cure:size=10',
+
+--use_xft yes
+--xftfont Sansation:size=9
+	font = 'Rounded Elegance:size=10',
+	xftalpha = 0,
+	update_interval = 2,
+	cpu_avg_samples = 2,
+	net_avg_samples = 2,
+	double_buffer = true,
+	maximum_width = 320,
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = true,
+	stippled_borders = 1,
+	border_width = 0,
+	default_color = 'white',
+	default_shade_color = 'white',
+	default_outline_color = 'white',
+	alignment = 'top_right',
+
+	use_spacer = 'left',
+	no_buffers = true,
+	uppercase = false,
+
+	color0 = '40DA66',
+	color1 = 'blue',
+	color2 = '0011ff',
+	color3 = '1793d0',
+
+	pad_percents = 2,
+	top_name_width = 10,
+	minimum_width = 320, minimum_height = 100,
+
+	gap_x = 15,
+	gap_y = 375,
+
+	lua_load = 'allcombined.lua',
+
+	own_window_colour = '000000',
+};
+
+-- fluxbox adjustment
+
+return_code = os.execute('pidof -q fluxbox')
+if _VERSION == 'Lua 5.1' and math.floor(return_code/256) == 0 or
+   _VERSION ~= 'Lua 5.1' and return_code then
+   conky.config.own_window_transparent = true
+   conky.config.own_window_argb_visual = false
+end
+
+conky.text = [[
+${image img/hard-disk.png -p 0,0 -s 30x30}
+${offset 35}${font Good Times:size=12}${color Tan1}DISK USE ${color}${hr 2}${font}
+${voffset 5}${color}System SSD:
+${color}Used: ${color}${fs_used /} of${color3}${fs_size /} ${color}~ Free: ${color0}${fs_free /} ${color}or${color0} ${fs_free_perc /}% ${color}
+${lua gradbar {6, 77, "${fs_used_perc /}" ,100, 75, 2, 10, 1, 0xFFFFFF, 0.25, 0x00FF00, 1, 0xFFFF00, 1, 0xFF0000, 1}}
+${image img/trans-bg240.png -p 4,215 -s 226x11}
+${color lightgrey}Read: $color${diskio_read}${alignr}${color lightgrey}Write: ${color}${diskio_write}
+${color #000000}${diskiograph_read 12,145 000000 40DA66}${alignr}${color #000000}${diskiograph_write 12,145 000000 FFB207}
+]];

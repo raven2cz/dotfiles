@@ -1,0 +1,164 @@
+conky.config = {
+	background = false,
+	use_xft = true,
+	font = 'Terminus:size=8',
+	xftalpha = 0.5,
+	update_interval = 1,
+	total_run_times = 0,
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_transparent = true,
+	own_window_argb_visual = true,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	double_buffer = true,
+--default_bar_size 0 6
+
+	maximum_width = 290,
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = false,
+	default_color = 'white',
+	default_shade_color = 'red',
+	default_outline_color = 'green',
+	alignment = 'top_right',
+	gap_x = 25,
+	gap_y = 25,
+	no_buffers = true,
+	uppercase = false,
+	cpu_avg_samples = 2,
+	net_avg_samples = 2,
+	override_utf8_locale = true,
+	use_spacer = 'none',
+
+	own_window_argb_value = 0,
+	own_window_colour = '000000',
+	minimum_width = 0, minimum_height = 0,
+
+	color0 = 'dodgerblue3',
+	color1 = 'EC0100',
+	color2 = 'E9E101',
+	color3 = '18FF00',
+	color4 = '66aaff',
+	
+-- network $templates
+	template0 = 'eth0',
+	template1 = 'eth1',
+	template2 = 'wlan0',
+	template3 = 'wlan1',
+
+};
+
+-- fluxbox adjustment
+
+return_code = os.execute('pidof -q fluxbox')
+if _VERSION == 'Lua 5.1' and math.floor(return_code/256) == 0 or
+   _VERSION ~= 'Lua 5.1' and return_code then
+   conky.config.own_window_transparent = true
+   conky.config.own_window_argb_visual = false
+end
+
+conky.text = [[
+
+${alignc -0}${font Open Sans:size=15}${color0}MX Linux$font$color
+${voffset 4}$color${font}${font Open Sans:size=10}$alignr${voffset -15}$font
+${voffset -4}${color0}${font Open Sans:Bold:size=10}DATE ${color1}${hr 3}$color$font
+$color${font Open Sans:size=10}$alignc${time %A}, ${if_match "pmfix${time %p}" == "pmfix"}${time %d %B %Y    %k:%M}${else}${time %d %B %Y    %l:%M %P}${endif}$font$color 
+
+# SYS
+${voffset -8}${font Open Sans:Bold:size=10}${color0}SYSTEM ${color EC0100}${hr 3}$color${font}
+Kernel$alignr$sysname $kernel 
+OS $alignr${head /etc/mx-version 1 86400}\
+Uptime $alignr $uptime
+
+# MEMORY
+${voffset -8}${font Open Sans:Bold:size=10}${color0}MEMORY ${color EC0100}${hr 3}
+${color2}${membar 4} 
+$color${font Open Sans:bold:size=8}Used:$alignr$font $mem of $memmax
+$color${font Open Sans:bold:size=8}Free:$alignr$font $memeasyfree
+$color${font Open Sans:bold:size=8}Buffers / Cached:$alignr$font$buffers / $cached
+
+${voffset -10}\
+------------------------------------------------- \
+${font Open Sans:Bold:size=10}${color0}${voffset -2}RAM${color}${font}${voffset -1} ---- ${font Open Sans:Bold:size=10}${color0}${voffset -2}CPU${color}${font}${voffset -1} -
+${top_mem name 1}${alignr}${top_mem cpu 1} %
+${voffset -13}${alignr}${offset -60}${top_mem mem 1} %
+${top_mem name 2}${alignr}${top_mem cpu 2} %
+${voffset -13}${alignr}${offset -60}${top_mem mem 2} %
+${top_mem name 3}${alignr}${top_mem cpu 3} %
+${voffset -13}${alignr}${offset -60}${top_mem mem 3} %
+${top_mem name 4}${alignr}${top_mem cpu 4} %
+${voffset -13}${alignr}${offset -60}${top_mem mem 4} %
+
+# CPU
+${voffset -8}${font Open Sans:Bold:size=10}${color0}CPU ${color EC0100}${hr 3}
+#$color${font}${execi 1000 cat /proc/cpuinfo | grep 'model name' | sed -e 's/model name.*: //'| uniq} ${freq_g cpu0}GHz $alignr $cpu%  
+$color${font}${execi 86400 sed -ne '/model name.*: /{s///;s/@.*//;p;q}' /proc/cpuinfo} ${freq_g cpu0}GHz $alignr $cpu%  
+${font}Core 0  ${color3}${execi 4 sensors 2>/dev/null | grep 'Core 0' | cut -c18-24} ${alignc 60}${color2}${cpubar cpu0}${color}
+${font}Core 1  ${color3}${execi 4 sensors 2>/dev/null | grep 'Core 1' | cut -c18-24} ${alignc 60}${color2}${cpubar cpu1}${color}
+${font}Core 2  ${color3}${execi 4 sensors 2>/dev/null | grep 'Core 2' | cut -c18-24} ${alignc 60}${color2}${cpubar cpu2}${color}
+${font}Core 3  ${color3}${execi 4 sensors 2>/dev/null | grep 'Core 3' | cut -c18-24} ${alignc 60}${color2}${cpubar cpu3}${color}
+
+${voffset -10}------------------------------------------------- ${font Open Sans:Bold:size=10}${color0}${voffset -2}RAM${color}${font}${voffset -1} ---- ${font Open Sans:Bold:size=10}${color0}${voffset -2}CPU${color}${font}${voffset -1} -
+#${hr 1}
+${top name 1}${alignr}${top cpu 1} %
+${voffset -13}${alignr}${offset -60}${top mem 1} %
+${top name 2}${alignr}${top cpu 2} %
+${voffset -13}${alignr}${offset -60}${top mem 2} %
+${top name 3}${alignr}${top cpu 3} %
+${voffset -13}${alignr}${offset -60}${top mem 3} %
+${top name 4}${alignr}${top cpu 4} %
+${voffset -13}${alignr}${offset -60}${top mem 4} %
+# ${top name 5}${alignr}${top cpu 5} %
+#${voffset -13}${alignr}${offset -60}${top mem 5} %
+
+# NETWORK
+${voffset -8}${font Open Sans:Bold:size=10}${color0}NETWORK ${color EC0100}${hr 3}$color
+#$color${font Open Sans:bold:size=8}External IP ${font}${alignr}${execi 60 curl http://google.com --connect-timeout 2 | grep -o "[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*"}$font
+#${voffset -14}$alignc${execpi 4 echo "\${font}\${color}ping: \${font Open Sans:bold:size=8}\${color6}$(ping -W 1 -c 1 8.8.8.8 -q | grep rtt | egrep [0-9]+\.[0-9]+ -o | head -n 2 | tail -n 1)\${font}\${color} ms"}
+
+${if_up $template0}\
+${voffset -10}${font Open Sans:bold:size=8}Ethernet $font$alignr ${addr $template0}
+↑ ${upspeedf $template0} kb/s $alignr ${totalup $template0}
+${voffset -14}$alignc${upspeedgraph $template0 10,120  ff0000 0000ff}
+↓ ${downspeedf $template0} kb/s $alignr ${totaldown $template0}
+${voffset -14}$alignc${downspeedgraph $template0 10,120  ff0000 0000ff}${else}\
+${voffset -10}${font Open Sans:bold:size=8}templateernet $font$alignr ${addr $template1}
+↑ ${upspeedf $template1} kb/s $alignr ${totalup $template1}
+${voffset -14}$alignc${upspeedgraph $template1 10,120  ff0000 0000ff}
+↓ ${downspeedf $template1} kb/s $alignr ${totaldown $template1}
+${voffset -14}$alignc${downspeedgraph $template1 10,120  ff0000 0000ff}${endif}
+
+${if_up $template2}\
+${voffset -10}${font Open Sans:bold:size=8}WiFi $font${wireless_bitrate $template2} $alignr ${addr $template2}
+${voffset -14}$alignc${wireless_essid $template2}
+$alignc${color2}${wireless_link_bar 4,260 $template2}${color E9E9E9} 
+↑ ${upspeedf $template2} kb/s $alignr ${totalup $template2}
+${voffset -14}$alignc${upspeedgraph $template2 10,120 ff0000 0000ff}
+↓ ${downspeedf $template2} kb/s $alignr ${totaldown $template2}
+${voffset -14}$alignc${downspeedgraph $template2 10,120 ff0000 0000ff}${else}\
+${voffset -10}${font Open Sans:bold:size=8}WiFi $font${wireless_bitrate $template3} $alignr ${addr $template3}
+${voffset -14}$alignc${wireless_essid $template3}
+$alignc${color2}${wireless_link_bar 4,260 $template3}${color E9E9E9} 
+↑ ${upspeedf $template3} kb/s $alignr ${totalup $template3}
+${voffset -14}$alignc${upspeedgraph $template3 10,120 ff0000 0000ff}
+↓ ${downspeedf $template3} kb/s $alignr ${totaldown $template3}
+${voffset -14}$alignc${downspeedgraph $template3 10,120 ff0000 0000ff}${endif}
+
+# HDD
+${voffset -8}${font Open Sans:Bold:size=10}${color0}DISKS ${color EC0100}${hr 3}
+$color${font Open Sans:bold:size=8}${font Open Sans:bold:size=8}\
+ROOT$font                    ${color}${fs_used /} / ${fs_size /}$alignr${fs_type /}
+${color aaddff}write: ${diskio_write }${color6}${alignc -20} read:${diskio_read }$color$alignr ${fs_used_perc /}%   
+${color2}${fs_bar /}${color}
+${if_mounted /home}
+${voffset -10}${font Open Sans:bold:size=8}\
+HOME $font $alignr${fs_type /home}
+${fs_used /home} / ${fs_size /home} $alignr ${fs_used_perc /home} % 
+${fs_bar /home}
+${endif}
+# Mounted
+${voffset -8}${font Open Sans:Bold:size=10}${color0}Disk Mounts ${color1}${hr 3}$color$font
+
+${execpi 10  sh semplice-conky-harddisks.sh}
+]];

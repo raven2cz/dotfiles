@@ -1,0 +1,103 @@
+conky.config = {
+-- By Jesse_Avalos see me on Eye Candy linux google plus !!!!!
+	background = true,
+	use_xft = true,
+	font = 'ITC Avant Garde Gothic Pro:size=9',
+	xftalpha = 0.8,
+	update_interval = 1,
+	total_run_times = 0,
+	own_window = true,
+	own_window_transparent = true,
+--#############################################
+-- Compositing tips:
+-- Conky can play strangely when used with
+-- different compositors. I have found the
+-- following to work well, but your mileage
+-- may vary. Comment/uncomment to suit.
+--#############################################
+--# no compositor
+--own_window_type override
+--own_window_argb_visual no
+
+--# xcompmgr
+--own_window_type override
+--own_window_argb_visual yes
+
+--# cairo-compmgr
+--own_window_type dock
+--own_window_argb_visual yes
+--#############################################
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	double_buffer = true,
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = false,
+	stippled_borders = 0,
+--	border_margin = '5',
+	border_width = 5,
+	default_color = '000000',
+	default_shade_color = '000000',
+	default_outline_color = '000000',
+	minimum_width = 500, minimum_height = 0,
+	maximum_width = 800,
+	gap_x = 20,
+	gap_y = 40,
+	alignment = 'top_right',
+	no_buffers = true,
+	uppercase = false,
+	cpu_avg_samples = 2,
+	net_avg_samples = 2,
+	short_units = true,
+	text_buffer_size = 2048,
+	use_spacer = 'none',
+	override_utf8_locale = true,
+	default_color = 'CFCFCF',
+	color1 = 'CFCFCF',
+	color2 = '094616',
+	color3 = '6955aa',
+
+	own_window_type = 'normal',
+	own_window_argb_value = 0,
+	own_window_colour = '000000',
+	own_window_argb_visual = true,
+
+-- time template
+   template0 = '%H'
+
+	
+};
+
+-- fluxbox adjustment
+
+return_code = os.execute('pidof -q fluxbox')
+if _VERSION == 'Lua 5.1' and math.floor(return_code/256) == 0 or
+   _VERSION ~= 'Lua 5.1' and return_code then
+   conky.config.own_window_transparent = true
+   conky.config.own_window_argb_visual = false
+end
+
+conky.text = [[
+${goto 50}${color1}${font ITC Avant Garde Gothic Pro:size=80} ${if_match "pmfix${time %p}" == "pmfix"}${time $template0}${else}${time %I}${endif}${font Robot-Light:light:size=25}${voffset -30}${if_match "pmfix${time %p}" == "pmfix"}  ${else}${time %P}${endif}${color3}${font ITC Avant Garde Gothic Pro:size=80}${voffset -23}${time %M}${color1}
+${goto -10}${voffset -162}${font Robot-Light:light:size=22} ${time %a}
+${goto 7}${voffset -1}${font Robot-Light:size=22} ${time %b} 
+${goto 23}${voffset 1}${color3}${font ITC Avant Garde Gothic Pro:bold:size=23}${time %d}${color1}
+##SYS##
+${font ITC Avant Garde Gothic Pro:size=15}${goto 20}Kernel ${color2} ${execi 360 uname -r}${font ITC Avant Garde Gothic Pro:size=12}
+${goto 380}${voffset -105}${font ITC Avant Garde Gothic Pro:bold:size=17}
+${color1}
+
+
+${goto 22}${voffset 18}${font ITC Avant Garde Gothic Pro:size=15}mem${color2} ${font ITC Avant Garde Gothic Pro:size=15}${membar 8,40}${color1}${font ITC Avant Garde Gothic Pro:size=15}
+
+${goto 140}${voffset -42}cpu${color2} ${font ITC Avant Garde Gothic Pro:size=15}${cpubar 8,40}${color1}${font ITC Avant Garde Gothic Pro:size=15}
+
+${if_match "x${battery_short BAT0}" != "x"}\
+${if_match "x${battery_short BAT0}" != "xN"}\
+${goto 250}${voffset -42}bat${color2} ${font ITC Avant Garde Gothic Pro:size=15}${battery_bar 8,40 BAT0} ${font ITC Avant Garde Gothic Pro:size=15}\
+${endif}${else}\
+${if_match "x${battery_short BAT1}" != "x"}\
+${if_match "x${battery_short BAT1}" != "xN"}\
+${goto 250}${voffset -42}bat${color2} ${font ITC Avant Garde Gothic Pro:size=15}${battery_bar 8,40 BAT1} ${font ITC Avant Garde Gothic Pro:size=15}\
+${endif}${endif}${endif}
+]];

@@ -1,0 +1,77 @@
+conky.config = {
+	alignment = 'top_middle',
+	background = false,
+--	border_margin = '5',
+	border_width = 5,
+	default_color = 'd6d6d6',
+	double_buffer = true,
+	draw_borders = false,
+	draw_outline = false,
+	draw_shades = false,
+	gap_x = 0,
+	gap_y = 50,
+	maximum_width = 1000,
+	minimum_width = 0, minimum_height = 0,
+	no_buffers = true,
+	override_utf8_locale = true,
+	own_window = true,
+	own_window_title = 'conky',
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	own_window_transparent = true,
+	own_window_type = 'normal',--# normal /override /desktop
+	text_buffer_size = 8000,
+	total_run_times = 0,
+	update_interval = 1,
+	uppercase = false,
+	use_xft = true,
+	xftalpha = 1,
+	font = 'Freesans:pixelsize=9',
+
+--				fonts
+--	Blue Highway
+--	Zegoe Light - U
+--	Zekton
+--	Calibri
+--	Engebrechtre
+--	Opeln2001
+--	Pricedown
+
+	color1 = 'b584d8',
+	color2 = 'f23232',
+	color3 = 'd7d7d7',
+
+	own_window_argb_value = 0,
+	own_window_argb_visual = true,
+	own_window_colour = '000000',
+
+-- network templates
+   template0 = 'wlan0',
+   template1 = 'wlan1',
+   template2 = 'eth0',
+   template3 = 'eth1',
+
+-- time template
+   template5 = '%A, %H:%M:%S',
+
+};
+
+-- fluxbox adjustment
+
+return_code = os.execute('pidof -q fluxbox')
+if _VERSION == 'Lua 5.1' and math.floor(return_code/256) == 0 or
+   _VERSION ~= 'Lua 5.1' and return_code then
+   conky.config.own_window_transparent = true
+   conky.config.own_window_argb_visual = false
+end
+
+conky.text = [[
+${font Roboto-Light:pixelsize=15}${alignc}${if_match "pmfix${time %p}" == "pmfix"}${time $template5}${else}${time %A, %I:%M:%S}${endif}${font}
+${color2}${font Roboto-Light:pixelsize=65}${alignc}${time %d %B  |  %Y}${font}${color}
+
+
+${font Roboto-Light:pixelsize=12}${alignc} CPU: ${cpu cpu0}% ${offset 10}${font Roboto-Light:pixelsize=12}${alignc} MEM: ${memperc}% ${offset 10} NET:${offset 5}\
+${if_up $template0}Up ${upspeed $template0} ${offset 5} Down ${downspeed $template0}${else}\
+${if_up $template1}Up ${upspeed $template1} ${offset 5} Down ${downspeed $template1}${else}\
+${if_up $template2}Up ${upspeed $template2} ${offset 5} Down ${downspeed $template2}${else}\
+${if_up $template3}Up ${upspeed $template3} ${offset 5} Down ${downspeed $template3}${endif}${endif}${endif}${endif}
+]];

@@ -1,0 +1,88 @@
+conky.config = {
+	double_buffer = true,
+	update_interval = 2,
+	background = true,
+
+	own_window = true,
+
+-- own_window_type desktop
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+--own_window_type override
+	own_window_argb_visual = true,
+	own_window_argb_value = 140,
+	out_to_console = false,
+	own_window_transparent = false,
+	own_window_class = 'conky-semi',
+	use_xft = true,
+	font = 'cure:size=10',
+
+--use_xft yes
+--xftfont Sansation:size=9
+	font = 'Rounded Elegance:size=10',
+	xftalpha = 0,
+	update_interval = 2,
+	cpu_avg_samples = 2,
+	net_avg_samples = 2,
+	double_buffer = true,
+	maximum_width = 320,
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = false,
+	stippled_borders = 1,
+	border_width = 0,
+	default_color = 'white',
+	default_shade_color = 'white',
+	default_outline_color = 'white',
+	alignment = 'top_right',
+
+	use_spacer = 'left',
+	no_buffers = true,
+	uppercase = false,
+
+	color0 = 'white',
+
+	color2 = 'white',
+	color3 = '1793d0',
+
+
+	pad_percents = 2,
+	top_name_width = 10,
+	minimum_width = 320, minimum_height = 100,
+
+	gap_x = 15,
+	gap_y = 170,
+
+	lua_load = 'allcombined.lua',
+
+
+	own_window_colour = '000000',
+};
+
+-- fluxbox adjustment
+
+return_code = os.execute('pidof -q fluxbox')
+if _VERSION == 'Lua 5.1' and math.floor(return_code/256) == 0 or
+   _VERSION ~= 'Lua 5.1' and return_code then
+   conky.config.own_window_transparent = true
+   conky.config.own_window_argb_visual = false
+end
+
+conky.text = [[
+${image img/cpu2.png -p 0,0 -s 30x30}
+${offset 35}${font Good Times:size=12}${color Tan1}CPU Use ${color}${hr 2}
+${font}${color}${execi 86400 grep -m1 -oP '^model name\s+:\s\K(.*)' /proc/cpuinfo}
+${color lightgrey}Temperature:${if_existing /sys/class/hwmon/hwmon1/temp1_input}${eval ${hwmon 1 temp 1}}°C${else}${if_existing /sys/class/hwmon/hwmon0/temp1_input}${eval ${hwmon 0 temp 1}}°C${endif}${endif}
+${alignc}${color #000000}${cpugraph 20,318 000000 FFD710}${color}
+# CPU0
+Avg.${goto 50} : ${cpu cpu0}% ${lua gradbar {100, 110, "${cpu cpu0}", 100, 40, 2, 10, 1, 0xFFFFFF, 0.25, 0x00FF00, 1, 0xFFFF00, 1, 0xFF0000, 1}}${goto 230}${color}${freq 1} MHz
+# CPU1
+CPU-1${goto 50} : ${cpu cpu1}% ${lua gradbar {100, 125, "${cpu cpu1}", 100, 40, 2, 10, 1, 0xFFFFFF, 0.25, 0x00FF00, 1, 0xFFFF00, 1, 0xFF0000, 1}}${goto 230}${color}${freq 2} MHz
+# CPU2
+CPU-2${goto 50} : ${cpu cpu2}% ${lua gradbar {100, 140, "${cpu cpu2}", 100, 40, 2, 10, 1, 0xFFFFFF, 0.25, 0x00FF00, 1, 0xFFFF00, 1, 0xFF0000, 1}}${goto 230}${color}${freq 3} MHz
+# CPU3
+CPU-3${goto 50} : ${cpu cpu3}% ${lua gradbar {100, 155, "${cpu cpu3}", 100, 40, 2, 10, 1, 0xFFFFFF, 0.25, 0x00FF00, 1, 0xFFFF00, 1, 0xFF0000, 1}}${goto 230}${color}${freq 4} MHz
+# CPU4
+CPU-4${goto 50} : ${cpu cpu4}% ${lua gradbar {100, 170, "${cpu cpu4}", 100, 40, 2, 10, 1, 0xFFFFFF, 0.25, 0x00FF00, 1, 0xFFFF00, 1, 0xFF0000, 1}}${goto 230}${color}${freq 5} MHz
+
+]];

@@ -1,0 +1,134 @@
+conky.config = {
+--########################################################
+--            Name: Style Conky
+
+--          Author: Herve Simonnet
+--           rvsimonnet@gmail.com
+
+--   Description theme futuriste 30/11/2017
+--########################################################
+
+	background = true,--# permet à conky de tourner en arrière-plan
+	use_xft = true,--# utilise la police xft
+	xftalpha = 1,
+	font = 'Roboto-Light:size=12',--# opacité de la police xft, ici 1=opaque
+	update_interval = 1.0,--# conky se recharge toutes les secondes
+	total_run_times = 0,--# conky se relance à l'infini
+	own_window = true,--# conky utilise sa propre fenêtre
+	own_window_transparent = true,
+	own_window_type = 'normal',
+	own_window_class = 'Conky',
+	own_window_colour = '000000',
+	own_window_argb_value = 0,
+	own_window_argb_visual = true,
+	own_window_hints = 'undecorated,below,skip_taskbar,skip_pager',--# propriétés de la fenêtre
+	double_buffer = true,--# empêche le clignotement
+	draw_shades = false,--# n'affiche pas les ombres sous le texte
+	draw_outline = false,--# n'affiche pas le contour de la police
+	draw_borders = false,--# n'affiche pas les bordures
+	draw_graph_borders = true,--# n'affiche pas le contour des graphiques
+	default_color = '7744F0',--# couleur des textes et bordures
+	default_shade_color = '000000',--# couleur des ombres
+	default_outline_color = 'd9d7d6',--# couleur du contour de la police
+	no_buffers = true,
+	uppercase = true,--# police en mode normal (Maj/min)
+	cpu_avg_samples = 8,--# nombre de processeurs pris en compte: ici 8
+	override_utf8_locale = true,
+	alignment = 'top_right',
+	border_width = 0,--# 
+	default_color = '5482CF',--# 
+
+	color1 = '98a8db',
+	color2 = '4271B4',
+	color3 = 'white',
+--# couleur des textes et borduresgap_x 20
+	gap_y = 0,
+	minimum_width = 300, minimum_height = 1000,
+	maximum_width = 650,
+	max_text_width = 165,
+	net_avg_samples = 2,
+	out_to_console = false,
+	out_to_stderr = false,
+	extra_newline = false,
+	stippled_borders = 0,
+	uppercase = false,
+	use_spacer = 'none',
+	show_graph_scale = true,
+	show_graph_range = true,
+
+--###############################################################
+
+	gap_x = 0,
+
+-- if_up_strictness link:  up | link | address
+    if_up_strictness = 'address',
+
+-- network templates
+	template0 = 'eth0',
+	template1 = 'eth1',
+	template2 = 'wlan0',
+	template3 = 'wlan1',
+
+
+};
+
+-- fluxbox adjustment
+
+return_code = os.execute('pidof -q fluxbox')
+if _VERSION == 'Lua 5.1' and math.floor(return_code/256) == 0 or
+   _VERSION ~= 'Lua 5.1' and return_code then
+   conky.config.own_window_transparent = true
+   conky.config.own_window_argb_visual = false
+end
+
+conky.text = [[${image ./images/mxfcelogo-rounded.png -p 70,50 option -s 100x100}
+${image ./images/fond5_noA.png -p -0,310 option -s 250x650}
+#################   CLOCK    ####################
+${goto 10}${voffset 145}${color3}${font Roboto-Light:size=40}${if_match "pmfix${time %p}" == "pmfix"}${time %\
+H}${else}${time %I}${endif}
+${goto 30}${voffset -10}${color3}${font Roboto-Light:size=40}${time %M}
+${goto 120}${color3}${voffset -110}${font Roboto-Light:size=15}${time %A}      
+${goto 120}${color3}${voffset 5}${font Roboto-Light:size=15}${time %d %b}
+
+${goto 65}${color1}${voffset 20}${font Roboto-Light:size=10}${sysname} $kernel 
+${goto 65}${color1}${font Roboto-Light:size=10}${execi 86400  awk 'NF{NF-=3}1' /etc/mx-version}
+
+#${goto 65}${color1}${font Roboto-Light:size=10}Packages Upgrades      ${color2}${execi 3650 which checkupdates >/dev/null && checkupdates | wc -l} 
+${goto 65}${color1}Uptime:   $uptime 
+${goto 65}Process:      $processes ($running_processes running)
+${goto 65}User:  $user_names
+
+${goto 65}${font Roboto-Light:size=10}${execi 86400  sed -nr -e '/^model name\s*:\s*/{ s:::; s:(cpu|[(]r[)])::Ig; s:@.*::;s: +: :g;p;q}' /proc/cpuinfo}${font}
+${goto 65}${voffset 3}${font Roboto-Light:size=11}${color1}CPU ${freq_g cpu0}GHz TEMP   ${hwmon temp 1}°C
+${goto 65}${font Roboto-Light:size=9}high +65.0°C - crit +95.0°C ${font}
+${goto 65}${font Roboto-Light:size=10}CPU  ${cpubar 5, 120}$color2  $cpu%${font}
+${goto 65}$color1${font Roboto-Light:size=10}RAM ${membar 5, 120}$color2  $memperc%
+$color1 ${goto 110} $mem of $memmax
+  
+${goto 65}${font Roboto-Light:size=13}${voffset -5}Top 
+${goto 65}${font Roboto-Light:size=8}${voffset -2}${top name 1} ${top cpu 1}% .. ${top mem_res 1}
+${goto 65}${font Roboto-Light:size=8}----------------------------------------------------
+${goto 65}${top name 2} ${top cpu 2}% .. ${top mem_res 2}
+${goto 65}${font Roboto-Light:size=8}-----------------------------------------------
+${goto 65}${top name 3} ${top cpu 3}% .. ${top mem_res 3}${font}
+${goto 65}${voffset -10}${font Roboto-Light:size=8}----------------------------------------------------
+
+${goto 65}${font Roboto-Light:size=13}${voffset -3}Hard drive
+${goto 65}${voffset -2}${font Roboto-Light:size=10}${fs_used /} out of ${fs_size /}
+${goto 65}${fs_bar 5, 120 /} $fs_used_perc%
+${goto 65}Swap :        $swap/$swapmax
+${goto 65}Disque: ${diskio}
+
+${goto 65}${font Roboto-Light:size=13}${voffset 2}Network\
+${if_up $template0}
+${goto 65}${voffset -5}${font Roboto-Light:size=10}Down - $color2${downspeed $template0}/s
+${goto 65}${color1}Up - $color2${upspeed $template0}/s${else}\
+${if_up $template1}
+${goto 65}${voffset -5}${font Roboto-Light:size=10}Down - $color2${downspeed $template1}/s
+${goto 65}${color1}Up - $color2${upspeed $template1}/s${else}\
+${if_up $template2}
+${goto 65}${voffset -5}${font Roboto-Light:size=10}Down - $color2${downspeed $template2}/s
+${goto 65}${color1}Up - $color2${upspeed $template2}/s${else}\
+${goto 65}${voffset -5}${font Roboto-Light:size=10}Down - $color2${downspeed $template3}/s
+${goto 65}${color1}Up - $color2${upspeed $template3}/s${endif}${endif}${endif}\
+]];
