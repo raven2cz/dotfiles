@@ -36,17 +36,17 @@ status -i || exit
 
 ### SET EITHER DEFAULT EMACS MODE OR VI MODE ###
 function fish_user_key_bindings
-  # fish_default_key_bindings
+  #fish_default_key_bindings
   fish_vi_key_bindings
 end
 ### END OF VI MODE ###
 
 ### AUTOCOMPLETE AND HIGHLIGHT COLORS ###
-set fish_color_normal brcyan
-set fish_color_autosuggestion '#7d7d7d'
-set fish_color_command brcyan
-set fish_color_error '#ff6c6b'
-set fish_color_param brcyan
+#set fish_color_normal brcyan
+#set fish_color_autosuggestion '#7d7d7d'
+#set fish_color_command brcyan
+#set fish_color_error '#ff6c6b'
+#set fish_color_param brcyan
 
 ### SPARK ###
 set -g spark_version 1.0.0
@@ -356,3 +356,6 @@ alias kakd="/usr/bin/kak -d -s mysession &"
 
 # MC start reading solution
 alias mc="mc --nosubshell"
+
+### SETTING THE STARSHIP PROMPT ###
+starship init fish | source
