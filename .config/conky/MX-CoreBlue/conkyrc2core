@@ -16,17 +16,21 @@ conky.config = {
 
 -- Window specifications #
     alignment = 'top_right',
-    gap_x = 30,
-    gap_y = 30,
+    gap_x = 10,
+    gap_y = 20,
     background = false,
 
     own_window = true,
-    own_window_type = 'override',
+    own_window_type = 'normal',
     own_window_transparent = true,
-    own_window_hints = 'undecorated,skip_taskbar,skip_pager,below',
+    own_window_argb_visual = true,
+    own_window_argb_value = 0,
+  	own_window_colour = '000000',
+    own_window_hints = 'undecorated,below,skip_taskbar,skip_pager,sticky',
 
     border_inner_margin = 0,
     border_outer_margin = 5,
+    draw_shades = false,
 
     minimum_width = 250,
     minimum_height = 300,
