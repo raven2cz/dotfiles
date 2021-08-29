@@ -2,9 +2,6 @@
 #+AUTHOR: Antonin Fischer (raven2cz)
 #+DESCRIPTION: The project puts the individual git repos together and thus creates the overall configuration for your personal computer.
 
-#+ATTR_HTML: :alt Dotfiles logo :title Dotfiles logo :align left
-[[https://github.com/raven2cz/dotfiles/blob/main/.screenshots/dotfiles.png]] *DOTFILES PROJECT*
-
 #+BEGIN_EXAMPLE
 ██████╗  █████╗ ██╗   ██╗███████╗███╗   ██╗  Antonin Fischer (raven2cz)
 ██╔══██╗██╔══██╗██║   ██║██╔════╝████╗  ██║  https://fishlive.org/
@@ -13,6 +10,11 @@
 ██║  ██║██║  ██║ ╚████╔╝ ███████╗██║ ╚████║
 ╚═╝  ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═══╝
 #+END_EXAMPLE
+
+#+ATTR_HTML: :alt Dotfiles logo :title Dotfiles logo :align left
+[[https://github.com/raven2cz/dotfiles/blob/main/.screenshots/dotfiles.png]]
+
+*DOTFILES PROJECT*
 
 * Table of Contents :toc:
 - [[#introduction][Introduction]]

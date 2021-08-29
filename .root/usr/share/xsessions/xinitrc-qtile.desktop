@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=xinitrc-qtile
+Comment=Executes the .xinitrc script in your home directory
+Exec=xinitrcsession-helper-qtile
+TryExec=xinitrcsession-helper-qtile
+Type=Application
