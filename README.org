@@ -13,10 +13,10 @@
 
 * Introduction
 ** Define Git Bare Repository.
-This ~dotfiles~ project is defined as git bare repository. You can ensure your dotfiles by similar way.
+This ~dotfiles~ project is defined as _git bare repository_. You can ensure your dotfiles by similar way.
 See the usage concept.
-In this case, the git bare repository is cloned to the ~~/.dotfiles~ and the existing files which
-are already included in the bare are moved to the ~.config-backup~ directory.
+In this case, the git bare repository is cloned to the ~$HOME/.dotfiles~ and the existing files which
+are already included in the bare are moved to the ~$HOME/.config-backup~ directory.
 After it, all config files are checkout to correct places in your ~$HOME~ directory and synch with this repo.
 You can make similar approach with your dotfiles.
 
@@ -53,9 +53,11 @@ config push
 ** Update dependency git subtrees projects.
 The ~dotfiles~ project is union of the github configuration projects. Each configuration is separated git subtree. The dotfiles project is automatically merged.
 
-Just for information, updates/initial scripts are placed in ~~/bin~ directory.
-*** ~init-git-subtrees-dotfiles.sh~
-*** ~pull-git-subtrees-dotfiles.sh~
+Just for information, updates/initial scripts are placed in ~$HOME/bin~ directory.
+
+~$HOME/bin/init-git-subtrees-dotfiles.sh~
+~$HOME/bin/pull-git-subtrees-dotfiles.sh~
+
 #+BEGIN_SRC bash
 #!/bin/bash
 function config {
