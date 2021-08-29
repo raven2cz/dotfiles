@@ -13,4 +13,54 @@
 
 * Introduction
 ** Define Git Bare Repository.
+This ~dotfiles~ project is defined as git bare repository. You can ensure your dotfiles by similar way.
+See the usage concept.
+In this case, the git bare repository is cloned to the ~~/.dotfiles~ and the existing files which
+are already included in the bare are moved to the ~.config-backup~ directory.
+After it, all config files are checkout to correct places in your ~$HOME~ directory and synch with this repo.
+You can make similar approach with your dotfiles.
+
+#+BEGIN_SRC bash
+git clone --bare git@github.com:raven2cz/dotfiles.git $HOME/.dotfiles
+function config {
+   /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
+}
+mkdir -p .config-backup
+config checkout
+if [ $? = 0 ]; then
+  echo "Checked out config.";
+  else
+    echo "Backing up pre-existing dotfiles.";
+    config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
+fi;
+config checkout
+config config status.showUntrackedFiles no
+#+END_SRC
+
+For your shell, you can use *alias*. Basic usage is following:
+#+BEGIN_SRC bash
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+config config --local status.showUntrackedFiles no
+
+config status
+config add .xinitrc
+config commit -m "Add xinitrc"
+config add .bashrc
+config commit -m "Add bashrc"
+config push
+#+END_SRC
+
 ** Update dependency git subtrees projects.
+The ~dotfiles~ project is union of the github configuration projects. Each configuration is separated git subtree. The dotfiles project is automatically merged.
+
+Just for information, updates/initial scripts are placed in ~~/bin~ directory.
+*** ~init-git-subtrees-dotfiles.sh~
+*** ~pull-git-subtrees-dotfiles.sh~
+#+BEGIN_SRC bash
+#!/bin/bash
+function config {
+   /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
+}
+
+config subtree pull --prefix .config/awesome git@github.com:raven2cz/awesomewm-config.git master --squash
+#+END_SRC
