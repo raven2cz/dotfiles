@@ -1,0 +1,16 @@
+#+TITLE: Dofiles GNU/Linux Configuration
+#+AUTHOR: Antonin Fischer (raven2cz)
+#+DESCRIPTION: The project puts the individual git repos together and thus creates the overall configuration for your personal computer.
+
+#+BEGIN_EXAMPLE
+██████╗  █████╗ ██╗   ██╗███████╗███╗   ██╗  Antonin Fischer (raven2cz)
+██╔══██╗██╔══██╗██║   ██║██╔════╝████╗  ██║  https://fishlive.org/
+██████╔╝███████║██║   ██║█████╗  ██╔██╗ ██║  https://arch-linux.cz/
+██╔══██╗██╔══██║╚██╗ ██╔╝██╔══╝  ██║╚██╗██║  https://github.com/raven2cz
+██║  ██║██║  ██║ ╚████╔╝ ███████╗██║ ╚████║
+╚═╝  ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═══╝
+#+END_EXAMPLE
+
+* Introduction
+** Define Git Bare Repository.
+** Update dependency git subtrees projects.
