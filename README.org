@@ -1,8 +1,9 @@
-#+TITLE: Dofiles GNU/Linux Configuration
+#+TITLE: Raven2cz's Dofiles GNU/Linux Configuration
 #+AUTHOR: Antonin Fischer (raven2cz)
 #+DESCRIPTION: The project puts the individual git repos together and thus creates the overall configuration for your personal computer.
 
-[[~/.screenshots/dotfiles.png]] *DOTFILES PROJECT*
+#+ATTR_HTML: :alt Dotfiles logo :title Dotfiles logo :align left
+[[https://github.com/raven2cz/dotfiles/blob/main/.screenshots/dotfiles.png]] *DOTFILES PROJECT*
 
 #+BEGIN_EXAMPLE
 ██████╗  █████╗ ██╗   ██╗███████╗███╗   ██╗  Antonin Fischer (raven2cz)
@@ -12,6 +13,13 @@
 ██║  ██║██║  ██║ ╚████╔╝ ███████╗██║ ╚████║
 ╚═╝  ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═══╝
 #+END_EXAMPLE
+
+* Table of Contents :toc:
+- [[#introduction][Introduction]]
+- [[#dotfiles-repository-administration-support][Dotfiles Repository Administration Support]]
+  - [[#define-git-bare-repository][Define Git Bare Repository.]]
+  - [[#update-dependency-git-subtrees-projects][Update dependency git subtrees projects.]]
+- [[#license][License]]
 
 * Introduction
 Dotfiles are the customization and configuration files that are used to personalize your GNU/Linux or other *nix-based system. You can tell that a file is a dotfile because the name of the file will start with a period–a dot (e.g. ~.xinitrc~). The period at the beginning of a filename or directory name indicates that it is a hidden file or hidden directory. This repository contains my personal dotfiles as global union of many mine and other github projects. They are stored here for convenience so that I may quickly access them on new machines or new installation. Also, others may find some of my configurations helpful in customizing their own dotfiles.
