@@ -11,9 +11,7 @@
 ╚═╝  ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═══╝
 #+END_EXAMPLE
 
-#+CAPTION: DOTFILES PROJECT
-#+ATTR_HTML: :style margin-left: auto; margin-right: auto;
-[[https://github.com/raven2cz/dotfiles/blob/main/.screenshots/dotfiles.png]]
+#+html: <p align="center"><img src=".screenshots/dotfiles.png" /></p>
 
 *DOTFILES PROJECT*
 
