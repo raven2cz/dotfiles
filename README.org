@@ -12,8 +12,10 @@
 #+END_EXAMPLE
 
 #+CAPTION: DOTFILES PROJECT
-#+ATTR_HTML: :alt Dotfiles logo :title Dotfiles logo :align center
+#+ATTR_HTML: :style margin-left: auto; margin-right: auto;
 [[https://github.com/raven2cz/dotfiles/blob/main/.screenshots/dotfiles.png]]
+
+*DOTFILES PROJECT*
 
 * Table of Contents :toc:
 - [[#introduction][Introduction]]
