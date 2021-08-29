@@ -12,9 +12,9 @@
 #+END_EXAMPLE
 
 #+html: <p align="center"><img src=".screenshots/dotfiles.png" /></p>
-#+HTML: <p style="text-align: center;">
-*DOTFILES PROJECT*
-#+HTML: </p>
+#+begin_center
+DOTFILES PROJECT
+#+end_center
 
 * Table of Contents :toc:
 - [[#introduction][Introduction]]
@@ -28,6 +28,8 @@
 Dotfiles are the customization and configuration files that are used to personalize your GNU/Linux or other *nix-based system. You can tell that a file is a dotfile because the name of the file will start with a period–a dot (e.g. ~.xinitrc~). The period at the beginning of a filename or directory name indicates that it is a hidden file or hidden directory. This repository contains my personal dotfiles as global union of many mine and other github projects. They are stored here for convenience so that I may quickly access them on new machines or new installation. Also, others may find some of my configurations helpful in customizing their own dotfiles.
 
 * Main Git Subtree Project Dependencies
+Github Project's list added as git subtrees to the dotfiles project. These depended projects are similar as libraries; can be used alone. The dotfiles project creates union of these projects and add additional configs for global usage "together".
+
 + [[https://github.com/raven2cz/awesomewm-config][Awesomewm-config]]
 
 * Dotfiles Repository Administration Support
