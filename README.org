@@ -12,9 +12,7 @@
 #+END_EXAMPLE
 
 #+html: <p align="center"><img src=".screenshots/dotfiles.png" /></p>
-#+begin_center
-DOTFILES PROJECT
-#+end_center
+#+html: <p align="center"><b>DOTFILES PROJECT</b></p>
 
 * Table of Contents :toc:
 - [[#introduction][Introduction]]
