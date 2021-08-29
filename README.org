@@ -2,6 +2,8 @@
 #+AUTHOR: Antonin Fischer (raven2cz)
 #+DESCRIPTION: The project puts the individual git repos together and thus creates the overall configuration for your personal computer.
 
+[[~/.screenshots/dotfiles.png]] *DOTFILES PROJECT*
+
 #+BEGIN_EXAMPLE
 ██████╗  █████╗ ██╗   ██╗███████╗███╗   ██╗  Antonin Fischer (raven2cz)
 ██╔══██╗██╔══██╗██║   ██║██╔════╝████╗  ██║  https://fishlive.org/
@@ -12,6 +14,13 @@
 #+END_EXAMPLE
 
 * Introduction
+Dotfiles are the customization and configuration files that are used to personalize your GNU/Linux or other *nix-based system. You can tell that a file is a dotfile because the name of the file will start with a period–a dot (e.g. ~.xinitrc~). The period at the beginning of a filename or directory name indicates that it is a hidden file or hidden directory. This repository contains my personal dotfiles as global union of many mine and other github projects. They are stored here for convenience so that I may quickly access them on new machines or new installation. Also, others may find some of my configurations helpful in customizing their own dotfiles.
+
+* Dotfiles Repository Administration Support
+No extra tooling, no symlinks, files are tracked on a version control system, you can use *different branches for different computers*, you can replicate you configuration easily on new installation.
+
+The technique consists in storing a *Git bare repository* in a "side" folder (like ~$HOME/.dotfiles~) using a specially crafted ~alias~ so that commands are run against that repository and _not the usual .git local folder_, which would interfere with any other Git repositories around. Based on article https://www.atlassian.com/git/tutorials/dotfiles
+
 ** Define Git Bare Repository.
 This ~dotfiles~ project is defined as _git bare repository_. You can ensure your dotfiles by similar way.
 See the usage concept.
@@ -51,11 +60,27 @@ config push
 #+END_SRC
 
 ** Update dependency git subtrees projects.
+Git subtree lets you nest one repository inside another as a sub-directory. It is one of several ways Git projects can manage project dependencies.
+
+Why you may want to consider git subtree
+
++ Management of a simple workflow is easy.
++ Older version of Git are supported (even older than v1.5.2).
++ The sub-project’s code is available right after the clone of the super project is done.
++ git subtree does not require users of your repository to learn anything new. They can ignore the fact that you are using git subtree to manage dependencies.
++ git subtree does not add new metadata files like git submodule does (i.e., .gitmodule).
++ Contents of the module can be modified without having a separate repository copy of the dependency somewhere else.
+
+The idea is based on this article https://www.atlassian.com/git/tutorials/git-subtree
+
+*** Dotfiles project dependencies based on github subtrees
+
 The ~dotfiles~ project is union of the github configuration projects. Each configuration is separated git subtree. The dotfiles project is automatically merged.
 
 Just for information, updates/initial scripts are placed in ~$HOME/bin~ directory.
 
 ~$HOME/bin/init-git-subtrees-dotfiles.sh~
+
 ~$HOME/bin/pull-git-subtrees-dotfiles.sh~
 
 #+BEGIN_SRC bash
@@ -66,3 +91,8 @@ function config {
 
 config subtree pull --prefix .config/awesome git@github.com:raven2cz/awesomewm-config.git master --squash
 #+END_SRC
+
+* License
+The files and scripts in this repository are licensed under the MIT License, which is a very permissive license allowing you to use, modify, copy, distribute, sell, give away, etc. the software. In other words, do what you want with it. The only requirement with the MIT License is that the license and copyright notice must be provided with the software.
+
+The configuration files are added in ~LICENSE~ (Antonin Fischer (raven2cz) repository), and ~LICENSE-DT~ (inherited several files from Derek Taylor). Other projects and licenses are added as *git subtrees*. Each git subtree is attached as whole git project with appropariate ~README.md and License descriptions~ inside of specific folder.
