@@ -1,0 +1,10 @@
+[user]
+	name = Antonin Fischer
+	email = tonda.fischer@gmail.com
+[pull]
+    rebase = true
+[alias]
+        ls-subtrees = !"for i in $(git log | grep git-subtree-dir | sed -e 's/^.*: //g' | uniq); do test -d $i && echo $i; done"
+    
+[init]
+	defaultBranch = main
