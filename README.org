@@ -11,10 +11,9 @@
 ╚═╝  ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═══╝
 #+END_EXAMPLE
 
-#+ATTR_HTML: :alt Dotfiles logo :title Dotfiles logo :align left
+#+CAPTION: DOTFILES PROJECT
+#+ATTR_HTML: :alt Dotfiles logo :title Dotfiles logo :align center
 [[https://github.com/raven2cz/dotfiles/blob/main/.screenshots/dotfiles.png]]
-
-*DOTFILES PROJECT*
 
 * Table of Contents :toc:
 - [[#introduction][Introduction]]
