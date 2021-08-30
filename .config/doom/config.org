@@ -18,6 +18,7 @@
 
 * TABLE OF CONTENTS :toc:
 - [[#about-this-config][ABOUT THIS CONFIG]]
+- [[#project-inheritance][Project Inheritance]]
 - [[#bookmarks-and-buffers][BOOKMARKS AND BUFFERS]]
 - [[#centaur-tabs][CENTAUR-TABS]]
 - [[#dashboard][DASHBOARD]]
@@ -48,6 +49,9 @@
 
 * ABOUT THIS CONFIG
 This is my personal Doom Emacs config. Doom Emacs is a distribution of Emacs that uses the "evil" keybindings (Vim keybindings) and includes a number of nice extensions and a bit of configuration out of the box. I am maintaining this config not just for myself, but also for those that want to explore some of what is possible with Emacs 🐧.
+
+* Project Inheritance
+The Doom Emacs Config Project is inherited from Derek Taylor Emacs Configuration [[https://gitlab.com/dwt1/dotfiles/-/tree/master/.config/doom]]. The MIT License is attached to the project ~LICENSE-DT~.
 
 * BOOKMARKS AND BUFFERS
 Doom Emacs uses 'SPC b' for keybindings related to bookmarks and buffers.  Bookmarks are somewhat like registers in that they record positions you can jump to.  Unlike registers, they have long names, and they persist automatically from one Emacs session to the next. The prototypical use of bookmarks is to record where you were reading in various files.  Regarding /buffers/, the text you are editing in Emacs resides in an object called a /buffer/. Each time you visit a file, a buffer is used to hold the file’s text. Each time you invoke Dired, a buffer is used to hold the directory listing.
