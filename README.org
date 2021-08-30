@@ -37,8 +37,10 @@ Github Project's list added as git subtrees to the dotfiles project. These depen
 *80s OneDark Theme* is focused to Atom colors and 80s pastel color schemes. New complex configuration of main panel with many features and additional modifications of conky, xmenu, rofi and alacritty settings.
 
 *Amazing Theme* is focused to green colors with gold highlights. Applications styling and additional colors are based on Nordic Colors and KDE Nordic Theme An arctic, north-bluish color palette.
+
 ** [[https://github.com/raven2cz/polybar-config][Polybar-config]]
 Polybar configuration with patched and improved modules for Awesome, i3 and XFCE4. Base design fits to MX-Linux (Debian Stable) and Arch Distros.
+
 ** [[https://github.com/raven2cz/emacs][Doom-Emacs-config]]
 This is my personal Doom Emacs config. Doom Emacs is a distribution of Emacs that uses the “evil” keybindings (Vim keybindings) and includes a number of nice extensions and a bit of configuration out of the box. I am maintaining this config not just for myself, but also for those that want to explore some of what is possible with Emacs :penguin:.
 
