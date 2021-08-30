@@ -19,6 +19,7 @@
 - [[#main-git-subtree-project-dependencies][Main Git Subtree Project Dependencies]]
   - [[#awesomewm-config][Awesomewm-config]]
   - [[#polybar-config][Polybar-config]]
+  - [[#doom-emacs-config][Doom-Emacs-config]]
 - [[#dotfiles-repository-administration-support][Dotfiles Repository Administration Support]]
   - [[#define-git-bare-repository][Define Git Bare Repository.]]
   - [[#update-dependency-git-subtrees-projects][Update dependency git subtrees projects.]]
@@ -38,6 +39,8 @@ Github Project's list added as git subtrees to the dotfiles project. These depen
 *Amazing Theme* is focused to green colors with gold highlights. Applications styling and additional colors are based on Nordic Colors and KDE Nordic Theme An arctic, north-bluish color palette.
 ** [[https://github.com/raven2cz/polybar-config][Polybar-config]]
 Polybar configuration with patched and improved modules for Awesome, i3 and XFCE4. Base design fits to MX-Linux (Debian Stable) and Arch Distros.
+** [[git@github.com:raven2cz/emacs.git][Doom-Emacs-config]]
+This is my personal Doom Emacs config. Doom Emacs is a distribution of Emacs that uses the “evil” keybindings (Vim keybindings) and includes a number of nice extensions and a bit of configuration out of the box. I am maintaining this config not just for myself, but also for those that want to explore some of what is possible with Emacs :penguin:.
 
 * Dotfiles Repository Administration Support
 No extra tooling, no symlinks, files are tracked on a version control system, you can use *different branches for different computers*, you can replicate you configuration easily on new installation.
