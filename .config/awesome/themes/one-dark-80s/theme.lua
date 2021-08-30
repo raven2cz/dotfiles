@@ -247,20 +247,20 @@ local wp_selected = {
   "purple-rain.jpg",
   "wallhaven-zx5xwv.jpg",
   "wallhaven-oxlpj9.png",
-  "wallhaven-g8y59e.jpg",
-  "wallhaven-lqekzp.jpg",
+  "manga-life3.jpg",
+  "127009.jpg",
 }
 -- Feature: place random wallpaper if the wp_selected has "random" text
 local wp_random = {
   "anime-streets-wallpaper.jpg",
   "wallhaven-ymz61d.jpg",
   "wallhaven-r28dm7.jpg",
-  "beautiful-biker-anime-girl-5k.jpg",
   "anime-girl-getting-out-of-train-4k-v8-3840x2160.jpg",
+  "island.jpg",
+  "lake-house.jpg",
   "6330.jpg",
   "alone-sad-girl.jpg",
   "41107.jpg",
-  "gamer-girl.jpg",
 }
 
 -- Feature: User wallpaper folder - the wallpaper can be set for active tag by keybinding
