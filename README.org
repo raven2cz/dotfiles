@@ -24,6 +24,9 @@
   - [[#xfce4-config][Xfce4-config]]
   - [[#qtile-config][Qtile-config]]
   - [[#i3-config][i3-config]]
+- [[#shells-and-terminals][Shells and Terminals]]
+  - [[#shells][Shells]]
+  - [[#terminals][Terminals]]
 - [[#dotfiles-repository-administration-support][Dotfiles Repository Administration Support]]
   - [[#define-git-bare-repository][Define Git Bare Repository.]]
   - [[#update-dependency-git-subtrees-projects][Update dependency git subtrees projects.]]
@@ -59,6 +62,16 @@ Qtile is a full-featured, hackable tiling window manager written and configured 
 
 ** [[https://github.com/raven2cz/i3-config][i3-config]]
 i3 is a tiling window manager, completely written from scratch. The target platforms are GNU/Linux and BSD operating systems, our code is Free and Open Source Software (FOSS) under the BSD license. i3 is primarily targeted at advanced users and developers. Based upon the experiences we made when wanting to hack/fix wmii. Other description is included in my main ~config~ file.
+
+* Shells and Terminals
+** Shells
+The configured are ~ZSH~ and ~Fish~. The ZSH was configured ~powerlevel10k~. But I'm using Fish now. The ZSH is connected with Fish inside ~.zshrc~. The full configuration of Fish is inside file ~$HOME/fish/config.fish~. The *fisher plugin manager* is used for fish configuration, because I'm Fischer :penguin:.
+
+** Terminals
+~Alacritty~ and ~Kitty~ are used.
+
+*** Colorscripts Installation
+The colorscripts have to be installed: [[https://github.com/laughedelic/fish_logo][fish-logo]], [[https://gitlab.com/dwt1/shell-color-scripts][DT-colorscripts]], [[https://gitlab.com/phoneybadger/pokemon-colorscripts][Pokemon-coloscripts]].
 
 * Dotfiles Repository Administration Support
 No extra tooling, no symlinks, files are tracked on a version control system, you can use *different branches for different computers*, you can replicate you configuration easily on new installation.
