@@ -1,0 +1,234 @@
+#################################################################
+# KEYBOARD BINDINGS FOR ANY TWM
+#################################################################
+
+#################################################################
+# SUPER + FUNCTION KEYS
+#################################################################
+
+# Atom
+super + F2
+	atom
+
+#Gimp
+super + F4
+    gimp
+
+#Meld
+super + F5
+    meld
+
+#Vlc
+super + F6
+    vlc --video-on-top
+
+#Spotify
+super + F10
+    spotify
+
+#Rofi Fullscreen
+super + F11
+    rofi -show drun -fullscreen
+
+#Rofi
+super + F12
+    rofi -show drun
+
+#################################################################
+# SUPER + ... KEYS
+#################################################################
+
+#Dolphin
+super + e
+    dolphin
+
+#Conky-toggle
+super + c
+    conky-toggle
+
+#Pavucontrol
+super + v
+    pavucontrol
+
+#kitty
+super + Return
+    kitty
+
+#Xkill
+super + Escape
+    xkill
+
+#Keyboard dependent
+#kitty
+super + KP_Enter
+	kitty
+
+#ROFI
+super + s
+  rofi -show-icons -modi windowcd,window,drun -show drun
+
+#dmenu
+super + d
+	dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
+
+#################################################################
+# SUPER + SHIFT KEYS
+#################################################################
+
+super + shift + Return
+	dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
+
+#reload sxhkd:
+super + shift + s
+	pkill -USR1 -x sxhkd
+
+
+#################################################################
+# CONTROL + ALT KEYS
+#################################################################
+
+#Firefox
+ctrl + alt + f
+     firefox
+
+#Nitrogen
+ctrl + alt + i
+     nitrogen
+
+#Pamac-manager
+ctrl + alt + p
+    pamac-manager
+
+#Xfce4-settings-manager
+ctrl + alt + m
+     xfce4-settings-manager
+
+#Pulse Audio Control
+ctrl + alt + u
+     pavucontrol
+
+#Rofi theme selector
+ctrl + alt + r
+  rofi-theme-selector
+
+#kitty
+ctrl + alt + t
+    kitty
+
+#Xfce4-appfinder
+ctrl + alt + a
+    xfce4-appfinder
+
+#################################################################
+# ALT + ... KEYS
+#################################################################
+
+#Xfce4-appfinder
+alt + F2
+    xfce4-appfinder --collapsed
+
+#Xfce4-appfinder
+alt + F3
+    xfce4-appfinder
+
+#################################################################
+# CONTROL + SHIFT KEYS
+#################################################################
+
+#Xcfe4-TaskManager
+ctrl + shift + Escape
+    xfce4-taskmanager
+
+#################################################################
+#     SCREENSHOTS
+#################################################################
+
+#Scrot
+Print
+    scrot 'Qtile-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'
+
+#screeenshooter
+ctrl + Print
+     xfce4-screenshooter
+
+#Gnome-Screenshot
+ctrl + shift + Print
+     gnome-screenshot -i
+
+#################################################################
+#     FUNCTION KEYS
+#################################################################
+
+#xfce4-terminal dropdown
+F12
+    xfce4-terminal --drop-down
+
+#################################################################
+#     MULTIMEDIA KEYS
+#################################################################
+
+#Raises volume
+XF86AudioRaiseVolume
+    amixer set Master 10%+
+
+#Lowers volume
+XF86AudioLowerVolume
+    amixer set Master 10%-
+
+#Mute
+XF86AudioMute
+    amixer -D pulse set Master 1+ toggle
+
+#Playerctl works for Pragha, Spotify and others
+#Delete the line for playerctl if you want to use mpc
+#and replace it with the corresponding code
+#mpc works for e.g.ncmpcpp
+#mpc toggle
+#mpc next
+#mpc prev
+#mpc stop
+
+#PLAY
+XF86AudioPlay
+    playerctl play-pause
+
+#Next
+XF86AudioNext
+    playerctl next
+
+#previous
+XF86AudioPrev
+    playerctl previous
+
+#Stop
+XF86AudioStop
+    playerctl stop
+
+#Brightness up
+XF86MonBrightnessUp
+    xbacklight -inc 10
+
+#Brightness down
+XF86MonBrightnessDown
+    xbacklight -dec 10
+
+#########################
+#        POLYBAR        #
+#########################
+
+# Qtile has its own bar
+#Hide polybar
+#super + y
+#    polybar-msg cmd toggle
+
+#################################################################
+##################   DESKTOP SPECIFIC    ########################
+#################################################################
+
+#################################################################
+# CTRL + ALT KEYS
+#################################################################
+
+#Picom Toggle
+ctrl + alt + o
+    ~/.config/qtile/scripts/picom-toggle.sh
