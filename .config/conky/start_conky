@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# start_conky
+#
+# To make sure local conky fonts are available to load
+# found ttf/otf fonts files within local conky folder
+# are symlinked into user's ~/.local/share/fonts/conky folder
+#
+usage() {
+cat <<USAGE
+    start_conky Conky-config file
+    or
+    start_conky Conky-lua file
+USAGE
+}   
+
+# Terminate already running bar instances
+killall -q conky
+# Wait until the processes have been shut down
+while pgrep -u $UID -x conky >/dev/null; do sleep 1; done
+
+CONKY="$1"
+[ -z "$CONKY" ] && usage  &&  exit 1
+
+[ -f "$CONKY" ] || { echo "Error: No such conky: '$CONKY'" &&  exit 1; }
+
+# check conky fonts
+CONKY_DIR=$(dirname "$(readlink -e  "$CONKY")")
+CONKY_NAME=$(basename "$(readlink -e  "$CONKY")")
+LOCAL_CONKY_FONTS=~/.local/share/fonts/conky
+[ ! -d "$LOCAL_CONKY_FONTS" ] && mkdir -p "$LOCAL_CONKY_FONTS"
+SLEEP=""
+while read CONKY_FONT; do
+    LOCAL_FONT="$LOCAL_CONKY_FONTS"/"${CONKY_FONT##*/}"
+    [ -f "$LOCAL_FONT" ] && [ "$(readlink -e "$LOCAL_FONT")" == "$(readlink -e "$CONKY_FONT")" ] && continue
+    [ -f "$LOCAL_FONT" ] && rm "$LOCAL_FONT"
+    ln  -s "$CONKY_FONT" "$LOCAL_FONT"
+    SLEEP=2
+done < <(find "$CONKY_DIR"  -iname '*.[ot]tf')
+
+[ -n "$SLEEP" ] && sleep "$SLEEP"
+cd "$CONKY_DIR"
+exec conky -c "$CONKY_NAME"

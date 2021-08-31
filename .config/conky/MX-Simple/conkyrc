@@ -1,0 +1,92 @@
+conky.config = {
+	use_xft = true,
+	font = 'Segoe UI:size=8',
+	alignment = 'top_right',
+	gap_x = 50,
+	gap_y = 50,
+	xftalpha = 1,
+	update_interval = 1.0,
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_transparent = true,
+	own_window_hints = 'undecorated,below,skip_taskbar,skip_pager',
+	double_buffer = true,
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	stippled_borders = 10,
+--	border_margin = '4',
+	border_width = 1,
+	default_shade_color = 'black',
+	default_outline_color = 'black',
+--default_color white
+	use_spacer = 'right',
+	no_buffers = true,
+	uppercase = false,
+	minimum_width = 200, minimum_height = 440,
+	maximum_width = 300,
+
+	lua_load = './Conky/rings.lua',
+	lua_draw_hook_pre = 'ring_stats',
+
+	color1 = 'white',
+
+--own_window_argb_value 0
+--own_window_argb_visual no
+--own_window_colour 000000
+	own_window_argb_value = 0,
+	own_window_argb_visual = true,
+--own_window_colour 000000
+	own_window_colour = '000000',
+	
+-- network templates
+   template0 = 'wlan0',
+   template1 = 'wlan1',
+   template2 = 'eth0',
+   template3 = 'eth1',
+
+-- time template
+   template7 = '%H',
+
+};
+
+-- fluxbox adjustment
+
+return_code = os.execute('pidof -q fluxbox')
+if _VERSION == 'Lua 5.1' and math.floor(return_code/256) == 0 or
+   _VERSION ~= 'Lua 5.1' and return_code then
+   conky.config.own_window_transparent = true
+   conky.config.own_window_argb_visual = false
+end
+
+conky.text = [[
+${voffset 25}${alignc}Kernel: ${kernel}
+${voffset 12}${alignc}Uptime: ${uptime}
+${voffset 58}${alignc -20}${color}${font Segoe UI:size=25}\
+${if_match "pmfix${time %p}" == "pmfix"}${time $template7}${else}${time %I}${endif}\
+${voffset -2}${offset 10}:${offset 10}${voffset 2}${time %M}\
+${color}${font}
+${voffset 10}${alignc 20}${time %A}${offset 10}${time %d}${offset 10}${time %B}${color}
+##SYS##
+${goto 50}${voffset 16}${font StyleBats:size=13}A${font}   ${voffset -3}CPU: ${alignr 50}${cpu cpu0}% 
+${goto 50}${voffset 10}${font StyleBats:size=13}g${font}   ${voffset -3}RAM: ${alignr 50}$memperc% 
+
+${goto 50}${voffset -5}${font Pie charts for maps:size=12}7${font}   ${voffset -5}Root: ${alignr 53}${fs_used_perc /}%
+
+##NET##
+${if_up $template0}\
+${goto 50}${voffset -5}${font PizzaDude Bullets:size=12}N${font}   Upload:  ${goto 130}${totalup $template0}
+${goto 50}${voffset  8}${font PizzaDude Bullets:size=12}T${font}   Download:  ${goto 130}${totaldown $template0}\
+${else}${if_up $template1}\
+${goto 50}${voffset -5}${font PizzaDude Bullets:size=12}N${font}   Upload:  ${goto 130}${totalup $template1}
+${goto 50}${voffset  8}${font PizzaDude Bullets:size=12}T${font}   Download:  ${goto 130}${totaldown $template1}\
+${else}${if_up $template2}\
+${goto 50}${voffset -5}${font PizzaDude Bullets:size=12}N${font}   Upload:  ${goto 130}${totalup $template2}
+${goto 50}${voffset  8}${font PizzaDude Bullets:size=12}T${font}   Download:  ${goto 130}${totaldown $template2}\
+${else}\
+${goto 50}${voffset -5}${font PizzaDude Bullets:size=12}N${font}   Upload:  ${goto 130}${totalup $template3}
+${goto 50}${voffset  8}${font PizzaDude Bullets:size=12}T${font}   Download:  ${goto 130}${totaldown $template3}\
+${endif}${endif}${endif}
+
+${image ./Conky/base.png -p 0,0 -s 200x350}
+]];

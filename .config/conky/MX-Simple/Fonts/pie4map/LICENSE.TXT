@@ -1,0 +1,96 @@
+                        LICENSE AGREEMENT
+                              FONTS
+
+The fonts and other files in this package are copyrighted by  
+Curtis Clark, and are subject to this liberal, fairly explicit,  
+and somewhat lengthy license agreement, which you accept by 
+using the fonts.
+
+WARRANTY
+
+Although I have taken care to see that they work, the fonts are
+not warranted to work on your system (or even on mine). You use
+them at your own risk. 
+
+PERSONAL USE
+
+The fonts are free for personal use: 
+
+1. You may use them on any machine that you own or control.
+
+2. You may alter or modify them, or translate them into any other
+   format (please note that you may *not* distribute a modified
+   or translated font--see below).
+
+3. You may use the font for writing or symbols, on paper, in
+   another computer application (e.g. a drawing program), or in
+   any other medium, as long as the writing or symbols are
+   neither sold nor published.
+
+COMMERCIAL USE
+
+The fonts may be used to produce published printed material 
+(whether it is sold or not), or printed material that is sold 
+or done for hire (even if it is not published) if *either one* 
+of the following conditions is met:
+
+1. Payment of a $25 shareware fee that entitles you to use the
+   font in perpetuity, but only on one computer at a time, or
+
+2. Sending to me one copy of each published, sold, or contracted
+   work in which a font is used.
+
+The fonts may be included in commercial software after securing
+my permission in advance.  I will expect:
+
+1. Acknowledgment of the authorship of the fonts. 
+
+2. Receipt of one registerable full version of the software, to
+   be used or given away as I see fit.  
+
+I may choose to withhold permission to include the fonts in
+software I deem objectionable.
+
+DISTRIBUTION
+
+The fonts may be distributed by individuals, bulletin board
+systems, FTP sites, WWW sites, etc., without restriction as long
+as:
+
+1. No fee is charged for the fonts (this does not include
+   subscription or access fees for a bulletin board or online
+   service). 
+
+2. All files are included. 
+
+3. None are modified.
+
+The fonts may be distributed as part of "shareware libraries",
+provided that:
+
+1. All files are included
+
+2. None is modified
+
+3. I receive a copy of every different disk or CD containing my
+   fonts, to use or give away as I see fit.
+
+If you want to distribute a translated version (e.g., Type 1,
+Macintosh Truetype) of one of my fonts, please contact me.
+
+For any uses not covered explicitly by this agreement, please 
+contact me.
+
+
+I am always grateful for acknowledgment of my fonts, especially  
+if you send samples showing how you have used them.
+
+Curtis Clark 
+Biological Sciences 
+California State Polytechnic University, Pomona 
+Pomona CA 91768 
+jcclark@csupomona.edu
+
+
+This license agreement is placed in the public domain.  If you
+like it, snarf it.
