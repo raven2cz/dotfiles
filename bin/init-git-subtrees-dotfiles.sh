@@ -7,3 +7,4 @@ config subtree add --prefix .config/awesome git@github.com:raven2cz/awesomewm-co
 config subtree add --prefix .config/polybar git@github.com:raven2cz/polybar-config.git main --squash
 config subtree add --prefix .config/doom git@github.com:raven2cz/emacs.git main --squash
 config subtree add --prefix .config/qtile git@github.com:raven2cz/qtile-config.git main --squash
+config subtree add --prefix .config/i3 git@github.com:raven2cz/i3-config.git main --squash

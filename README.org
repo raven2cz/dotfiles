@@ -21,6 +21,7 @@
   - [[#polybar-config][Polybar-config]]
   - [[#doom-emacs-config][Doom-Emacs-config]]
   - [[#qtile-config][Qtile-config]]
+  - [[#i3-config][i3-config]]
 - [[#dotfiles-repository-administration-support][Dotfiles Repository Administration Support]]
   - [[#define-git-bare-repository][Define Git Bare Repository.]]
   - [[#update-dependency-git-subtrees-projects][Update dependency git subtrees projects.]]
@@ -47,6 +48,9 @@ This is my personal Doom Emacs config. Doom Emacs is a distribution of Emacs tha
 
 ** [[https://github.com/raven2cz/qtile-config][Qtile-config]]
 Qtile is a full-featured, hackable tiling window manager written and configured in Python. My inherited configuration from Arco Linux is attached and changed to my Arch Linux env.
+
+** [[git@github.com:raven2cz/i3-config.git][i3-config]]
+i3 is a tiling window manager, completely written from scratch. The target platforms are GNU/Linux and BSD operating systems, our code is Free and Open Source Software (FOSS) under the BSD license. i3 is primarily targeted at advanced users and developers. Based upon the experiences we made when wanting to hack/fix wmii. Other description is included in my main ~config~ file.
 
 * Dotfiles Repository Administration Support
 No extra tooling, no symlinks, files are tracked on a version control system, you can use *different branches for different computers*, you can replicate you configuration easily on new installation.
