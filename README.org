@@ -1,0 +1,40 @@
+#+TITLE: Raven2cz's Qtile Configuration
+#+AUTHOR: Antonin Fischer (raven2cz)
+#+DESCRIPTION: A full-featured, hackable tiling window manager written and configured in Python
+
+#+html: <p align="center"><img src="images/qtile-banner.png" /></p>
+
+* Table of Contents :toc:
+- [[#introduction][Introduction]]
+  - [[#benefits-of-using-a-tiling-window-manager][Benefits of using a tiling window manager]]
+  - [[#why-qtile][Why Qtile?]]
+- [[#qtile-configuration-documentation-and-inheritance][Qtile Configuration Documentation and Inheritance]]
+- [[#license][License]]
+
+* Introduction
+Qtile is a full-featured, hackable tiling window manager written and configured in Python.
+
+** Benefits of using a tiling window manager
++ *Optimize your workflow* by configuring your environment to fit how you work.
+
++ *Efficiently use screen real-estate* by automatically arranging windows with minimal visual cruft.
+
++ *Save your wrists from RSI* by ditching the mouse and driving with the keyboard.
+
+** Why Qtile?
++ *Qtile is simple, small, and extensible.* It's easy to write your own layouts, widgets, and built-in commands.
+
++ *Qtile is written and configured entirely in Python*. Leverage the full power and flexibility of the language to make it fit your needs.
+
++ *The Qtile community is active and growing.* There's always someone to lend a hand when you need help.
+
++ *Qtile is free and open-source software.* Distributed under the permissive *MIT license*.
+
+
+* Qtile Configuration Documentation and Inheritance
+[[https://docs.qtile.org/en/latest/manual/config/index.html][Qtile Official Documentation]] is very good start for a ricing. My configuration is inherited from the *Arco Linux* default configuration. The attached license are included in the main configuration file ~config.py~.
+
+* License
+The files and scripts in this repository are licensed under the MIT License, which is a very permissive license allowing you to use, modify, copy, distribute, sell, give away, etc. the software. In other words, do what you want with it. The only requirement with the MIT License is that the license and copyright notice must be provided with the software.
+
+The configuration files are added in ~LICENSE~ (Antonin Fischer (raven2cz) repository), other licenses are included directly in ~config.py~.
