@@ -1,0 +1,109 @@
+@import 'colors.css';
+
+.xfce4-panel {
+   font-family: "Play";
+   font-size: 16px;
+}
+
+.xfce4-panel .tasklist .toggle {
+    border-radius: 10px;
+}
+
+#clock-button:hover, #pulseaudio-button:hover{
+    background-color:#596170;
+}
+
+#clock-button{
+    background-color: #414b5e;
+    margin: 3px;
+    margin-left: 1px;
+    margin-right: 1px;
+    padding: 5px;
+    border-radius: 7px;
+    color:#83f27a;
+}
+
+#pulseaudio-button{
+    background-color: #414b5e;
+    margin: 3px;
+    margin-top:2px;
+    margin-left: 1px;
+    margin-right: 1px;
+    padding: 5px;
+    border-radius:7px;
+    color:#83f27a;
+}
+
+#pulseaudio-button:checked, #clock-button:checked{
+    box-shadow: none;
+    color: #58a6FF;
+}
+
+#pager-4 #xfce-panel-toggle-button:checked {
+    color: #83f27a;
+}
+
+#pager-4 button:checked, #pager-4 button:active{
+    box-shadow: none;
+}
+
+#pager-4, #xfce-panel-toggle-button:hover {
+    color: #f28e7a;
+    background-color: #2d202b;
+}
+
+.tasklist button {
+    color: #ecece6;
+	  background-color: #2e3440;
+	  padding: 0px;
+	  box-shadow: none;
+}
+
+.tasklist button:hover {
+	  border-image: image(#ecece6) 0 0 2/0 0 2px;
+    border-color: #ecece6;
+	  background-color: #3b4252;
+}
+
+.xfce4-panel.background .tasklist button {
+    min-width: 200px;
+	  border-image: image(transparent) 0 0 2/0 0 2px;
+	  border-color: #ecece6;
+}
+
+.xfce4-panel.background .tasklist button:checked {
+	  background-color: #3b4252;
+	  border-image: image(#765f9c) 0 0 2/0 0 2px;
+	  border-color: #765f9c
+}
+
+.tasklist button:focus {
+    background-color: #3b4252;
+}
+
+.xfce4-panel.background .tasklist button image {
+	  padding: 4px;
+}
+
+.xfce4-panel.background button {
+	  min-height: 16px;
+	  min-width: 28px;
+	  padding: 0;
+	  border-radius: 0;
+}
+
+#xkb-7 button {
+	background-color: #414b5e;
+	margin: 3px;
+	margin-left: 1px;
+	margin-right: 1px;
+	border-radius: 7px;
+}
+
+#xfce4-power-manager-plugin box {
+	background-color: #414b5e;
+	margin: 3px;
+	margin-left: 1px;
+	margin-right: 1px;
+	border-radius: 7px;
+}
