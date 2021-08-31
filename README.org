@@ -16,7 +16,7 @@
 
 * Table of Contents :toc:
 - [[#introduction][Introduction]]
-- [[#main-git-subtree-project-dependencies][Main Git Subtree Project Dependencies]]
+- [[#main-git-subtree-project-dependencies][Main GIT Subtree Project Dependencies]]
   - [[#awesomewm-config][Awesomewm-config]]
   - [[#polybar-config][Polybar-config]]
   - [[#doom-emacs-config][Doom-Emacs-config]]
@@ -24,18 +24,21 @@
   - [[#xfce4-config][Xfce4-config]]
   - [[#qtile-config][Qtile-config]]
   - [[#i3-config][i3-config]]
-- [[#shells-and-terminals][Shells and Terminals]]
-  - [[#shells][Shells]]
-  - [[#terminals][Terminals]]
+- [[#applications][Applications]]
+  - [[#shells-and-terminals][Shells and Terminals]]
+  - [[#ranger-configuration][Ranger Configuration]]
+  - [[#rofi-configuration][Rofi Configuration]]
+  - [[#xmenu-configuration][XMENU Configuration]]
+  - [[#pass---the-standard-unix-password-manager][Pass - The Standard Unix Password Manager]]
 - [[#dotfiles-repository-administration-support][Dotfiles Repository Administration Support]]
-  - [[#define-git-bare-repository][Define Git Bare Repository.]]
+  - [[#define-git-bare-repository][Define GIT Bare Repository.]]
   - [[#update-dependency-git-subtrees-projects][Update dependency git subtrees projects.]]
 - [[#license][License]]
 
 * Introduction
 Dotfiles are the customization and configuration files that are used to personalize your GNU/Linux or other *nix-based system. You can tell that a file is a dotfile because the name of the file will start with a period–a dot (e.g. ~.xinitrc~). The period at the beginning of a filename or directory name indicates that it is a hidden file or hidden directory. This repository contains my personal dotfiles as global union of many mine and other github projects. They are stored here for convenience so that I may quickly access them on new machines or new installation. Also, others may find some of my configurations helpful in customizing their own dotfiles.
 
-* Main Git Subtree Project Dependencies
+* Main GIT Subtree Project Dependencies
 Github Project's list added as git subtrees to the dotfiles project. These depended projects are similar as libraries; can be used alone. The dotfiles project creates union of these projects and add additional configs for global usage "together".
 
 ** [[https://github.com/raven2cz/awesomewm-config][Awesomewm-config]]
@@ -63,22 +66,35 @@ Qtile is a full-featured, hackable tiling window manager written and configured 
 ** [[https://github.com/raven2cz/i3-config][i3-config]]
 i3 is a tiling window manager, completely written from scratch. The target platforms are GNU/Linux and BSD operating systems, our code is Free and Open Source Software (FOSS) under the BSD license. i3 is primarily targeted at advanced users and developers. Based upon the experiences we made when wanting to hack/fix wmii. Other description is included in my main ~config~ file.
 
-* Shells and Terminals
-** Shells
+* Applications
+** Shells and Terminals
+*** Shells
 The configured are ~ZSH~ and ~Fish~. The ZSH was configured ~powerlevel10k~. But I'm using Fish now. The ZSH is connected with Fish inside ~.zshrc~. The full configuration of Fish is inside file ~$HOME/fish/config.fish~. The *fisher plugin manager* is used for fish configuration, because I'm Fischer :penguin:.
 
-** Terminals
+*** Terminals
 ~Alacritty~ and ~Kitty~ are used.
 
-*** Colorscripts Installation
+**** Colorscripts Installation
 The colorscripts have to be installed: [[https://github.com/laughedelic/fish_logo][fish-logo]], [[https://gitlab.com/dwt1/shell-color-scripts][DT-colorscripts]], [[https://gitlab.com/phoneybadger/pokemon-colorscripts][Pokemon-coloscripts]].
+
+** Ranger Configuration
+Ranger is configured in ~$HOME/.config/ranger~ with plugins. Ranger is using ~ueberzug~ which has to be installed with python or from aur.
+
+** Rofi Configuration
+Rofi my several themes are attached in the ~.root~ folder. All directories and files in this folder has to be copied to the real ~/~ appropriate folders. You will understand after look...
+
+** XMENU Configuration
+Xmenu configuration is attached to the ~$HOME/xmenu~. The project is [[https://github.com/phillbush/xmenu][phillbush/xmenu]]. It is very great project, installation is described in the github project. Check youtube records with xmenu for more details.
+
+** Pass - The Standard Unix Password Manager
+Pass is configured in private repo. There are usage of passFF and other browser plugins...
 
 * Dotfiles Repository Administration Support
 No extra tooling, no symlinks, files are tracked on a version control system, you can use *different branches for different computers*, you can replicate you configuration easily on new installation.
 
 The technique consists in storing a *Git bare repository* in a "side" folder (like ~$HOME/.dotfiles~) using a specially crafted ~alias~ so that commands are run against that repository and _not the usual .git local folder_, which would interfere with any other Git repositories around. Based on article https://www.atlassian.com/git/tutorials/dotfiles
 
-** Define Git Bare Repository.
+** Define GIT Bare Repository.
 This ~dotfiles~ project is defined as _git bare repository_. You can ensure your dotfiles by similar way.
 See the usage concept.
 In this case, the git bare repository is cloned to the ~$HOME/.dotfiles~ and the existing files which
