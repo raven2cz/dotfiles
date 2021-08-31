@@ -20,6 +20,7 @@
   - [[#awesomewm-config][Awesomewm-config]]
   - [[#polybar-config][Polybar-config]]
   - [[#doom-emacs-config][Doom-Emacs-config]]
+  - [[#neovim-config][Neovim-config]]
   - [[#xfce4-config][Xfce4-config]]
   - [[#qtile-config][Qtile-config]]
   - [[#i3-config][i3-config]]
@@ -46,6 +47,9 @@ Polybar configuration with patched and improved modules for Awesome, i3 and XFCE
 
 ** [[https://github.com/raven2cz/emacs][Doom-Emacs-config]]
 This is my personal Doom Emacs config. Doom Emacs is a distribution of Emacs that uses the “evil” keybindings (Vim keybindings) and includes a number of nice extensions and a bit of configuration out of the box. I am maintaining this config not just for myself, but also for those that want to explore some of what is possible with Emacs :penguin:.
+
+** [[https://github.com/raven2cz/neovim][Neovim-config]]
+Raw configuration of Neovim 5 with complete Lua plugins and configuration. The project is very raw and it needs time. Neovim is hyperextensible Vim-based text editor.
 
 ** [[https://github.com/raven2cz/xfce-config][Xfce4-config]]
 Welcome to my Trading Room! My popular configuration for xfce4 for Arch and MX-Linux distributions. Xfce is a lightweight desktop environment for UNIX-like operating systems. It aims to be fast and low on system resources, while still being visually appealing and user friendly.
