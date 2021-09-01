@@ -44,7 +44,7 @@ conky.config = {
 
 -- Text settings #
     use_xft = true,
-    font = 'caviar dreams:size=8',
+    font = 'caviar dreams:size=10',
     xftalpha = 0.5,
     uppercase = false,
 
@@ -71,19 +71,19 @@ ${color1}\1: $color$alignr${addr \1}\n]],
 ${downspeedgraph \1 30,120 000000 66cccc 2500 -t} ${alignr}${upspeedgraph \1 30,120 000000 66cccc 2500 -t}$color
 ${color1}Total:$color ${totaldown \1} ${alignr}${color1}\1          ${alignr}${color1}Total:$color ${totalup \1}]],
 
-    template4 = 'enp6s0',
+    template4 = 'enp38s0',
 };
 
 conky.text = [[
 #----------------------------------------------------------------------------------------------------------------------------------------
 #                            Time and date
 #----------------------------------------------------------------------------------------------------------------------------------------
-${voffset 7}${font Radio Space:size=16}${color1}${time %A}${font}$color${font Radio Space:size=38}${goto 167}${voffset -8} ${time %e}${font}
-${font Radio Space:size=18}${voffset -30}${time %b}${font}${voffset -3} ${font Radio Space:size=20}${time %Y}${font}${color1} ${hr 1}
+${voffset 10}${font Radio Space:size=23}${color1}${time %A}${font}$color${font Radio Space:size=35}${goto 167}${voffset -8} ${time %e}${font}
+${font Radio Space:size=23}${voffset -22}${time %b}${font}${voffset -3} ${font Radio Space:size=20}${time %Y}${font}${color1} ${hr 1}
 
-${font Radio Space:size=20}${goto 166}${voffset -4}${time %u}
-${font Radio Space:size=15}${goto 160}${voffset 8}${time %H:%M:%S}
-${font caviar dreams:size=8}${goto 160}${voffset -4}Uptime: ${color0}${uptime_short}
+${font Radio Space:size=20}${goto 169}${voffset 3}${time %u}
+${font Radio Space:size=20}${goto 160}${voffset 10}${time %H:%M:%S}
+${font caviar dreams:size=10}${goto 160}${voffset -4}Uptime: ${color0}${uptime_short}
 ${voffset 30}\
 #----------------------------------------------------------------------------------------------------------------------------------------
 #                              CPU usage
