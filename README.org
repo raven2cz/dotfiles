@@ -69,6 +69,7 @@ i3 is a tiling window manager, completely written from scratch. The target platf
 * Applications
 ** Shells and Terminals
 *** Shells
+#+html: <p align="center"><img src=".screenshots/fish-logo.png" /></p>
 The configured are ~ZSH~ and ~Fish~. The ZSH was configured ~powerlevel10k~. But I'm using Fish now. The ZSH is connected with Fish inside ~.zshrc~. The full configuration of Fish is inside file ~$HOME/fish/config.fish~. The *fisher plugin manager* is used for fish configuration, because I'm Fischer :penguin:.
 
 *** Terminals
