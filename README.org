@@ -30,6 +30,7 @@
   - [[#rofi-configuration][Rofi Configuration]]
   - [[#xmenu-configuration][XMENU Configuration]]
   - [[#pass---the-standard-unix-password-manager][Pass - The Standard Unix Password Manager]]
+- [[#public-wallpapers][Public Wallpapers]]
 - [[#dotfiles-repository-administration-support][Dotfiles Repository Administration Support]]
   - [[#define-git-bare-repository][Define GIT Bare Repository.]]
   - [[#update-dependency-git-subtrees-projects][Update dependency git subtrees projects.]]
@@ -90,6 +91,11 @@ Xmenu configuration is attached to the ~$HOME/xmenu~. The project is [[https://g
 
 ** Pass - The Standard Unix Password Manager
 Pass is configured in private repo. There are usage of passFF and other browser plugins...
+
+* Public Wallpapers
+Public wallpapers are provided by github project [[https://github.com/raven2cz/public-wallpapers][Public-Wallpapers]]. The wallpapers are used for other my projects and dotfiles.
+
+The dirtory or symlink has to created to ~$HOME/Pictures/wallpapers/public-wallpapers~. I'm using symlink for whole ~$HOME/Pictures~ mapped to cloud repository.
 
 * Dotfiles Repository Administration Support
 No extra tooling, no symlinks, files are tracked on a version control system, you can use *different branches for different computers*, you can replicate you configuration easily on new installation.
