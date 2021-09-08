@@ -11,6 +11,7 @@ export DESKTOP_SESSION=plasma
 export XDG_CURRENT_DESKTOP=KDE
 #export XDG_CURRENT_DESKTOP=GNOME
 export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
 export EDITOR=nvim
 
 # clipmenu rofi support
