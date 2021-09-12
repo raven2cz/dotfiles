@@ -61,47 +61,34 @@ The Doom Emacs Config Project is inherited from Derek Taylor Emacs Configuration
 Doom Emacs installation please read [[https://github.com/hlissner/doom-emacs][Github hlissner/doom-emacs]]. There is very raw (but fully all steps) for installation of emacs and my settings for arch system.
 
 ** Emacs and Doom Emacs Installation
-//+BEGIN_SRC bash
-paru -S emacs
+~paru -S emacs~
 
-git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
+~git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d~
 
-~/.emacs.d/bin/doom install
+~$HOME/.emacs.d/bin/doom install~
 
-add to /etc/profile files appendpath '$HOME/.emacs.d/bin'
-//#+END_SRC
+~add to /etc/profile files appendpath '$HOME/.emacs.d/bin'~
 
 ** Programming Languages Installation
-
-//#+BEGIN_SRC bash
-lang cc:
-paru -S rtags, Run from emacs: M-x irony-install-server
-
-common-lisp:
-paru -S sbcl
-
-json:
-paru -S jq
-
-kotlin:
-paru -S ktlint
-
-python:
-paru -S python-pipenv python-nose python-pytest
-
-sh:
-paru -S shellcheck
-
-web:
-paru -S tidy stylelint js-beautify
-//#+END_SRC
++ lang cc:
+~paru -S rtags, Run from emacs: M-x irony-install-server~
++ common-lisp:
+~paru -S sbcl~
++ json:
+~paru -S jq~
++ kotlin:
+~paru -S ktlint~
++ python:
+~paru -S python-pipenv python-nose python-pytest~
++ sh:
+~paru -S shellcheck~
++ web:
+~paru -S tidy stylelint js-beautify~
 
 ** ORG/ORG-ROAM Repos Synch
 + synch your private org and org-roam repos from git
 + link large file resources and images from cloud providers
- //#+BEGIN_SRC bash
-  ln -s ~/OneCloud/linux/pictures/org ~/org/images
- //#+END_SRC
+~ln -s $HOME/OneCloud/linux/pictures/org ~/org/images~
 
 * BOOKMARKS AND BUFFERS
 Doom Emacs uses 'SPC b' for keybindings related to bookmarks and buffers.  Bookmarks are somewhat like registers in that they record positions you can jump to.  Unlike registers, they have long names, and they persist automatically from one Emacs session to the next. The prototypical use of bookmarks is to record where you were reading in various files.  Regarding /buffers/, the text you are editing in Emacs resides in an object called a /buffer/. Each time you visit a file, a buffer is used to hold the file’s text. Each time you invoke Dired, a buffer is used to hold the directory listing.
