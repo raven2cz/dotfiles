@@ -43,6 +43,9 @@ case $session in
     bspwm)
         exec bspwm
         ;;
+    dwm)
+        exec dwm
+        ;;
     herbstluftwm)
         exec herbstluftwm
         ;;
