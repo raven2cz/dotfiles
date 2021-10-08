@@ -8,3 +8,5 @@
     
 [init]
 	defaultBranch = main
+[http]
+	sslBackend = openssl
