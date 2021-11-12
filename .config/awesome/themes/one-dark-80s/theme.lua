@@ -461,7 +461,7 @@ local cw = calendar_widget({
 -- Spotify widge
 local spotifyWibox = spotify_widget({
   font = theme.font,
-  max_length = 150,
+  max_length = 500,
   play_icon = '/usr/share/icons/Papirus-Light/24x24/categories/spotify.svg',
   pause_icon = '/usr/share/icons/Papirus-Dark/24x24/panel/spotify-indicator.svg'
 })
