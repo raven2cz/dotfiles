@@ -83,14 +83,14 @@ ${font Radio Space:size=23}${voffset -22}${time %b}${font}${voffset -3} ${font R
 
 ${font Radio Space:size=20}${goto 169}${voffset 3}${time %u}
 ${font Radio Space:size=20}${goto 160}${voffset 10}${time %H:%M:%S}
-${font caviar dreams:size=10}${goto 160}${voffset -4}Uptime: ${color0}${uptime_short}
-${voffset 30}\
+${font caviar dreams:bold:size=10}${goto 160}${voffset -4}Uptime: ${color0}${uptime_short}
+${voffset 33}\
 #----------------------------------------------------------------------------------------------------------------------------------------
 #                              CPU usage
 #----------------------------------------------------------------------------------------------------------------------------------------
 ${color1}${hr 1}$color
 ${color1}${voffset 6}Processes:$color $processes
-${color1}${voffset 6}Running: $color  $running_processes${goto 116}${voffset 8}${cpu cpu0}% ${color1}${goto 116}${voffset 13}CPU0$color${goto 191}${voffset -12}${execi 60 sensors | grep Tdie: | cut -c 16-19}°C ${color1}${goto 191}${voffset 12}CPUT$color
+${color1}${voffset 6}Running: $color  $running_processes${goto 116}${voffset 8}${cpu cpu0}% ${color1}${goto 116}${voffset 13}CPU0$color${goto 191}${voffset -12}${execi 60 sensors | grep Tctl: | cut -c 16-19}°C ${color1}${goto 191}${voffset 12}CPUT$color
 ${color1}${voffset -12}FREQ:$color ${freq}MHz
 ${color1}${voffset 6}Load:$color ${loadavg}
 #----------------------------------------------------------------------------------------------------------------------------------------

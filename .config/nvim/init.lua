@@ -40,6 +40,7 @@ require "paq-nvim" {
   "rmagatti/auto-session",
   "sainnhe/everforest",
   "romgrk/doom-one.vim",
+  "mofiqul/dracula.nvim",
   "savq/paq-nvim",
   "tpope/vim-repeat",
   "tpope/vim-surround",
@@ -219,7 +220,8 @@ vim.g.everforest_diagnostic_virtual_text = "colored"
 vim.g.everforest_current_word = "bold"
 
 -- Load the colorscheme
-cmd [[colorscheme everforest]] -- Put your favorite colorscheme here
+--cmd [[colorscheme dracula]] 
+cmd [[colorscheme everforest]]
 --cmd [[colorscheme doom-one]] -- Put your favorite colorscheme here
 
 opt.backspace = {"indent", "eol", "start"}

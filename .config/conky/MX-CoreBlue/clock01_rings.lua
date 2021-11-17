@@ -317,7 +317,7 @@ function conky_clock_rings()
             str=conky_parse(str)
             value=tonumber(str)
         elseif pt['name'] == 'cputemp' then
-            str='${execi 60 sensors | grep Tdie: | cut -c 16-19}'
+            str='${execi 60 sensors | grep Tctl: | cut -c 16-19}'
             str=conky_parse(str)
             value=tonumber(str)
         else

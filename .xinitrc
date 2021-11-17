@@ -32,6 +32,10 @@ case $session in
     kde)
         exec startplasma-x11
         ;;
+    kde-wayland)
+        export XDG_SESSION_TYPE=wayland
+        /usr/lib/plasma-dbus-run-session-if-needed /usr/bin/startplasma-wayland
+        ;;
     gnome)
         export XDG_CURRENT_DESKTOP=GNOME
         export DESKTOP_SESSION=gnome
