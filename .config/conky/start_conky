@@ -27,6 +27,9 @@ CONKY="$1"
 # check conky fonts
 CONKY_DIR=$(dirname "$(readlink -e  "$CONKY")")
 CONKY_NAME=$(basename "$(readlink -e  "$CONKY")")
+if [ "$HOSTNAME" = r5arch ]; then
+    CONKY_NAME="${CONKY_NAME}_r5arch"
+fi
 LOCAL_CONKY_FONTS=~/.local/share/fonts/conky
 [ ! -d "$LOCAL_CONKY_FONTS" ] && mkdir -p "$LOCAL_CONKY_FONTS"
 SLEEP=""
