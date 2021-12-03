@@ -18,13 +18,15 @@ end
 -- Map leader to space
 g.mapleader = ","
 
+vim.cmd [[packadd packer.nvim]]
+
 -- Plugins
 require "paq-nvim" {
   "airblade/vim-gitgutter",
   "alvan/vim-closetag",
   "b3nj5m1n/kommentary",
   "glepnir/lspsaga.nvim",
-  "hoob3rt/lualine.nvim",
+  "nvim-lualine/lualine.nvim",
   "hrsh7th/nvim-compe",
   "hrsh7th/vim-vsnip",
   "jiangmiao/auto-pairs",
@@ -135,42 +137,6 @@ local function make_config()
   }
 end
 
--- lsp-install
-local function setup_servers()
-  require'lspinstall'.setup()
-
-  -- get all installed servers
-  local servers = require'lspinstall'.installed_servers()
-  -- ... and add manually installed servers
-  table.insert(servers, "clangd")
-  table.insert(servers, "sourcekit")
-
-  for _, server in pairs(servers) do
-    local config = make_config()
-
-    -- language specific config
-    if server == "lua" then
-      config.settings = lua_settings
-    end
-    if server == "sourcekit" then
-      config.filetypes = {"swift", "objective-c", "objective-cpp"}; -- we don't want c and cpp!
-    end
-    if server == "clangd" then
-      config.filetypes = {"c", "cpp"}; -- we don't want objective-c and objective-cpp!
-    end
-
-    require'lspconfig'[server].setup(config)
-  end
-end
-
-setup_servers()
-
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require'lspinstall'.post_install_hook = function ()
-  setup_servers() -- reload installed servers
-  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
-
 -- LSP Prevents inline buffer annotations
 vim.lsp.diagnostic.show_line_diagnostics()
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
@@ -180,6 +146,42 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
     virtual_text = false
   }
 )
+
+-- lsp-install
+--local function setup_servers()
+--  require "lspinstall".setup()
+
+  -- get all installed servers
+--  local servers = require "lspinstall".installed_servers()
+  -- ... and add manually installed servers
+--  table.insert(servers, "clangd")
+--  table.insert(servers, "sourcekit")
+
+--  for _, server in pairs(servers) do
+--    local config = make_config()
+
+    -- language specific config
+--    if server == "lua" then
+--      config.settings = lua_settings
+--    end
+--    if server == "sourcekit" then
+--      config.filetypes = {"swift", "objective-c", "objective-cpp"}; -- we don't want c and cpp!
+--    end
+--    if server == "clangd" then
+--     config.filetypes = {"c", "cpp"}; -- we don't want objective-c and objective-cpp!
+--    end
+
+--    require "lspconfig"[server].setup(config)
+--  end
+--end
+
+--setup_servers()
+
+-- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
+--require "lspinstall".post_install_hook = function ()
+--  setup_servers() -- reload installed servers
+--  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+--end
 
 -- LSP Saga config & keys https://github.com/glepnir/lspsaga.nvim
 local saga = require "lspsaga"
@@ -279,47 +281,48 @@ g.minimap_width = 10
 g.minimap_auto_start = 1
 g.minimap_auto_start_win_enter = 0
 -- location icon: 
-require "lualine".setup {
-  options = {
-    icons_enabled = true,
-    theme = "everforest",
-    component_separators = {"∙", "∙"},
-    section_separators = {"", ""},
-    disabled_filetypes = {}
-  },
-  sections = {
-    lualine_a = {"mode", "paste"},
-    lualine_b = {"branch", "diff"},
-    lualine_c = {
-      {"filename", file_status = true, full_path = true},
-      {
-        {"diagnostics", sources = "nvim_lsp"}
-      }
-    },
-    lualine_x = {"filetype"},
-    lualine_y = {
-      {
-        "progress"
-      }
-    },
-    lualine_z = {
-      {
-        "location",
-        icon = ""
-      }
-    }
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {"filename"},
-    lualine_x = {"location"},
-    lualine_y = {},
-    lualine_z = {}
-  },
-  tabline = {},
-  extensions = {}
-}
+
+require("lualine").setup()
+--{
+--  options = {
+--    icons_enabled = true,
+--    theme = "everforest",
+--    component_separators = { " ", " " },
+--    section_separators = { left = "", right = "" },
+--    disabled_filetypes = {},
+--  },
+--  sections = {
+--    lualine_a = { "mode" },
+--    lualine_b = {
+--      { "branch", icon = "" },
+--      { "diff", source = diff_source, color_added = "#a7c080", color_modified = "#ffdf1b", color_removed = "#ff6666" },
+--    },
+--    lualine_c = {
+--      {"filename", file_status = true, full_path = true},
+--     {
+--        {"diagnostics", sources = "nvim_lsp"}
+--      }
+--    },
+--    lualine_x = { "filetype" },
+--   lualine_y = {},
+--    lualine_z = {
+--      { getColumn, padding = { left = 1, right = 0 } },
+--      { getLines, icon = "", padding = 1 },
+--    },
+--  },
+--  inactive_sections = {
+--    lualine_a = {},
+--    lualine_b = {},
+--    lualine_c = { "filename" },
+--    lualine_x = { "location" },
+--    lualine_y = {},
+--    lualine_z = {},
+--  },
+--  tabline = {},
+--  extensions = {
+--    "quickfix",
+--  },
+--})
 
 -- Compe setup start
 require "compe".setup {
