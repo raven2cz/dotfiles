@@ -3,7 +3,7 @@
 import psutil
 import sys
 
-probes = ["acpitz"]
+probes = ["amdgpu"]
 
 def getcputemp(zone):
     cpu = psutil.sensors_temperatures()
