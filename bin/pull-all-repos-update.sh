@@ -6,4 +6,5 @@ function config {
 config pull
 cd ~/org && git pull
 cd ~/.password-store && pass git pull
+cd ~/Pictures/wallpapers/public-wallpapers && pass git pull
 
