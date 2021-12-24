@@ -21,7 +21,7 @@ g.mapleader = ","
 vim.cmd [[packadd packer.nvim]]
 
 -- Plugins
-require "paq-nvim" {
+require "paq" {
   "airblade/vim-gitgutter",
   "alvan/vim-closetag",
   "b3nj5m1n/kommentary",
