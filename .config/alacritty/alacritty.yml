@@ -216,11 +216,12 @@ draw_bold_text_with_bright_colors: true
 
 # Colors (Tomorrow Night Bright)
 colors:
-  # COLORSCHEME: dark_pastels.yaml
+  # COLORSCHEME: darcula.yaml
   # Default colors
   primary:
-    background: '0x2C2C2C'
-    foreground: '0xDCDCCC'
+    # hard contrast: background = '0xf9f5d7'
+    background: '0x282a36'
+    foreground: '0xf8f8f2'
 
   # Normal colors
   selection:
@@ -228,25 +229,30 @@ colors:
 
   # Normal colors
   normal:
-    black: '0x3F3F3F'
-    red: '0x705050'
-    green: '0x60B48A'
-    yellow: '0xDFAF8F'
-    blue: '0x9AB8D7'
-    magenta: '0xDC8CC3'
-    cyan: '0x8CD0D3'
-    white: '0xDCDCCC'
+    black: '0x000000'
+    red: '0xff5555'
+    green: '0x50fa7b'
+    yellow: '0xf1fa8c'
+    blue: '0xcaa9fa'
+    magenta: '0xff79c6'
+    cyan: '0x8be9fd'
+    white: '0xbfbfbf'
 
   # Bright colors
   bright:
-    black: '0x709080'
-    red: '0xDCA3A3'
-    green: '0x72D5A3'
-    yellow: '0xF0DFAF'
-    blue: '0x94BFF3'
-    magenta: '0xEC93D3'
-    cyan: '0x93E0E3'
-    white: '0xFFFFFF'
+    black: '0x282a35'
+    red: '0xff6e67'
+    green: '0x5af78e'
+    yellow: '0xf4f99d'
+    blue: '0xcaa9fa'
+    magenta: '0xff92d0'
+    cyan: '0x9aedfe'
+    white: '0xe6e6e6'
+  cursor:
+    text: '0x1d1f21'
+    cursor: '0xffffff'
+
+  # Normal colors
 background_opacity: 0.92
 # background_opacity: 0.80
 

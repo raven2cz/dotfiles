@@ -10,3 +10,4 @@ config subtree add --prefix .config/qtile git@github.com:raven2cz/qtile-config.g
 config subtree add --prefix .config/i3 git@github.com:raven2cz/i3-config.git main --squash
 config subtree add --prefix .config/xfce4 git@github.com:raven2cz/xfce-config.git main --squash
 config subtree add --prefix .config/nvim git@github.com:raven2cz/neovim.git main --squash
+config subtree add --prefix .config/rofi git@github.com:raven2cz/rofi-themes.git main --squash
