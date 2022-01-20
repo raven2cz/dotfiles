@@ -1,0 +1,37 @@
+/**
+ * ROFI Material Palenight Color Theme
+ *  _ __ __ ___   _____ _ __
+ * | '__/ _` \ \ / / _ \ '_  \  Antonin Fischer (raven2cz)
+ * | | | (_| |\ V /  __/ | | |  https://arch-linux.cz/
+ * |_|  \__,_| \_/ \___|_| |_|  https://github.com/raven2cz
+ *
+ * Date: 2022/01
+ * MIT License
+ */
+* {
+  base00: #292D3E70;
+  base01: #44426770;
+  base02: #32374D;
+  base03: #676E9550;
+  base04: #8796B0;
+  base05: #959DCB;
+  base06: #959DCB;
+  base07: #FFFFFF;
+  base08: #F07178;
+  base09: #F78C6C;
+  base0A: #FFCB6B;
+  base0B: #C3E88D;
+  base0C: #89DDFF;
+  base0D: #82AAFF;
+  base0E: #C792EA;
+  base0F: #FF5370;
+}
+
+@import "multicolor-mapping.rasi"
+
+* {
+  selected-normal-foreground: @base0C;
+  bordercolor: @base03;
+}
+
+@import "multicolor-common.rasi"

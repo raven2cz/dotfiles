@@ -1,0 +1,37 @@
+/**
+ * ROFI Nord Color Theme
+ *  _ __ __ ___   _____ _ __
+ * | '__/ _` \ \ / / _ \ '_  \  Antonin Fischer (raven2cz)
+ * | | | (_| |\ V /  __/ | | |  https://arch-linux.cz/
+ * |_|  \__,_| \_/ \___|_| |_|  https://github.com/raven2cz
+ *
+ * Date: 2022/01
+ * MIT License
+ */
+* {
+  base00: #2E344070;
+  base01: #3B425270;
+  base02: #434C5E;
+  base03: #4C566A80;
+  base04: #D8DEE9;
+  base05: #E5E9F0;
+  base06: #ECEFF4;
+  base07: #8FBCBB;
+  base08: #88C0D0;
+  base09: #81A1C1;
+  base0A: #5E81AC;
+  base0B: #BF616A;
+  base0C: #D08770;
+  base0D: #EBCB8B;
+  base0E: #A3BE8C;
+  base0F: #B48EAD;
+}
+
+@import "multicolor-mapping.rasi"
+
+* {
+  selected-normal-foreground: @base0D;
+  bordercolor: @base03;
+}
+
+@import "multicolor-common.rasi"
