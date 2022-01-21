@@ -177,30 +177,3 @@ config subtree pull --prefix .config/awesome git@github.com:raven2cz/awesomewm-c
 The files and scripts in this repository are licensed under the MIT License, which is a very permissive license allowing you to use, modify, copy, distribute, sell, give away, etc. the software. In other words, do what you want with it. The only requirement with the MIT License is that the license and copyright notice must be provided with the software.
 
 The configuration files are added in ~LICENSE~ (Antonin Fischer (raven2cz) repository), and ~LICENSE-DT~ (inherited several files from Derek Taylor). Other projects and licenses are added as *git subtrees*. Each git subtree is attached as whole git project with appropariate ~README.md and License descriptions~ inside of specific folder.
-=======
-#+TITLE: Raven2cz's xfce4 Configuration
-#+AUTHOR: Antonin Fischer (raven2cz)
-#+DESCRIPTION: Xfce is a lightweight desktop environment for UNIX-like operating systems. It aims to be fast and low on system resources, while still being visually appealing and user friendly.
-
-#+html: <p align="center"><img src="images/Xfce_logo.png" /></p>
-#+html: <p align="center"><b>Xfce is a lightweight desktop environment for UNIX-like operating systems.</b></p>
-#+html: <p align="center"><img src="images/xfce-trading-room.jpg" /></p>
-#+html: <p align="center"><b>Welcome to my Trading Room <a href="https://www.reddit.com/r/unixporn/comments/ojzwdw/xfce4_welcome_to_my_trading_room/">reddit-post</a></b></p>
-#+html: <p align="center"><img src="images/mx-xfce4-dracula-complete.png" /></p>
-#+html: <p align="center"><b>Variant for MX-Linux</b></p>
-
-* Table of Contents :toc:
-- [[#introduction][Introduction]]
-- [[#xfce4-configuration-and-installation-process][Xfce4 Configuration and Installation Process]]
-- [[#license][License]]
-
-* Introduction
-Xfce is a lightweight desktop environment for UNIX-like operating systems. It aims to be fast and low on system resources, while still being visually appealing and user friendly.
-
-* Xfce4 Configuration and Installation Process
-This project includes basement configuration of xfce4, which has to be placed to the ~$HOME/.config/xfce4~. The XFCE is whole DE (Desktop Environment); it means that there is much more necessary additional configuration in other directories; themes, icons, gtk3 css settings, applications styles etc. Additional configuration is attached in *my union github project* ~raven2cz/dotfiles~; link [[https://github.com/raven2cz/dotfiles][dotfiles-github]].
-
-* License
-The files and scripts in this repository are licensed under the *MIT License*, which is a very permissive license allowing you to use, modify, copy, distribute, sell, give away, etc. the software. In other words, do what you want with it. The only requirement with the MIT License is that the license and copyright notice must be provided with the software.
-
-The configuration files are added in ~LICENSE~ (Antonin Fischer (raven2cz) repository).
