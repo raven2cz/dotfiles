@@ -45,14 +45,17 @@ Dotfiles are the customization and configuration files that are used to personal
 Github Project's list added as git subtrees to the dotfiles project. These depended projects are similar as libraries; can be used alone. The dotfiles project creates union of these projects and add additional configs for global usage "together".
 
 ** [[https://github.com/raven2cz/awesomewm-config][Awesomewm-config]]
-*AwesomeWM (git-main branch) configuration* with new 80s DarkOne Theme, Amazing Theme.
+*AwesomeWM (git-main branch) configuration* with new Multicolor Theme, 80s DarkOne Theme, Amazing Theme.
 
-*Multicolor Theme* The multicolor theme brings 15 best colorschemes today! 13 dark and soft, 2 light themes. You can find here nord, doom_one, tomorrow_night, palenight, dracula, dark one etc. The system binds together special lua script which change the additional applications together: kitty, alacritty (and planned next). In the public-wallpaper packages are downloaded prepared 50 wallpapers depended on the selected color scheme. Last important change is notification support with portraits with appropriate color scheme too.
+*** Multicolor Theme
+The multicolor theme brings 15 best colorschemes today! 13 dark and soft, 2 light themes. You can find here nord, doom_one, tomorrow_night, palenight, dracula, dark one etc. The system binds together special lua script which change the additional applications together: kitty, alacritty (and planned next). In the public-wallpaper packages are downloaded prepared 50 wallpapers depended on the selected color scheme. Last important change is notification support with portraits with appropriate color scheme too.
 All color scheme are applied on-the-fly without restart station, you just select appropriate color scheme and whole WM, wallpapers and other apps are changed. The wallpapers can be swap for appropriate color scheme by ~super+alt+C~ forward, ~super+ctrl+C~ backward and color scheme table is shown by ~super+c~.
 
-*80s OneDark Theme* is focused to Atom colors and 80s pastel color schemes. New complex configuration of main panel with many features and additional modifications of conky, xmenu, rofi and alacritty settings.
+*** 80s OneDark Theme
+is focused to Atom colors and 80s pastel color schemes. New complex configuration of main panel with many features and additional modifications of conky, xmenu, rofi and alacritty settings.
 
-*Amazing Theme* is focused to green colors with gold highlights. Applications styling and additional colors are based on Nordic Colors and KDE Nordic Theme An arctic, north-bluish color palette.
+*** Amazing Theme
+is focused to green colors with gold highlights. Applications styling and additional colors are based on Nordic Colors and KDE Nordic Theme An arctic, north-bluish color palette.
 
 ** [[https://github.com/raven2cz/polybar-config][Polybar-config]]
 Polybar configuration with patched and improved modules for Awesome, i3 and XFCE4. Base design fits to MX-Linux (Debian Stable) and Arch Distros.
