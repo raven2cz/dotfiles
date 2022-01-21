@@ -1,0 +1,38 @@
+/**
+ * ROFI Mapping Color Themes to rofi parameters
+ *  _ __ __ ___   _____ _ __
+ * | '__/ _` \ \ / / _ \ '_  \  Antonin Fischer (raven2cz)
+ * | | | (_| |\ V /  __/ | | |  https://arch-linux.cz/
+ * |_|  \__,_| \_/ \___|_| |_|  https://github.com/raven2cz
+ *
+ * Date: 2022/01
+ * MIT License 
+ */
+* {
+    selected-normal-foreground:  @base0A;
+    foreground:                  @base07;
+    normal-foreground:           @foreground;
+    alternate-normal-background: @base01;
+    selected-urgent-foreground:  @base09;
+    urgent-foreground:           @base0A;
+    alternate-urgent-background: @base01;
+    active-foreground:           @base02;
+    lightbg:                     @base03;
+    selected-active-foreground:  @foreground;
+    alternate-active-background: @base01;
+    background:                  @base00;
+    bordercolor:                 @base02;
+    alternate-normal-foreground: @foreground;
+    normal-background:           @base00;
+    lightfg:                     @ebdbb2;
+    selected-normal-background:  @bordercolor;
+    border-color:                @bordercolor;
+    separatorcolor:              @bordercolor;
+    urgent-background:           @base02;
+    selected-urgent-background:  @base04;
+    alternate-urgent-foreground: @urgent-foreground;
+    background-color:            @base00;
+    alternate-active-foreground: @active-foreground;
+    active-background:           @base00;
+    selected-active-background:  @bordercolor;
+}
