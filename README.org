@@ -31,6 +31,8 @@
   - [[#xmenu-configuration][XMENU Configuration]]
   - [[#pass---the-standard-unix-password-manager][Pass - The Standard Unix Password Manager]]
 - [[#public-wallpapers][Public Wallpapers]]
+- [[#global-colorscheme-script][Global-colorscheme script]]
+- [[#rofi-themes-github-project-in-github][Rofi-Themes GitHub Project in github]]
 - [[#dotfiles-repository-administration-support][Dotfiles Repository Administration Support]]
   - [[#define-git-bare-repository][Define GIT Bare Repository.]]
   - [[#update-dependency-git-subtrees-projects][Update dependency git subtrees projects.]]
@@ -44,6 +46,9 @@ Github Project's list added as git subtrees to the dotfiles project. These depen
 
 ** [[https://github.com/raven2cz/awesomewm-config][Awesomewm-config]]
 *AwesomeWM (git-main branch) configuration* with new 80s DarkOne Theme, Amazing Theme.
+
+*Multicolor Theme* The multicolor theme brings 15 best colorschemes today! 13 dark and soft, 2 light themes. You can find here nord, doom_one, tomorrow_night, palenight, dracula, dark one etc. The system binds together special lua script which change the additional applications together: kitty, alacritty (and planned next). In the public-wallpaper packages are downloaded prepared 50 wallpapers depended on the selected color scheme. Last important change is notification support with portraits with appropriate color scheme too.
+All color scheme are applied on-the-fly without restart station, you just select appropriate color scheme and whole WM, wallpapers and other apps are changed. The wallpapers can be swap for appropriate color scheme by ~super+alt+C~ forward, ~super+ctrl+C~ backward and color scheme table is shown by ~super+c~.
 
 *80s OneDark Theme* is focused to Atom colors and 80s pastel color schemes. New complex configuration of main panel with many features and additional modifications of conky, xmenu, rofi and alacritty settings.
 
@@ -96,6 +101,14 @@ Pass is configured in private repo. There are usage of passFF and other browser 
 Public wallpapers are provided by github project [[https://github.com/raven2cz/public-wallpapers][Public-Wallpapers]]. The wallpapers are used for other my projects and dotfiles.
 
 The dirtory or symlink has to created to ~$HOME/Pictures/wallpapers/public-wallpapers~. I'm using symlink for whole ~$HOME/Pictures~ mapped to cloud repository.
+
+* Global-colorscheme script
+Provided by github repo: https://github.com/raven2cz/global-colorscheme
+Dynamic color scheme change of all supported applications in the system.
+
+* Rofi-Themes GitHub Project in github
+Provided by github repo: https://github.com/raven2cz/rofi-themes
+Rofi themes implementations for all best actual color schemes.
 
 * Dotfiles Repository Administration Support
 No extra tooling, no symlinks, files are tracked on a version control system, you can use *different branches for different computers*, you can replicate you configuration easily on new installation.
