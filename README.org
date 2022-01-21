@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #+TITLE: Raven2cz's Dofiles GNU/Linux Configuration
 #+AUTHOR: Antonin Fischer (raven2cz)
 #+DESCRIPTION: The project puts the individual git repos together and thus creates the overall configuration for your personal computer.
@@ -205,4 +204,3 @@ This project includes basement configuration of xfce4, which has to be placed to
 The files and scripts in this repository are licensed under the *MIT License*, which is a very permissive license allowing you to use, modify, copy, distribute, sell, give away, etc. the software. In other words, do what you want with it. The only requirement with the MIT License is that the license and copyright notice must be provided with the software.
 
 The configuration files are added in ~LICENSE~ (Antonin Fischer (raven2cz) repository).
->>>>>>> fa860b6 (Squashed '.config/xfce4/' content from commit 7f389f6)
