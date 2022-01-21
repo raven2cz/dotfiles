@@ -1,0 +1,37 @@
+/**
+ * ROFI Oceanic Next Color Theme
+ *  _ __ __ ___   _____ _ __
+ * | '__/ _` \ \ / / _ \ '_  \  Antonin Fischer (raven2cz)
+ * | | | (_| |\ V /  __/ | | |  https://arch-linux.cz/
+ * |_|  \__,_| \_/ \___|_| |_|  https://github.com/raven2cz
+ *
+ * Date: 2022/01
+ * MIT License
+ */
+* {
+  base00: #1B2B3470;
+  base01: #343D4670;
+  base02: #4F5B66;
+  base03: #65737E30;
+  base04: #A7ADBA;
+  base05: #C0C5CE;
+  base06: #CDD3DE;
+  base07: #D8DEE9;
+  base08: #EC5f67;
+  base09: #F99157;
+  base0A: #FAC863;
+  base0B: #99C794;
+  base0C: #5FB3B3;
+  base0D: #6699CC;
+  base0E: #C594C5;
+  base0F: #AB7967;
+}
+
+@import "multicolor-mapping.rasi"
+
+* {
+  selected-normal-foreground: @base0C;
+  bordercolor: @base03;
+}
+
+@import "multicolor-common.rasi"
