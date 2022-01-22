@@ -33,6 +33,10 @@
 #   * Changed Fonts
 ]]
 
+theme_params = assert(loadfile("./conkytheme.lua"))()
+bg_color = tonumber(theme_params.color0:gsub("#",""), 16)
+fg_color = tonumber(theme_params.color1:gsub("#",""), 16)
+
 settings_table = {
     {
         -- Edit this table to customise your rings.
@@ -44,11 +48,11 @@ settings_table = {
         -- "max" is the maximum value of the ring. If the Conky variable outputs a percentage, use 100.
         max=12,
         -- "bg_colour" is the colour of the base ring.
-        bg_colour=0xffffff,
+        bg_colour=bg_color,
         -- "bg_alpha" is the alpha value of the base ring.
         bg_alpha=0.15,
         -- "fg_colour" is the colour of the indicator part of the ring.
-        fg_colour=0x66cccc,
+        fg_colour=fg_color,
         -- "fg_alpha" is the alpha value of the indicator part of the ring.
         fg_alpha=0.3,
         -- "x" and "y" are the x and y coordinates of the centre of the ring, relative to the top left corner of the Conky window.
@@ -67,9 +71,9 @@ settings_table = {
         name='weekday',
         arg='',
         max=7,
-        bg_colour=0xffffff,
+        bg_colour=bg_color,
         bg_alpha=0.2,
-        fg_colour=0x66cccc,
+        fg_colour=fg_color,
         fg_alpha=0.8,
         x=222, y=120,
         radius=27,
@@ -82,9 +86,9 @@ settings_table = {
         name='time',
         arg='%M.%S',
         max=60,
-        bg_colour=0xffffff,
+        bg_colour=bg_color,
         bg_alpha=0.1,
-        fg_colour=0x66cccc,
+        fg_colour=fg_color,
         fg_alpha=0.4,
         x=100, y=175,
         radius=66,
@@ -96,9 +100,9 @@ settings_table = {
         name='time',
         arg='%S',
         max=60,
-        bg_colour=0xffffff,
+        bg_colour=bg_color,
         bg_alpha=0.1,
-        fg_colour=0x66cccc,
+        fg_colour=fg_color,
         fg_alpha=0.6,
         x=100, y=175,
         radius=72,
@@ -110,9 +114,9 @@ settings_table = {
         name='time',
         arg='%d',
         max=31,
-        bg_colour=0xffffff,
+        bg_colour=bg_color,
         bg_alpha=0.1,
-        fg_colour=0x66cccc,
+        fg_colour=fg_color,
         fg_alpha=0.8,
         x=100, y=175,
         radius=80,
@@ -124,9 +128,9 @@ settings_table = {
         name='time',
         arg='%m',
         max=12,
-        bg_colour=0xffffff,
+        bg_colour=bg_color,
         bg_alpha=0.1,
-        fg_colour=0x66cccc,
+        fg_colour=fg_color,
         fg_alpha=1,
         x=100, y=175,
         radius=86,
@@ -138,9 +142,9 @@ settings_table = {
         name='cpu',
         arg='cpu0',
         max=100,
-        bg_colour=0xffffff,
+        bg_colour=bg_color,
         bg_alpha=0.3,
-        fg_colour=0x66cccc,
+        fg_colour=fg_color,
         fg_alpha=0.8,
         x=182, y=305,
         radius=25,
@@ -153,9 +157,9 @@ settings_table = {
         arg='',
         min=20,
         max=100,
-        bg_colour=0xffffff,
+        bg_colour=bg_color,
         bg_alpha=0.3,
-        fg_colour=0x66cccc,
+        fg_colour=fg_color,
         fg_alpha=0.8,
         x=275, y=305,
         radius=25,
@@ -167,9 +171,9 @@ settings_table = {
         name='fs_used_perc',
         arg='/',
         max=100,
-        bg_colour=0xffffff,
+        bg_colour=bg_color,
         bg_alpha=0.2,
-        fg_colour=0x66cccc,
+        fg_colour=fg_color,
         fg_alpha=0.8,
         x=40, y=600,
         radius=25,
@@ -181,9 +185,9 @@ settings_table = {
         name='memperc',
         arg='',
         max=100,
-        bg_colour=0xffffff,
+        bg_colour=bg_color,
         bg_alpha=0.2,
-        fg_colour=0x66cccc,
+        fg_colour=fg_color,
         fg_alpha=0.8,
         x=158, y=600,
         radius=25,
@@ -195,7 +199,7 @@ settings_table = {
         name='swapperc',
         arg='',
         max=100,
-        bg_colour=0xffffff,
+        bg_colour=bg_color,
         bg_alpha=0.2,
         fg_colour=0x0ABFFF,
         fg_alpha=0.8,

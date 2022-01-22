@@ -1,3 +1,5 @@
+theme_params = assert(loadfile("./conkytheme.lua"))()
+
 conky.config = {
 -- Conky settings #
     alignment = 'top_right',
@@ -25,7 +27,6 @@ conky.config = {
     own_window_transparent = true,
     own_window_argb_visual = true,
     own_window_argb_value = 0,
-  	own_window_colour = '000000',
     own_window_hints = 'undecorated,below,skip_taskbar,skip_pager,sticky',
 
     border_inner_margin = 0,
@@ -51,9 +52,9 @@ conky.config = {
 --  temperature_unit = 'fahrenheit',
     temperature_unit = 'celsius',
 
-    default_color = '#ffffff',
-    color0 = '#ffffff',
-    color1 = '#66cccc',
+    default_color = theme_params.color0,
+    color0 = theme_params.color0,
+    color1 = theme_params.color1,
 
 -- Lua Load  #
     lua_load = './clock01_rings.lua',
