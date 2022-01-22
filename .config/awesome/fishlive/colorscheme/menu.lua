@@ -2,6 +2,12 @@ local colorscheme = require "fishlive.colorscheme"
 
 menu = {}
 
+local function writeToFile(resource, content)
+  local file = assert(io.open(resource, "w"))
+  file:write(content)
+  file:close()
+end
+
 -- Colorschemes Switcher --
 menu.prepare_colorscheme_menu = function()
   local menucs = {}
@@ -11,13 +17,20 @@ menu.prepare_colorscheme_menu = function()
           -- call global colorscheme script for switch all GNU/Linux apps
           os.execute(homeDir .. "/bin/global-colorscheme.lua " .. cs.scheme_id)
           -- permanent storage of selected colorscheme to last.lua
-          local file = io.open(homeDir .. "/.config/awesome/fishlive/colorscheme/last.lua", "w")
-          file:write('return require "fishlive.colorscheme".' .. cs.scheme_id)
-          file:close()
+          writeToFile(
+            homeDir .. "/.config/awesome/fishlive/colorscheme/last.lua",
+            'return require "fishlive.colorscheme".' .. cs.scheme_id
+          )
           -- change rofi theme
-          file = io.open(homeDir .. "/.config/rofi/config.rasi", "w")
-          file:write('@theme "'..homeDir..'/.config/rofi/multicolor-'..cs.scheme_id..'.rasi"')
-          file:close()
+          writeToFile(
+            homeDir .. "/.config/rofi/config.rasi",
+            '@theme "'..homeDir..'/.config/rofi/multicolor-'..cs.scheme_id..'.rasi"'
+          )
+          -- change conky theme
+          writeToFile(
+            homeDir .. "/.config/conky/MX-CoreBlue/conkytheme.lua",
+            "return { color0 = '"..cs.base07.."', color1 = '" .. cs.base0A .. "' }"
+          )
           -- restart AWESOME
           awesome.restart()
         end

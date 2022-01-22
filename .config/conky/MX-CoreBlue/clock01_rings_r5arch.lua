@@ -35,9 +35,9 @@
 
 theme_params = assert(loadfile("./conkytheme.lua"))()
 
-local function hex2number(hex) {
-  return tonumber(theme_params.color0:gsub("#",""), 16)
-}
+local function hex2number(hex)
+  return tonumber(hex:gsub("#",""), 16)
+end
 
 bg_color = hex2number(theme_params.color0)
 fg_color = hex2number(theme_params.color1)
@@ -335,9 +335,10 @@ function conky_clock_rings()
             value=tonumber(str)
         end
 
-        pct=value/pt['max']
-
-        draw_ring(cr,pct,pt)
+        if value then
+          pct=value/pt['max']
+          draw_ring(cr,pct,pt)
+        end
     end
 
     -- Check that Conky has been running for at least 5s

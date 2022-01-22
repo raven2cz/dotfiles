@@ -1,1 +1,1 @@
-return { color0 = '#ffffff', color1 = '#66cccc' }
+return { color0 = '#f7f7fb', color1 = '#00f769' }
