@@ -34,8 +34,13 @@
 ]]
 
 theme_params = assert(loadfile("./conkytheme.lua"))()
-bg_color = tonumber(theme_params.color0:gsub("#",""), 16)
-fg_color = tonumber(theme_params.color1:gsub("#",""), 16)
+
+local function hex2number(hex) {
+  return tonumber(theme_params.color0:gsub("#",""), 16)
+}
+
+bg_color = hex2number(theme_params.color0)
+fg_color = hex2number(theme_params.color1)
 
 settings_table = {
     {
