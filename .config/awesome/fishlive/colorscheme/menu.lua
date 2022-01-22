@@ -15,7 +15,7 @@ menu.prepare_colorscheme_menu = function()
       menucs[i] = { cs.scheme, function()
           local homeDir = os.getenv("HOME")
           -- call global colorscheme script for switch all GNU/Linux apps
-          os.execute(homeDir .. "/bin/global-colorscheme.lua " .. cs.scheme_id)
+          os.execute(homeDir.."/.local/bin/global-colorscheme.lua " .. cs.scheme_id)
           -- permanent storage of selected colorscheme to last.lua
           writeToFile(
             homeDir .. "/.config/awesome/fishlive/colorscheme/last.lua",
