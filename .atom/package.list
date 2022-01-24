@@ -20,7 +20,6 @@ highlight-colors@0.9.0
 intellij-idea-darcula-ui@1.4.0
 intentions@2.1.1
 language-lua@0.9.11
-language-lua-plus@1.7.1
 last-cursor-position@1.2.0
 linter@3.4.0
 linter-luacheck@2.0.1

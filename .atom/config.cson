@@ -6,18 +6,22 @@
     disabledPackages: [
       "atom-format-lua"
       "language-lua-plus"
+      "linter-luacheck"
     ]
     telemetryConsent: "limited"
     themes: [
-      "one-dark-ui"
-      "one-dark-syntax"
+      "dracula-ui"
+      "dracula-syntax"
     ]
   editor:
     fontFamily: "Hack Nerd Font"
+    fontSize: 15
   "exception-reporting":
     userId: "7309e6f6-93ab-402d-ae89-cb40cd55a797"
   "gruvbox-plus-syntax":
     contrast: "Soft"
+  "linter-lua":
+    executablePath: "/usr/bin/luac"
   "linter-ui-default":
     panelHeight: 311.20001220703125
   minimap:
