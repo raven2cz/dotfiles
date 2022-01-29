@@ -29,7 +29,7 @@ menu.prepare_colorscheme_menu = function()
           -- change conky theme
           writeToFile(
             homeDir .. "/.config/conky/MX-CoreBlue/conkytheme.lua",
-            "return { color0 = '"..cs.base07.."', color1 = '" .. cs.base0A .. "' }"
+            "return { color0 = '"..cs.base07.."', color1 = '" .. cs.leading_fg .. "' }"
           )
           -- restart AWESOME
           awesome.restart()
