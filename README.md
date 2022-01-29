@@ -17,8 +17,8 @@ Themes for Rofi: A window switcher, application launcher and dmenu replacement
 ![](images/multicolor-dracula-zoom.jpg)
 ![](images/multicolor-dracula.jpg)
 ## multicolor-eighties_one_dark.rasi
-![](images/multicolor-eighties_one_dark-zoom.jpgi)
-![](images/multicolor-eighties_one_dark.jpgi)
+![](images/multicolor-eighties_one_dark-zoom.jpg)
+![](images/multicolor-eighties_one_dark.jpg)
 ## multicolor-gruvbox_dark_soft.rasi
 ![](images/multicolor-gruvbox_dark_soft-zoom.jpg)
 ![](images/multicolor-gruvbox_dark_soft.jpg)

@@ -1,4 +1,0 @@
-#!/bin/bash
-cd ~/certs/hfond-devel-vpn
-sudo openvpn --config kavuprosim.cz.ovpn --askpass ~/.hf-dev-secret
-
