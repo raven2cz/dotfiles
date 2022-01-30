@@ -8,7 +8,7 @@ export QT_STYLE_OVERRIDE=kvantum
 #export QT_QPA_PLATFORMTHEME="qt5ct"
 export DESKTOP_SESSION=plasma
 #export DESKTOP_SESSION=gnome
-export XDG_CURRENT_DESKTOP=KDE
+export XDG_CURRENT_DESKTOP=$session
 #export XDG_CURRENT_DESKTOP=GNOME
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
@@ -31,11 +31,12 @@ case $session in
         exec awesome
         ;;
     kde)
+        export XDG_CURRENT_DESKTOP=KDE
         exec startplasma-x11
         ;;
     kde-wayland)
         export XDG_SESSION_TYPE=wayland
-        /usr/lib/plasma-dbus-run-session-if-needed /usr/bin/startplasma-wayland
+        exec startplasma-wayland
         ;;
     gnome)
         export XDG_CURRENT_DESKTOP=GNOME
