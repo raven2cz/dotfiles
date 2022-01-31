@@ -4,8 +4,8 @@ export SSH_AUTH_SOCK
 numlockx &
 setxkbmap -layout "us,cz" -option "grp:alt_shift_toggle" -variant ",qwerty" &
 xrdb -merge ~/.Xresources
-export QT_STYLE_OVERRIDE=kvantum
-#export QT_QPA_PLATFORMTHEME="qt5ct"
+#export QT_STYLE_OVERRIDE=kvantum
+export QT_QPA_PLATFORMTHEME=qt5ct
 export DESKTOP_SESSION=plasma
 #export DESKTOP_SESSION=gnome
 export XDG_CURRENT_DESKTOP=kde
