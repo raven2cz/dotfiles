@@ -2,10 +2,11 @@
 
 import psutil
 import sys
+import os
 
 probes = ["amdgpu"]
 
-def getcputemp(zone):
+def getgputempamd(zone):
     cpu = psutil.sensors_temperatures()
     #print(cpu)
     try:
@@ -14,13 +15,24 @@ def getcputemp(zone):
         return None
     return temp
 
-def main():
+def getgputempnvidia():
+    try:
+        temp = os.popen("nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits").read()
+    except KeyError as ex:
+        return None
+    return temp
 
+def main():
     for zone in probes:
-        temp = getcputemp(zone)
+        temp = getgputempamd(zone)
         if temp:
             print(str(temp) + "°C")
             return(0)
+        else:
+            temp = getgputempnvidia()
+            if temp:
+                print(str(temp).strip() + "°C")
+                return(0)
     return(1)
 
 if __name__ == '__main__':
