@@ -40,15 +40,23 @@ require "paq" {
   "nvim-treesitter/nvim-treesitter",
   "phaazon/hop.nvim",
   "rmagatti/auto-session",
-  "sainnhe/everforest",
-  "romgrk/doom-one.vim",
-  "mofiqul/dracula.nvim",
   "savq/paq-nvim",
   "tpope/vim-repeat",
   "tpope/vim-surround",
   "wellle/targets.vim",
-  "wfxr/minimap.vim"
+  "wfxr/minimap.vim",
+  "folke/which-key.nvim",
+  "sainnhe/everforest",
+  "romgrk/doom-one.vim",
+  "mofiqul/dracula.nvim",
 }
+
+-- Load the colorscheme
+cmd [[colorscheme dracula]] 
+--cmd [[colorscheme gruvbox-material]] 
+--cmd [[colorscheme darcula]] 
+--cmd [[colorscheme everforest]]
+--cmd [[colorscheme doom-one]] -- Put your favorite colorscheme here
 
 -- Hop
 require "hop".setup()
@@ -138,7 +146,7 @@ local function make_config()
 end
 
 -- LSP Prevents inline buffer annotations
-vim.lsp.diagnostic.show_line_diagnostics()
+--vim.lsp.diagnostic.show_line_diagnostics()
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
   vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics,
@@ -220,11 +228,6 @@ vim.g.everforest_enable_italic = 1
 vim.g.everforest_diagnostic_text_highlight = 1
 vim.g.everforest_diagnostic_virtual_text = "colored"
 vim.g.everforest_current_word = "bold"
-
--- Load the colorscheme
---cmd [[colorscheme dracula]] 
-cmd [[colorscheme everforest]]
---cmd [[colorscheme doom-one]] -- Put your favorite colorscheme here
 
 opt.backspace = {"indent", "eol", "start"}
 opt.clipboard = "unnamedplus"

@@ -44,7 +44,7 @@ case $session in
         exec gnome-session
         ;;
     qtile)
-        exec qtile
+        exec qtile start -b wayland
         ;;
     bspwm)
         exec bspwm
