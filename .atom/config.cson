@@ -10,8 +10,8 @@
     ]
     telemetryConsent: "limited"
     themes: [
-      "one-dark-ui"
-      "gruvbox-plus-syntax"
+      "dracula-ui"
+      "dracula-pro"
     ]
   editor:
     fontFamily: "Hack Nerd Font"
