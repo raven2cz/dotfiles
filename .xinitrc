@@ -44,6 +44,7 @@ case $session in
         exec gnome-session
         ;;
     qtile)
+        export XDG_SESSION_TYPE=wayland
         exec qtile start -b wayland
         ;;
     bspwm)
