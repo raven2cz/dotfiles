@@ -15,7 +15,6 @@ set -U fzf_preview_file_cmd __fzf_preview_file_content # specific function for e
 
 ### EXPORT ###
 set fish_greeting                                 # Supresses fish's intro message
-set TERM "xterm-256color"                         # Sets the terminal type
 set EDITOR "nvim"                                 # $EDITOR use Emacs in terminal
 set VISUAL "nvim"                                 # $VISUAL use Emacs in GUI mode
 
@@ -215,14 +214,14 @@ end
 
 # Fish greetings when the terminal is shown up in interactive mode
 function fish_greeting
-    if test (random 1 10) = 1 
+    if test "$TERM" = "xterm-kitty"
+        kitty-icat-random
+    else if test (random 1 10) = 1 
         fish_logo f00 '' ff0  
-    else
-        if test (random 1 10) -gt 5
-            pokemon-colorscripts -r
-        else 
-            colorscript random
-        end    
+    else if test (random 1 10) -gt 5
+        pokemon-colorscripts -r
+    else 
+        colorscript random
     end
 end
 

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+colorscheme=$(<$HOME/.colorscheme)
+if [[ $TERM == "xterm-kitty" ]]
+then
+    dirname=$HOME/Pictures/wallpapers/public-wallpapers/portrait/$colorscheme/
+    portrait=$(find $dirname -type f | shuf -n 1)
+    convert "$portrait" -resize 450 /tmp/kitty-greeting
+    kitty +kitten icat --align left /tmp/kitty-greeting
+fi
