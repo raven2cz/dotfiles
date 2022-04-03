@@ -1,5 +1,5 @@
 -- Which Theme is used (can be changed externaly!)
-local theme = 'darkplus'
+local theme = 'sonokai'
 --------------------------------------------------
 local g = vim.g
 local opt = vim.opt
@@ -47,7 +47,6 @@ local nightfox = require("nightfox")
 nightfox.setup({
   transparent = false
 })
-nightfox.load()
 
 -- default
 g.italic_keywords = "italic"
