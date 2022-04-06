@@ -47,7 +47,6 @@ local nightfox = require("nightfox")
 nightfox.setup({
   transparent = false
 })
-nightfox.load()
 
 -- default
 g.italic_keywords = "italic"
