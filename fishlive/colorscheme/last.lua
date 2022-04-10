@@ -1,0 +1,1 @@
+return require "fishlive.colorscheme".doom_one
