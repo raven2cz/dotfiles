@@ -59,6 +59,9 @@ case $session in
     xfce|xfce4)
         exec startxfce4
         ;;
+    openbox)
+        exec openbox-session
+        ;;
     # No known session, try to run it as command
     *)
         exec $1
