@@ -60,6 +60,7 @@ case $session in
         exec startxfce4
         ;;
     openbox)
+        export XDG_SESSION_TYPE=x11
         exec openbox-session
         ;;
     # No known session, try to run it as command
