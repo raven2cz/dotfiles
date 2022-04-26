@@ -11,17 +11,9 @@
       </startupnotify>
     </action>
   </item>
-  <item label="Character Map">
+  <item label="Spectacle">
     <action name="Execute">
-      <command>gnome-character-map</command>
-      <startupnotify>
-        <enabled>yes</enabled>
-      </startupnotify>
-    </action>
-  </item>
-  <item label="Ark File Archiver">
-    <action name="Execute">
-      <command>ark</command>
+      <command>spectacle</command>
       <startupnotify>
         <enabled>yes</enabled>
       </startupnotify>
@@ -30,21 +22,21 @@
 </menu>
 
 <menu id="apps-editors-menu" label="Editors">
-  <item label="GVim">
+  <item label="nvim">
     <action name="Execute">
-      <command>gvim</command>
+      <command>kitty -e nvim</command>
       <startupnotify>
         <enabled>yes</enabled>
-        <wmclass>GVim</wmclass>
+        <wmclass>nvim</wmclass>
       </startupnotify>
     </action>
   </item>
-  <item label="Emacs">
+  <item label="Doom Emacs">
     <action name="Execute">
-      <command>emacs</command>
+      <command>doom run</command>
       <startupnotify>
         <enabled>yes</enabled>
-        <wmclass>Emacs</wmclass>
+        <wmclass>Doom Emacs</wmclass>
       </startupnotify>
     </action>
   </item>
@@ -64,9 +56,17 @@
       </startupnotify>
     </action>
   </item>
-  <item label="Kwrite">
+  <item label="Atom">
     <action name="Execute">
-      <command>kwrite</command>
+      <command>atom</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+      </startupnotify>
+    </action>
+  </item>
+  <item label="Sublime Text">
+    <action name="Execute">
+      <command>subl</command>
       <startupnotify>
         <enabled>yes</enabled>
       </startupnotify>
@@ -129,20 +129,30 @@
       </startupnotify>
     </action>
   </item>
+  <item label="Librewolf">
+    <action name="Execute">
+      <command>librewolf</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+        <wmclass>Librewolf</wmclass>
+      </startupnotify>
+    </action>
+  </item>
+  <item label="Brave">
+    <action name="Execute">
+      <command>brave</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+        <wmclass>Brave</wmclass>
+      </startupnotify>
+    </action>
+  </item>
   <item label="Opera">
     <action name="Execute">
       <command>opera</command>
       <startupnotify>
         <enabled>yes</enabled>
         <wmclass>Opera</wmclass>
-      </startupnotify>
-    </action>
-  </item>
-  <item label="Konqueror">
-    <action name="Execute">
-      <command>konqueror</command>
-      <startupnotify>
-        <enabled>yes</enabled>
       </startupnotify>
     </action>
   </item>
@@ -154,25 +164,17 @@
       </startupnotify>
     </action>
   </item>
+  <item label="Discord">
+    <action name="Execute">
+      <command>discord</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+      </startupnotify>
+    </action>
+  </item>
   <item label="Pidgin Instant Messenger">
     <action name="Execute">
       <command>pidgin</command>
-      <startupnotify>
-        <enabled>yes</enabled>
-      </startupnotify>
-    </action>
-  </item>
-  <item label="Kopete Instant Messenger">
-    <action name="Execute">
-      <command>kopete</command>
-      <startupnotify>
-        <enabled>yes</enabled>
-      </startupnotify>
-    </action>
-  </item>
-  <item label="XChat">
-    <action name="Execute">
-      <command>xchat</command>
       <startupnotify>
         <enabled>yes</enabled>
       </startupnotify>
@@ -219,6 +221,14 @@
 </menu>
 
 <menu id="apps-multimedia-menu" label="Multimedia">
+  <item label="Spotify">
+    <action name="Execute">
+      <command>spotify</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+      </startupnotify>
+    </action>
+  </item>
   <item label="Amarok">
     <action name="Execute">
       <command>amarok</command>
@@ -252,6 +262,24 @@
       </startupnotify>
     </action>
   </item>
+  <item label="MPV">
+    <action name="Execute">
+      <command>mpv</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+        <wmclass>mpv</wmclass>
+      </startupnotify>
+    </action>
+  </item>
+  <item label="VLC">
+    <action name="Execute">
+      <command>vlc</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+        <wmclass>vlc</wmclass>
+      </startupnotify>
+    </action>
+  </item>
   <item label="Totem">
     <action name="Execute">
       <command>totem</command>
@@ -260,9 +288,33 @@
       </startupnotify>
     </action>
   </item>
+  <item label="Kdenlive">
+    <action name="Execute">
+      <command>kdenlive</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+      </startupnotify>
+    </action>
+  </item>
 </menu>
 
 <menu id="apps-fileman-menu" label="File Managers">
+  <item label="Dolphin">
+    <action name="Execute">
+      <command>dolphin</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+      </startupnotify>
+    </action>
+  </item>
+  <item label="Krusader">
+    <action name="Execute">
+      <command>krusader</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+      </startupnotify>
+    </action>
+  </item>
   <item label="Nautilus">
     <action name="Execute">
       <command>nautilus --no-desktop --browser</command>
@@ -274,14 +326,6 @@
   <item label="Thunar">
     <action name="Execute">
       <command>Thunar</command>
-      <startupnotify>
-        <enabled>yes</enabled>
-      </startupnotify>
-    </action>
-  </item>
-  <item label="KDE File Manager">
-    <action name="Execute">
-      <command>kfmclient openURL ~</command>
       <startupnotify>
         <enabled>yes</enabled>
       </startupnotify>
@@ -315,6 +359,14 @@
       </startupnotify>
     </action>
   </item>
+  <item label="Qimgv">
+    <action name="Execute">
+      <command>qimgv</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+      </startupnotify>
+    </action>
+  </item>
   <item label="Gwenview">
     <action name="Execute">
       <command>gwenview</command>
@@ -341,7 +393,7 @@
   </item>
 </menu>
 
-<menu id="browse-menu" execute="/usr/bin/obfilebrowser '/home/box'" id="browse" label="Browse"/>
+<menu id="browse-menu" execute="/usr/bin/obfilebrowser '/home/box/'" id="browse" label="Browse"/>
 
 <menu id="system-menu" label="System">
   <item label="Openbox Configuration Manager">
