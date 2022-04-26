@@ -1,0 +1,38 @@
+#
+# These things are run when an Openbox X Session is started.
+# You may place a similar script in $HOME/.config/openbox/autostart
+# to run user-specific things.
+#
+
+# If you want to use GNOME config tools...
+#
+#if test -x /usr/lib/openbox/gnome-settings-daemon >/dev/null; then
+#  /usr/lib/openbox/gnome-settings-daemon &
+#elif which gnome-settings-daemon >/dev/null 2>&1; then
+#  gnome-settings-daemon &
+#fi
+
+# If you want to use XFCE config tools...
+#
+#xfce-mcs-manager &
+
+xinput --disable 17 &
+#xset r rate 200 80 &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+/usr/lib/kactivitymanagerd &
+/usr/bin/kglobalaccel5 &
+nm-applet &
+pamac-tray &
+if ! pgrep -f cloud-drive-ui; then synology-drive start; fi &
+parcellite &
+clipmenud &
+volctl &
+/usr/bin/emacs --daemon &
+remmina -i &
+#tint2 &
+~/.config/polybar/launch.sh &
+nitrogen --restore &
+/usr/lib/xfce4/notifyd/xfce4-notifyd &
+~/.config/conky/start_conky ~/.config/conky/MX-CoreBlue/conkyrc2core &
+picom --experimental-backends --config $HOME/.config/picom/picom.conf &
+
