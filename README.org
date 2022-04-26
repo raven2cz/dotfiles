@@ -24,6 +24,7 @@
   - [[#xfce4-config][Xfce4-config]]
   - [[#qtile-config][Qtile-config]]
   - [[#i3-config][i3-config]]
+  - [[#openbox-config][openbox-config]]
 - [[#applications][Applications]]
   - [[#shells-and-terminals][Shells and Terminals]]
   - [[#ranger-configuration][Ranger Configuration]]
@@ -74,6 +75,9 @@ Qtile is a full-featured, hackable tiling window manager written and configured 
 
 ** [[https://github.com/raven2cz/i3-config][i3-config]]
 i3 is a tiling window manager, completely written from scratch. The target platforms are GNU/Linux and BSD operating systems, our code is Free and Open Source Software (FOSS) under the BSD license. i3 is primarily targeted at advanced users and developers. Based upon the experiences we made when wanting to hack/fix wmii. Other description is included in my main ~config~ file.
+
+** [[https://github.com/raven2cz/openbox-config][openbox-config]]
+Openbox is a highly configurable window manager with extensive standards support. The ~*box~ visual style is well known for its minimalistic appearance. Openbox uses the ~*box~ visual style, while providing a greater number of options for theme developers than previous *box implementations. The theme documentation describes the full range of options found in Openbox themes.
 
 * Applications
 ** Shells and Terminals
