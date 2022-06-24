@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="xfce4-panel" version="1.0">
+  <property name="configver" type="int" value="2"/>
+  <property name="panels" type="array">
+    <value type="int" value="1"/>
+    <property name="dark-mode" type="bool" value="true"/>
+    <property name="panel-1" type="empty">
+      <property name="position" type="string" value="p=6;x=0;y=0"/>
+      <property name="length" type="uint" value="100"/>
+      <property name="position-locked" type="bool" value="true"/>
+      <property name="icon-size" type="uint" value="16"/>
+      <property name="size" type="uint" value="24"/>
+      <property name="plugin-ids" type="array">
+        <value type="int" value="7"/>
+        <value type="int" value="15"/>
+        <value type="int" value="16"/>
+        <value type="int" value="13"/>
+        <value type="int" value="4"/>
+        <value type="int" value="3"/>
+        <value type="int" value="2"/>
+        <value type="int" value="1"/>
+        <value type="int" value="32"/>
+        <value type="int" value="25"/>
+        <value type="int" value="30"/>
+        <value type="int" value="17"/>
+        <value type="int" value="18"/>
+        <value type="int" value="20"/>
+        <value type="int" value="29"/>
+        <value type="int" value="23"/>
+        <value type="int" value="5"/>
+        <value type="int" value="19"/>
+        <value type="int" value="6"/>
+        <value type="int" value="9"/>
+        <value type="int" value="10"/>
+        <value type="int" value="28"/>
+        <value type="int" value="27"/>
+        <value type="int" value="11"/>
+        <value type="int" value="14"/>
+        <value type="int" value="31"/>
+        <value type="int" value="8"/>
+        <value type="int" value="12"/>
+        <value type="int" value="21"/>
+      </property>
+      <property name="disable-struts" type="bool" value="false"/>
+      <property name="FontName" type="string" value="Play"/>
+    </property>
+  </property>
+  <property name="plugins" type="empty">
+    <property name="plugin-2" type="string" value="tasklist">
+      <property name="grouping" type="uint" value="1"/>
+      <property name="flat-buttons" type="bool" value="false"/>
+      <property name="show-labels" type="bool" value="true"/>
+      <property name="show-handle" type="bool" value="false"/>
+      <property name="middle-click" type="uint" value="1"/>
+      <property name="include-all-workspaces" type="bool" value="true"/>
+    </property>
+    <property name="plugin-3" type="string" value="separator">
+      <property name="expand" type="bool" value="true"/>
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-4" type="string" value="pager">
+      <property name="rows" type="uint" value="1"/>
+      <property name="miniature-view" type="bool" value="false"/>
+      <property name="numbering" type="bool" value="false"/>
+    </property>
+    <property name="plugin-5" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-6" type="string" value="systray">
+      <property name="square-icons" type="bool" value="true"/>
+      <property name="known-legacy-items" type="array">
+        <value type="string" value="volctl"/>
+        <value type="string" value="parcellite"/>
+        <value type="string" value="remmina"/>
+        <value type="string" value="pamac-tray"/>
+        <value type="string" value="networkmanager applet"/>
+        <value type="string" value="clipit"/>
+      </property>
+      <property name="known-items" type="array">
+        <value type="string" value="toolbox"/>
+        <value type="string" value="The KDE Crash Handler"/>
+        <value type="string" value="Slack1"/>
+        <value type="string" value="cloud-drive-ui"/>
+        <value type="string" value="remmina-icon"/>
+      </property>
+    </property>
+    <property name="plugin-8" type="string" value="pulseaudio">
+      <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
+      <property name="show-notifications" type="bool" value="true"/>
+      <property name="mpris-players" type="string" value="firefox.instance109543;firefox.instance1484;firefox.instance1505;firefox.instance1629;firefox.instance18036;firefox.instance2405;firefox.instance7700;firefox.instance99398;plasma-browser-integration;spotify"/>
+    </property>
+    <property name="plugin-9" type="string" value="power-manager-plugin"/>
+    <property name="plugin-10" type="string" value="notification-plugin"/>
+    <property name="plugin-11" type="string" value="separator">
+      <property name="style" type="uint" value="1"/>
+      <property name="expand" type="bool" value="false"/>
+    </property>
+    <property name="plugin-12" type="string" value="clock">
+      <property name="mode" type="uint" value="2"/>
+      <property name="digital-format" type="string" value="%a %_d %b %y, %H:%m:%S"/>
+    </property>
+    <property name="plugin-14" type="string" value="actions">
+      <property name="appearance" type="uint" value="0"/>
+      <property name="items" type="array">
+        <value type="string" value="-lock-screen"/>
+        <value type="string" value="-switch-user"/>
+        <value type="string" value="-separator"/>
+        <value type="string" value="-suspend"/>
+        <value type="string" value="-hibernate"/>
+        <value type="string" value="-hybrid-sleep"/>
+        <value type="string" value="-separator"/>
+        <value type="string" value="+shutdown"/>
+        <value type="string" value="+restart"/>
+        <value type="string" value="-separator"/>
+        <value type="string" value="+logout"/>
+        <value type="string" value="-logout-dialog"/>
+      </property>
+    </property>
+    <property name="plugin-7" type="string" value="whiskermenu"/>
+    <property name="plugin-23" type="string" value="netload"/>
+    <property name="plugin-25" type="string" value="systemload">
+      <property name="network" type="empty">
+        <property name="enabled" type="bool" value="false"/>
+      </property>
+      <property name="swap" type="empty">
+        <property name="enabled" type="bool" value="false"/>
+      </property>
+      <property name="timeout" type="uint" value="3000"/>
+      <property name="cpu" type="empty">
+        <property name="color" type="array">
+          <value type="double" value="0.207843"/>
+          <value type="double" value="0.517647"/>
+          <value type="double" value="0.894118"/>
+          <value type="double" value="1.000000"/>
+        </property>
+      </property>
+    </property>
+    <property name="plugin-27" type="string" value="showdesktop"/>
+    <property name="plugin-28" type="string" value="directorymenu">
+      <property name="base-directory" type="string" value="/home/box"/>
+    </property>
+    <property name="plugin-29" type="string" value="separator"/>
+    <property name="plugin-30" type="string" value="separator"/>
+    <property name="plugin-31" type="string" value="separator"/>
+    <property name="plugin-32" type="string" value="separator">
+      <property name="style" type="uint" value="1"/>
+    </property>
+    <property name="plugin-1" type="string" value="separator">
+      <property name="expand" type="bool" value="true"/>
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-13" type="string" value="separator">
+      <property name="expand" type="bool" value="false"/>
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-15" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-16" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-17" type="string" value="fsguard"/>
+    <property name="plugin-18" type="string" value="separator">
+      <property name="style" type="uint" value="1"/>
+    </property>
+    <property name="plugin-21" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-19" type="string" value="xkb">
+      <property name="display-scale" type="uint" value="80"/>
+      <property name="display-type" type="uint" value="0"/>
+      <property name="display-tooltip-icon" type="bool" value="true"/>
+      <property name="group-policy" type="uint" value="0"/>
+    </property>
+    <property name="plugin-20" type="string" value="xfce4-sensors-plugin"/>
+  </property>
+  <property name="FontName" type="string" value="Terminus (TTF) 12"/>
+</channel>
