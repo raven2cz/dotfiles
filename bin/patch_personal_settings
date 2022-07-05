@@ -1,0 +1,3 @@
+#!/bin/bash
+sed -i -e "s/7df2ce22b859742524de7ab6c97a352d/73bdc699681020eec7bebe7508296b27/g" ~/.config/awesome/themes/multicolor/theme.lua
+
