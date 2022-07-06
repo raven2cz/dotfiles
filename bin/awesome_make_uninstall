@@ -1,0 +1,31 @@
+#!/bin/bash
+# AwesomeWM make uninstall script
+# Uninstall local installed awesomewm project.
+[ "$UID" -eq 0 ] || exec sudo bash "$0" "$@"
+echo "AwesomeWM local project - remove all installed files from /usr/local structures."
+rm -r /usr/local/share/doc/awesome
+rm /usr/local/share/man/it/man5/awesomerc.5.gz
+rm /usr/local/share/man/it/man1/awesome.1.gz
+rm /usr/local/share/man/it/man1/awesome-client.1.gz
+rm /usr/local/share/man/man5/awesomerc.5.gz
+rm /usr/local/share/man/de/man5/awesomerc.5.gz
+rm /usr/local/share/man/de/man1/awesome.1.gz
+rm /usr/local/share/man/de/man1/awesome-client.1.gz
+rm /usr/local/share/man/fr/man5/awesomerc.5.gz
+rm /usr/local/share/man/fr/man1/awesome.1.gz
+rm /usr/local/share/man/fr/man1/awesome-client.1.gz
+rm /usr/local/share/man/es/man5/awesomerc.5.gz
+rm /usr/local/share/man/es/man1/awesome.1.gz
+rm /usr/local/share/man/es/man1/awesome-client.1.gz
+rm /usr/local/share/man/man1/awesome.1.gz
+rm /usr/local/share/man/man1/awesome-client.1.gz
+rm /usr/local/share/man/ru/man5/awesomerc.5.gz
+rm /usr/local/share/man/ru/man1/awesome.1.gz
+rm /usr/local/share/man/ru/man1/awesome-client.1.gz
+rm /usr/local/share/xsessions/awesome.desktop
+rm -r /usr/local/share/awesome
+rm /usr/local/etc/xdg/awesome/rc.lua
+rm /usr/local/bin/awesome-client
+rm /usr/local/bin/awesome
+
+echo "AwesomeWM local project uninstalled successfully."
