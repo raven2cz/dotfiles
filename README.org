@@ -131,19 +131,12 @@ After it, all config files are checkout to correct places in your ~$HOME~ direct
 You can make similar approach with your dotfiles.
 
 #+BEGIN_SRC bash
+#!/bin/bash
 git clone --bare git@github.com:raven2cz/dotfiles.git $HOME/.dotfiles
 function config {
    /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
 }
-mkdir -p .config-backup
-config checkout
-if [ $? = 0 ]; then
-  echo "Checked out config.";
-  else
-    echo "Backing up pre-existing dotfiles.";
-    config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
-fi;
-config checkout
+config checkout --force
 config config status.showUntrackedFiles no
 #+END_SRC
 
