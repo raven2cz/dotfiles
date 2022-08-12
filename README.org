@@ -1,6 +1,5 @@
-#+TITLE: Raven2cz's Dofiles GNU/Linux Configuration
 #+AUTHOR: Antonin Fischer (raven2cz)
-#+DESCRIPTION: The project puts the individual git repos together and thus creates the overall configuration for your personal computer.
+#+DESCRIPTION: raven2cz's personal AwesomeWM config.
 
 #+BEGIN_EXAMPLE
 ██████╗  █████╗ ██╗   ██╗███████╗███╗   ██╗  Antonin Fischer (raven2cz)
@@ -11,189 +10,122 @@
 ╚═╝  ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═══╝
 #+END_EXAMPLE
 
-#+html: <p align="center"><img src=".screenshots/dotfiles.png" /></p>
-#+html: <p align="center"><b>DOTFILES PROJECT</b></p>
+#+HTML:<div align=center>
 
-* Table of Contents :toc:
-- [[#introduction][Introduction]]
-- [[#main-git-subtree-project-dependencies][Main GIT Subtree Project Dependencies]]
-  - [[#awesomewm-config][Awesomewm-config]]
-  - [[#polybar-config][Polybar-config]]
-  - [[#doom-emacs-config][Doom-Emacs-config]]
-  - [[#neovim-config][Neovim-config]]
-  - [[#xfce4-config][Xfce4-config]]
-  - [[#qtile-config][Qtile-config]]
-  - [[#i3-config][i3-config]]
-  - [[#openbox-config][openbox-config]]
-- [[#applications][Applications]]
-  - [[#shells-and-terminals][Shells and Terminals]]
-  - [[#ranger-configuration][Ranger Configuration]]
-  - [[#rofi-configuration][Rofi Configuration]]
-  - [[#xmenu-configuration][XMENU Configuration]]
-  - [[#pass---the-standard-unix-password-manager][Pass - The Standard Unix Password Manager]]
-- [[#public-wallpapers][Public Wallpapers]]
-- [[#global-colorscheme-script][Global-colorscheme script]]
-- [[#rofi-themes-github-project-in-github][Rofi-Themes GitHub Project in github]]
-- [[#dotfiles-repository-administration-support][Dotfiles Repository Administration Support]]
-  - [[#define-git-bare-repository][Define GIT Bare Repository.]]
-  - [[#update-dependency-git-subtrees-projects][Update dependency git subtrees projects.]]
-- [[#license][License]]
+* Fishlive's AwesomeWM Config
 
-* Introduction
-Dotfiles are the customization and configuration files that are used to personalize your GNU/Linux or other *nix-based system. You can tell that a file is a dotfile because the name of the file will start with a period–a dot (e.g. ~.xinitrc~). The period at the beginning of a filename or directory name indicates that it is a hidden file or hidden directory. This repository contains my personal dotfiles as global union of many mine and other github projects. They are stored here for convenience so that I may quickly access them on new machines or new installation. Also, others may find some of my configurations helpful in customizing their own dotfiles.
+[[https://github.com/awesomeWM/awesome][file:https://img.shields.io/badge/AwesomeWM-git-blue.svg?logo=lua]] [[LICENSE][https://img.shields.io/badge/License-MIT-yellow.svg]]
 
-* Main GIT Subtree Project Dependencies
-Github Project's list added as git subtrees to the dotfiles project. These depended projects are similar as libraries; can be used alone. The dotfiles project creates union of these projects and add additional configs for global usage "together".
+#+HTML:</div>
 
-** [[https://github.com/raven2cz/awesomewm-config][Awesomewm-config]]
-*AwesomeWM (git-main branch) configuration* with new Multicolor Theme, 80s DarkOne Theme, Amazing Theme.
+#+HTML:<a href="https://awesomewm.org/"><img alt="AwesomeWM Logo" height="160" align = "left" src="https://upload.wikimedia.org/wikipedia/commons/0/07/Awesome_logo.svg"></a>
 
-*** Multicolor Theme
+Welcome to my AwesomeWM configuration files! My system is managed by Git Subtrees; this github repository is git subtree which is mapped to the [[https://github.com/raven2cz/dotfiles][raven2cz/dotfiles]] project.
+
+AwesomeWM is a highly configurable by LUA, next generation framework window manager for X. It is very fast, extensible and licensed under the ~GNU GPLv2~ license.
+
+It is primarily targeted at power users, developers and any people dealing with every day computing tasks and who wants to have fine-grained control on their graphical environment.
+
+* TABLE OF CONTENTS :toc:
+- [[#fishlives-awesomewm-config][Fishlive's AwesomeWM Config]]
+- [[#awesomewm-themes-configuration][AwesomeWM Themes Configuration]]
+  - [[#multicolor-theme][Multicolor Theme]]
+  - [[#80s-onedark-theme][80s OneDark Theme]]
+  - [[#amazing-theme][Amazing Theme]]
+- [[#guide-and-installation][Guide and Installation]]
+- [[#dependencies][Dependencies]]
+- [[#features][Features]]
+- [[#multicolor-theme-screenshot][Multicolor Theme Screenshot]]
+- [[#80s-onedark-theme-screenshots][80s OneDark Theme Screenshots]]
+- [[#amazing-theme-screenshots][Amazing Theme Screenshots]]
+- [[#videos---see-awesomewm-in-action][Videos - see AwesomeWM in action]]
+
+* AwesomeWM Themes Configuration
+AwesomeWM [git-master] configuration with new *Multicolor Theme*, *80s DarkOne Theme* and *Amazing Theme*.
+
+** Multicolor Theme
 The multicolor theme brings 15 best colorschemes today! 13 dark and soft, 2 light themes. You can find here nord, doom_one, tomorrow_night, palenight, dracula, dark one etc. The system binds together special lua script which change the additional applications together: kitty, alacritty (and planned next). In the public-wallpaper packages are downloaded prepared 50 wallpapers depended on the selected color scheme. Last important change is notification support with portraits with appropriate color scheme too.
-All color scheme are applied on-the-fly without restart station, you just select appropriate color scheme and whole WM, wallpapers and other apps are changed. The wallpapers can be swap for appropriate color scheme by ~super+alt+C~ forward, ~super+ctrl+C~ backward and color scheme table is shown by ~super+c~.
+All color scheme are applied on-the-fly without restart station, you just select appropriate color scheme and whole WM, wallpapers and other apps are changed. The wallpapers can be swap for appropriate color scheme by super+alt+C forward, super+ctrl+C backward and color scheme table is shown by super+c.
 
-*** 80s OneDark Theme
-is focused to Atom colors and 80s pastel color schemes. New complex configuration of main panel with many features and additional modifications of conky, xmenu, rofi and alacritty settings.
+** 80s OneDark Theme
+The theme is focused to Atom colors and 80s pastel color schemes. New complex configuration of main panel with many features and additional modifications of conky, xmenu, rofi and alacritty settings.
 
-*** Amazing Theme
-is focused to green colors with gold highlights. Applications styling and additional colors are based on Nordic Colors and KDE Nordic Theme An arctic, north-bluish color palette.
+** Amazing Theme
+The theme is focused to green colors with gold highlights.
+Applications styling and additional colors are based on Nordic Colors and KDE Nordic Theme [[https://www.nordtheme.com/][An arctic, north-bluish color palette]].
 
-** [[https://github.com/raven2cz/polybar-config][Polybar-config]]
-Polybar configuration with patched and improved modules for Awesome, i3 and XFCE4. Base design fits to MX-Linux (Debian Stable) and Arch Distros.
+* Guide and Installation
+AwesomeWM walkthrough and installation instructions are part of [[https://www.youtube.com/user/tondafischer/playlists][Tux: Linux World Series]]. The series was primarily created for czech community. There were several requests from other communities for translation. AwesomeWM is part of translated episodes.
++ [[https://www.youtube.com/user/tondafischer/playlists][YouTube Series - Tux: Linux World Series]] - Complete introduction to Arch Linux and GNU/Linux for newbies and advanced users.
++ [[https://github.com/raven2cz/tux][Tux: Linux World Documentation]] - Documentation and guides step by step for Tux Series.
++ [[https://youtu.be/gPJQzUnSRxI][AwesomeWM Basics]] - Fundamental installation, default themes and keybindings. Lua and main principles about AW.
++ [[https://youtu.be/gh6h9DvUJRI][AwesomeWM Ricins 1/2]] - Advanced configuration and installation of demo project Multicolor Theme. Architecture Design and top-bottom guide.
++ [[https://youtu.be/1dNNwsOx6hU][AwesomeWM Demo Project and Keybindings]] - The demonstration project with full demo of advanced features and ergonomic keybidnings for advanced users.
 
-** [[https://github.com/raven2cz/emacs][Doom-Emacs-config]]
-This is my personal Doom Emacs config. Doom Emacs is a distribution of Emacs that uses the “evil” keybindings (Vim keybindings) and includes a number of nice extensions and a bit of configuration out of the box. I am maintaining this config not just for myself, but also for those that want to explore some of what is possible with Emacs :penguin:.
-
-** [[https://github.com/raven2cz/neovim][Neovim-config]]
-Raw configuration of Neovim 5 with complete Lua plugins and configuration. The project is very raw and it needs time. Neovim is hyperextensible Vim-based text editor.
-
-** [[https://github.com/raven2cz/xfce-config][Xfce4-config]]
-Welcome to my Trading Room! My popular configuration for xfce4 for Arch and MX-Linux distributions. Xfce is a lightweight desktop environment for UNIX-like operating systems. It aims to be fast and low on system resources, while still being visually appealing and user friendly.
-
-** [[https://github.com/raven2cz/qtile-config][Qtile-config]]
-Qtile is a full-featured, hackable tiling window manager written and configured in Python. My inherited configuration from Arco Linux is attached and changed to my Arch Linux env.
-
-** [[https://github.com/raven2cz/i3-config][i3-config]]
-i3 is a tiling window manager, completely written from scratch. The target platforms are GNU/Linux and BSD operating systems, our code is Free and Open Source Software (FOSS) under the BSD license. i3 is primarily targeted at advanced users and developers. Based upon the experiences we made when wanting to hack/fix wmii. Other description is included in my main ~config~ file.
-
-** [[https://github.com/raven2cz/openbox-config][openbox-config]]
-Openbox is a highly configurable window manager with extensive standards support. The ~*box~ visual style is well known for its minimalistic appearance. Openbox uses the ~*box~ visual style, while providing a greater number of options for theme developers than previous *box implementations. The theme documentation describes the full range of options found in Openbox themes.
-
-* Applications
-** Shells and Terminals
-*** Shells
-#+html: <p align="center"><img src=".screenshots/fish-logo.png" /></p>
-The configured are ~ZSH~ and ~Fish~. The ZSH was configured ~powerlevel10k~. But I'm using Fish now. The ZSH is connected with Fish inside ~.zshrc~. The full configuration of Fish is inside file ~$HOME/fish/config.fish~. The *fisher plugin manager* is used for fish configuration, because I'm Fischer :penguin:.
-
-*** Terminals
-#+html: <p align="center"><img src=".screenshots/kitty.png" /></p>
-~Alacritty~ and ~Kitty~ are used.
-
-**** Colorscripts Installation
-The colorscripts have to be installed: [[https://github.com/laughedelic/fish_logo][fish-logo]], [[https://gitlab.com/dwt1/shell-color-scripts][DT-colorscripts]], [[https://gitlab.com/phoneybadger/pokemon-colorscripts][Pokemon-coloscripts]].
-
-** Ranger Configuration
-Ranger is configured in ~$HOME/.config/ranger~ with plugins. Ranger is using ~ueberzug~ which has to be installed with python or from aur.
-
-** Rofi Configuration
-Rofi my several themes are attached in the ~.root~ folder. All directories and files in this folder has to be copied to the real ~/~ appropriate folders. You will understand after look...
-
-** XMENU Configuration
-Xmenu configuration is attached to the ~$HOME/xmenu~. The project is [[https://github.com/phillbush/xmenu][phillbush/xmenu]]. It is very great project, installation is described in the github project. Check youtube records with xmenu for more details.
-
-** Pass - The Standard Unix Password Manager
-Pass is configured in private repo. There are usage of passFF and other browser plugins...
-
-* Public Wallpapers
-Public wallpapers are provided by github project [[https://github.com/raven2cz/public-wallpapers][Public-Wallpapers]]. The wallpapers are used for other my projects and dotfiles.
-
-The dirtory or symlink has to created to ~$HOME/Pictures/wallpapers/public-wallpapers~. I'm using symlink for whole ~$HOME/Pictures~ mapped to cloud repository.
-
-* Global-colorscheme script
-Provided by github repo: https://github.com/raven2cz/global-colorscheme
-Dynamic color scheme change of all supported applications in the system.
-
-* Rofi-Themes GitHub Project in github
-Provided by github repo: https://github.com/raven2cz/rofi-themes
-Rofi themes implementations for all best actual color schemes.
-
-* Dotfiles Repository Administration Support
-No extra tooling, no symlinks, files are tracked on a version control system, you can use *different branches for different computers*, you can replicate you configuration easily on new installation.
-
-The technique consists in storing a *Git bare repository* in a "side" folder (like ~$HOME/.dotfiles~) using a specially crafted ~alias~ so that commands are run against that repository and _not the usual .git local folder_, which would interfere with any other Git repositories around. Based on article https://www.atlassian.com/git/tutorials/dotfiles
-
-** Define GIT Bare Repository.
-This ~dotfiles~ project is defined as _git bare repository_. You can ensure your dotfiles by similar way.
-See the usage concept.
-In this case, the git bare repository is cloned to the ~$HOME/.dotfiles~ and the existing files which
-are already included in the bare are moved to the ~$HOME/.config-backup~ directory.
-After it, all config files are checkout to correct places in your ~$HOME~ directory and synch with this repo.
-You can make similar approach with your dotfiles.
-
-#+BEGIN_SRC bash
-git clone --bare git@github.com:raven2cz/dotfiles.git $HOME/.dotfiles
-function config {
-   /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
-}
-mkdir -p .config-backup
-config checkout
-if [ $? = 0 ]; then
-  echo "Checked out config.";
-  else
-    echo "Backing up pre-existing dotfiles.";
-    config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
-fi;
-config checkout
-config config status.showUntrackedFiles no
-#+END_SRC
-
-For your shell, you can use *alias*. Basic usage is following:
-#+BEGIN_SRC bash
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-config config --local status.showUntrackedFiles no
-
-config status
-config add .xinitrc
-config commit -m "Add xinitrc"
-config add .bashrc
-config commit -m "Add bashrc"
-config push
-#+END_SRC
-
-** Update dependency git subtrees projects.
-Git subtree lets you nest one repository inside another as a sub-directory. It is one of several ways Git projects can manage project dependencies.
-
-Why you may want to consider git subtree
-
-+ Management of a simple workflow is easy.
-+ Older version of Git are supported (even older than v1.5.2).
-+ The sub-project’s code is available right after the clone of the super project is done.
-+ git subtree does not require users of your repository to learn anything new. They can ignore the fact that you are using git subtree to manage dependencies.
-+ git subtree does not add new metadata files like git submodule does (i.e., .gitmodule).
-+ Contents of the module can be modified without having a separate repository copy of the dependency somewhere else.
-
-The idea is based on this article https://www.atlassian.com/git/tutorials/git-subtree
-
-*** Dotfiles project dependencies based on github subtrees
-
-The ~dotfiles~ project is union of the github configuration projects. Each configuration is separated git subtree. The dotfiles project is automatically merged.
-
-Just for information, updates/initial scripts are placed in ~$HOME/bin~ directory.
-
-~$HOME/bin/init-git-subtrees-dotfiles.sh~
-
-~$HOME/bin/pull-git-subtrees-dotfiles.sh~
+* Dependencies
++ AwesomeWm git-master branch
++ picom standard version (no blur)
++ fonts: Hack Nerd Font, Iosevka Nerd Font, mononoki Nerd Font, TerminessTTFNerdFontMono
++ git subtrees projects included in ~pull-git-subtrees-awesome-config.sh~ script
++ Global-colorscheme script frpm my github repo: https://github.com/raven2cz/global-colorscheme
++ public-wallpapers are in github repo: https://github.com/raven2cz/public-wallpapers
++ rofi-themes in github repo: https://github.com/raven2cz/rofi-themes
 
 #+BEGIN_SRC bash
 #!/bin/bash
-function config {
-   /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
-}
-
-config subtree pull --prefix .config/awesome git@github.com:raven2cz/awesomewm-config.git master --squash
+git subtree pull --prefix awesome-wm-widgets git@github.com:streetturtle/awesome-wm-widgets.git master --squash
+git subtree pull --prefix cyclefocus git@github.com:blueyed/awesome-cyclefocus.git master --squash
+git subtree pull --prefix lain git@github.com:lcpz/lain.git master --squash
+git subtree pull --prefix layout-machi git@github.com:xinhaoyuan/layout-machi.git master --squash
+git subtree pull --prefix machina git@github.com:basaran/awesomewm-machina.git master --squash
+git subtree pull --prefix nice git@github.com:mut-ex/awesome-wm-nice.git master --squash
+git subtree pull --prefix sharedtags git@github.com:Drauthius/awesome-sharedtags.git v4.0 --squash
 #+END_SRC
 
-* License
-The files and scripts in this repository are licensed under the MIT License, which is a very permissive license allowing you to use, modify, copy, distribute, sell, give away, etc. the software. In other words, do what you want with it. The only requirement with the MIT License is that the license and copyright notice must be provided with the software.
+* Features
++ treetile layout (fixed) from branch [[https://github.com/alfunx/awesome-treetile][alfunx/awesome-treetile]] - thanks Alfunx your fixes are awesome!
++ machi layout from orig master [[https://github.com/xinhaoyuan/layout-machi][xinhaoyuan/layout-machi]] - thanks Xinhaoyuan your layout is best!
++ lain layouts+basic-widgets from orig master (standard usage of lain awesome project) [[https://github.com/lcpz/lain][lcpz/lain]] - standard is still good :grinning:
++ awesome-wm-widgets from streetturtle orig master (wheater, spotify used) [[https://github.com/streetturtle/awesome-wm-widgets][streetturtle/awesome-wm-widgets]]
++ Shell Color Scripts and MANY advices from Derek Taylor [[https://gitlab.com/dwt1/shell-color-scripts][Shell Color Scripts]] - Derek your youtube channel is awesome, thanks a lot!
++ *my new widgets for Ryzen processors and AMD Radeons graphic cards temperatures* (add to the lain widget folder)
++ *change wallpapers for last active tag (if more tag selected, the last id is taken)*
++ *random selection wallpaper for N.tag* - possibility to use word "random" for each tag and use new tables with random wallpapers. It is changed by tag switch.
++ sophisticated keybindings for extension of lain and machi layouts. *Many keybindings tricks* for quick work. See keybindings help.
++ *configured notification center* - notifications are configured and linked. In actual case, the history is stored to the naughty_history file.
++ *notification center component* - notification center lua component is added according to original code creator: [[https://github.com/JavaCafe01/dotfiles][JavaCafe01/dotfiles]] Your style is great. Notify center is best!
++ *Nice Titlebars component* - Nice wonderful titlebar component with many features added. Creator: [[https://github.com/mut-ex/awesome-wm-nice][mut-ex/awesome-wm-nice]]
++ i3lock-blur for locking and suspend session.
++ optimized for hidpi (4k) monitors.
++ dynamic color schemes changes (15 best color schemes supported)
++ notification portraits
++ user, color scheme swap wallpapers
++ rofi-themes - support dynamic change for all implemented color schemes (see link rofi-themes in dependencies chapter)
++ image collage feature - integrate image collage to each tag as part of wallpaper with dynamic toggling images
 
-The configuration files are added in ~LICENSE~ (Antonin Fischer (raven2cz) repository), and ~LICENSE-DT~ (inherited several files from Derek Taylor). Other projects and licenses are added as *git subtrees*. Each git subtree is attached as whole git project with appropariate ~README.md and License descriptions~ inside of specific folder.
+* Multicolor Theme Screenshot
+[[images/awesome-multicolor-monokai_pro.jpg]]
+[[images/awesome-multicolor-theme.jpg]]
+[[images/collage-aw-lua-travel-enjoy-job-desktop.jpg]]
+
+* 80s OneDark Theme Screenshots
+[[images/one-dark-80s-1.jpg]]
+[[images/one-dark-80s-2.jpg]]
+
+* Amazing Theme Screenshots
+[[images/awesome-amazing-1.jpg]]
+[[images/awesome-amazing-2.jpg]]
+
+* Videos - see AwesomeWM in action
+
+[[https://youtu.be/-Fo7mB6_Wtg][http://i3.ytimg.com/vi/-Fo7mB6_Wtg/hqdefault.jpg]]
+
+[[https://youtu.be/1nyB85CiJUc][http://i3.ytimg.com/vi/1nyB85CiJUc/hqdefault.jpg]]
+
+[[https://youtu.be/SNJOeR7mxCI][https://i3.ytimg.com/vi/SNJOeR7mxCI/maxresdefault.jpg]]
+
+[[https://youtu.be/QgjHP6Ju56k][https://i3.ytimg.com/vi/QgjHP6Ju56k/maxresdefault.jpg]]
+
+[[https://www.youtube.com/watch?v=YwvnJqN5s90][https://img.youtube.com/vi/YwvnJqN5s90/0.jpg]]
+
+[[https://youtu.be/Z0muY_lfFZU][images/youtube-machi-layout-hidden-feature.jpg]]

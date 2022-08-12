@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-dest=${1:-cs}
-notify-send --icon=info "$(xsel -o)" "$(xsel -o | trans -b -t $dest)"
-if [[ $2 == "tts" ]]
-then
-  xsel -o | trans -b -p -t $dest
-fi
