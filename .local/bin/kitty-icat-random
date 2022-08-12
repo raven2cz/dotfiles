@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+colorscheme=$(<$HOME/.colorscheme)
+if [[ $TERM == "xterm-kitty" ]]
+then
+    dirname=$HOME/Pictures/wallpapers/public-wallpapers/portrait/$colorscheme/
+    portrait=$(find $dirname -type f | shuf -n 1)
+    convert "$portrait" -resize 350 /tmp/kitty-greeting
+    # possibility to add cowsay with lolcat, generate image
+    #fortune | cowsay -f $(ls /usr/share/cows/ | shuf -n1) | lolcat -f --freq=0.5 | textimg -o /tmp/cowsay.png
+    #convert +append /tmp/kitty-greeting /tmp/cowsay.png /tmp/kitty-greeting-fortune
+    fortune -s | lolcat -f --freq=0.5
+    kitty +kitten icat --align left /tmp/kitty-greeting
+fi

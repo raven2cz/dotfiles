@@ -1,0 +1,36 @@
+/**
+ * ROFI Doom One Color Theme
+ *  _ __ __ ___   _____ _ __
+ * | '__/ _` \ \ / / _ \ '_  \  Antonin Fischer (raven2cz)
+ * | | | (_| |\ V /  __/ | | |  https://arch-linux.cz/
+ * |_|  \__,_| \_/ \___|_| |_|  https://github.com/raven2cz
+ *
+ * Date: 2022/01
+ * MIT License
+ */
+* {
+    base00: #282c3470; //# ////
+    base02: #23272e70; //# //
+    base01: #1c1f24; //# //-
+    base03: #3f444a; //# -
+    base04: #73797e; //# +
+    base05: #9ca0a4; //# ++
+    base06: #bbc2cf; //# +++
+    base07: #E6E6E6; //# ++++
+    base08: #ff6c6b; //# red
+    base09: #da8548; //# orange
+    base0A: #ECBE7B; //# yellow
+    base0B: #98be65; //# green
+    base0C: #46D9FF; //# cyan
+    base0D: #51afef; //# blue
+    base0E: #c678dd; //# purple
+    base0F: #5699AF; //# brown
+}
+
+@import "multicolor-mapping.rasi"
+
+* {
+  bordercolor: @base03;
+}
+
+@import "multicolor-common.rasi"

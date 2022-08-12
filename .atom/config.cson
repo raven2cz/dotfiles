@@ -1,0 +1,36 @@
+"*":
+  "atom-beautify":
+    general:
+      _analyticsUserId: "dc89a801-0dbd-44bc-a54e-df1fa06c5a5c"
+  core:
+    disabledPackages: [
+      "atom-format-lua"
+      "language-lua-plus"
+      "linter-luacheck"
+    ]
+    telemetryConsent: "limited"
+    themes: [
+      "dracula-ui"
+      "dracula-pro"
+    ]
+  editor:
+    fontFamily: "Hack Nerd Font"
+    fontSize: 15
+  "exception-reporting":
+    userId: "7309e6f6-93ab-402d-ae89-cb40cd55a797"
+  "gruvbox-plus-syntax":
+    contrast: "Soft"
+  "linter-lua":
+    executablePath: "/usr/bin/luac"
+  "linter-ui-default":
+    panelHeight: 311.20001220703125
+  minimap:
+    plugins:
+      bookmarks: true
+      bookmarksDecorationsZIndex: 0
+      cursorline: true
+      cursorlineDecorationsZIndex: 0
+  "tree-view":
+    hideVcsIgnoredFiles: true
+  welcome:
+    showOnStartup: false
