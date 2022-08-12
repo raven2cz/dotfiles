@@ -150,7 +150,11 @@ config add .xinitrc
 config commit -m "Add xinitrc"
 config add .bashrc
 config commit -m "Add bashrc"
+# change more already commited files, add all updated, do NOT use --all
+config add -u
+config commit -m "details"
 config push
+
 #+END_SRC
 
 ** Update dependency git subtrees projects.
