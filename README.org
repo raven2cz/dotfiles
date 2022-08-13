@@ -12,7 +12,7 @@
 
 #+HTML:<div align=center>
 
-* Fishlive's AwesomeWM Config
+* Raven2cz's AwesomeWM Config
 
 [[https://github.com/awesomeWM/awesome][file:https://img.shields.io/badge/AwesomeWM-git-blue.svg?logo=lua]] [[LICENSE][https://img.shields.io/badge/License-MIT-yellow.svg]]
 
@@ -25,6 +25,9 @@ Welcome to my AwesomeWM configuration files! My system is managed by Git Subtree
 AwesomeWM is a highly configurable by LUA, next generation framework window manager for X. It is very fast, extensible and licensed under the ~GNU GPLv2~ license.
 
 It is primarily targeted at power users, developers and any people dealing with every day computing tasks and who wants to have fine-grained control on their graphical environment.
+
+* AwesomeWM Trailer
+[[https://youtu.be/4KKdbwZ8GQ4][images/awesome-trailer.jpg]]
 
 * TABLE OF CONTENTS :toc:
 - [[#fishlives-awesomewm-config][Fishlive's AwesomeWM Config]]
@@ -44,8 +47,11 @@ It is primarily targeted at power users, developers and any people dealing with 
 AwesomeWM [git-master] configuration with new *Multicolor Theme*, *80s DarkOne Theme* and *Amazing Theme*.
 
 ** Multicolor Theme
-The multicolor theme brings 15 best colorschemes today! 13 dark and soft, 2 light themes. You can find here nord, doom_one, tomorrow_night, palenight, dracula, dark one etc. The system binds together special lua script which change the additional applications together: kitty, alacritty (and planned next). In the public-wallpaper packages are downloaded prepared 50 wallpapers depended on the selected color scheme. Last important change is notification support with portraits with appropriate color scheme too.
-All color scheme are applied on-the-fly without restart station, you just select appropriate color scheme and whole WM, wallpapers and other apps are changed. The wallpapers can be swap for appropriate color scheme by super+alt+C forward, super+ctrl+C backward and color scheme table is shown by super+c.
+The multicolor theme brings 15 best colorschemes today! 13 dark and soft, 2 light themes. You can find here ~nord~, ~doom_one~, ~tomorrow_night~, ~palenight~, ~dracula~, ~dark one~ etc. The system binds together special lua script which change the additional applications together: ~kitty~, ~alacritty~ (and planned next). In the ~public-wallpaper~ packages are downloaded prepared 50 wallpapers depended on the selected color scheme. Last important change is notification support with portraits with appropriate color scheme and image collages too.
+
+All color scheme are applied on-the-fly without restart station, you just select appropriate color scheme and whole WM, wallpapers and other apps are changed. The wallpapers can be swap for appropriate color scheme by ~super+alt+C~ forward, ~super+ctrl+C~ backward and color scheme table is shown by ~super+c~.
+
+Tiling and Tab window support. Introduction is provided by youtube video series and trailer, see links in the bottom of this article.
 
 ** 80s OneDark Theme
 The theme is focused to Atom colors and 80s pastel color schemes. New complex configuration of main panel with many features and additional modifications of conky, xmenu, rofi and alacritty settings.
@@ -71,6 +77,7 @@ AwesomeWM walkthrough and installation instructions are part of [[https://www.yo
 + public-wallpapers are in github repo: https://github.com/raven2cz/public-wallpapers
 + rofi-themes in github repo: https://github.com/raven2cz/rofi-themes
 
+These dependencies are automatically checkout with this project:
 #+BEGIN_SRC bash
 #!/bin/bash
 git subtree pull --prefix awesome-wm-widgets git@github.com:streetturtle/awesome-wm-widgets.git master --squash
@@ -101,7 +108,12 @@ git subtree pull --prefix sharedtags git@github.com:Drauthius/awesome-sharedtags
 + notification portraits
 + user, color scheme swap wallpapers
 + rofi-themes - support dynamic change for all implemented color schemes (see link rofi-themes in dependencies chapter)
-+ image collage feature - integrate image collage to each tag as part of wallpaper with dynamic toggling images
++ bling - supports for tab views similar as i3 tabbing support
++ *image collage feature* - integrate image collage to each tag as part of wallpaper with dynamic toggling images
+
+* Keybindings Overview
+[[images/keybinding1.png]]
+[[images/keybinding2.png]]
 
 * Multicolor Theme Screenshot
 [[images/awesome-multicolor-monokai_pro.jpg]]
