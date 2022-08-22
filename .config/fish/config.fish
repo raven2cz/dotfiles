@@ -10,7 +10,7 @@
 # First line removes the path; second line sets it.  Without the first line,
 # your path gets massive and fish becomes very slow.
 set -e fish_user_paths
-set -U fish_user_paths $HOME/.local/bin $HOME/bin $HOME/go/bin $HOME/Applications $fish_user_paths
+set -U fish_user_paths $HOME/.local/bin $HOME/bin $HOME/org/notable/bin $HOME/go/bin $HOME/Applications $fish_user_paths
 set -U fzf_preview_file_cmd __fzf_preview_file_content # specific function for extended preview visualization
 
 ### EXPORT ###
