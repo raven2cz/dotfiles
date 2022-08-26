@@ -128,7 +128,7 @@ ${top name 6}${goto 115}${top pid 6}${goto 160}${top cpu 6}${goto 205}${top mem 
 ${color1}${voffset 2}${hr 1}${voffset 5}
 ${color1}User:${color}${alignr}${execi 1200 whoami}@${nodename}
 ${color1}Kernel:$color${alignr}${kernel}$color
-${color1}Updates:$color${alignr}${execi 600 checkupdates+aur | wc -l}$color
+${color1}Updates:$color${alignr}${execi 600 checkupdates+aur | awk 'END { print (NR == 0 ? "Up to date" : NR " package" (NR > 1 ? "s" : "")); }'}$color
 $font$alignr${execi 10000 awk -F= '/TION/ {print $2}' /etc/lsb-release |sed 's/"//g'} \
 ${execi 10000 awk -F= '/EASE=/ {printf $2" "} /NAME/ {print $2}' /etc/lsb-release}
 #----------------------------------------------------------------------------------------------------------------------------------------
