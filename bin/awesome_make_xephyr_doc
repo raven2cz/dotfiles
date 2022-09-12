@@ -1,7 +1,0 @@
-#!/bin/bash
-# test local install AwesomeWM with xephyr and show compiled ldocs
-
-firefox /usr/local/share/doc/awesome/doc/index.html
-cp /usr/local/etc/xdg/awesome/rc.lua $HOME/.config/awesome/rc-default-local.lua
-Xephyr :1 -ac -br -noreset -screen 1980x1024 &
-env DISPLAY=:1 /usr/local/bin/awesome -c $HOME/.config/awesome/rc-default-local.lua

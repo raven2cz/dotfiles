@@ -1,6 +1,0 @@
-[Desktop Entry]
-Name=xinitrc-openbox
-Comment=Executes the .xinitrc script in your home directory
-Exec=xinitrcsession-helper-openbox
-TryExec=xinitrcsession-helper-openbox
-Type=Application

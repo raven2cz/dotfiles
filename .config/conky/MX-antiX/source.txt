@@ -1,1 +1,0 @@
-https://github.com/antiX-Linux/desktop-defaults-core/blob/master/skel/.conkyrc

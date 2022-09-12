@@ -1,5 +1,0 @@
-{
-    "yaml.schemas": {
-        "https://raw.githubusercontent.com/ansible-community/schemas/main/f/ansible-inventory.json": "file:///home/box/ansible/home/inventory.yaml"
-    }
-}
