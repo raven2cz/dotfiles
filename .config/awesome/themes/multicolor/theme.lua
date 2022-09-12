@@ -254,7 +254,7 @@ wboxColor = theme.baseColors[6]
 local tempicon = wibox.widget.textbox();
 tempicon:set_markup(markup.fontfg(theme.font_larger, wboxColor, ""))
 local myWeather = weather_widget({
-  api_key='7df2ce22b859742524de7ab6c97a352d', --fill your API KEY
+  api_key='73bdc699681020eec7bebe7508296b27', --fill your API KEY
   coordinates = { 49.261749, 13.903450 }, -- fill your coords
   font_name = 'Carter One',
   show_hourly_forecast = true,
@@ -623,7 +623,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
           bg                  = theme.bg_urgent,
           fg                  = theme.fg_normal,
           margin              = dpi(16),
-          icon_size           = dpi(64),
+          icon_size           = dpi(360),
           position            = 'top_middle',
           implicit_timeout    = 0
         }

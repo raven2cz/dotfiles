@@ -1,6 +1,7 @@
 [user]
 	name = Antonin Fischer
     email = antonin.fischer@firma.seznam.cz
+    #email = tonda.fischer@gmail.com
 [pull]
     rebase = true
 [push]

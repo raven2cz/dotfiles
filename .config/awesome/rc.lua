@@ -692,6 +692,19 @@ client.connect_signal("property::position", function(c)
 ruled.client.connect_signal("request::rules", function()
     -- All clients will match this rule.
     ruled.client.append_rule {
+        id         = "floating",
+        rule_any = {
+            name = { "Ulauncher - Application Launcher" },
+        },
+        properties = {
+            focus     = awful.client.focus.filter,
+            raise     = true,
+            screen    = awful.screen.preferred,
+            border_width = 0,
+        }
+    }
+
+    ruled.client.append_rule {
         id         = "global",
         rule       = { },
         properties = {
@@ -796,7 +809,7 @@ end)
 -- {{{ Titlebars
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
 client.connect_signal("request::titlebars", function(c)
-    -- buttons for the titlebar
+    --buttons for the titlebar
     -- local buttons = {
     --     awful.button({ }, 1, function()
     --         c:activate { context = "titlebar", action = "mouse_move"  }
@@ -805,7 +818,7 @@ client.connect_signal("request::titlebars", function(c)
     --         c:activate { context = "titlebar", action = "mouse_resize"}
     --     end),
     -- }
-    --
+    
     -- awful.titlebar(c).widget = {
     --     { -- Left
     --         awful.titlebar.widget.iconwidget(c),
