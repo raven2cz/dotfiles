@@ -571,7 +571,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
         separator,
         todo_widget(),
         separator,
-        battery_widget(),
+        --battery_widget(),
         systray,
         separator,
         keyboardWibox,
