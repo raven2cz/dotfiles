@@ -349,7 +349,6 @@ awful.keyboard.append_global_keybindings({
 
 -- General Awesome keys
 awful.keyboard.append_global_keybindings({
-
     awful.key({ modkey, ctrlkey }, "s", hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey }, "w", function () xmenu() end,
@@ -359,9 +358,11 @@ awful.keyboard.append_global_keybindings({
     awful.key({ modkey }, "c", function () beautiful.menu_colorschemes_create():toggle() end,
               {description = "show colorschemes menu", group = "awesome"}),
     awful.key({ modkey }, "x", function () beautiful.menu_portrait_create():toggle() end,
-              {description = "show portrait menu for love tag", group = "awesome"}),              
+              {description = "show portrait menu for love tag", group = "awesome"}),
     awful.key({ modkey }, "a", function () awful.spawn("clipmenu") end,
               {description = "clipboard history by rofi/clipmenud", group = "awesome"}),
+    awful.key({ modkey }, "l", function() awful.menu.client_list { theme = { width = 250 } } end,
+              {description="show client list", group="awesome"}),
     awful.key({ modkey, ctrlkey }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift" }, "q", awesome.quit,
@@ -818,7 +819,7 @@ client.connect_signal("request::titlebars", function(c)
     --         c:activate { context = "titlebar", action = "mouse_resize"}
     --     end),
     -- }
-    
+
     -- awful.titlebar(c).widget = {
     --     { -- Left
     --         awful.titlebar.widget.iconwidget(c),

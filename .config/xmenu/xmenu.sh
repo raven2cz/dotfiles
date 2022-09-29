@@ -1,12 +1,14 @@
-#!/bin/sh
+#!/bin/bash
 
 myKernel=$(uname -r)
 
-cat <<EOF | xmenu | sh &
+cat <<EOF | xmenu | bash &
 $myKernel	urxvt
 
 Shutdown		poweroff
 Reboot			reboot
+
+Update Notes	notes_sync_notif
 
 IMG:/home/box/.cache/xdg-xmenu/icons/Alacritty.png	Alacritty (Terminal)	alacritty
 IMG:/home/box/.cache/xdg-xmenu/icons/kitty.png	kitty (Terminal emulator)	kitty
