@@ -57,7 +57,9 @@ return packer.startup(function(use)
   use "nvim-lualine/lualine.nvim"
   use {
         "akinsho/toggleterm.nvim",
-        tag = 'v1.*'
+        tag = '*', config = function()
+           require("toggleterm").setup()
+        end
   }
   use "ahmedkhalf/project.nvim"
   use "lewis6991/impatient.nvim"
