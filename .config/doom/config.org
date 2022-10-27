@@ -24,6 +24,11 @@
   - [[#programming-languages-installation][Programming Languages Installation]]
   - [[#orgorg-roam-repos-synch][ORG/ORG-ROAM Repos Synch]]
 - [[#bookmarks-and-buffers][BOOKMARKS AND BUFFERS]]
+  - [[#bookmarks][Bookmarks]]
+  - [[#buffers][Buffers]]
+  - [[#global-auto-revert][Global Auto Revert]]
+  - [[#keybindings-within-ibuffer-mode][Keybindings within ibuffer mode]]
+- [[#calendar][CALENDAR]]
 - [[#centaur-tabs][CENTAUR-TABS]]
 - [[#dashboard][DASHBOARD]]
   - [[#configuring-dashboard][Configuring Dashboard]]
@@ -37,6 +42,9 @@
   - [[#ivy-posframe][IVY-POSFRAME]]
   - [[#ivy-keybindings][IVY KEYBINDINGS]]
 - [[#line-settings][LINE SETTINGS]]
+- [[#markdown][MARKDOWN]]
+- [[#minimap][MINIMAP]]
+- [[#modeline][MODELINE]]
 - [[#mouse-support][MOUSE SUPPORT]]
 - [[#main-account][MAIN ACCOUNT]]
 - [[#open-specific-files][OPEN SPECIFIC FILES]]
@@ -92,6 +100,9 @@ Doom Emacs installation please read [[https://github.com/hlissner/doom-emacs][Gi
 
 * BOOKMARKS AND BUFFERS
 Doom Emacs uses 'SPC b' for keybindings related to bookmarks and buffers.  Bookmarks are somewhat like registers in that they record positions you can jump to.  Unlike registers, they have long names, and they persist automatically from one Emacs session to the next. The prototypical use of bookmarks is to record where you were reading in various files.  Regarding /buffers/, the text you are editing in Emacs resides in an object called a /buffer/. Each time you visit a file, a buffer is used to hold the file’s text. Each time you invoke Dired, a buffer is used to hold the directory listing.
+
+** Bookmarks
+Bookmarks are somewhat like registers in that they record positions you can jump to.  Unlike registers, they have long names, and they persist automatically from one Emacs session to the next. The prototypical use of bookmarks is to record where you were reading in various files.
 
 #+BEGIN_SRC emacs-lisp
 (map! :leader
@@ -169,7 +180,7 @@ Emacs Dashboard is an extensible startup screen showing you recent files, bookma
 ** Dashboard in Emacsclient
 This setting ensures that emacsclient always opens on *dashboard* rather than *scratch*.
 #+begin_src emacs-lisp
-(setq doom-fallback-buffer "*dashboard*")
+(setq doom-fallback-buffer-name "*dashboard*")
 #+end_src
 
 
@@ -249,17 +260,17 @@ An RSS newsfeed reader for Emacs.
 * EVALUATE ELISP EXPRESSIONS
 Changing some keybindings from their defaults to better fit with Doom Emacs, and to avoid conflicts with my window managers which sometimes use the control key in their keybindings.  By default, Doom Emacs does not use 'SPC e' for anything, so I choose to use the format 'SPC e' plus 'key' for these (I also use 'SPC e' for 'eww' keybindings).
 
-| COMMAND         | DESCRIPTION                                    | KEYBINDING |
-|-----------------+------------------------------------------------+------------|
-| eval-buffer     | /Evaluate elisp in buffer/                       | SPC e b    |
-| eval-defun      | /Evaluate the defun containing or after point/   | SPC e d    |
-| eval-expression | /Evaluate an elisp expression/                   | SPC e e    |
-| eval-last-sexp  | /Evaluate elisp expression before point/         | SPC e l    |
-| eval-region     | /Evaluate elisp in region/                       | SPC e r    |
+| COMMAND         | DESCRIPTION                                  | KEYBINDING |
+|-----------------+----------------------------------------------+------------|
+| eval-buffer     | /Evaluate elisp in buffer/                     | SPC e b    |
+| eval-defun      | /Evaluate the defun containing or after point/ | SPC e d    |
+| eval-expression | /Evaluate an elisp expression/                 | SPC e e    |
+| eval-last-sexp  | /Evaluate elisp expression before point/       | SPC e l    |
+| eval-region     | /Evaluate elisp in region/                     | SPC e r    |
 
 #+Begin_src emacs-lisp
 (map! :leader
-      (:prefix ("e". "evaluate/EWW")
+      (:prefix ("e". "evaluate/ERC/EWW")
        :desc "Evaluate elisp in buffer" "b" #'eval-buffer
        :desc "Evaluate defun" "d" #'eval-defun
        :desc "Evaluate elisp expression" "e" #'eval-expression
@@ -571,7 +582,9 @@ Settings for the various shells and terminal emulators within Emacs.
       eshell-visual-commands'("bash" "fish" "htop" "ssh" "top" "zsh"))
 (map! :leader
       :desc "Eshell" "e s" #'eshell
-      :desc "Counsel eshell history" "e h" #'counsel-esh-history)
+      :desc "Eshell popup toggle" "e t" #'+eshell/toggle
+      :desc "Counsel eshell history" "e h" #'counsel-esh-history
+      :desc "Vterm popup toggle" "v t" #'+vterm/toggle)
 #+END_SRC
 
 * SPLITS
