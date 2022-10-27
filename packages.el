@@ -58,6 +58,7 @@
 (package! hyperbole)
 (package! ivy-posframe)
 (package! org-bullets)
+(package! org-web-tools)
 (package! peep-dired)
 (package! password-store)
 (package! rainbow-mode)
