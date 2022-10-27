@@ -787,11 +787,15 @@ ruled.client.connect_signal("request::rules", function()
         properties = { titlebars_enabled = true      }
     }
 
-    -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- ruled.client.append_rule {
-    --     rule       = { class = "Firefox"     },
-    --     properties = { screen = 1, tag = "2" }
-    -- }
+    -- Set Blender to always map on the tag 4 in screen 1.
+    ruled.client.append_rule {
+        rule_any    = {
+            name = {"Blender"}
+        },
+        properties = {
+            tag = screen[1].tags[4],
+        },
+    }
 end)
 
 -- }}}
@@ -800,9 +804,9 @@ end)
 
 client.connect_signal("manage", function(c)
     -- Similar behaviour as other window managers DWM, XMonad.
-    -- Master-Slave layout new clinet goes to the slave, master is kept
+    -- Master-Slave layout new client goes to the slave, master is kept
     -- If you need new slave as master press: ctrl + super + return
-    if not awesome.startup then awful.client.setslave(c) end
+    if not awesome.startup then c:to_secondary_section() end
 end)
 
 -- }}}
