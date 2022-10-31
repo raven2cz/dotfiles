@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = *
+
+[Action]
+Description = Notify system about finished upgrades.
+When = PostTransaction
+Exec = /etc/pacman.d/hooks.bin/aurupdates-notify.sh
