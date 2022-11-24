@@ -216,6 +216,8 @@ end
 function fish_greeting
     if test "$TERM" = "xterm-kitty"
         kitty-icat-random
+    else if test "$TERM_PROGRAM" = "WezTerm"
+        kitty-icat-random
     else if test (random 1 10) = 1 
         fish_logo f00 '' ff0  
     else if test (random 1 10) -gt 5
@@ -225,6 +227,11 @@ function fish_greeting
     end
 end
 
+# Docker dev environment    
+function denv_focal --description 'starts development image (devenv-focal)'
+  cd ~/src/devenv/devenv-focal
+  ./docker-run.sh devenv-focal /usr/bin/fish i
+end
 ### END OF FUNCTIONS ###
 
 
@@ -234,6 +241,9 @@ alias clear='/bin/clear; echo; echo; seq 1 (tput cols) | sort -R | spark | lolca
 
 # root privileges
 alias doas="doas --"
+
+# devenv aliases
+alias denv=denv_focal
 
 # navigation
 alias ..='cd ..'
@@ -333,15 +343,15 @@ alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
 alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
 
 # youtube-dl
-alias yta-aac="youtube-dl --extract-audio --audio-format aac "
-alias yta-best="youtube-dl --extract-audio --audio-format best "
-alias yta-flac="youtube-dl --extract-audio --audio-format flac "
-alias yta-m4a="youtube-dl --extract-audio --audio-format m4a "
-alias yta-mp3="youtube-dl --extract-audio --audio-format mp3 "
+alias yta-aac="yt-dlp --extract-audio --audio-format aac "
+alias yta-best="yt-dlp --extract-audio --audio-format best "
+alias yta-flac="yt-dlp --extract-audio --audio-format flac "
+alias yta-m4a="yt-dlp --extract-audio --audio-format m4a "
+alias yta-mp3="yt-dlp --extract-audio --audio-format mp3 "
 alias yta-opus="youtube-dl --extract-audio --audio-format opus "
-alias yta-vorbis="youtube-dl --extract-audio --audio-format vorbis "
-alias yta-wav="youtube-dl --extract-audio --audio-format wav "
-alias ytv-best="youtube-dl -f bestvideo+bestaudio "
+alias yta-vorbis="yt-dlp --extract-audio --audio-format vorbis "
+alias yta-wav="yt-dlp --extract-audio --audio-format wav "
+alias ytv-best="yt-dlp -f bestvideo+bestaudio "
 
 # switch between shells
 # I do not recommend switching default SHELL from bash.

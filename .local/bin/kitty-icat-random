@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 colorscheme=$(<$HOME/.colorscheme)
-if [[ $TERM == "xterm-kitty" ]]
+if [[ $TERM == "xterm-kitty" ]] || [[ $TERM_PROGRAM == "WezTerm" ]]
 then
     dirname=$HOME/Pictures/wallpapers/public-wallpapers/portrait/$colorscheme/
     portrait=$(find $dirname -type f | shuf -n 1)
@@ -9,5 +9,11 @@ then
     #fortune | cowsay -f $(ls /usr/share/cows/ | shuf -n1) | lolcat -f --freq=0.5 | textimg -o /tmp/cowsay.png
     #convert +append /tmp/kitty-greeting /tmp/cowsay.png /tmp/kitty-greeting-fortune
     fortune -s | lolcat -f --freq=0.5
-    kitty +kitten icat --align left /tmp/kitty-greeting
+    # choose between kitty and wezterm
+    if [[ $TERM == "xterm-kitty" ]] ; then
+        kitty +kitten icat --align left /tmp/kitty-greeting
+    fi
+    if [[ $TERM_PROGRAM == "WezTerm" ]] ; then
+        wezterm imgcat /tmp/kitty-greeting
+    fi
 fi
