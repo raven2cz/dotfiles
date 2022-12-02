@@ -20,6 +20,8 @@ export CM_LAUNCHER=rofi
 export CM_HISTLENGTH=50
 export CM_DIR=~/.config/clipmenu
 
+
+
 # Here AwesomeWM is kept as default
 session=${1:-awesome}
 
@@ -28,6 +30,7 @@ case $session in
         exec i3
         ;;
     awesome)
+        xrandr-auto.sh
         exec awesome
         ;;
     kde)

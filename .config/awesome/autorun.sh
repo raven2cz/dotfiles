@@ -7,13 +7,6 @@ function run {
   fi
 }
 
-if xrandr | grep -q 'HDMI1 connected' ; then
-    MONITOR=HDMI1
-elif xrandr | grep -q 'DP1 connected' ; then
-    MONITOR=DP1
-fi
-xrandr --output eDP1 --off --output $MONITOR --primary --dpi 120 --mode 3840x2160 --pos 0x0 --rotate normal 
-
 run /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 run /usr/lib/kactivitymanagerd
 run /usr/bin/kglobalaccel5
