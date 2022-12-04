@@ -11,6 +11,7 @@ Reboot			reboot
 Update Notes	notes_sync_notif
 
 IMG:/home/box/.cache/xdg-xmenu/icons/Alacritty.png	Alacritty (Terminal)	alacritty
+IMG:/home/box/.cache/xdg-xmenu/icons/wezterm.png	Wezterm (Terminal emulator)	wezterm
 IMG:/home/box/.cache/xdg-xmenu/icons/kitty.png	kitty (Terminal emulator)	kitty
 IMG:/home/box/.cache/xdg-xmenu/icons/utilities-terminal.png	urxvt	urxvt
 
