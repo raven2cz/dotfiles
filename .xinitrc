@@ -3,6 +3,8 @@ eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 numlockx &
 setxkbmap -layout "us,cz" -option "grp:alt_shift_toggle" -variant ",qwerty" &
+
+configure_dpi
 xrdb -merge ~/.Xresources
 #export QT_STYLE_OVERRIDE=kvantum
 export QT_QPA_PLATFORMTHEME=qt5ct
@@ -19,8 +21,6 @@ export JAVA_HOME=/usr/lib/jvm/default
 export CM_LAUNCHER=rofi
 export CM_HISTLENGTH=50
 export CM_DIR=~/.config/clipmenu
-
-
 
 # Here AwesomeWM is kept as default
 session=${1:-awesome}
