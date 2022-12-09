@@ -11,6 +11,6 @@ else
     DPI=100 
 fi
     
-export DPI 
+export DPI=$DPI 
 
 sed -i "/Xft.dpi/c\\Xft.dpi: $DPI" $HOME/.Xresources
