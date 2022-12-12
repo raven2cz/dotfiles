@@ -3,6 +3,8 @@ eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 numlockx &
 setxkbmap -layout "us,cz" -option "grp:alt_shift_toggle" -variant ",qwerty" &
+
+configure_dpi
 xrdb -merge ~/.Xresources
 
 # X11 environment variables exports
@@ -30,6 +32,7 @@ case $session in
         exec i3
         ;;
     awesome)
+        xrandr-auto.sh
         exec awesome
         ;;
     kde)

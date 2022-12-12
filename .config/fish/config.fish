@@ -229,6 +229,7 @@ end
 
 # Docker dev environment    
 function denv_focal --description 'starts development image (devenv-focal)'
+  xhost +"local:docker@" &>/dev/null  
   cd ~/src/devenv/devenv-focal
   ./docker-run.sh devenv-focal /usr/bin/fish i
 end
