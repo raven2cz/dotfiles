@@ -1,5 +1,7 @@
 #!/bin/bash
 
+[[ -z "$LAPTOP" ]] && exit
+
 dp1_connected=$(xrandr --listactivemonitors | grep ' DP-1')
 hdmi1_connected=$(xrandr --listactivemonitors | grep ' HDMI-1')
 
