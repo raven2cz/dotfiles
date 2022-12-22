@@ -15,7 +15,7 @@ IMG:/home/box/.cache/xdg-xmenu/icons/wezterm.png	Wezterm (Terminal emulator)	wez
 IMG:/home/box/.cache/xdg-xmenu/icons/kitty.png	kitty (Terminal emulator)	kitty
 IMG:/home/box/.cache/xdg-xmenu/icons/utilities-terminal.png	urxvt	urxvt
 
-IMG:/home/box/.cache/xdg-xmenu/icons/firefox.png	Firefox (Web Browser)	/usr/lib/firefox/firefox
+IMG:/home/box/.cache/xdg-xmenu/icons/firefox-developer-edition.png	Firefox (Dev Edition)	/usr/lib/firefox-developer-edition/firefox
 IMG:/home/box/.cache/xdg-xmenu/icons/krusader_user.png	Krusader (File Manager)	krusader -qwindowtitle
 IMG:/home/box/.cache/xdg-xmenu/icons/system-file-manager.png	Dolphin (File Manager)	dolphin
 IMG:/home/box/.cache/xdg-xmenu/icons/idea.png	IntelliJ IDEA Ultimate Edition	"/home/box/ide/idea-IU-203.7717.56/bin/idea.sh"
