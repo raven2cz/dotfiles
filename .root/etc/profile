@@ -26,6 +26,9 @@ append_path '/home/box/org/notable/bin'
 # Detect isLaptop
 export LAPTOP=1
 
+# API IDs
+export WEATHER_API_KEY='73bdc699681020eec7bebe7508296b27'
+
 # Force PATH to be environment
 export PATH
 
