@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "require('fishlive.status.archupdates').emit_signal()" | awesome-client
+echo "require('fishlive.signal.archupdates').emit_signal()" | awesome-client
