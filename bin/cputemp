@@ -18,7 +18,7 @@ def main():
     for zone in probes:
         temp = getcputemp(zone)
         if temp:
-            print(str(temp) + "°C")
+            print(str(temp))
             return(0)
     return(1)
 
