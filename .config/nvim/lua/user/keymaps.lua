@@ -44,6 +44,7 @@ keymap("n", "<leader><CR>", ":noh<CR>", opts)     -- clears highlights
 -- Insert --
 -- Press jk fast to enter
 keymap("i", "jk", "<ESC>", opts)
+keymap("i", "kj", "<ESC>", opts)
 
 -- Visual --
 -- Stay in indent mode
