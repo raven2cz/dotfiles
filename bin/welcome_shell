@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# arch updates - background processing
+# store updates count in background, store it to the file
+store_updates_count &
+# actual count of updates from the previous step
+result_file="/tmp/updates_count"
+# read actual state of file if exists
+if [ -f "$result_file" ]; then
+    updates=$(cat $result_file)
+else
+    updates="N/A"
+fi
+
+# get additional information
+uptime=$(uptime | awk -F'( |,|:)+' '{print $6 ":" $7}')
+datetime=$(date +"%Y-%m-%d %H:%M")
+disk_usage=$(df --output=pcent / | tail -1 | tr -d ' ')
+hostname=$(hostnamectl --static)
+
+# printout
+echo -e "\033[1;34mDatetime:\033[0m $datetime | \033[1;32mUpdates:\033[0m $updates | \033[1;35mUptime:\033[0m $uptime | \033[1;36mDisk Usage:\033[0m $disk_usage"
+
