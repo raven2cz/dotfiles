@@ -3,7 +3,7 @@ colorscheme=$(<$HOME/.portrait)
 if [[ $TERM == "xterm-kitty" ]] || [[ $TERM_PROGRAM == "WezTerm" ]]
 then
     dirname=$HOME/Pictures/wallpapers/public-wallpapers/portrait/$colorscheme/
-    portrait=$(find $dirname -type f | shuf -n 1)
+    portrait=$(find "$dirname" -type f \( -iname "*.png" -o -iname "*.jpg" \) | shuf -n 1)
     convert "$portrait" -resize 350 /tmp/kitty-greeting
     # possibility to add cowsay with lolcat, generate image
     #fortune | cowsay -f $(ls /usr/share/cows/ | shuf -n1) | lolcat -f --freq=0.5 | textimg -o /tmp/cowsay.png
