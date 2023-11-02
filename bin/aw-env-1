@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-cat <<EOF | awesome-client
-require("fishlive.helpers")
-spawn("/usr/bin/firefox", "firefox", screen[1].tags[4], "class")
-spawn("/usr/bin/kwrite", "kwrite", screen[1].tags[5], "class")
-EOF
-

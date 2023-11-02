@@ -1,6 +1,0 @@
-[Desktop Entry]
-Name=xinitrc-xfce
-Comment=Executes the .xinitrc script in your home directory
-Exec=xinitrcsession-helper-xfce
-TryExec=xinitrcsession-helper-xfce
-Type=Application

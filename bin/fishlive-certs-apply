@@ -1,6 +1,0 @@
-#!/bin/bash
-ssh pi@fishlive.org 'sudo /home/pi/bin/certs-download'
-scp pi@fishlive.org:/home/pi/cert/fishlive.org/current/cert.pem ~/certs/fishlive.org/current
-scp pi@fishlive.org:/home/pi/cert/fishlive.org/current/chain.pem ~/certs/fishlive.org/current
-scp pi@fishlive.org:/home/pi/cert/fishlive.org/current/fullchain.pem ~/certs/fishlive.org/current
-scp pi@fishlive.org:/home/pi/cert/fishlive.org/current/privkey.pem ~/certs/fishlive.org/current

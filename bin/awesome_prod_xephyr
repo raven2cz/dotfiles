@@ -1,5 +1,0 @@
-#!/bin/bash
-# Test production configuration of AwesomeWM in Xephyr (2K resolution)
-
-Xephyr :1 -ac -br -noreset -screen 2560x1440 &
-env DISPLAY=:1 awesome -c $HOME/.config/awesome/rc.lua
