@@ -1,0 +1,65 @@
+#!/bin/bash
+
+# Author: raven2cz
+# Version: 1.0
+# License: MIT
+#
+# This script starts a specified process if it's not already running.
+# It can optionally accept a process name to check if that process is running.
+# If no process name is provided, the script uses the command as the process name.
+#
+# Usage:
+#   ./script_name [-n|--name process_name] [-h|--help] command
+# Options:
+#   -n, --name    Specify the name of the process to check if it's running.
+#   -h, --help    Show this help message and exit.
+
+process_name=""
+
+show_help() {
+    awk 'NR==1 {next} /^#/{print substr($0, 3)} /^[^#]/ {exit}' "$0"
+    exit 0
+}
+
+# Parse optional arguments
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -n|--name)
+      process_name="$2"
+      shift 2
+      ;;
+    -h|--help)
+      show_help
+      ;;
+    *)
+      break
+      ;;
+  esac
+done
+
+# Command is the rest of the arguments
+command="$*"
+
+# Function to start a process
+start_process() {
+    if [ -z "$process_name" ]; then
+        echo "Process name not provided. Using command as process name."
+        process_name="$command"
+    fi
+
+    # Check if the process is running
+    if pgrep -f "$process_name" | grep -v $$ | grep -v $PPID | grep -v grep > /dev/null; then
+        echo "Process is already running."
+    else
+        echo "Starting process: $command"
+        nohup bash -c "$command" &>/dev/null &
+    fi
+}
+
+# Check if command is provided
+if [ -z "$command" ]; then
+    show_help
+else
+    start_process
+fi
+
