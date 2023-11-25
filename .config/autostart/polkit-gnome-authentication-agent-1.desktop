@@ -1,0 +1,5 @@
+[Desktop Entry]
+Exec=/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+Name=polkit-gnome-authentication-agent-1
+Type=Application
+OnlyShowIn=Awesome;

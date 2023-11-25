@@ -1,13 +1,6 @@
 [Desktop Entry]
-Encoding=UTF-8
-Version=0.9.4
+Exec=/usr/bin/picom
+Name=start_process picom --config /home/box/.config/picom/picom.conf
+Comment=a compositor for X11
 Type=Application
-Name=picom
-Comment=compositor
-Exec=picom --experimental-backends --config /home/box/.config/picom/picom.conf
-OnlyShowIn=XFCE;
-RunHook=0
-StartupNotify=false
-Terminal=false
-Hidden=false
-
+OnlyShowIn=Awesome;

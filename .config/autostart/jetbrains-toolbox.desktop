@@ -1,0 +1,15 @@
+[Desktop Entry]
+Icon=/home/box/.local/share/JetBrains/Toolbox/toolbox.svg
+Exec=/home/box/.local/share/JetBrains/Toolbox/bin/jetbrains-toolbox --minimize
+Version=1.0
+Type=Application
+Categories=Development
+Name=JetBrains Toolbox
+StartupWMClass=jetbrains-toolbox
+Terminal=false
+MimeType=x-scheme-handler/jetbrains;
+X-GNOME-Autostart-enabled=true
+StartupNotify=false
+X-GNOME-Autostart-Delay=10
+X-MATE-Autostart-Delay=10
+X-KDE-autostart-after=panel

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Exec=start_process '[[ -z "$LAPTOP" ]] && mpv --no-video ~/.config/awesome/fishlive/sounds/startup-snd-1.mp3'
+Name=mpv
+Comment=a media player
+Type=Application
+OnlyShowIn=Awesome;

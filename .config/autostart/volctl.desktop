@@ -1,0 +1,5 @@
+[Desktop Entry]
+Exec=start_process volctl
+Name=volctl
+Type=Application
+OnlyShowIn=Awesome

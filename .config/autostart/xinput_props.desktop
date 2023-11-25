@@ -1,0 +1,6 @@
+[Desktop Entry]
+Exec=start_process '[[ ! -z "$LAPTOP" ]] && xinput set-prop 19 325 1.0'
+Name=mpv
+Comment=a media player
+Type=Application
+OnlyShowIn=Awesome;

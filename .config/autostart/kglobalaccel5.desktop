@@ -1,0 +1,5 @@
+[Desktop Entry]
+Exec=/usr/bin/kglobalaccel5
+Name=kglobalaccel5
+Type=Application
+OnlyShowIn=Awesome;

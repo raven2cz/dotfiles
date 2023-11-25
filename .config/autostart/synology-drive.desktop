@@ -1,0 +1,5 @@
+[Desktop Entry]
+Exec=start_process -n cloud-drive-ui synology-drive start
+Name=synology-drive
+Type=Application
+OnlyShownIn=Awesome;
