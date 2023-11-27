@@ -1,6 +1,6 @@
 [Desktop Entry]
-Exec=/usr/bin/picom
-Name=start_process picom --config /home/box/.config/picom/picom.conf
+Name=picom
+Exec=start_process picom --config /home/box/.config/picom/picom.conf
 Comment=a compositor for X11
 Type=Application
 OnlyShowIn=Awesome;
