@@ -31,4 +31,5 @@ Name[zh_TW]=Xfce 通知常駐程式
 Name=Xfce Notification Daemon
 Exec=sh -c "systemctl --user start xfce4-notifyd.service 2>/dev/null || exec /usr/lib/xfce4/notifyd/xfce4-notifyd"
 Icon=org.xfce.notification
-OnlyShowIn=XFCE;
+OnlyShowIn=XFCE
+NotShowIn=Awesome;KDE;GNOME
