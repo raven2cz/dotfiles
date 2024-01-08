@@ -1,0 +1,70 @@
+#!/bin/bash
+
+# Display Switcher Script
+#
+# This script allows switching between internal and external displays and 
+# restarts AwesomeWM to apply the changes.
+#
+# Usage:
+#   ./display-switch [internal|external|-h|--help]
+#
+# Arguments:
+#   internal - Switch to the internal display.
+#   external - Switch to the external display.
+#   -h, --help - Display this help message.
+
+# Function to switch to the internal display
+switch_to_internal() {
+    xrandr --output eDP-1 --auto --primary && xrandr --output HDMI-1 --off
+    wait_for_xrandr && restart_awesome
+}
+
+# Function to switch to the external display
+switch_to_external() {
+    xrandr --output HDMI-1 --dpi 120 --mode 3840x2160 --primary && xrandr --output eDP-1 --off
+    wait_for_xrandr && restart_awesome
+}
+
+# Function to restart AwesomeWM
+restart_awesome() {
+    echo 'awesome.restart()' | awesome-client
+}
+
+# Function to wait for xrandr to complete and check if it was successful
+wait_for_xrandr() {
+    sleep 2 # Wait for 2 seconds for xrandr to apply changes
+    if [ $? -eq 0 ]; then
+        return 0 # xrandr was successful
+    else
+        echo "xrandr failed to apply changes."
+        return 1 # xrandr failed
+    fi
+}
+
+# Help message
+show_help() {
+    echo "Usage: $0 [internal|external|-h|--help]"
+    echo
+    echo "Options:"
+    echo "  internal    Switch to the internal display."
+    echo "  external    Switch to the external display."
+    echo "  -h, --help  Show this help message."
+}
+
+# Script logic
+case "$1" in
+    internal)
+        switch_to_internal
+        ;;
+    external)
+        switch_to_external
+        ;;
+    -h|--help)
+        show_help
+        ;;
+    *)
+        echo "Invalid argument: $1"
+        show_help
+        ;;
+esac
+
