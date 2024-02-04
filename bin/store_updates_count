@@ -1,6 +1,6 @@
 #!/bin/bash
 
 result_file="/tmp/updates_count"
-updates=$(checkupdates+aur 2>/dev/null | wc -l)
+updates=$(checkupdates-with-aur 2>/dev/null | wc -l)
 echo "$updates" > $result_file
 
