@@ -15,14 +15,27 @@
 
 # Function to switch to the internal display
 switch_to_internal() {
-    xrandr --output eDP-1 --auto --primary && xrandr --output HDMI-1 --off
+    xrandr --output eDP-1 --auto --primary && xrandr --output HDMI-1 --off && xrandr --output DP-1 --off
     wait_for_xrandr && restart_awesome
 }
 
 # Function to switch to the external display
 switch_to_external() {
-    xrandr --output HDMI-1 --dpi 120 --mode 3840x2160 --primary && xrandr --output eDP-1 --off
-    wait_for_xrandr && restart_awesome
+    local external_displays=(HDMI-1 DP-1) # List of possible external displays
+    local available_displays=$(xrandr | grep ' connected' | awk '{ print $1 }' | grep -E 'HDMI-1|DP-1')
+
+    # Check for available external displays
+    for display in "${external_displays[@]}"; do
+        if [[ $available_displays == *"$display"* ]]; then
+            echo "Switching to external display: $display"
+            xrandr --output "$display" --dpi 120 --mode 3840x2160 --primary
+            xrandr --output eDP-1 --off
+            wait_for_xrandr && restart_awesome
+            return
+        fi
+    done
+
+    echo "No external display found."
 }
 
 # Function to restart AwesomeWM

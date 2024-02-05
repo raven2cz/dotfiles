@@ -21,7 +21,7 @@ export JAVA_HOME=/usr/lib/jvm/default
 
 # clipmenu rofi support
 export CM_LAUNCHER=rofi
-export CM_HISTLENGTH=50
+export CM_HISTLENGTH=30
 export CM_DIR=~/.config/clipmenu
 
 # Here AwesomeWM is kept as default
