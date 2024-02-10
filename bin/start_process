@@ -1,20 +1,24 @@
 #!/bin/bash
 
 # Author: raven2cz
-# Version: 1.0
+# Version: 1.2
 # License: MIT
 #
-# This script starts a specified process if it's not already running.
-# It can optionally accept a process name to check if that process is running.
+# This script starts a specified process if it's not already running and retries up to 3 times with a delay if the process fails to start.
+# It can optionally accept a process name to check if that process is running and a flag to disable retries.
 # If no process name is provided, the script uses the command as the process name.
 #
 # Usage:
-#   ./script_name [-n|--name process_name] [-h|--help] command
+#   ./script_name [-n|--name process_name] [-r|--no-retry] [-h|--help] command
 # Options:
-#   -n, --name    Specify the name of the process to check if it's running.
-#   -h, --help    Show this help message and exit.
+#   -n, --name     Specify the name of the process to check if it's running.
+#   -r, --no-retry Disable retry attempts.
+#   -h, --help     Show this help message and exit.
 
 process_name=""
+retry_enabled=1
+retry_count=3
+retry_delay=5 # delay in seconds
 
 show_help() {
     awk 'NR==1 {next} /^#/{print substr($0, 3)} /^[^#]/ {exit}' "$0"
@@ -28,6 +32,10 @@ while [[ $# -gt 0 ]]; do
       process_name="$2"
       shift 2
       ;;
+    -r|--no-retry)
+      retry_enabled=0
+      shift
+      ;;
     -h|--help)
       show_help
       ;;
@@ -40,19 +48,38 @@ done
 # Command is the rest of the arguments
 command="$*"
 
-# Function to start a process
+# Function to start a process with optional retries
 start_process() {
     if [ -z "$process_name" ]; then
         echo "Process name not provided. Using command as process name."
         process_name="$command"
     fi
 
-    # Check if the process is running
-    if pgrep -f "$process_name" | grep -v $$ | grep -v $PPID | grep -v grep > /dev/null; then
-        echo "Process is already running."
+    local attempt=0
+    local max_attempts=$((retry_enabled ? retry_count : 1))
+    while [ $attempt -lt $max_attempts ]; do
+        if pgrep -f "$process_name" | grep -v $$ | grep -v $PPID | grep -v grep > /dev/null; then
+            echo "Process is already running."
+            return 0
+        else
+            echo "Attempting to start process: $command (Attempt $((attempt+1))/$max_attempts)"
+            nohup bash -c "$command" &>/dev/null &
+            sleep 1 # Give a moment to start and check again
+            if pgrep -f "$process_name" | grep -v $$ | grep -v $PPID | grep -v grep > /dev/null; then
+                echo "Process started successfully."
+                return 0
+            fi
+            if [ $retry_enabled -eq 1 ]; then
+                sleep $retry_delay
+            fi
+        fi
+        ((attempt++))
+    done
+
+    if [ $retry_enabled -eq 1 ]; then
+        echo "Failed to start process after $max_attempts attempts."
     else
-        echo "Starting process: $command"
-        nohup bash -c "$command" &>/dev/null &
+        echo "Failed to start process."
     fi
 }
 
