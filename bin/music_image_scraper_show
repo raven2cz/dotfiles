@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# This script expects three arguments: the title, the artist, and the album.
+# Each argument should be enclosed in quotes when the script is called to ensure proper handling of spaces.
+
+# No need for replacing spaces with escaped spaces since arguments are properly quoted
+title="$1"
+artist="$2"
+album="$3"
+
+# Running the scraper with the title, artist, and album as parameters
+music_image_scraper "$title" "$artist" "$album"
+
+# Constructing the image path for qimgv
+image_path="$HOME/.cache/ImageScraperSuite/${artist} - ${title}/"
+
+# Running qimgv with the image path
+nohup qimgv "$image_path" >/dev/null 2>&1 &
+

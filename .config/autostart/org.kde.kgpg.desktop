@@ -5,6 +5,7 @@ Exec=kgpg %U
 Icon=kgpg
 X-DocPath=kgpg/index.html
 X-DBUS-StartupType=Unique
+OnlyShowIn=KDE
 MimeType=application/pgp-encrypted;application/pgp-signature;application/pgp-keys;
 GenericName=Encryption Tool
 GenericName[ar]=أداة للتشفير
