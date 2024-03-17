@@ -2,4 +2,4 @@
 Exec=start_process -n kactivitymanagerd /usr/lib/kactivitymanagerd
 Name=kactivitymanagerd
 Type=Application
-OnlyShowIn=Awesome;
+OnlyShowIn=KDE
