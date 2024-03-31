@@ -1,0 +1,5 @@
+[Desktop Entry]
+Exec=start_process -n kded6 /bin/kded6
+Name=kactivitymanagerd
+Type=Application
+OnlyShowIn=Awesome
