@@ -43,4 +43,8 @@
 [credential]
 	helper = cache
 [merge]
-	tool = meld
+    tool = meld
+
+[includeIf "gitdir:~/src/szn/"]
+    path = ~/src/szn/.gitconfig_include
+
