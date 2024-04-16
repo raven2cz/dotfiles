@@ -65,4 +65,3 @@ Exec=blueman-applet
 Terminal=false
 Type=Application
 Categories=
-OnlyShowIn=KDE
