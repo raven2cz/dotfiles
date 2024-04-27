@@ -1,6 +1,8 @@
 [Desktop Entry]
 Name=Obsidian
-Exec=/usr/bin/obsidian
+Exec=/home/box/bin/obsidian-start.sh
 Terminal=false
 Type=Application
 Icon=obsidian
+Comment=Open Obsidian and set default browser to Firefox Developer Edition
+
