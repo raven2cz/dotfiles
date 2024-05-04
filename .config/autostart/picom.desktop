@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=picom
-Exec=start_process -r picom --no-frame-pacing --config /home/box/.config/picom/picom.conf
+Exec=start_process -r picom --config /home/box/.config/picom/picom.conf
 Comment=a compositor for X11
 Type=Application
 OnlyShowIn=Awesome;
