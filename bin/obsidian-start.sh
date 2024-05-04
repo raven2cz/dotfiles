@@ -24,5 +24,6 @@ else
 
     # Set the default web browser to Firefox Developer Edition, addressing the issue of Obsidian changing the default browser on startup
     xdg-settings set default-web-browser firefoxdeveloperedition.desktop
+    mimeo --prefer firefoxdeveloperedition.desktop
 fi
 
