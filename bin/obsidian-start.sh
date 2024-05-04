@@ -5,7 +5,7 @@
 # This is necessary because Obsidian has a bug that sets itself as the default browser on launch.
 
 # Check if Obsidian (electron) is already running using a specific path identification to avoid confusion with other electron applications
-if pgrep -f "/usr/lib/obsidian" > /dev/null; then    
+if pgrep -f "obsidian" > /dev/null; then    
     echo "Obsidian is already running."
 else
     # Start Obsidian if not running

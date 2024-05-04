@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=start_process -r /home/box/.config/conky/start_conky /home/box/.config/conky/MX-CoreBlue/conkyrc2core
+Exec=start_process -n conky /home/box/.config/conky/start_conky /home/box/.config/conky/MX-CoreBlue/conkyrc2core
 Name=start_conky
 Type=Application
 OnlyShowIn=Awesome;
