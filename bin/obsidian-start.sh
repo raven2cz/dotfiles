@@ -5,7 +5,7 @@
 # This is necessary because Obsidian has a bug that sets itself as the default browser on launch.
 
 # Check if Obsidian (electron) is already running using a specific path identification to avoid confusion with other electron applications
-if pgrep -f "obsidian" > /dev/null; then    
+if pgrep -x "obsidian" > /dev/null; then    
     echo "Obsidian is already running."
 else
     # Start Obsidian if not running
@@ -20,7 +20,7 @@ else
     done
 
     # Additional wait to ensure Obsidian is fully loaded
-    sleep 2
+    sleep 8
 
     # Set the default web browser to Firefox Developer Edition, addressing the issue of Obsidian changing the default browser on startup
     xdg-settings set default-web-browser firefoxdeveloperedition.desktop
