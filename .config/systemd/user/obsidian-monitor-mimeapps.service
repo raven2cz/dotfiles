@@ -1,0 +1,11 @@
+[Unit]
+Description=Monitor and fix mimeapps.list for Obsidian
+After=network.target
+
+[Service]
+ExecStart=/home/box/bin/obsidian-monitor-mimeapps.sh
+Restart=always
+
+[Install]
+WantedBy=default.target
+
