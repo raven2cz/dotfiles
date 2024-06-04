@@ -33,9 +33,9 @@ conky.config = {
     border_outer_margin = 5,
     draw_shades = false,
 
-    minimum_width = 250,
+    minimum_width = 330,
     minimum_height = 300,
-    maximum_width = 250,
+    maximum_width = 330,
 
 -- Graphics settings #
     draw_shades = false,
@@ -79,7 +79,7 @@ conky.text = [[
 #----------------------------------------------------------------------------------------------------------------------------------------
 #                            Time and date
 #----------------------------------------------------------------------------------------------------------------------------------------
-${voffset -15}${font Radio Space:size=23}${color1}${time %A}${font}$color${font Radio Space:size=35}${goto 167}${voffset -8} ${time %e}${font}
+${voffset 3}${font Radio Space:size=23}${color1}${time %A}${font}$color${font Radio Space:size=35}${goto 167}${voffset -8} ${time %e}${font}
 ${font Radio Space:size=23}${voffset -22}${time %b}${font}${voffset -3} ${font Radio Space:size=20}${time %Y}${font}${color1} ${hr 1}
 
 ${font Radio Space:size=20}${goto 169}${voffset 3}${time %u}
