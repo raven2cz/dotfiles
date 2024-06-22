@@ -33,9 +33,9 @@ conky.config = {
     border_outer_margin = 5,
     draw_shades = false,
 
-    minimum_width = 250,
+    minimum_width = 330,
     minimum_height = 300,
-    maximum_width = 250,
+    maximum_width = 330,
 
 -- Graphics settings #
     draw_shades = false,
@@ -79,7 +79,7 @@ conky.text = [[
 #----------------------------------------------------------------------------------------------------------------------------------------
 #                            Time and date
 #----------------------------------------------------------------------------------------------------------------------------------------
-${voffset -15}${font Radio Space:size=23}${color1}${time %A}${font}$color${font Radio Space:size=35}${goto 167}${voffset -8} ${time %e}${font}
+${voffset 3}${font Radio Space:size=23}${color1}${time %A}${font}$color${font Radio Space:size=35}${goto 167}${voffset -8} ${time %e}${font}
 ${font Radio Space:size=23}${voffset -22}${time %b}${font}${voffset -3} ${font Radio Space:size=20}${time %Y}${font}${color1} ${hr 1}
 
 ${font Radio Space:size=20}${goto 169}${voffset 3}${time %u}
@@ -91,7 +91,7 @@ ${voffset 20}\
 #----------------------------------------------------------------------------------------------------------------------------------------
 ${color1}${hr 1}$color
 ${color1}${voffset 6}Processes:$color $processes
-${color1}${voffset 6}Running: $color  $running_processes${goto 116}${voffset 8}${cpu cpu0}% ${color1}${goto 116}${voffset 13}CPU0$color${goto 191}${voffset -12}${execi 60 sensors | grep Tctl: | cut -c 16-19}°C ${color1}${goto 191}${voffset 12}CPUT$color
+${color1}${voffset 6}Running: $color  $running_processes${goto 116}${voffset 8}${cpu cpu0}% ${color1}${goto 116}${voffset 13}CPU0$color${goto 191}${voffset -12}${execi 60 sensors | grep 'Package id 0:' | cut -c 17-20}°C ${color1}${goto 191}${voffset 12}CPUT$color
 ${color1}${voffset -12}FREQ:$color ${freq}MHz
 ${color1}${voffset 6}Load:$color ${loadavg}
 #----------------------------------------------------------------------------------------------------------------------------------------
