@@ -14,6 +14,8 @@ fix_mimeapps() {
     # Přesun opraveného dočasného souboru zpět na původní místo
     mv "$TEMP_FILE" "$CONFIG_FILE"
 
+    mimeo --prefer firefox-developer-edition.desktop
+
     echo "Fix applied to mimeapps.list"
 }
 
