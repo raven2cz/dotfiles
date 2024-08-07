@@ -33,9 +33,9 @@ conky.config = {
     border_outer_margin = 5,
     draw_shades = false,
 
-    minimum_width = 330,
+    minimum_width = 260,
     minimum_height = 300,
-    maximum_width = 330,
+    maximum_width = 260,
 
 -- Graphics settings #
     draw_shades = false,
