@@ -27,15 +27,16 @@ conky.config = {
     own_window_transparent = true,
     own_window_argb_visual = true,
     own_window_argb_value = 0,
+    own_window_colour = '000000',
     own_window_hints = 'undecorated,below,skip_taskbar,skip_pager,sticky',
 
     border_inner_margin = 0,
     border_outer_margin = 5,
     draw_shades = false,
 
-    minimum_width = 250,
+    minimum_width = 300,
     minimum_height = 300,
-    maximum_width = 250,
+    maximum_width = 300,
 
 -- Graphics settings #
     draw_shades = false,

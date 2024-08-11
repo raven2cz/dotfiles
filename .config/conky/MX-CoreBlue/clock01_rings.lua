@@ -42,6 +42,8 @@ end
 bg_color = hex2number(theme_params.color0)
 fg_color = hex2number(theme_params.color1)
 
+-- Add a global y offset for moving everything down by 10 pixels
+y_offset = -10
 settings_table = {
     {
         -- Edit this table to customise your rings.
@@ -61,7 +63,7 @@ settings_table = {
         -- "fg_alpha" is the alpha value of the indicator part of the ring.
         fg_alpha=0.3,
         -- "x" and "y" are the x and y coordinates of the centre of the ring, relative to the top left corner of the Conky window.
-        x=100, y=175,
+        x=100, y=175 + y_offset,
         -- "radius" is the radius of the ring.
         radius=50,
         -- "thickness" is the thickness of the ring, centred around the radius.
@@ -80,7 +82,7 @@ settings_table = {
         bg_alpha=0.2,
         fg_colour=fg_color,
         fg_alpha=0.8,
-        x=222, y=120,
+        x=222, y=120 + y_offset,
         radius=27,
         thickness=5,
         start_angle=-90,
@@ -95,7 +97,7 @@ settings_table = {
         bg_alpha=0.1,
         fg_colour=fg_color,
         fg_alpha=0.4,
-        x=100, y=175,
+        x=100, y=175 + y_offset,
         radius=66,
         thickness=5,
         start_angle=0,
@@ -109,7 +111,7 @@ settings_table = {
         bg_alpha=0.1,
         fg_colour=fg_color,
         fg_alpha=0.6,
-        x=100, y=175,
+        x=100, y=175 + y_offset,
         radius=72,
         thickness=5,
         start_angle=0,
@@ -123,7 +125,7 @@ settings_table = {
         bg_alpha=0.1,
         fg_colour=fg_color,
         fg_alpha=0.8,
-        x=100, y=175,
+        x=100, y=175 + y_offset,
         radius=80,
         thickness=5,
         start_angle=-90,
@@ -137,7 +139,7 @@ settings_table = {
         bg_alpha=0.1,
         fg_colour=fg_color,
         fg_alpha=1,
-        x=100, y=175,
+        x=100, y=175 + y_offset,
         radius=86,
         thickness=5,
         start_angle=-90,
@@ -151,7 +153,7 @@ settings_table = {
         bg_alpha=0.3,
         fg_colour=fg_color,
         fg_alpha=0.8,
-        x=182, y=305,
+        x=182, y=305 + y_offset,
         radius=25,
         thickness=5,
         start_angle=-90,
@@ -166,7 +168,7 @@ settings_table = {
         bg_alpha=0.3,
         fg_colour=fg_color,
         fg_alpha=0.8,
-        x=275, y=305,
+        x=275, y=305 + y_offset,
         radius=25,
         thickness=5,
         start_angle=-90,
@@ -180,7 +182,7 @@ settings_table = {
         bg_alpha=0.2,
         fg_colour=fg_color,
         fg_alpha=0.8,
-        x=40, y=600,
+        x=40, y=600 + y_offset,
         radius=25,
         thickness=5,
         start_angle=-90,
@@ -194,7 +196,7 @@ settings_table = {
         bg_alpha=0.2,
         fg_colour=fg_color,
         fg_alpha=0.8,
-        x=158, y=600,
+        x=158, y=600 + y_offset,
         radius=25,
         thickness=5,
         start_angle=-90,
@@ -208,7 +210,7 @@ settings_table = {
         bg_alpha=0.2,
         fg_colour=0x0ABFFF,
         fg_alpha=0.8,
-        x=275, y=600,
+        x=275, y=600 + y_offset,
         radius=25,
         thickness=5,
         start_angle=-90,
@@ -223,11 +225,12 @@ clock_r=65
 -- "clock_x" and "clock_y" are the coordinates of the centre of the clock, in pixels, from the top left of the Conky window.
 
 clock_x=100
-clock_y=175
+clock_y=175 + y_offset
 
 show_seconds=true -- Change to true if you want the seconds hand
 
 require 'cairo'
+require 'cairo_xlib'
 
 function rgb_to_r_g_b(colour,alpha)
     return ((colour / 0x10000) % 0x100) / 255., ((colour / 0x100) % 0x100) / 255., (colour % 0x100) / 255., alpha
