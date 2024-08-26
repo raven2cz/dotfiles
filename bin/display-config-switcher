@@ -1,0 +1,131 @@
+#!/bin/bash
+
+# Pre-defined order of display interfaces - CHANGE BY YOUR PREFERENCES
+declare -a interface_order=("HDMI-1" "DP-1" "HDMI-2")
+
+# Session types with descriptions - ADD YOUR SETTINGS
+declare -A session_types=(
+    [DESKTOP_LANDSCAPE]="Desktop configuration with primary display in landscape mode."
+    [DESKTOP_PORTRAIT]="Desktop configuration with primary display in portrait mode."
+    [DESKTOP_LANDSCAPE_LANDSCAPE]="Desktop with two landscape displays."
+    [DESKTOP_LANDSCAPE_PORTRAIT]="Desktop with one landscape and one portrait display."
+    [LAPTOP_INTERNAL]="Laptop using the internal display only."
+    [LAPTOP_NOINTERNAL_LANDSCAPE]="Laptop with one external landscape display, no internal."
+    [LAPTOP_NOINTERNAL_LANDSCAPE_PORTRAIT]="Laptop with one landscape and one portrait external displays, no internal."
+)
+
+# Function definitions first
+detect_displays() {
+    local index=0
+    declare -a detected_displays=()
+    for interface in "${interface_order[@]}"; do
+        if xrandr | grep -q "^$interface connected"; then
+            detected_displays[$index]=$interface
+            ((index++))
+        fi
+    done
+    echo "${detected_displays[@]}"
+}
+
+# Function to handle user interaction for session selection
+choose_session() {
+    echo "Select a session type:" >&2  # Přesměrování na stderr
+    local i=1
+    local keys=("${!session_types[@]}")  # Uložení klíčů do pole
+    for key in "${keys[@]}"; do
+        echo "$i) $key - ${session_types[$key]}" >&2  # Přesměrování na stderr
+        ((i++))
+    done
+
+    local choice
+    read -p "Enter choice (1-${#keys[@]}): " choice
+    local selected_option_index=$((choice - 1))
+
+    if [[ selected_option_index -lt 0 || selected_option_index -ge ${#keys[@]} ]]; then
+        echo "Invalid choice." >&2  # Přesměrování chybové zprávy na stderr
+        exit 1
+    fi
+
+    echo "${keys[$selected_option_index]}"  # Pouze tento echo je výstup pro stdout
+}
+
+
+# Get available displays
+IFS=' ' read -r -a displays <<< $(detect_displays)
+
+# Main logic
+if [[ -z "$1" ]]; then
+    selected_option=$(choose_session)
+else
+    selected_option=$(echo "$1" | tr '[:lower:]' '[:upper:]')
+fi
+
+# export your selection to environment variable
+export DISPLAY_SESSION_CONFIG="$selected_option"
+
+# Get available displays
+IFS=' ' read -r -a displays <<< $(detect_displays)
+
+# Execute xrandr based on selected session type
+execute_xrandr() {
+    case "$selected_option" in
+        DESKTOP_LANDSCAPE)
+            xrandr --output "${displays[0]}" --dpi 120 --mode 3840x2160 --primary
+            ;;
+        DESKTOP_PORTRAIT)
+            xrandr --output "${displays[1]}" --dpi 120 --rate 60 --mode 3840x2160 --rotate left --primary
+            ;;
+        DESKTOP_LANDSCAPE_LANDSCAPE)
+            xrandr --output "${displays[0]}" --dpi 120 --rate 144 --mode 3840x2160 --primary --output "${displays[1]}" --dpi 120 --rate 60 --mode 3840x2160 --left-of "${displays[0]}"
+            ;;
+        DESKTOP_LANDSCAPE_PORTRAIT)
+            xrandr --output "${displays[0]}" --dpi 120 --rate 144 --mode 3840x2160 --primary --output "${displays[1]}" --dpi 120 --rate 60 --mode 3840x2160 --rotate left --left-of "${displays[0]}"
+            ;;
+        LAPTOP_INTERNAL)
+            xrandr --output eDP-1 --auto --primary --output "${displays[0]}" --off --output "${displays[1]}" --off
+            ;;
+        LAPTOP_NOINTERNAL_LANDSCAPE)
+            xrandr --output eDP-1 --off --output "${displays[0]}" --dpi 120 --rate 144 --mode 3840x2160 --primary --output "${displays[1]}" --off
+            ;;
+        LAPTOP_NOINTERNAL_LANDSCAPE_PORTRAIT)
+            xrandr --output eDP-1 --off --output "${displays[0]}" --dpi 120 --rate 144 --mode 3840x2160 --primary --output "${displays[1]}" --dpi 120 --rate 60 --mode 3840x2160 --rotate left --left-of "${displays[0]}"
+            ;;
+        # Add other cases using similar structure
+        *)
+            echo "Invalid session type: $selected_option"
+            echo "Available session types:"
+            for type in "${!session_types[@]}"; do
+                echo "  $type - ${session_types[$type]}"
+            done
+            exit 1
+            ;;
+    esac
+}
+
+# Check xrandr success and restart window manager
+check_and_restart_wm() {
+    execute_xrandr
+    sleep 2  # Wait for xrandr changes to take effect
+    if [ $? -eq 0 ] && pgrep awesome > /dev/null; then
+        echo 'awesome.restart()' | awesome-client 2>>~/awesome-restart-errors.log
+        if [ $? -ne 0 ]; then
+            echo "Failed to restart Awesome WM properly, see ~/awesome-restart-errors.log for details."
+        fi
+    else
+        echo "Failed to apply display configuration."
+    fi
+}
+
+# Display help
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+    echo "This script configures display settings based on predefined session types."
+    echo "It also sets an environment variable 'DISPLAY_SESSION_CONFIG' based on the selected configuration, which can be used by WM and other applications."
+    echo "Usage: $0 [session configuration]"
+    for type in "${!session_types[@]}"; do
+        echo "  $type - ${session_types[$type]}"
+    done
+    exit 0
+fi
+
+# Main execution
+check_and_restart_wm
