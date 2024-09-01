@@ -43,7 +43,7 @@ bg_color = hex2number(theme_params.color0)
 fg_color = hex2number(theme_params.color1)
 
 -- Add a global y offset for moving everything down by 10 pixels
-y_offset = -10
+y_offset = -2
 settings_table = {
     {
         -- Edit this table to customise your rings.
