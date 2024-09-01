@@ -10,6 +10,7 @@ declare -A session_types=(
     [DESKTOP_LANDSCAPE_LANDSCAPE]="Desktop with two landscape displays."
     [DESKTOP_LANDSCAPE_PORTRAIT]="Desktop with one landscape and one portrait display."
     [LAPTOP_INTERNAL]="Laptop using the internal display only."
+    [LAPTOP_INTERNAL_LANDSCAPE]="Laptop with internal and one external landscape display."
     [LAPTOP_NOINTERNAL_LANDSCAPE]="Laptop with one external landscape display, no internal."
     [LAPTOP_NOINTERNAL_LANDSCAPE_PORTRAIT]="Laptop with one landscape and one portrait external displays, no internal."
 )
@@ -49,6 +50,10 @@ choose_session() {
     echo "${keys[$selected_option_index]}"  # Pouze tento echo je výstup pro stdout
 }
 
+# Function to write session configuration to a file
+write_session_config() {
+    echo "{\"session_type\": \"$selected_option\"}" > ~/.dsession
+}
 
 # Get available displays
 IFS=' ' read -r -a displays <<< $(detect_displays)
@@ -60,8 +65,9 @@ else
     selected_option=$(echo "$1" | tr '[:lower:]' '[:upper:]')
 fi
 
-# export your selection to environment variable
+# export your selection to environment variable and config file
 export DISPLAY_SESSION_CONFIG="$selected_option"
+write_session_config
 
 # Get available displays
 IFS=' ' read -r -a displays <<< $(detect_displays)
@@ -84,8 +90,11 @@ execute_xrandr() {
         LAPTOP_INTERNAL)
             xrandr --output eDP-1 --auto --primary --output "${displays[0]}" --off --output "${displays[1]}" --off
             ;;
+        LAPTOP_INTERNAL_LANDSCAPE)
+            xrandr --output "${displays[0]}" --dpi 120 --mode 3840x2160 --pos 1920x0 --primary --output eDP-1 --mode 1920x1080 --pos 0x1080 --output "${displays[1]}" --off
+            ;;
         LAPTOP_NOINTERNAL_LANDSCAPE)
-            xrandr --output eDP-1 --off --output "${displays[0]}" --dpi 120 --rate 144 --mode 3840x2160 --primary --output "${displays[1]}" --off
+            xrandr --output eDP-1 --off --output "${displays[0]}" --dpi 120 --mode 3840x2160 --primary --output "${displays[1]}" --off
             ;;
         LAPTOP_NOINTERNAL_LANDSCAPE_PORTRAIT)
             xrandr --output eDP-1 --off --output "${displays[0]}" --dpi 120 --rate 144 --mode 3840x2160 --primary --output "${displays[1]}" --dpi 120 --rate 60 --mode 3840x2160 --rotate left --left-of "${displays[0]}"
