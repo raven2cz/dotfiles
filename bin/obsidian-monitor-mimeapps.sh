@@ -16,6 +16,8 @@ fix_mimeapps() {
 
     mimeo --prefer firefox-developer-edition.desktop
 
+    rm -f /home/box/.config/autostart/electron.desktop
+
     echo "Fix applied to mimeapps.list"
 }
 

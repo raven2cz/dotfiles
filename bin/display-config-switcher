@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Pre-defined order of display interfaces - CHANGE BY YOUR PREFERENCES
-declare -a interface_order=("HDMI-1" "DP-1" "HDMI-2")
+declare -a interface_order=("HDMI-1" "DP-1" "HDMI-2" "HDMI-3")
 
 # Session types with descriptions - ADD YOUR SETTINGS
 declare -A session_types=(
@@ -11,6 +11,7 @@ declare -A session_types=(
     [DESKTOP_LANDSCAPE_PORTRAIT]="Desktop with one landscape and one portrait display."
     [LAPTOP_INTERNAL]="Laptop using the internal display only."
     [LAPTOP_INTERNAL_LANDSCAPE]="Laptop with internal and one external landscape display."
+    [LAPTOP_INTERNAL_PORTRAIT]="Laptop with internal and one external portrait display."
     [LAPTOP_NOINTERNAL_LANDSCAPE]="Laptop with one external landscape display, no internal."
     [LAPTOP_NOINTERNAL_LANDSCAPE_PORTRAIT]="Laptop with one landscape and one portrait external displays, no internal."
 )
@@ -91,13 +92,16 @@ execute_xrandr() {
             xrandr --output eDP-1 --auto --primary --output "${displays[0]}" --off --output "${displays[1]}" --off
             ;;
         LAPTOP_INTERNAL_LANDSCAPE)
-            xrandr --output "${displays[0]}" --dpi 120 --mode 3840x2160 --pos 1920x0 --primary --output eDP-1 --mode 1920x1080 --pos 0x1080 --output "${displays[1]}" --off
+            xrandr --output "${displays[0]}" --mode 3840x2160 --pos 1920x0 --primary --output eDP-1 --mode 1920x1080 --pos 0x1080 --output DP-1 --off --output HDMI-2 --off --output DP-2 --off --output HDMI-3 --off
+            ;;
+        LAPTOP_INTERNAL_PORTRAIT)
+            xrandr --output "${displays[0]}" --dpi 120 --rotate left --mode 3840x2160 --pos 1920x0 --primary --output eDP-1 --mode 1920x1080 --pos 0x1080 --output "${displays[1]}" --off --output HDMI-2 --off --output DP-2 --off --output HDMI-3 --off
             ;;
         LAPTOP_NOINTERNAL_LANDSCAPE)
             xrandr --output eDP-1 --off --output "${displays[0]}" --dpi 120 --mode 3840x2160 --primary --output "${displays[1]}" --off
             ;;
         LAPTOP_NOINTERNAL_LANDSCAPE_PORTRAIT)
-            xrandr --output eDP-1 --off --output "${displays[0]}" --dpi 120 --rate 144 --mode 3840x2160 --primary --output "${displays[1]}" --dpi 120 --rate 60 --mode 3840x2160 --rotate left --left-of "${displays[0]}"
+	    xrandr --output eDP-1 --off --output "${displays[0]}" --primary --mode 3840x2160 --pos 2160x0 --rotate normal --output "${displays[1]}" --mode 3840x2160 --pos 0x0 --rotate left --output HDMI-2 --off --output DP-2 --off --output HDMI-3 --off
             ;;
         # Add other cases using similar structure
         *)
