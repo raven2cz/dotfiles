@@ -16,7 +16,7 @@ export XDG_CURRENT_DESKTOP=kde
 #export XDG_CURRENT_DESKTOP=GNOME
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
-export EDITOR=nvim
+export EDITOR=lvim
 export JAVA_HOME=/usr/lib/jvm/default 
 
 # clipmenu rofi support
