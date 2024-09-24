@@ -48,3 +48,5 @@
 [includeIf "gitdir:~/src/szn/"]
     path = ~/src/szn/.gitconfig_include
 
+[core]
+	editor = lvim
