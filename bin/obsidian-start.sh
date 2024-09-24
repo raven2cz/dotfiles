@@ -5,19 +5,11 @@
 # This is necessary because Obsidian has a bug that sets itself as the default browser on launch.
 
 # Check if Obsidian (electron) is already running using a specific path identification to avoid confusion with other electron applications
-if pgrep -x "obsidian" > /dev/null; then    
+if pgrep -f "electron.*/usr/lib/obsidian/app.asar" > /dev/null; then    
     echo "Obsidian is already running."
 else
-    # Start Obsidian if not running
-    obsidian &
-    
-    # Get the process ID of the last background job
-    PID=$!
-
-    # Wait until Obsidian appears in the process list
-    while ! pgrep -x "obsidian" > /dev/null; do
-        sleep 1
-    done
+    # Start Obsidian
+    obsidian 
 
     echo "Obsidian is started now."
 fi
