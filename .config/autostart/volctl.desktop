@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=sh -c "sleep 5 && start_process volctl"
+Exec=sh -c "sleep 5 && volctl"
 Name=volctl
 Type=Application
 OnlyShowIn=Awesome
