@@ -72,7 +72,8 @@ ${color1}\1: $color$alignr${addr \1}\n]],
 $color1${downspeedgraph \1 30,120 000000 $color1 2500 -t} ${alignr}$color1${upspeedgraph \1 30,120 000000 $color1 2500 -t}
 ${color1}Total:$color ${totaldown \1} ${alignr}${color1}Total:$color ${totalup \1}]],
 
-    template4 = 'enp6s0',
+--    template4 = 'enp6s0',
+    template4 = 'eno1',
 };
 
 conky.text = [[
