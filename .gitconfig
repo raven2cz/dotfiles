@@ -49,4 +49,4 @@
     path = ~/src/szn/.gitconfig_include
 
 [core]
-	editor = lvim
+	editor = nvim
