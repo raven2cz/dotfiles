@@ -9,7 +9,7 @@ xrdb -merge ~/.Xresources
 
 # X11 environment variables exports
 #export QT_STYLE_OVERRIDE=kvantum
-export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_QPA_PLATFORMTHEME=qt6ct
 export DESKTOP_SESSION=plasma
 #export DESKTOP_SESSION=gnome
 export XDG_CURRENT_DESKTOP=kde
@@ -32,7 +32,6 @@ case $session in
         exec i3
         ;;
     awesome)
-        xrandr-auto.sh
         exec awesome
         ;;
     kde)

@@ -3,9 +3,12 @@
 [[ -z "$LAPTOP" ]] && exit
 
 dp1_connected=$(xrandr --listactivemonitors | grep ' DP-1')
+dp2_connected=$(xrandr --listactivemonitors | grep ' DP-2')
 hdmi1_connected=$(xrandr --listactivemonitors | grep ' HDMI-1')
 
 if [[ $dp1_connected != "" ]] ; then
+    DPI=120
+elif [[ $dp2_connected != "" ]] ; then
     DPI=120
 elif [[ $hdmi1_connected != "" ]] ; then
     DPI=120
