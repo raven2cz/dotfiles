@@ -67,7 +67,15 @@ case $session in
         export XDG_SESSION_TYPE=x11
         exec openbox-session
         ;;
-    # No known session, try to run it as command
+    hyprland)
+        export WLR_NO_HARDWARE_CURSORS=1
+        export LIBVA_DRIVER_NAME=nvidia
+        export GBM_BACKEND=nvidia-drm
+        export __GLX_VENDOR_LIBRARY_NAME=nvidia
+        export __GL_VRR_ALLOWED=1 
+        exec dbus-run-session hyprland
+        ;; 
+# No known session, try to run it as command
     *)
         exec $1
         ;;
