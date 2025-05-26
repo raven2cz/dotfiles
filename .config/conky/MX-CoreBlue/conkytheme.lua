@@ -1,0 +1,1 @@
+return { color0 = '#fcfcfa', color1 = '#ffd866' }

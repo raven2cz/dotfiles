@@ -34,10 +34,10 @@ if [ "$HOSTNAME" = boxszn ]; then
     CONKY_NAME="${CONKY_NAME}_boxszn"
 fi
 if [ "$HOSTNAME" = r9home ]; then
-    CONKY_NAME="${CONKY_NAME}_r5arch"
+    CONKY_NAME="${CONKY_NAME}_r9arch"
 fi
 if [ "$HOSTNAME" = r7home ]; then
-    CONKY_NAME="${CONKY_NAME}_r5arch"
+    CONKY_NAME="${CONKY_NAME}_r7home"
 fi
 LOCAL_CONKY_FONTS=~/.local/share/fonts/conky
 [ ! -d "$LOCAL_CONKY_FONTS" ] && mkdir -p "$LOCAL_CONKY_FONTS"
@@ -52,4 +52,5 @@ done < <(find "$CONKY_DIR"  -iname '*.[ot]tf')
 
 [ -n "$SLEEP" ] && sleep "$SLEEP"
 cd "$CONKY_DIR"
+echo $CONKY_NAME
 exec conky -c "$CONKY_NAME"
