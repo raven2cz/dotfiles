@@ -189,6 +189,46 @@ lazy.setup({
   },
 
   --------------------------------------------------------------------
+  -- § Startup dashboard (ASCII art + handy shortcuts)
+  --------------------------------------------------------------------
+  {
+    "goolord/alpha-nvim",         -- fast, fully programmable greeter
+    event = "VimEnter",           -- načíst jen při startu
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      local alpha     = require("alpha")
+      local dashboard = require("alpha.themes.dashboard")
+
+      dashboard.section.header.val = {
+        "                                                     ",
+        "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
+        "  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
+        "  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
+        "  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
+        "  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
+        "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
+        "                                                     ",
+      }
+
+      dashboard.section.buttons.val = {
+        dashboard.button("e", "  New file"      , ":ene <BAR> startinsert<CR>"),
+        dashboard.button("f", "󰈞  Find file"    , ":Telescope find_files<CR>"),
+        dashboard.button("r", "  Recent files" , ":Telescope oldfiles<CR>"),
+        dashboard.button("c", "  Edit config"  , ":e $HOME/.config/nvim/init.lua<CR>"),
+        dashboard.button("h", "󰒓  Health check" , ":checkhealth<CR>"),
+        dashboard.button("q", "  Quit NVIM"    , ":qa<CR>"),
+      }
+
+      dashboard.section.footer.val = function()
+        local v = vim.version()
+        return string.format("  Neovim v%d.%d.%d", v.major, v.minor, v.patch)
+      end
+
+      alpha.setup(dashboard.config)
+    end,
+  },
+
+  --------------------------------------------------------------------
   -- § LSP tool-chain  (Mason v2  +  mason-lspconfig  +  nvim-lspconfig)
   --------------------------------------------------------------------
   { -- Mason: binary downloader/manager for LSPs, DAPs, linters, formatters
