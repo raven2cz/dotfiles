@@ -23,6 +23,7 @@ local on_attach = function(_, bufnr)
   end
 
   nmap("gd",         vim.lsp.buf.definition,    "Go to definition")
+  nmap("gD",         vim.lsp.buf.declaration,   "Go to declaration")
   nmap("K",          vim.lsp.buf.hover,         "Hover documentation")
   nmap("<leader>rn", vim.lsp.buf.rename,        "Rename symbol")
   nmap("<leader>ca", vim.lsp.buf.code_action,   "Code action")

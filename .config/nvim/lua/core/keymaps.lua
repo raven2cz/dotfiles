@@ -25,9 +25,18 @@ map("n", "<leader>fb", "<cmd>Telescope buffers<CR>",     opts) -- open buffers
 map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>",   opts) -- :help tags
 
 -- --------------------------------------------------------------------
---  ↪ Oil.nvim – minimalist file explorer
+--  ↪ Oil.nvim – open as *persistent* sidebar on the left
+--     • vertical=true  → open in vertical split
+--     • split="left"   → force position to the far left (keeps file visible)
 -- --------------------------------------------------------------------
-map("n", "<leader>e", "<cmd>Oil<CR>", opts) -- <Space>e  → project tree
+map("n", "<leader>e", function()
+  -- Open *current* directory in a topleft vertical split 30 columns wide
+  require("oil").open("",{
+    split    = "left",   -- force far-left position
+    size     = 30,       -- initial width in columns
+    dir      = vim.fn.getcwd(), -- open project root; swap for "%:p:h" if you prefer current file’s dir
+  })
+end, { desc = "Open Oil sidebar", noremap = true, silent = true })
 
 -- --------------------------------------------------------------------
 --  ↪ Toggle relative line numbers (handy for screencasts)
