@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.1" encoding="UTF-8"?>
 
 <channel name="xfce4-panel" version="1.0">
   <property name="configver" type="int" value="2"/>
@@ -42,8 +42,8 @@
         <value type="int" value="12"/>
         <value type="int" value="21"/>
       </property>
-      <property name="disable-struts" type="bool" value="false"/>
       <property name="FontName" type="string" value="Play"/>
+      <property name="enable-struts" type="bool" value="true"/>
     </property>
   </property>
   <property name="plugins" type="empty">
@@ -70,6 +70,9 @@
     <property name="plugin-6" type="string" value="systray">
       <property name="square-icons" type="bool" value="true"/>
       <property name="known-legacy-items" type="array">
+        <value type="string" value="wi-fi network connection “otavanet-zoch 1” active: otavanet-zoch (62%)"/>
+        <value type="string" value="wi-fi network connection “otavanet-zoch 1” active: otavanet-zoch (67%)"/>
+        <value type="string" value="caffeine"/>
         <value type="string" value="volctl"/>
         <value type="string" value="parcellite"/>
         <value type="string" value="remmina"/>
@@ -78,6 +81,10 @@
         <value type="string" value="clipit"/>
       </property>
       <property name="known-items" type="array">
+        <value type="string" value="chrome_status_icon_1"/>
+        <value type="string" value="blueman"/>
+        <value type="string" value="caffeine"/>
+        <value type="string" value="flameshot"/>
         <value type="string" value="toolbox"/>
         <value type="string" value="The KDE Crash Handler"/>
         <value type="string" value="Slack1"/>
@@ -89,6 +96,7 @@
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
       <property name="show-notifications" type="bool" value="true"/>
       <property name="mpris-players" type="string" value="firefox.instance109543;firefox.instance1484;firefox.instance1505;firefox.instance1629;firefox.instance18036;firefox.instance2405;firefox.instance7700;firefox.instance99398;plasma-browser-integration;spotify"/>
+      <property name="known-players" type="string" value="spotify"/>
     </property>
     <property name="plugin-9" type="string" value="power-manager-plugin"/>
     <property name="plugin-10" type="string" value="notification-plugin"/>
@@ -99,6 +107,8 @@
     <property name="plugin-12" type="string" value="clock">
       <property name="mode" type="uint" value="2"/>
       <property name="digital-format" type="string" value="%a %_d %b %y, %H:%m:%S"/>
+      <property name="digital-time-format" type="string" value="%a %_d %b %y, %H:%m:%S"/>
+      <property name="digital-layout" type="uint" value="3"/>
     </property>
     <property name="plugin-14" type="string" value="actions">
       <property name="appearance" type="uint" value="0"/>
@@ -117,7 +127,42 @@
         <value type="string" value="-logout-dialog"/>
       </property>
     </property>
-    <property name="plugin-7" type="string" value="whiskermenu"/>
+    <property name="plugin-7" type="string" value="whiskermenu">
+      <property name="button-title" type="string" value="Arch"/>
+      <property name="button-icon" type="string" value="distributor-logo-archlinux"/>
+      <property name="show-button-title" type="bool" value="true"/>
+      <property name="launcher-show-tooltip" type="bool" value="false"/>
+      <property name="launcher-icon-size" type="int" value="3"/>
+      <property name="favorites-in-recent" type="bool" value="true"/>
+      <property name="position-search-alternate" type="bool" value="true"/>
+      <property name="position-categories-alternate" type="bool" value="true"/>
+      <property name="menu-width" type="int" value="705"/>
+      <property name="menu-height" type="int" value="807"/>
+      <property name="menu-opacity" type="int" value="86"/>
+      <property name="command-switchuser" type="string" value="gdmflexiserver"/>
+      <property name="show-command-logoutuser" type="bool" value="true"/>
+      <property name="show-command-restart" type="bool" value="true"/>
+      <property name="show-command-shutdown" type="bool" value="true"/>
+      <property name="favorites" type="array">
+        <value type="string" value="kitty.desktop"/>
+        <value type="string" value="Alacritty.desktop"/>
+        <value type="string" value="firefox.desktop"/>
+        <value type="string" value="sublime_text.desktop"/>
+        <value type="string" value="spotify.desktop"/>
+        <value type="string" value="org.kde.spectacle.desktop"/>
+        <value type="string" value="org.kde.kcolorchooser.desktop"/>
+      </property>
+      <property name="recent" type="array">
+        <value type="string" value="Alacritty.desktop"/>
+        <value type="string" value="sublime_text.desktop"/>
+        <value type="string" value="firefox-developer-edition.desktop"/>
+        <value type="string" value="org.kde.dolphin.desktop"/>
+        <value type="string" value="org.kde.spectacle.desktop"/>
+        <value type="string" value="org.kde.kcolorchooser.desktop"/>
+        <value type="string" value="firefox.desktop"/>
+        <value type="string" value="spotify.desktop"/>
+      </property>
+    </property>
     <property name="plugin-23" type="string" value="netload"/>
     <property name="plugin-25" type="string" value="systemload">
       <property name="network" type="empty">
@@ -130,9 +175,9 @@
       <property name="cpu" type="empty">
         <property name="color" type="array">
           <value type="double" value="0.207843"/>
-          <value type="double" value="0.517647"/>
-          <value type="double" value="0.894118"/>
-          <value type="double" value="1.000000"/>
+          <value type="double" value="0.51764699999999997"/>
+          <value type="double" value="0.89411799999999997"/>
+          <value type="double" value="1"/>
         </property>
       </property>
     </property>

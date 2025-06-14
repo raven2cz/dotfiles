@@ -1,19 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.1" encoding="UTF-8"?>
 
 <channel name="displays" version="1.0">
-  <property name="ActiveProfile" type="string" value="Default"/>
-  <property name="Default" type="empty">
+  <property name="ActiveProfile" type="string" value="Temp"/>
+  <property name="Fallback" type="empty">
     <property name="DP-0" type="string" value="Samsung Electric Company 29&quot;">
       <property name="Active" type="bool" value="true"/>
       <property name="EDID" type="string" value="d54003b209ed2dd3d0be914864877844be8a8739"/>
       <property name="Resolution" type="string" value="3840x2160"/>
-      <property name="RefreshRate" type="double" value="59.996625"/>
+      <property name="RefreshRate" type="double" value="59.996625000000002"/>
       <property name="Rotation" type="int" value="0"/>
       <property name="Reflection" type="string" value="0"/>
       <property name="Primary" type="bool" value="false"/>
       <property name="Scale" type="empty">
-        <property name="X" type="double" value="1.000000"/>
-        <property name="Y" type="double" value="1.000000"/>
+        <property name="X" type="double" value="1"/>
+        <property name="Y" type="double" value="1"/>
       </property>
       <property name="Position" type="empty">
         <property name="X" type="int" value="0"/>
@@ -21,19 +21,32 @@
       </property>
     </property>
   </property>
-  <property name="Fallback" type="empty">
-    <property name="DP-0" type="string" value="Samsung Electric Company 29&quot;">
+  <property name="Notify" type="int" value="1"/>
+  <property name="AutoEnableProfiles" type="int" value="3"/>
+  <property name="Default" type="empty">
+    <property name="eDP-1" type="string" value="Laptop">
       <property name="Active" type="bool" value="true"/>
-      <property name="EDID" type="string" value="d54003b209ed2dd3d0be914864877844be8a8739"/>
-      <property name="Resolution" type="string" value="3840x2160"/>
-      <property name="RefreshRate" type="double" value="59.996625"/>
+      <property name="EDID" type="string" value="c7ccbe1708a366eae595390ce918b0f618c47c39"/>
+      <property name="Resolution" type="string" value="1920x1200"/>
+      <property name="RefreshRate" type="double" value="60.000778573653065"/>
       <property name="Rotation" type="int" value="0"/>
       <property name="Reflection" type="string" value="0"/>
       <property name="Primary" type="bool" value="false"/>
-      <property name="Scale" type="empty">
-        <property name="X" type="double" value="1.000000"/>
-        <property name="Y" type="double" value="1.000000"/>
+      <property name="Scale" type="double" value="1"/>
+      <property name="Position" type="empty">
+        <property name="X" type="int" value="3840"/>
+        <property name="Y" type="int" value="0"/>
       </property>
+    </property>
+    <property name="HDMI-1" type="string" value="Samsung Electric Company 29&quot;">
+      <property name="Active" type="bool" value="true"/>
+      <property name="EDID" type="string" value="8d207c30cbd09a85a945f5923b77db6be33215db"/>
+      <property name="Resolution" type="string" value="3840x2160"/>
+      <property name="RefreshRate" type="double" value="60"/>
+      <property name="Rotation" type="int" value="0"/>
+      <property name="Reflection" type="string" value="0"/>
+      <property name="Primary" type="bool" value="true"/>
+      <property name="Scale" type="double" value="1"/>
       <property name="Position" type="empty">
         <property name="X" type="int" value="0"/>
         <property name="Y" type="int" value="0"/>

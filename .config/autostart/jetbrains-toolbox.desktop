@@ -1,5 +1,5 @@
 [Desktop Entry]
-Icon=/home/box/.local/share/JetBrains/Toolbox/toolbox.svg
+Icon=/home/box/.local/share/JetBrains/Toolbox/bin/toolbox.svg
 Exec=/home/box/.local/share/JetBrains/Toolbox/bin/jetbrains-toolbox --minimize
 Version=1.0
 Type=Application
