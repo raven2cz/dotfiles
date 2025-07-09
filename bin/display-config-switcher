@@ -11,6 +11,7 @@ declare -A session_types=(
     [DESKTOP_LANDSCAPE_PORTRAIT]="Desktop with one landscape and one portrait display."
     [LAPTOP_INTERNAL]="Laptop using the internal display only."
     [LAPTOP_INTERNAL_LANDSCAPE]="Laptop with internal and one external landscape display."
+    [LAPTOP_PRAGUE_INTERNAL_LANDSCAPE]="Laptop with internal and one external 2K DP-2 landscape display."
     [LAPTOP_INTERNAL_PORTRAIT]="Laptop with internal and one external portrait display."
     [LAPTOP_NOINTERNAL_LANDSCAPE]="Laptop with one external landscape display, no internal."
     [LAPTOP_NOINTERNAL_LANDSCAPE_PORTRAIT]="Laptop with one landscape and one portrait external displays, no internal."
@@ -93,6 +94,9 @@ execute_xrandr() {
             ;;
         LAPTOP_INTERNAL_LANDSCAPE)
             xrandr --output "${displays[0]}" --mode 3840x2160 --pos 1920x0 --primary --output eDP-1 --mode 1920x1080 --pos 0x1080 --output DP-1 --off --output HDMI-2 --off --output DP-2 --off --output HDMI-3 --off
+            ;;
+        LAPTOP_PRAGUE_INTERNAL_LANDSCAPE)
+            xrandr --output "DP-1" --mode 2560x1440 --pos 1920x0 --primary --output eDP-1 --mode 1920x1080 --pos 0x1080 --output HDMI-2 --off --output HDMI-3 --off
             ;;
         LAPTOP_INTERNAL_PORTRAIT)
             xrandr --output "${displays[0]}" --dpi 120 --rotate left --mode 3840x2160 --pos 1920x0 --primary --output eDP-1 --mode 1920x1080 --pos 0x1080 --output "${displays[1]}" --off --output HDMI-2 --off --output DP-2 --off --output HDMI-3 --off
