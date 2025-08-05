@@ -30,6 +30,21 @@
           <property name="last-image" type="string" value="/home/box/OneCloud/linux/pictures/manga-wallpapers/purple-rain.jpg"/>
         </property>
       </property>
+      <property name="monitorHDMI-1" type="empty">
+        <property name="workspace1" type="empty">
+          <property name="last-image" type="string" value="/home/box/Pictures/wallpapers/public-wallpapers/00048-wallhaven-3lyq66.jpg"/>
+          <property name="image-style" type="int" value="4"/>
+        </property>
+        <property name="workspace2" type="empty">
+          <property name="last-image" type="string" value="/home/box/Pictures/wallpapers/public-wallpapers/00013-island.jpg"/>
+        </property>
+        <property name="workspace3" type="empty">
+          <property name="last-image" type="string" value="/home/box/Pictures/wallpapers/public-wallpapers/00004-GUWEIZ-samurai-3.jpg"/>
+        </property>
+        <property name="workspace4" type="empty">
+          <property name="last-image" type="string" value="/home/box/Pictures/wallpapers/public-wallpapers/00044-xfce-dracula.png"/>
+        </property>
+      </property>
     </property>
     <property name="single-workspace-mode" type="bool" value="false"/>
   </property>

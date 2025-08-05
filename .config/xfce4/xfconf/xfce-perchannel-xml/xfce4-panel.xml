@@ -10,7 +10,7 @@
       <property name="length" type="uint" value="100"/>
       <property name="position-locked" type="bool" value="true"/>
       <property name="icon-size" type="uint" value="16"/>
-      <property name="size" type="uint" value="24"/>
+      <property name="size" type="uint" value="26"/>
       <property name="plugin-ids" type="array">
         <value type="int" value="7"/>
         <value type="int" value="15"/>
@@ -63,6 +63,7 @@
       <property name="rows" type="uint" value="1"/>
       <property name="miniature-view" type="bool" value="false"/>
       <property name="numbering" type="bool" value="false"/>
+      <property name="wrap-workspaces" type="bool" value="false"/>
     </property>
     <property name="plugin-5" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
@@ -70,6 +71,21 @@
     <property name="plugin-6" type="string" value="systray">
       <property name="square-icons" type="bool" value="true"/>
       <property name="known-legacy-items" type="array">
+        <value type="string" value="wi-fi network connection “stodola” active: stodola (56%)"/>
+        <value type="string" value="wi-fi network connection “stodola” active: stodola (59%)"/>
+        <value type="string" value="wi-fi network connection “stodola” active: stodola (60%)"/>
+        <value type="string" value="wi-fi network connection “stodola” active: stodola (54%)"/>
+        <value type="string" value="wi-fi network connection “stodola” active: stodola (52%)"/>
+        <value type="string" value="wi-fi network connection “stodola” active: stodola (57%)"/>
+        <value type="string" value="wi-fi network connection “otavanet-zoch 1” active: otavanet-zoch (69%)"/>
+        <value type="string" value="wi-fi network connection “asus-raven 1” active: asus-raven (80%)"/>
+        <value type="string" value="blueman"/>
+        <value type="string" value="wi-fi network connection “szn-intra” active: szn-intra (63%)"/>
+        <value type="string" value="blueman-tray"/>
+        <value type="string" value="electron"/>
+        <value type="string" value="wi-fi network connection “szn-intra” active: szn-intra (62%)"/>
+        <value type="string" value="configuring wi-fi network connection “szn-intra”…"/>
+        <value type="string" value="wi-fi network connection “szn-intra” active: szn-intra (66%)"/>
         <value type="string" value="wi-fi network connection “otavanet-zoch 1” active: otavanet-zoch (62%)"/>
         <value type="string" value="wi-fi network connection “otavanet-zoch 1” active: otavanet-zoch (67%)"/>
         <value type="string" value="caffeine"/>
@@ -81,6 +97,7 @@
         <value type="string" value="clipit"/>
       </property>
       <property name="known-items" type="array">
+        <value type="string" value="zoom"/>
         <value type="string" value="chrome_status_icon_1"/>
         <value type="string" value="blueman"/>
         <value type="string" value="caffeine"/>
@@ -96,7 +113,7 @@
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
       <property name="show-notifications" type="bool" value="true"/>
       <property name="mpris-players" type="string" value="firefox.instance109543;firefox.instance1484;firefox.instance1505;firefox.instance1629;firefox.instance18036;firefox.instance2405;firefox.instance7700;firefox.instance99398;plasma-browser-integration;spotify"/>
-      <property name="known-players" type="string" value="spotify"/>
+      <property name="known-players" type="string" value="firefox-developer-edition;spotify"/>
     </property>
     <property name="plugin-9" type="string" value="power-manager-plugin"/>
     <property name="plugin-10" type="string" value="notification-plugin"/>
@@ -107,8 +124,9 @@
     <property name="plugin-12" type="string" value="clock">
       <property name="mode" type="uint" value="2"/>
       <property name="digital-format" type="string" value="%a %_d %b %y, %H:%m:%S"/>
-      <property name="digital-time-format" type="string" value="%a %_d %b %y, %H:%m:%S"/>
+      <property name="digital-time-format" type="string" value="%a %_d %b %y, %H:%M:%S"/>
       <property name="digital-layout" type="uint" value="3"/>
+      <property name="digital-time-font" type="string" value="Terminess Nerd Font Medium 12"/>
     </property>
     <property name="plugin-14" type="string" value="actions">
       <property name="appearance" type="uint" value="0"/>
@@ -129,7 +147,7 @@
     </property>
     <property name="plugin-7" type="string" value="whiskermenu">
       <property name="button-title" type="string" value="Arch"/>
-      <property name="button-icon" type="string" value="distributor-logo-archlinux"/>
+      <property name="button-icon" type="string" value="archlinux-logo"/>
       <property name="show-button-title" type="bool" value="true"/>
       <property name="launcher-show-tooltip" type="bool" value="false"/>
       <property name="launcher-icon-size" type="int" value="3"/>
@@ -146,21 +164,23 @@
       <property name="favorites" type="array">
         <value type="string" value="kitty.desktop"/>
         <value type="string" value="Alacritty.desktop"/>
-        <value type="string" value="firefox.desktop"/>
+        <value type="string" value="firefox-developer-edition.desktop"/>
         <value type="string" value="sublime_text.desktop"/>
         <value type="string" value="spotify.desktop"/>
         <value type="string" value="org.kde.spectacle.desktop"/>
         <value type="string" value="org.kde.kcolorchooser.desktop"/>
       </property>
       <property name="recent" type="array">
-        <value type="string" value="Alacritty.desktop"/>
-        <value type="string" value="sublime_text.desktop"/>
+        <value type="string" value="mattermost-desktop.desktop"/>
         <value type="string" value="firefox-developer-edition.desktop"/>
+        <value type="string" value="jetbrains-idea-docker.desktop"/>
+        <value type="string" value="xfce4-mime-settings.desktop"/>
+        <value type="string" value="Alacritty.desktop"/>
         <value type="string" value="org.kde.dolphin.desktop"/>
-        <value type="string" value="org.kde.spectacle.desktop"/>
-        <value type="string" value="org.kde.kcolorchooser.desktop"/>
-        <value type="string" value="firefox.desktop"/>
-        <value type="string" value="spotify.desktop"/>
+        <value type="string" value="org.pgadmin.pgadmin4.desktop"/>
+        <value type="string" value="org.kde.kalk.desktop"/>
+        <value type="string" value="sublime_text.desktop"/>
+        <value type="string" value="pgadmin4.desktop"/>
       </property>
     </property>
     <property name="plugin-23" type="string" value="netload"/>

@@ -227,11 +227,18 @@ function fish_greeting
     end
 end
 
-# Docker dev environment    
+# Docker dev environment focal
 function denv_focal --description 'starts development image (devenv-focal)'
   xhost +"local:docker@" &>/dev/null  
   cd ~/src/devenv/devenv-focal
   ./docker-run.sh devenv-focal /usr/bin/fish i
+end
+
+## Docker dev environment noble   
+function denv_noble --description 'starts development image (devenv-noble)'
+  xhost +"local:docker@" &>/dev/null  
+  cd ~/src/devenv/devenv-noble
+  ./docker-run.sh devenv-noble "" i
 end
 ### END OF FUNCTIONS ###
 
@@ -244,7 +251,7 @@ alias clear='/bin/clear; echo; echo; seq 1 (tput cols) | sort -R | spark | lolca
 alias doas="doas --"
 
 # devenv aliases
-alias denv=denv_focal
+alias denv=denv_noble
 
 # navigation
 alias ..='cd ..'

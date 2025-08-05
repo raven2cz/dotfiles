@@ -82,11 +82,11 @@
     <property name="zoom_desktop" type="bool" value="true"/>
     <property name="zoom_pointer" type="bool" value="true"/>
     <property name="workspace_names" type="array">
-      <value type="string" value="/main"/>
-      <value type="string" value="/www"/>
-      <value type="string" value="/apps"/>
-      <value type="string" value="/dev"/>
-      <value type="string" value="/media"/>
+      <value type="string" value=" /main"/>
+      <value type="string" value=" /www"/>
+      <value type="string" value=" /apps"/>
+      <value type="string" value=" /dev"/>
+      <value type="string" value=" /media"/>
     </property>
     <property name="margin_right" type="int" value="0"/>
     <property name="margin_left" type="int" value="0"/>
