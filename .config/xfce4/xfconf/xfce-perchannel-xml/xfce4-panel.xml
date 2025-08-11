@@ -71,6 +71,7 @@
     <property name="plugin-6" type="string" value="systray">
       <property name="square-icons" type="bool" value="true"/>
       <property name="known-legacy-items" type="array">
+        <value type="string" value="wi-fi network connection “otavanet-zoch 1” active: otavanet-zoch (63%)"/>
         <value type="string" value="wi-fi network connection “stodola” active: stodola (56%)"/>
         <value type="string" value="wi-fi network connection “stodola” active: stodola (59%)"/>
         <value type="string" value="wi-fi network connection “stodola” active: stodola (60%)"/>
@@ -173,13 +174,13 @@
       <property name="recent" type="array">
         <value type="string" value="mattermost-desktop.desktop"/>
         <value type="string" value="firefox-developer-edition.desktop"/>
+        <value type="string" value="org.kde.dolphin.desktop"/>
         <value type="string" value="jetbrains-idea-docker.desktop"/>
+        <value type="string" value="org.pgadmin.pgadmin4.desktop"/>
+        <value type="string" value="sublime_text.desktop"/>
         <value type="string" value="xfce4-mime-settings.desktop"/>
         <value type="string" value="Alacritty.desktop"/>
-        <value type="string" value="org.kde.dolphin.desktop"/>
-        <value type="string" value="org.pgadmin.pgadmin4.desktop"/>
         <value type="string" value="org.kde.kalk.desktop"/>
-        <value type="string" value="sublime_text.desktop"/>
         <value type="string" value="pgadmin4.desktop"/>
       </property>
     </property>

@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=flameshot
-Icon=flameshot
-Exec=flameshot
+Name=ksnip
+Icon=ksnip
+Exec=ksnip
 Terminal=false
 Type=Application
 X-GNOME-Autostart-enabled=true
