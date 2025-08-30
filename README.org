@@ -1,55 +1,70 @@
-#+TITLE: Raven2cz's Neovim Configuration
+#+TITLE: Raven2cz Neovim Configuration (2025 Edition)
 #+AUTHOR: Antonin Fischer (raven2cz)
-#+DESCRIPTION: hyperextensible Vim-based text editor
+#+DESCRIPTION: A modular Lua-based Neovim setup with lazy loading, LSP integration, Treesitter, custom dashboard, and sidebar.
 
 #+html: <p align="center"><img src="images/nvim-logo.png" /></p>
 #+html: <p align="center"><b>hyperextensible Vim-based text editor</b></p>
-#+html: <p align="center"><img src="images/nvim-everforest.png" /></p>
-#+html: <p align="center"><b>Nvim Everforest Theme</b></p>
-#+html: <p align="center"><img src="images/nvim-darkplus.png" /></p>
-#+html: <p align="center"><b>Nvim DarkPlus Theme</b></p>
-#+html: <p align="center"><img src="images/nvim-dracula.png" /></p>
-#+html: <p align="center"><b>Nvim Dracula Theme</b></p>
-#+html: <p align="center"><img src="images/nvim-gruvbox.png" /></p>
-#+html: <p align="center"><b>Nvim Gruvbox Medium Theme</b></p>
-#+html: <p align="center"><img src="images/nvim-palenight.png" /></p>
-#+html: <p align="center"><b>Nvim Material Palenight Theme</b></p>
+#+html: <p align="center"><img src="images/nvim-tokyonight.png" /></p>
 
 * Table of Contents :toc:
 - [[#introduction][Introduction]]
-- [[#nvim-configuration][Nvim Configuration]]
+- [[#quick_start][Quick Start]]
 - [[#license][License]]
 
 * Introduction
-+ *Extensible*
-  - API is first-class: discoverable, versioned, documented.
-  - MessagePack structured communication enables extensions in any language.
-  - Remote plugins run as co-processes, safely and asynchronously.
-  - GUIs, IDEs, web browsers can --embed Neovim as an editor or script host.
++ *Modular & Lazy*  — Built on [[https://github.com/folke/lazy.nvim][lazy.nvim]], it loads plugins on demand, maintains a lockfile (~lazy-lock.json~), and supports version constraints for rock-solid stability.
++ *Powered by LSP*   — Automatic installation and configuration of language servers, linters and formatters via [[https://github.com/mason-org/mason.nvim][mason.nvim]] and [[https://github.com/mason-org/mason-lspconfig.nvim][mason-lspconfig]].
++ *Syntax & UI*      — High-performance syntax highlighting and indenting through Treesitter; dynamic statusline, interactive dashboard, and a sidebar file browser.
++ *Drop-in Vim*      — Fully compatible with Vim’s editing model and existing plugins; extends your workflow without surprises.
 
-+ *Usable*
-  - Strong defaults
-  - Works the same everywhere: one build-type, one command
-  - Modern terminal features such as cursor styling, focus events, bracketed paste
-  - Built-in terminal emulator
+*Core Architecture*
+- ~init.lua~  
+  • Bootstraps *lazy.nvim* and loads the core modules.  
+- ~lua/core/options.lua~  
+  • Editor settings (encoding, clipboard, line numbers, indent, search, performance).  
+- ~lua/core/keymaps.lua~  
+  • Leader-based shortcuts for saving, quitting, fuzzy-finding, file browser, toggling relative numbers.  
+- ~lua/core/autocmds.lua~  
+  • Handy autocommands (e.g. highlight yank).  
+- ~lua/core/lazy.lua~  
+  • Plugin specification with inline comments explaining purpose and load conditions.  
+- ~lua/lsp/init.lua~  
+  • LSP setup: automatic server install, shared capabilities, and buffer-local keymaps (~gd~, ~gD~, ~K~, etc.).
 
-+ *Drop-in Vim*
-  - Fully compatible with Vim's editing model and the Vimscript language.
-  - Start with :help nvim-from-vim if you already use Vim.
+*Key Plugins & Features*
+- *lazy.nvim*          — Modern plugin manager with lazy loading, lockfile support, and version pinning.  
+- *alpha-nvim*         — Startup dashboard showing ASCII art, quick-action buttons, and Neovim version.  
+- *oil.nvim*           — Sidebar file explorer; open it with ~<leader>e~.  
+- *nvim-lspconfig*     — Preconfigured integration for 50+ language servers.  
+- *mason.nvim*         — CLI-style installer for LSP servers, DAPs, linters, and formatters.  
+- *mason-lspconfig.nvim* — Bridges Mason and nvim-lspconfig; auto-registers servers.  
+- *nvim-cmp & LuaSnip* — Context-aware completion with snippet support.  
+- *nvim-treesitter*    — Incremental parsing for robust syntax highlighting and indentation.  
+- *telescope.nvim*     — Fuzzy finder with extensions (live grep, buffers, help tags, FZF native).  
+- *lualine.nvim*       — Fast, configurable statusline with Git and diagnostic sections.  
+- *gitsigns.nvim*      — Git diff markers and hunk actions in the sign column.  
+- *windwp/nvim-autopairs* — Auto-close brackets and quotes; integrates with completion.  
+- *numToStr/Comment.nvim* — Smart commenting mappings (~gc~, ~gcc~).  
+- *folke/which-key.nvim* — Popup keybinding hints for easier discovery.  
+- *clipboard*          — System clipboard sync (~unnamedplus~).  
 
-* Nvim Configuration
-My Neovim project is based on [[https://github.com/LunarVim/Neovim-from-scratch][LunarVim/Neovim-from-scratch]] by Christian Chiarulli. His YouTube series is perfect! If you start with neovim and lua, it is best start point.
-
-Project is inherited, but not depended. I will synch it time to time. But it is independent now.
-
-Additional features are:
-+ Addition of 20+ colorthemes primary for nvim, but some of them are vim. There are included all best themes. These themes can be changes dynamically with external script [[https://github.com/raven2cz/global-colorscheme][global-colorscheme]].
-+ Minimap plugin https://github.com/wfxr/minimap.vim
-+ Colorizer plugin https://github.com/norcalli/nvim-colorizer.lua
+*Quick Start*
+1. *Prerequisites*: Neovim ≥ 0.10 with Lua support. NPM for LSP server sync.
+2. *Clone* this repo:  
+#+begin_src bash
+git clone [https://github.com/raven2cz/nvim](https://github.com/raven2cz/nvim) \~/.config/nvim
+#+end_src
+3. *Launch* Neovim:  
+#+begin_src bash
+nvim
+#+end_src
+4. *Install* plugins & servers:  
+#+begin_src vim
+:Lazy sync
+:MasonInstall lua_ls cssls html pyright jsonls yamlls bashls
+:Lazy lock
+#+end_src
+5. *Enjoy* a fast, extensible, and fully documented editor setup!
 
 * License
-The files and scripts in this repository are licensed under the *MIT License*, which is a very permissive license allowing you to use, modify, copy, distribute, sell, give away, etc. the software. In other words, do what you want with it. The only requirement with the MIT License is that the license and copyright notice must be provided with the software.
-
-The configuration files are added in ~LICENSE~ (Antonin Fischer (raven2cz) repository) MIT License.
-
-Additional license is driven by [[https://github.com/LunarVim/Neovim-from-scratch][LunarVim/Neovim-from-scratch]] by Christian Chiarulli (license added) GNU General Public License v3.0.
+  This configuration is released under the *MIT License*. See the included ~LICENSE~ file for full terms.
