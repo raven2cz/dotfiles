@@ -52,7 +52,7 @@ theme.icon_path = theme.dir .. "/icons/"
 local dsconfig = dsession.load_display_session()
 dsconfig.theme = theme
 dsconfig.theme_name = theme_name
-dsconfig.isFullhd = scr_res == "1920x1080+0+0"
+dsconfig.isFullhd = scr_res == "1920x1080+0+0" or scr_res == "1920x1200+0+0"
 dsconfig.isLaptop = os.getenv("LAPTOP")
 theme.dsconfig = dsconfig
 -- }}}
@@ -274,7 +274,8 @@ theme.fs = lain.widget.fs({
   settings = function()
     local fsp = string.format(" %3.2f %s ", fs_now["/"].free, fs_now["/"].units)
     widget:set_markup(markup.fontfg(theme.font, theme.widgetbar_fg, fsp))
-  end
+  end,
+  only = {"/","/home"}
 })
 local fsWibox = wiboxBox1(fsicon, theme.fs.widget, wboxColor, theme.widgetbar_fg, 2, 3, underLineSize, wiboxMargin)
 
