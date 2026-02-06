@@ -1,20 +1,104 @@
-# Don't print a new line at the start of the prompt
-add_newline = false
+# Starship Prompt Configuration with Claude Account Indicator
+# Add this to your ~/.config/starship.toml
+# Or merge with your existing config
 
-# Make prompt a single line instead of two lines
-[line_break]
-disabled = true
+# Format definition - adds claude_account at the beginning
+format = """
+$claude_account\
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$python\
+$nodejs\
+$rust\
+$java\
+$cmd_duration\
+$line_break\
+$character"""
 
-# Replace the "❯" symbol in the prompt with "➜"
-[character]                         # The name of the module we are configuring is "character"
-success_symbol = "[󰜴](bold green)"  # The "success_symbol" is set to "➜" with color "bold green"
+# Custom Claude Account Indicator
+[custom.claude_account]
+command = '''
+if [ "$CLAUDE_CONFIG_DIR" = "$HOME/.claude-work" ]; then
+    echo "🏢"
+elif [ "$CLAUDE_CONFIG_DIR" = "$HOME/.claude-personal" ]; then
+    echo "👤"
+else
+    echo ""
+fi
+'''
+when = 'test -n "$CLAUDE_CONFIG_DIR"'
+shell = ["sh", "-c"]
+format = "[$output]($style) "
+style = "bold green"
 
-# Use custom format
-# format = """
-# [┌───────────────────>](bold green)
-# [│](bold green)$directory$rust$package
-# [└─>](bold green) """
+# Directory
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+format = "[$path]($style)[$read_only]($read_only_style) "
+style = "bold cyan"
 
-# Disable the package module, hiding it from the prompt completely
-[package]
+# Git Branch
+[git_branch]
+symbol = " "
+format = "on [$symbol$branch]($style) "
+style = "bold purple"
+
+# Git Status
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+style = "bold red"
+
+# Character
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[➜](bold red)"
+vicmd_symbol = "[V](bold green)"
+
+# Command Duration
+[cmd_duration]
+min_time = 500
+format = "took [$duration]($style) "
+style = "bold yellow"
+
+# Python
+[python]
+symbol = " "
+format = 'via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+style = "yellow"
+
+# Node.js
+[nodejs]
+symbol = " "
+format = "via [$symbol($version )]($style)"
+style = "bold green"
+
+# Rust
+[rust]
+symbol = " "
+format = "via [$symbol($version )]($style)"
+style = "bold red"
+
+# Java
+[java]
+symbol = " "
+format = "via [$symbol($version )]($style)"
+style = "red"
+
+# Username
+[username]
+style_user = "bold blue"
+style_root = "bold red"
+format = "[$user]($style) "
+disabled = false
+show_always = false
+
+# Hostname
+[hostname]
+ssh_only = true
+format = "on [$hostname]($style) "
+style = "bold green"
 disabled = false

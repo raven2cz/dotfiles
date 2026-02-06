@@ -240,6 +240,183 @@ function denv_noble --description 'starts development image (devenv-noble)'
   cd ~/src/devenv/devenv-noble
   ./docker-run.sh devenv-noble "" i
 end
+
+### CLAUDE CODE ACCOUNT SWITCHING ###
+# Funkce pro práci s firemním účtem (Seznam/API)
+function code-work --description 'Start VS Code with work Claude account'
+    set -x CLAUDE_CONFIG_DIR ~/.claude-work
+    
+    echo "🏢 Starting VS Code with WORK account"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    
+    # Zobraz usage pokud je ccusage dostupný
+    if command -v npx &>/dev/null
+        echo "📊 Current usage:"
+        set -x CLAUDE_CONFIG_DIR ~/.claude-work
+        npx ccusage@latest blocks --live 2>/dev/null | head -10
+        or echo "  💡 Install ccusage: yay -S ccusage"
+    end
+    
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo ""
+    
+    # Nastav proměnné pro VS Code customizaci
+    set -x VSCODE_CUSTOM_TITLE "🏢 WORK"
+    set -x CLAUDE_ACCOUNT_TYPE "work"
+    
+    # Spusť VS Code s custom argumenty - použij command pro bypass aliasů
+    command code --user-data-dir=$HOME/.vscode-claude-work $argv
+end
+
+# Funkce pro práci s osobním Max účtem
+function code-personal --description 'Start VS Code with personal Claude Max account'
+    set -x CLAUDE_CONFIG_DIR ~/.claude-personal
+    
+    echo "👤 Starting VS Code with PERSONAL Max account"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    
+    # Zobraz usage pokud je ccusage dostupný
+    if command -v npx &>/dev/null
+        echo "📊 Current usage:"
+        set -x CLAUDE_CONFIG_DIR ~/.claude-personal
+        npx ccusage@latest blocks --live 2>/dev/null | head -10
+        or echo "  💡 Install ccusage: yay -S ccusage"
+    end
+    
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo ""
+    
+    # Nastav proměnné pro VS Code customizaci
+    set -x VSCODE_CUSTOM_TITLE "👤 PERSONAL"
+    set -x CLAUDE_ACCOUNT_TYPE "personal"
+    
+    # Spusť VS Code s custom argumenty - použij command pro bypass aliasů
+    command code --user-data-dir=$HOME/.vscode-claude-personal $argv
+end
+
+# Funkce pro Claude Code CLI s firemním účtem
+function claude-work --description 'Start Claude Code CLI with work account'
+    set -x CLAUDE_CONFIG_DIR ~/.claude-work
+    echo "🏢 Using WORK account"
+    claude $argv
+end
+
+# Funkce pro Claude Code CLI s osobním účtem
+function claude-personal --description 'Start Claude Code CLI with personal account'
+    set -x CLAUDE_CONFIG_DIR ~/.claude-personal
+    echo "👤 Using PERSONAL account"
+    claude $argv
+end
+
+# Zobraz detailní usage pro work účet
+function work-usage --description 'Show detailed usage for work account'
+    set -x CLAUDE_CONFIG_DIR ~/.claude-work
+    if command -v ccusage &>/dev/null
+        ccusage $argv
+    else if command -v npx &>/dev/null
+        npx ccusage@latest $argv
+    else
+        echo "❌ ccusage not found. Install: yay -S ccusage"
+    end
+end
+
+# Zobraz detailní usage pro personal účet
+function personal-usage --description 'Show detailed usage for personal account'
+    set -x CLAUDE_CONFIG_DIR ~/.claude-personal
+    if command -v ccusage &>/dev/null
+        ccusage $argv
+    else if command -v npx &>/dev/null
+        npx ccusage@latest $argv
+    else
+        echo "❌ ccusage not found. Install: yay -S ccusage"
+    end
+end
+
+# Real-time monitoring pro work účet (spustit v separátním terminálu)
+function work-monitor --description 'Live monitoring for work account (run in separate terminal)'
+    set -x CLAUDE_CONFIG_DIR ~/.claude-work
+    if command -v cmonitor &>/dev/null
+        cmonitor
+    else
+        echo "❌ cmonitor not found. Install: pip install claude-code-monitor"
+        echo "   or use: pip install claude-code-monitor --break-system-packages"
+    end
+end
+
+# Real-time monitoring pro personal účet
+function personal-monitor --description 'Live monitoring for personal account (run in separate terminal)'
+    set -x CLAUDE_CONFIG_DIR ~/.claude-personal
+    if command -v cmonitor &>/dev/null
+        cmonitor
+    else
+        echo "❌ cmonitor not found. Install: pip install claude-code-monitor"
+        echo "   or use: pip install claude-code-monitor --break-system-packages"
+    end
+end
+
+# Rychlá kontrola který účet je aktivní
+function claude-which --description 'Show which Claude account is currently active'
+    echo "Current CLAUDE_CONFIG_DIR: $CLAUDE_CONFIG_DIR"
+    
+    if test -n "$CLAUDE_CONFIG_DIR"
+        if test -f "$CLAUDE_CONFIG_DIR/config.json"
+            echo "Active account:"
+            cat "$CLAUDE_CONFIG_DIR/config.json" | grep -o '"email":"[^"]*"' 2>/dev/null
+        else
+            echo "⚠️  No active session in this config directory"
+        end
+    else
+        echo "⚠️  CLAUDE_CONFIG_DIR not set (using default ~/.config/claude)"
+        if test -f ~/.config/claude/config.json
+            echo "Default account:"
+            cat ~/.config/claude/config.json | grep -o '"email":"[^"]*"' 2>/dev/null
+        end
+    end
+end
+
+# Funkce pro AwesomeWM wibar - vrací kompaktní JSON s usage info
+function claude-usage-json --description 'Get Claude usage as JSON for AwesomeWM wibar'
+    set -x CLAUDE_CONFIG_DIR ~/.claude-work
+    
+    # Pokus se získat usage z ccusage
+    if command -v ccusage &>/dev/null
+        # Zkus získat aktuální usage
+        set output (ccusage blocks --json 2>/dev/null | head -1)
+        
+        if test -n "$output"
+            echo $output
+        else
+            # Fallback - prázdný JSON
+            echo '{"account":"work","error":"no_data"}'
+        end
+    else if command -v npx &>/dev/null
+        # Zkus získat aktuální usage přes npx
+        set output (npx ccusage@latest blocks --json 2>/dev/null | head -1)
+        
+        if test -n "$output"
+            echo $output
+        else
+            # Fallback - prázdný JSON
+            echo '{"account":"work","error":"no_data"}'
+        end
+    else
+        echo '{"account":"work","error":"ccusage_not_installed"}'
+    end
+end
+
+# Kompaktní status pro prompt nebo wibar
+function claude-status-compact --description 'Compact status for prompt or statusbar'
+    if test "$CLAUDE_CONFIG_DIR" = "$HOME/.claude-work"
+        echo "🏢"
+    else if test "$CLAUDE_CONFIG_DIR" = "$HOME/.claude-personal"
+        echo "👤"
+    else
+        echo "❓"
+    end
+end
+
+### END OF CLAUDE CODE FUNCTIONS ###
+
 ### END OF FUNCTIONS ###
 
 

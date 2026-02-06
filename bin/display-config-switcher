@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Pre-defined order of display interfaces - CHANGE BY YOUR PREFERENCES
-declare -a interface_order=("HDMI-1" "DP-1" "HDMI-2" "HDMI-3")
+declare -a interface_order=("DP-4" "DP-2" "HDMI-0" "DP-0" "DP-1" "DP-3" "DP-5")
 
 # Session types with descriptions - ADD YOUR SETTINGS
 declare -A session_types=(
@@ -78,16 +78,16 @@ IFS=' ' read -r -a displays <<< $(detect_displays)
 execute_xrandr() {
     case "$selected_option" in
         DESKTOP_LANDSCAPE)
-            xrandr --output "DP-2" --dpi 120 --mode 3840x2160 --primary --output "DP-0" --off 
+            xrandr --output "DP-4" --dpi 120 --mode 3840x2160 --primary --output "DP-2" --off
             ;;
         DESKTOP_PORTRAIT)
-            xrandr --output "DP-0" --dpi 120 --rate 60 --mode 3840x2160 --rotate left --primary
+            xrandr --output "DP-2" --dpi 120 --rate 60 --mode 3840x2160 --rotate left --primary
             ;;
         DESKTOP_LANDSCAPE_LANDSCAPE)
             xrandr --output "${displays[0]}" --dpi 120 --rate 144 --mode 3840x2160 --primary --output "${displays[1]}" --dpi 120 --rate 60 --mode 3840x2160 --left-of "${displays[0]}"
             ;;
         DESKTOP_LANDSCAPE_PORTRAIT)
-            xrandr --output "DP-2" --dpi 120 --rate 144 --mode 3840x2160 --primary --output "DP-0" --dpi 120 --rate 60 --mode 3840x2160 --rotate left --left-of "DP-2"
+            xrandr --output "DP-4" --dpi 120 --rate 144 --mode 3840x2160 --primary --output "DP-2" --dpi 120 --rate 60 --mode 3840x2160 --rotate left --left-of "DP-4"
             ;;
         LAPTOP_INTERNAL)
             xrandr --output eDP-1 --auto --primary --output "${displays[0]}" --off --output "${displays[1]}" --off

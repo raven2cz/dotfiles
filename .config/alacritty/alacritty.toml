@@ -171,3 +171,8 @@ instance = "Alacritty"
 [window.padding]
 x = 6
 y = 6
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001b\r"
