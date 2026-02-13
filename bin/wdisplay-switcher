@@ -1,0 +1,188 @@
+#!/bin/bash
+
+# Wayland Display Profile Switcher
+# Uses wlr-randr for wlroots-based compositors (somewm, sway, etc.)
+#
+# Usage:
+#   wdisplay-switcher                    # interactive menu
+#   wdisplay-switcher <PROFILE_NAME>     # apply directly
+#   wdisplay-switcher -l|--list          # list profiles
+#   wdisplay-switcher -s|--status        # show current state
+#   wdisplay-switcher -h|--help          # help
+
+set -euo pipefail
+
+# ---------------------------------------------------------------------------
+# PROFILES — add new profiles here
+# ---------------------------------------------------------------------------
+# Each profile is a function named profile_<NAME>.
+# Add an entry to PROFILES array and write the corresponding function.
+# ---------------------------------------------------------------------------
+
+declare -a PROFILE_ORDER=(
+    DESKTOP_DELL
+    DESKTOP_DELL_HP_PORTRAIT
+    DESKTOP_DELL_SAMSUNG_TV
+)
+
+declare -A PROFILES=(
+    [DESKTOP_DELL]="Dell G3223Q 4K@144Hz only"
+    [DESKTOP_DELL_HP_PORTRAIT]="Dell G3223Q 4K@144Hz (right) + HP U28 4K@60Hz portrait (left)"
+    [DESKTOP_DELL_SAMSUNG_TV]="Dell G3223Q 4K@144Hz (right) + Samsung TV 4K@60Hz (left)"
+)
+
+# -- Profile functions -------------------------------------------------------
+
+profile_DESKTOP_DELL() {
+    wlr-randr \
+        --output DP-3 \
+            --on \
+            --mode 3840x2160@143.962997Hz \
+            --transform normal \
+            --pos 0,0
+    # disable other outputs if connected
+    for out in DP-2 HDMI-A-1; do
+        wlr-randr --output "$out" --off 2>/dev/null || true
+    done
+}
+
+profile_DESKTOP_DELL_SAMSUNG_TV() {
+    wlr-randr \
+        --output DP-3 \
+            --on \
+            --mode 3840x2160@143.962997Hz \
+            --pos 3840,0 \
+        --output HDMI-A-1 \
+            --on \
+            --mode 3840x2160@60Hz \
+            --pos 0,0
+}
+
+profile_DESKTOP_DELL_HP_PORTRAIT() {
+    wlr-randr \
+        --output DP-3 \
+            --on \
+            --mode 3840x2160@143.962997Hz \
+            --transform normal \
+            --pos 2160,0 \
+        --output DP-2 \
+            --on \
+            --mode 3840x2160@59.997002Hz \
+            --transform 90 \
+            --pos 0,0
+}
+
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+
+CYAN='\033[0;36m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+RED='\033[0;31m'
+BOLD='\033[1m'
+DIM='\033[2m'
+NC='\033[0m'
+
+print_header() {
+    echo -e "${CYAN}${BOLD}  Wayland Display Profile Switcher${NC}"
+    echo -e "${DIM}  ─────────────────────────────────${NC}"
+}
+
+show_status() {
+    echo -e "\n${BOLD}  Connected outputs:${NC}\n"
+    wlr-randr 2>&1 | while IFS= read -r line; do
+        if [[ "$line" =~ ^[A-Z] ]]; then
+            echo -e "  ${GREEN}${BOLD}${line}${NC}"
+        elif [[ "$line" == *"current"* ]]; then
+            echo -e "  ${YELLOW}  ${line}${NC}"
+        elif [[ "$line" =~ ^[[:space:]]+(Enabled|Position|Scale): ]]; then
+            echo -e "  ${DIM}  ${line}${NC}"
+        fi
+    done
+    echo
+}
+
+list_profiles() {
+    echo -e "\n${BOLD}  Available profiles:${NC}\n"
+    local i=1
+    for key in "${PROFILE_ORDER[@]}"; do
+        echo -e "  ${CYAN}${i})${NC} ${BOLD}${key}${NC}"
+        echo -e "     ${DIM}${PROFILES[$key]}${NC}"
+        ((i++))
+    done
+    echo
+}
+
+apply_profile() {
+    local name="$1"
+    local func="profile_${name}"
+
+    if ! declare -f "$func" > /dev/null 2>&1; then
+        echo -e "${RED}  Unknown profile: ${name}${NC}" >&2
+        list_profiles >&2
+        exit 1
+    fi
+
+    echo -e "${YELLOW}  Applying:${NC} ${BOLD}${name}${NC}"
+    echo -e "${DIM}  ${PROFILES[$name]}${NC}\n"
+
+    if $func; then
+        sleep 0.5
+        echo -e "${GREEN}  Done.${NC}"
+        show_status
+        # persist last used profile
+        echo "$name" > ~/.wdisplay-profile
+    else
+        echo -e "${RED}  Failed to apply profile.${NC}" >&2
+        exit 1
+    fi
+}
+
+interactive_menu() {
+    print_header
+    show_status
+    list_profiles
+
+    local choice
+    read -rp "  Choose profile (1-${#PROFILE_ORDER[@]}): " choice
+
+    if [[ ! "$choice" =~ ^[0-9]+$ ]] || (( choice < 1 || choice > ${#PROFILE_ORDER[@]} )); then
+        echo -e "${RED}  Invalid choice.${NC}" >&2
+        exit 1
+    fi
+
+    local selected="${PROFILE_ORDER[$((choice - 1))]}"
+    echo
+    apply_profile "$selected"
+}
+
+show_help() {
+    print_header
+    echo
+    echo "  Usage: $(basename "$0") [OPTION|PROFILE_NAME]"
+    echo
+    echo "  Options:"
+    echo "    (none)         Interactive profile selection"
+    echo "    <PROFILE>      Apply profile directly"
+    echo "    -l, --list     List available profiles"
+    echo "    -s, --status   Show current display state"
+    echo "    -h, --help     Show this help"
+    echo
+    list_profiles
+}
+
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
+
+case "${1:-}" in
+    -h|--help)    show_help ;;
+    -l|--list)    list_profiles ;;
+    -s|--status)  show_status ;;
+    "")           interactive_menu ;;
+    *)
+        name=$(echo "$1" | tr '[:lower:]' '[:upper:]')
+        apply_profile "$name"
+        ;;
+esac
