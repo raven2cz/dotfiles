@@ -1,0 +1,344 @@
+#!/bin/bash
+# ============================================================================
+# Session launcher - TUI menu for starting desktop sessions from TTY
+# ============================================================================
+set -euo pipefail
+
+# ── Colors & Drawing ──────────────────────────────────────────────────────────
+
+# Gruvbox-inspired palette
+C_BG="\033[48;5;235m"       # dark bg
+C_FG="\033[38;5;223m"       # light fg
+C_DIM="\033[38;5;245m"      # dimmed
+C_ACCENT="\033[38;5;214m"   # orange accent
+C_ACCENT2="\033[38;5;142m"  # green accent
+C_ACCENT3="\033[38;5;109m"  # blue accent
+C_ACCENT4="\033[38;5;175m"  # purple accent
+C_SEL_BG="\033[48;5;237m"   # selected bg
+C_SEL_FG="\033[38;5;214m"   # selected fg
+C_BOLD="\033[1m"
+C_RESET="\033[0m"
+C_HIDE="\033[?25l"
+C_SHOW="\033[?25h"
+C_CLEAR="\033[2J\033[H"
+
+# Box drawing
+H="─"  V="│"  TL="╭"  TR="╮"  BL="╰"  BR="╯"
+
+# ── Session definitions ───────────────────────────────────────────────────────
+# Format: "id|name|description|type|command"
+#   type: wayland, x11, script
+
+SESSIONS=(
+    "somewm|somewm|Wayland compositor (wlroots)|wayland|somewm-session"
+    "kde|KDE Plasma|Wayland desktop environment|wayland|/usr/lib/plasma-dbus-run-session-if-needed /usr/bin/startplasma-wayland"
+    "awesome|AwesomeWM|X11 window manager (via .xinitrc)|x11|$HOME/.xinitrc awesome"
+    "hyprland|Hyprland|Wayland compositor (wlroots)|wayland|dbus-run-session Hyprland"
+)
+
+# Filter to only sessions whose binary exists
+AVAILABLE=()
+for entry in "${SESSIONS[@]}"; do
+    IFS='|' read -r id name desc type cmd <<< "$entry"
+    # Check first word of command
+    local_bin="${cmd%% *}"
+    if command -v "$local_bin" &>/dev/null || [ -x "$local_bin" ]; then
+        AVAILABLE+=("$entry")
+    fi
+done
+
+if [ ${#AVAILABLE[@]} -eq 0 ]; then
+    echo "No sessions available."
+    exit 1
+fi
+
+# ── Drawing functions ─────────────────────────────────────────────────────────
+
+get_term_size() {
+    LINES=$(tput lines)
+    COLS=$(tput cols)
+}
+
+# Print at position
+at() { printf "\033[%d;%dH" "$1" "$2"; }
+
+# Draw horizontal line
+hline() {
+    local y=$1 x=$2 len=$3 color=${4:-$C_DIM}
+    at "$y" "$x"
+    printf "%b" "$color"
+    printf "%0.s$H" $(seq 1 "$len")
+    printf "%b" "$C_RESET"
+}
+
+# Draw box
+box() {
+    local y=$1 x=$2 w=$3 h=$4 color=${5:-$C_DIM}
+    at "$y" "$x"; printf "%b%s" "$color" "$TL"
+    printf "%0.s$H" $(seq 1 $((w-2)))
+    printf "%s%b" "$TR" "$C_RESET"
+
+    for ((i=1; i<h-1; i++)); do
+        at $((y+i)) "$x"; printf "%b%s%b" "$color" "$V" "$C_RESET"
+        at $((y+i)) $((x+w-1)); printf "%b%s%b" "$color" "$V" "$C_RESET"
+    done
+
+    at $((y+h-1)) "$x"; printf "%b%s" "$color" "$BL"
+    printf "%0.s$H" $(seq 1 $((w-2)))
+    printf "%s%b" "$BR" "$C_RESET"
+}
+
+# Center text in given width
+center() {
+    local text="$1" width=$2
+    local len=${#text}
+    local pad=$(( (width - len) / 2 ))
+    printf "%*s%s%*s" "$pad" "" "$text" $((width - len - pad)) ""
+}
+
+# ── ASCII Art ─────────────────────────────────────────────────────────────────
+
+draw_logo() {
+    local y=$1 x=$2
+    local O=$'\033[38;5;214m'   # orange (sloth)
+    local B=$'\033[38;5;172m'   # brown (nose)
+    local W=$'\033[38;5;223m'   # warm white (face)
+    local D=$'\033[38;5;239m'   # dim (feet)
+    local R=$'\033[0m'
+
+    local -a lines=()
+    lines+=("${W}   --(( ${W}----${W} ))--${R}")
+    lines+=("${O}      \\\\     /|${R}")
+    lines+=("${W}   p${B}*${W}q${O}/  \\_/  \\\\${R}")
+    lines+=("${O}   \\\\          /${R}")
+    lines+=("${O}    \" _     _\"${R}")
+    lines+=("${O}        —  —${R}")
+    local i=0
+    for line in "${lines[@]}"; do
+        at $((y + i)) "$x"
+        printf "%s" "$line"
+        ((i+=1))
+    done
+
+    # Motto centered independently
+    local motto="\"Chces slyset vtip, Blesku?\""
+    at $((y + i + 1)) $(( x - 3 ))
+    printf "%s" "${D}${motto}${R}"
+}
+
+draw_wm_name() {
+    local y=$1 x=$2 id=$3
+    local A=$'\033[38;5;214m'
+    local R=$'\033[0m'
+
+    local -a art=()
+    case "$id" in
+        somewm)
+            art+=(' ___  ___  _ __ ___   _____      ___ __ ___  ')
+            art+=('/ __|/ _ \| '"'"'_ ` _ \ / _ \ \ /\ / / '"'"'_ ` _ \ ')
+            art+=('\__ \ (_) | | | | | |  __/\ V  V /| | | | | |')
+            art+=('|___/\___/|_| |_| |_|\___| \_/\_/ |_| |_| |_|')
+            ;;
+        kde)
+            art+=(' _  _____  ___   ___ _                    ')
+            art+=('| |/ /   \| __| | _ \ |__ _ ____ __  __ _ ')
+            art+=('| '"'"' <| |) | _|  |  _/ / _` (_-< '"'"'  \/ _` |')
+            art+=('|_|\_\___/|___| |_| |_\__,_/__/_|_|_\__,_|')
+            ;;
+        awesome)
+            art+=('   _                             __      ____  __ ')
+            art+=('  /_\__ __ _____ ___ ___ _ __  __\ \    / /  \/  |')
+            art+=(' / _ \ V  V / -_|_-</ _ \ '"'"'  \/ -_) \/\/ /| |\/| |')
+            art+=('/_/ \_\_/\_/\___/__/\___/_|_|_\___|\_/\_/ |_|  |_|')
+            ;;
+        hyprland)
+            art+=(' _  _               _              _ ')
+            art+=('| || |_  _ _ __ _ _| |__ _ _ _  __| |')
+            art+=('| __ | || | '"'"'_ \ '"'"'_| / _` | '"'"' \/ _` |')
+            art+=('|_||_|\_, | .__/_| |_\__,_|_||_\__,_|')
+            art+=('      |__/|_|                        ')
+            ;;
+    esac
+
+    local i=0
+    for line in "${art[@]}"; do
+        at $((y + i)) "$x"
+        printf "%s%s%s" "$A" "$line" "$R"
+        ((i+=1))
+    done
+}
+
+draw_system_info() {
+    local y=$1 x=$2 w=$3
+    local kernel hostname uptime_str mem_str
+
+    kernel=$(uname -r | sed 's/-.*//')
+    hostname=$(uname -n)
+    uptime_str=$(uptime -p 2>/dev/null | sed 's/up //' || echo "?")
+    mem_str=$(free -h 2>/dev/null | awk '/Mem:/{print $3"/"$2}' || echo "?")
+
+    at "$y" "$x"
+    printf "%b%b%s%b  %b%s%b  %b%s%b  %b%s%b" \
+        "$C_DIM" \
+        "$C_ACCENT3" "⬡ $hostname" "$C_DIM" \
+        "$C_ACCENT2" "⚙ $kernel" "$C_DIM" \
+        "$C_ACCENT4" "↑ $uptime_str" "$C_DIM" \
+        "$C_ACCENT" "▪ $mem_str" "$C_RESET"
+}
+
+# ── Menu ──────────────────────────────────────────────────────────────────────
+
+draw_menu() {
+    local selected=$1
+    local box_w=56
+    local box_x=$(( (COLS - box_w) / 2 ))
+    local box_y=20
+    local item_count=${#AVAILABLE[@]}
+    local box_h=$(( item_count * 3 + 4 ))
+
+    # Box
+    box "$box_y" "$box_x" "$box_w" "$box_h" "$C_DIM"
+
+    # Title
+    at "$box_y" $((box_x + 2))
+    printf "%b%b %s %b" "$C_DIM" "$C_BOLD$C_ACCENT" "SELECT SESSION" "$C_RESET"
+
+    # Items
+    local idx=0
+    for entry in "${AVAILABLE[@]}"; do
+        IFS='|' read -r id name desc type cmd <<< "$entry"
+        local iy=$((box_y + 2 + idx * 3))
+
+        # Type badge
+        local badge badge_color
+        case "$type" in
+            wayland) badge="WL"  ; badge_color="$C_ACCENT2";;
+            x11)     badge="X11" ; badge_color="$C_ACCENT4";;
+            script)  badge="SH"  ; badge_color="$C_ACCENT3";;
+        esac
+
+        if [ "$idx" -eq "$selected" ]; then
+            # Selected item - highlighted
+            at "$iy" $((box_x + 2))
+            printf "%b%b  ▸ %b%-20s %b[%s]%b" \
+                "$C_SEL_BG" "$C_SEL_FG" "$C_BOLD" "$name" "$badge_color" "$badge" "$C_RESET"
+            at $((iy + 1)) $((box_x + 2))
+            printf "%b%b    %-48s%b" \
+                "$C_SEL_BG" "$C_FG" "$desc" "$C_RESET"
+        else
+            # Normal item
+            at "$iy" $((box_x + 2))
+            printf "%b    %-20s %b[%s]%b" \
+                "$C_DIM" "$name" "$badge_color" "$badge" "$C_RESET"
+            at $((iy + 1)) $((box_x + 2))
+            printf "%b    %-48s%b" \
+                "\033[38;5;241m" "$desc" "$C_RESET"
+        fi
+
+        ((idx+=1))
+    done
+
+    # Footer
+    local footer_y=$((box_y + box_h))
+    at "$footer_y" "$box_x"
+    printf "%b  ↑↓ navigate  ⏎ launch  q quit%b" "$C_DIM" "$C_RESET"
+}
+
+# ── Main ──────────────────────────────────────────────────────────────────────
+
+cleanup() {
+    printf "%b%b" "$C_SHOW" "$C_RESET"
+    tput cnorm 2>/dev/null
+    stty sane 2>/dev/null
+    clear
+}
+trap cleanup EXIT
+
+main() {
+    get_term_size
+
+    # Hide cursor
+    printf "%b%b" "$C_HIDE" "$C_CLEAR"
+
+    local selected=0
+    local item_count=${#AVAILABLE[@]}
+
+    while true; do
+        # Clear and draw
+        printf "%b" "$C_CLEAR"
+
+        # Logo centered
+        local logo_w=30
+        local logo_x=$(( (COLS - logo_w) / 2 ))
+        draw_logo 2 "$logo_x"
+
+        # WM name ASCII art (below motto)
+        local sel_entry="${AVAILABLE[$selected]}"
+        local sel_id
+        IFS='|' read -r sel_id _ _ _ _ <<< "$sel_entry"
+        local wm_art_w=52
+        draw_wm_name 12 $(( (COLS - wm_art_w) / 2 )) "$sel_id"
+
+        # System info
+        draw_system_info 18 $(( (COLS - 60) / 2 )) 60
+
+        # Menu
+        draw_menu "$selected"
+
+        # Read key (bash read -rsn1 works on both TTY and pty)
+        local key
+        IFS= read -rsn1 key
+
+        case "$key" in
+            $'\x1b')
+                # Escape sequence - read remaining bytes with timeout
+                # Arrow keys send \x1b[A etc. Bare Escape = nothing follows
+                local seq
+                IFS= read -rsn2 -t 0.1 seq || true
+                case "$seq" in
+                    "[A") # Up
+                        selected=$(( (selected - 1 + item_count) % item_count ))
+                        ;;
+                    "[B") # Down
+                        selected=$(( (selected + 1) % item_count ))
+                        ;;
+                    "") # Bare Escape (no follow-up bytes)
+                        exit 0
+                        ;;
+                esac
+                ;;
+            "") # Enter
+                # Launch selected session
+                local entry="${AVAILABLE[$selected]}"
+                IFS='|' read -r id name desc type cmd <<< "$entry"
+
+                # Restore terminal
+                cleanup
+                trap - EXIT
+
+                echo "Launching $name..."
+                sleep 0.3
+
+                case "$type" in
+                    x11)
+                        exec startx $cmd
+                        ;;
+                    wayland|script)
+                        exec $cmd
+                        ;;
+                esac
+                ;;
+            "q"|"Q") # Quit
+                exit 0
+                ;;
+            "k") # vim up
+                selected=$(( (selected - 1 + item_count) % item_count ))
+                ;;
+            "j") # vim down
+                selected=$(( (selected + 1) % item_count ))
+                ;;
+        esac
+    done
+}
+
+main

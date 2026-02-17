@@ -1,0 +1,409 @@
+#!/bin/bash
+# ============================================================================
+# somewm Wayland session - install & configure
+# ============================================================================
+#
+# This script sets up a complete Wayland session for somewm on Arch Linux
+# with NVIDIA GPU on a minimal WM (no GNOME/KDE desktop environment).
+#
+# WHAT IT DOES (and WHY):
+#
+#   1. PAM - gnome-keyring auto-unlock (/etc/pam.d/login)
+#      Without this, gnome-keyring stays locked after TTY login.
+#      Any app using D-Bus org.freedesktop.secrets (gemini-cli, pass, etc.)
+#      hangs for ~75s waiting on D-Bus timeout. PAM unlocks the keyring
+#      with your login password automatically.
+#
+#   2. environment.d (~/.config/environment.d/50-somewm.conf)
+#      Standard systemd way to set session environment variables.
+#      Read automatically by display managers, sourced by somewm-session
+#      for TTY launch. Contains: NVIDIA vars, XDG desktop identity,
+#      Qt theme, editor, etc.
+#
+#   3. somewm-session (/usr/local/bin/somewm-session)
+#      Session launcher for TTY. Key features:
+#      - Sources environment.d (same vars as display manager would use)
+#      - Uses systemd user bus (NOT dbus-run-session which creates an
+#        isolated bus where gnome-keyring isn't reachable)
+#      - Starts gnome-keyring for secrets/pkcs11
+#      - Sets SSH_AUTH_SOCK for gcr-ssh-agent
+#      - Imports env into systemd for portal support
+#
+#   4. gcr-ssh-agent (systemd user unit)
+#      SSH agent from gcr-4 package. gnome-keyring dropped its SSH agent
+#      in v46+. gcr-ssh-agent provides the replacement at
+#      /run/user/$UID/gcr/ssh.
+#
+#   5. start-somewm (/usr/local/bin/start-somewm)
+#      Display manager launcher (for LightDM/SDDM). Sources environment.d,
+#      starts gnome-keyring, logs to ~/.local/log/somewm-session.log.
+#
+#   6. Keyboard layout (us,cz with toggle keybinding in rc.lua)
+#      XKB layout is set via awful.input in rc.lua.
+#      NOTE: grp:alt_shift_toggle does NOT work as a keypress toggle
+#      in wlroots (known limitation). Workaround: keybinding in rc.lua
+#      using awesome.xkb_set_layout_group(). Default: Alt+Space to toggle.
+#
+#   7. NumLock on startup
+#      Uses wtype (wayland xdotool) to simulate Num_Lock keypress
+#      at compositor startup via rc.lua.
+#
+#   8. LightDM wayland session (display manager support)
+#      Desktop file + wayland session wrapper for when DM is working.
+#
+# PREREQUISITES:
+#   pacman -S gnome-keyring gcr-4 libsecret wtype
+#
+# USAGE:
+#   ~/bin/somewm-session-install          # preview what will be done
+#   sudo ~/bin/somewm-session-install     # install system files
+#
+#   After install: logout from TTY, login again, run somewm-session
+#
+# ============================================================================
+
+set -euo pipefail
+
+# Resolve the REAL user's home (not /root/ when running under sudo)
+REAL_USER="${SUDO_USER:-$USER}"
+REAL_HOME=$(eval echo "~$REAL_USER")
+
+SOMEWM_REPO="${SOMEWM_REPO:-$REAL_HOME/git/github/somewm}"
+ENVIRONMENT_D="$REAL_HOME/.config/environment.d"
+RC_LUA="$REAL_HOME/.config/somewm/rc.lua"
+
+# Colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+CYAN='\033[0;36m'
+NC='\033[0m'
+
+info()  { echo -e "${GREEN}==> ${NC}$*"; }
+warn()  { echo -e "${YELLOW}==> WARNING: ${NC}$*"; }
+err()   { echo -e "${RED}==> ERROR: ${NC}$*" >&2; }
+step()  { echo -e "${CYAN}--- ${NC}$*"; }
+ok()    { echo -e "${GREEN} ✓  ${NC}$*"; }
+skip()  { echo -e "${CYAN} ·  ${NC}$* (already up to date)"; }
+
+# Compare content to a file, return 0 if identical
+# Usage: content_matches "content" "/path/to/file"
+content_matches() {
+    local content="$1" file="$2"
+    [ -f "$file" ] || return 1
+    diff -q <(printf '%s\n' "$content") "$file" &>/dev/null
+}
+
+# ---- Check prerequisites ----
+
+check_packages() {
+    local missing=()
+    for pkg in gnome-keyring gcr-4 libsecret wtype; do
+        if ! pacman -Qi "$pkg" &>/dev/null; then
+            missing+=("$pkg")
+        fi
+    done
+    if [ ${#missing[@]} -gt 0 ]; then
+        err "Missing packages: ${missing[*]}"
+        echo "    sudo pacman -S ${missing[*]}"
+        exit 1
+    fi
+}
+
+# ---- 1. PAM: gnome-keyring auto-unlock ----
+
+install_pam() {
+    info "Configuring PAM for gnome-keyring auto-unlock..."
+    local pam_file="/etc/pam.d/login"
+
+    local has_auth has_session
+    has_auth=$(grep -c "auth.*pam_gnome_keyring" "$pam_file" 2>/dev/null || true)
+    has_session=$(grep -c "session.*pam_gnome_keyring.*auto_start" "$pam_file" 2>/dev/null || true)
+
+    if [ "$has_auth" -gt 0 ] && [ "$has_session" -gt 0 ]; then
+        skip "$pam_file (auth + session lines present)"
+        return
+    fi
+
+    if [ "$has_auth" -gt 0 ] && [ "$has_session" -eq 0 ]; then
+        warn "auth line exists but session line is missing in $pam_file!"
+        warn "Add manually: session optional pam_gnome_keyring.so auto_start"
+        return
+    fi
+
+    # Neither line exists - add both
+    local tmp
+    tmp=$(mktemp)
+    awk '
+        /^auth/ { last_auth = NR; lines[NR] = $0; next }
+        /^session/ && !session_added {
+            lines[NR] = $0
+            # Add after first session include
+            if ($0 ~ /include/) {
+                lines[NR] = $0 "\nsession    optional     pam_gnome_keyring.so auto_start"
+                session_added = 1
+            }
+            next
+        }
+        { lines[NR] = $0 }
+        END {
+            for (i = 1; i <= NR; i++) {
+                if (i == last_auth) {
+                    print lines[i]
+                    print "auth       optional     pam_gnome_keyring.so"
+                } else {
+                    print lines[i]
+                }
+            }
+        }
+    ' "$pam_file" > "$tmp"
+    cp "$tmp" "$pam_file"
+    rm "$tmp"
+    ok "PAM configured in $pam_file"
+}
+
+# ---- 2. environment.d ----
+
+install_environment_d() {
+    info "Installing environment.d config..."
+    install -d -o "$REAL_USER" -g "$REAL_USER" "$ENVIRONMENT_D"
+
+    local target="$ENVIRONMENT_D/50-somewm.conf"
+    local content
+    content=$(cat << 'EOF'
+# Somewm Wayland session environment
+# Standard systemd environment.d format (man environment.d)
+# - Loaded by systemd for display manager sessions automatically
+# - Sourced by somewm-session for TTY launch
+
+# Session identity
+XDG_SESSION_TYPE=wayland
+XDG_CURRENT_DESKTOP=wlroots
+DESKTOP_SESSION=somewm
+
+# XDG base directories (defaults, but explicit is better)
+XDG_CONFIG_HOME=${HOME}/.config
+XDG_CACHE_HOME=${HOME}/.cache
+
+# NVIDIA (wlroots)
+LIBVA_DRIVER_NAME=nvidia
+__GLX_VENDOR_LIBRARY_NAME=nvidia
+GBM_BACKEND=nvidia-drm
+WLR_NO_HARDWARE_CURSORS=1
+
+# Qt
+QT_QPA_PLATFORMTHEME=qt6ct
+QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+
+# General
+EDITOR=lvim
+JAVA_HOME=/usr/lib/jvm/default
+EOF
+    )
+
+    if content_matches "$content" "$target"; then
+        skip "$target"
+    else
+        printf '%s\n' "$content" > "$target"
+        chown "$REAL_USER:$REAL_USER" "$target"
+        ok "Installed $target"
+    fi
+}
+
+# ---- 3. somewm-session (TTY launcher) ----
+
+install_somewm_session() {
+    info "Installing somewm-session..."
+
+    local src="$SOMEWM_REPO/somewm-session"
+    local dst="/usr/local/bin/somewm-session"
+
+    if [ ! -f "$src" ]; then
+        err "somewm-session not found in $SOMEWM_REPO"
+        exit 1
+    fi
+
+    if [ -f "$dst" ] && diff -q "$src" "$dst" &>/dev/null; then
+        skip "$dst"
+    else
+        cp "$src" "$dst"
+        chmod +x "$dst"
+        ok "Installed $dst"
+    fi
+}
+
+# ---- 4. gcr-ssh-agent ----
+
+install_ssh_agent() {
+    info "Enabling gcr-ssh-agent (SSH agent for Wayland)..."
+
+    local real_uid
+    real_uid=$(id -u "$REAL_USER")
+
+    if sudo -u "$REAL_USER" XDG_RUNTIME_DIR="/run/user/$real_uid" \
+         systemctl --user is-enabled gcr-ssh-agent.socket &>/dev/null; then
+        skip "gcr-ssh-agent.socket"
+    else
+        sudo -u "$REAL_USER" XDG_RUNTIME_DIR="/run/user/$real_uid" \
+            systemctl --user enable gcr-ssh-agent.socket 2>/dev/null || true
+        ok "Enabled gcr-ssh-agent.socket"
+    fi
+}
+
+# ---- 5. start-somewm (display manager launcher) ----
+
+install_start_somewm() {
+    info "Installing start-somewm (display manager launcher)..."
+
+    local dst="/usr/local/bin/start-somewm"
+    local content
+    content=$(cat << 'SCRIPT'
+#!/bin/sh
+LOG="$HOME/.local/log/somewm-session.log"
+mkdir -p "$(dirname "$LOG")"
+
+echo "=== start-somewm $(date) ===" > "$LOG"
+env | sort >> "$LOG"
+echo "=== starting somewm ===" >> "$LOG"
+
+# Load environment.d configs
+for _conf in "$HOME/.config/environment.d/"*.conf; do
+    [ -f "$_conf" ] || continue
+    set -a
+    . "$_conf"
+    set +a
+done
+
+# gnome-keyring (secrets only, SSH via gcr-ssh-agent)
+eval $(gnome-keyring-daemon --start --components=pkcs11,secrets 2>/dev/null)
+export SSH_AUTH_SOCK="${SSH_AUTH_SOCK:-/run/user/$(id -u)/gcr/ssh}"
+
+exec somewm "$@" >> "$LOG" 2>&1
+SCRIPT
+    )
+
+    if content_matches "$content" "$dst"; then
+        skip "$dst"
+    else
+        printf '%s\n' "$content" > "$dst"
+        chmod +x "$dst"
+        ok "Installed $dst"
+    fi
+}
+
+# ---- 6. LightDM desktop file ----
+
+install_desktop_file() {
+    info "Installing wayland-sessions desktop file..."
+
+    local dst="/usr/share/wayland-sessions/somewm.desktop"
+    local content
+    content=$(cat << 'DESKTOP'
+[Desktop Entry]
+Name=somewm
+Comment=AwesomeWM-compatible Wayland compositor
+Exec=/usr/local/bin/start-somewm
+TryExec=somewm
+Type=Application
+DesktopNames=wlroots
+DESKTOP
+    )
+
+    mkdir -p /usr/share/wayland-sessions
+
+    if content_matches "$content" "$dst"; then
+        skip "$dst"
+    else
+        printf '%s\n' "$content" > "$dst"
+        ok "Installed $dst"
+    fi
+}
+
+# ---- 7. Keyboard & NumLock config hint ----
+
+show_rc_lua_hint() {
+    info "Keyboard layout & NumLock setup for rc.lua"
+    echo ""
+    echo "  Add this to your ~/.config/somewm/rc.lua (after the requires section):"
+    echo ""
+    cat << 'LUA'
+  -- Keyboard: us,cz layout with qwerty Czech variant
+  local ainput = require("awful.input")
+  ainput.xkb_layout = "us,cz"
+  ainput.xkb_variant = ",qwerty"
+  ainput.xkb_options = "grp:alt_shift_toggle"
+
+  -- NumLock on startup (wtype = wayland xdotool)
+  awful.spawn.once("sh -c 'sleep 0.5 && wtype -k Num_Lock'")
+LUA
+    echo ""
+    echo "  And add a layout toggle keybinding (grp:alt_shift_toggle is broken"
+    echo "  in wlroots - known issue). Add to your keybindings section:"
+    echo ""
+    cat << 'LUA'
+  -- Layout toggle: Alt+Space (workaround for grp:alt_shift_toggle)
+  awful.keyboard.append_global_keybindings({
+      awful.key({ "Mod1" }, "space", function()
+          local current = awesome.xkb_get_layout_group()
+          awesome.xkb_set_layout_group(current == 0 and 1 or 0)
+      end, {description = "toggle keyboard layout (us/cz)", group = "system"}),
+  })
+LUA
+    echo ""
+}
+
+# ---- Main ----
+
+main() {
+    echo "============================================"
+    echo " somewm Wayland session installer"
+    echo "============================================"
+    echo ""
+
+    check_packages
+
+    info "User: $REAL_USER ($REAL_HOME)"
+    echo ""
+
+    if [ "$(id -u)" -ne 0 ]; then
+        warn "Not running as root - showing what would be done."
+        echo ""
+        echo "System changes (need sudo):"
+        echo "  1. /etc/pam.d/login            - add pam_gnome_keyring (auto-unlock)"
+        echo "  2. /usr/local/bin/somewm-session - TTY session launcher"
+        echo "  3. /usr/local/bin/start-somewm   - display manager launcher"
+        echo "  4. /usr/share/wayland-sessions/  - desktop file for DM"
+        echo ""
+        echo "User changes (no sudo needed, done automatically):"
+        echo "  5. ~/.config/environment.d/50-somewm.conf  - env vars"
+        echo "  6. systemctl --user enable gcr-ssh-agent.socket"
+        echo ""
+        echo "Manual (rc.lua):"
+        show_rc_lua_hint
+        echo ""
+        echo "Run with sudo to install:  sudo $0"
+        exit 0
+    fi
+
+    install_pam
+    install_environment_d
+    install_somewm_session
+    install_ssh_agent
+    install_start_somewm
+    install_desktop_file
+
+    echo ""
+    show_rc_lua_hint
+
+    echo ""
+    info "Done! (idempotent - safe to re-run anytime)"
+    echo ""
+    echo "  Next steps:"
+    echo "    1. Add keyboard config to rc.lua (see above)"
+    echo "    2. Logout from TTY (Ctrl+D or exit)"
+    echo "    3. Login again (PAM will unlock gnome-keyring)"
+    echo "    4. Run: somewm-session"
+    echo ""
+}
+
+main "$@"

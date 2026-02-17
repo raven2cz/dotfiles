@@ -1,0 +1,31 @@
+
+
+\e{bold}\e{lightblue}                   -`
+                  .o+`
+                 `ooo/
+                `+oooo:
+               `+oooooo:
+               -+oooooo+:
+              `/:-:++oooo+:
+             `/++++/++++oo+:
+            `/+++++++++++oo+:
+           `/+++ooooooooooooo/`
+          ./ooosssso++osssssso+`
+         .oossssso-````/ossssss+`
+        -osssssso.      :ssssssso.
+       :osssssss/        osssso+++.
+      /ossssssss/        +ssssooo/-
+    `/ossssso+/:-        -:/+osssso+-
+   `+sso+:-`                 `.-/+oso:
+  `++:.                           `-/+/
+  .`                                 `/\e{reset}
+
+\e{bold}\e{lightcyan}            A R C H   L I N U X\e{reset}
+\e{halfbright}     -----------------------------------\e{reset}
+
+  \e{lightblue}os\e{reset}      \S{PRETTY_NAME}
+  \e{lightblue}host\e{reset}    \n
+  \e{lightblue}kernel\e{reset}  \r (\m)
+  \e{lightblue}tty\e{reset}     \l
+  \e{lightblue}date\e{reset}    \d \t
+
