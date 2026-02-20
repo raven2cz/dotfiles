@@ -18,6 +18,12 @@ set fish_greeting                                 # Supresses fish's intro messa
 set EDITOR "nvim"                                 # $EDITOR use Emacs in terminal
 set VISUAL "nvim"                                 # $VISUAL use Emacs in GUI mode
 
+### Python virtual environment
+set -Ux PYENV_ROOT $HOME/.pyenv
+test -d $PYENV_ROOT/bin; and fish_add_path $PYENV_ROOT/bin
+pyenv init - fish | source   # :contentReference[oaicite:0]{index=0}
+status --is-interactive; and pyenv commands 2>/dev/null | grep -q virtualenv-init; and pyenv virtualenv-init - | source
+
 ### SET MANPAGER
 ### Uncomment only one of these!
 
@@ -217,6 +223,8 @@ function fish_greeting
     if test "$TERM" = "xterm-kitty"
         kitty-icat-random
     else if test "$TERM_PROGRAM" = "WezTerm"
+        kitty-icat-random
+    else if test "$TERM" = "xterm-ghostty" -o "$TERM_PROGRAM" = "ghostty"
         kitty-icat-random
     else if test (random 1 10) = 1 
         fish_logo f00 '' ff0  

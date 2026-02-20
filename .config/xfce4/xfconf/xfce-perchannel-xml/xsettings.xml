@@ -2,7 +2,11 @@
 
 <channel name="xsettings" version="1.0">
   <property name="Net" type="empty">
+<<<<<<< Updated upstream
     <property name="ThemeName" type="string" value="Adwaita-dark"/>
+=======
+    <property name="ThemeName" type="string" value="Pop-dark"/>
+>>>>>>> Stashed changes
     <property name="IconThemeName" type="string" value="Papirus-Dark"/>
     <property name="DoubleClickTime" type="empty"/>
     <property name="DoubleClickDistance" type="empty"/>

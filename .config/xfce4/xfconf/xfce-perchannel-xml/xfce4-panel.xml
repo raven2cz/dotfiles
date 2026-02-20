@@ -71,6 +71,7 @@
     <property name="plugin-6" type="string" value="systray">
       <property name="square-icons" type="bool" value="true"/>
       <property name="known-legacy-items" type="array">
+<<<<<<< Updated upstream
         <value type="string" value="wi-fi network connection “otavanet-zoch 1” active: otavanet-zoch (63%)"/>
         <value type="string" value="wi-fi network connection “stodola” active: stodola (56%)"/>
         <value type="string" value="wi-fi network connection “stodola” active: stodola (59%)"/>
@@ -89,7 +90,14 @@
         <value type="string" value="wi-fi network connection “szn-intra” active: szn-intra (66%)"/>
         <value type="string" value="wi-fi network connection “otavanet-zoch 1” active: otavanet-zoch (62%)"/>
         <value type="string" value="wi-fi network connection “otavanet-zoch 1” active: otavanet-zoch (67%)"/>
+=======
+        <value type="string" value="ksnip"/>
+        <value type="string" value="blueman"/>
+>>>>>>> Stashed changes
         <value type="string" value="caffeine"/>
+        <value type="string" value="cloud-drive-ui"/>
+        <value type="string" value="ethernet network connection “wired connection 1” active"/>
+        <value type="string" value="no network connection"/>
         <value type="string" value="volctl"/>
         <value type="string" value="parcellite"/>
         <value type="string" value="remmina"/>
@@ -98,10 +106,15 @@
         <value type="string" value="clipit"/>
       </property>
       <property name="known-items" type="array">
+<<<<<<< Updated upstream
         <value type="string" value="zoom"/>
+=======
+        <value type="string" value="ksnip"/>
+        <value type="string" value="indicator-solaar"/>
+>>>>>>> Stashed changes
         <value type="string" value="chrome_status_icon_1"/>
-        <value type="string" value="blueman"/>
         <value type="string" value="caffeine"/>
+        <value type="string" value="blueman"/>
         <value type="string" value="flameshot"/>
         <value type="string" value="toolbox"/>
         <value type="string" value="The KDE Crash Handler"/>
@@ -114,7 +127,11 @@
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
       <property name="show-notifications" type="bool" value="true"/>
       <property name="mpris-players" type="string" value="firefox.instance109543;firefox.instance1484;firefox.instance1505;firefox.instance1629;firefox.instance18036;firefox.instance2405;firefox.instance7700;firefox.instance99398;plasma-browser-integration;spotify"/>
+<<<<<<< Updated upstream
       <property name="known-players" type="string" value="firefox-developer-edition;spotify"/>
+=======
+      <property name="known-players" type="string" value="firefox-developer-edition"/>
+>>>>>>> Stashed changes
     </property>
     <property name="plugin-9" type="string" value="power-manager-plugin"/>
     <property name="plugin-10" type="string" value="notification-plugin"/>
@@ -127,7 +144,11 @@
       <property name="digital-format" type="string" value="%a %_d %b %y, %H:%m:%S"/>
       <property name="digital-time-format" type="string" value="%a %_d %b %y, %H:%M:%S"/>
       <property name="digital-layout" type="uint" value="3"/>
+<<<<<<< Updated upstream
       <property name="digital-time-font" type="string" value="Terminess Nerd Font Medium 12"/>
+=======
+      <property name="digital-time-font" type="string" value="Sans 10"/>
+>>>>>>> Stashed changes
     </property>
     <property name="plugin-14" type="string" value="actions">
       <property name="appearance" type="uint" value="0"/>
@@ -163,15 +184,20 @@
       <property name="show-command-restart" type="bool" value="true"/>
       <property name="show-command-shutdown" type="bool" value="true"/>
       <property name="favorites" type="array">
-        <value type="string" value="kitty.desktop"/>
         <value type="string" value="Alacritty.desktop"/>
+<<<<<<< Updated upstream
         <value type="string" value="firefox-developer-edition.desktop"/>
         <value type="string" value="sublime_text.desktop"/>
         <value type="string" value="spotify.desktop"/>
+=======
+        <value type="string" value="org.wezfurlong.wezterm.desktop"/>
+        <value type="string" value="kitty.desktop"/>
+        <value type="string" value="firefox-developer-edition.desktop"/>
+>>>>>>> Stashed changes
         <value type="string" value="org.kde.spectacle.desktop"/>
-        <value type="string" value="org.kde.kcolorchooser.desktop"/>
       </property>
       <property name="recent" type="array">
+<<<<<<< Updated upstream
         <value type="string" value="mattermost-desktop.desktop"/>
         <value type="string" value="firefox-developer-edition.desktop"/>
         <value type="string" value="org.kde.dolphin.desktop"/>
@@ -182,6 +208,16 @@
         <value type="string" value="Alacritty.desktop"/>
         <value type="string" value="org.kde.kalk.desktop"/>
         <value type="string" value="pgadmin4.desktop"/>
+=======
+        <value type="string" value="sublime_text.desktop"/>
+        <value type="string" value="jetbrains-webstorm.desktop"/>
+        <value type="string" value="org.kde.dolphin.desktop"/>
+        <value type="string" value="firefox-developer-edition.desktop"/>
+        <value type="string" value="solaar.desktop"/>
+        <value type="string" value="org.ksnip.ksnip.desktop"/>
+        <value type="string" value="org.kde.spectacle.desktop"/>
+        <value type="string" value="firefox.desktop"/>
+>>>>>>> Stashed changes
       </property>
     </property>
     <property name="plugin-23" type="string" value="netload"/>

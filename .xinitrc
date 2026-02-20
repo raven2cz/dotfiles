@@ -1,6 +1,11 @@
 #!/bin/sh
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
+
+dbus-monitor --session \
+  "destination='org.freedesktop.Notifications',interface='org.freedesktop.Notifications',member='Notify'" \
+  >> ~/.cache/dbus-notify.log 2>&1 &
+
 numlockx &
 #setxkbmap -layout "us,cz" -option "grp:alt_shift_toggle" -variant ",qwerty" &
 

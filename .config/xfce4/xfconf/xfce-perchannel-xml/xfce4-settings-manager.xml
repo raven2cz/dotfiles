@@ -2,7 +2,12 @@
 
 <channel name="xfce4-settings-manager" version="1.0">
   <property name="last" type="empty">
+<<<<<<< Updated upstream
     <property name="window-width" type="int" value="1642"/>
     <property name="window-height" type="int" value="1068"/>
+=======
+    <property name="window-width" type="int" value="1733"/>
+    <property name="window-height" type="int" value="1110"/>
+>>>>>>> Stashed changes
   </property>
 </channel>

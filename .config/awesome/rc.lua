@@ -201,6 +201,22 @@ awful.mouse.append_global_mousebindings({
 
 -- Personal Awesome keys
 awful.keyboard.append_global_keybindings({
+    awful.key({ modkey, altkey }, "b",
+        function()
+            awful.spawn(
+                terminal ..
+                [[ -e bash -c '
+                    mkdir -p ~/.cache
+                    echo "Klikni na bublinu…" ;
+                    xprop _NET_WM_PID WM_CLASS WM_NAME | tee -a ~/.cache/bubble.log ;
+                    echo ;
+                    echo "Hotovo – stiskni Enter na zavření terminálu" ;
+                    read
+                ']]
+            )
+        end,
+        { description = "Identify tray-bubble (pid / WM_CLASS)", group = "debug" }
+    ),
     awful.key({ modkey }, "b", function()
             awful.screen.focused().mywibox.visible = not awful.screen.focused().mywibox.visible
         end,

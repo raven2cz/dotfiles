@@ -5,7 +5,11 @@ Colorize_Values=true
 Color_In=rgb(255,79,0)
 Color_Out=rgb(255,229,0)
 Text=Net
+<<<<<<< Updated upstream
 Network_Device=wlp1s0
+=======
+Network_Device=eno1
+>>>>>>> Stashed changes
 Max_In=4096
 Max_Out=4096
 Auto_Max=true
