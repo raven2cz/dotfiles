@@ -1,0 +1,116 @@
+# =============================================================================
+#  HUSTACKA GHOSTTY CONFIG - The Badass Terminal
+# =============================================================================
+#
+#  Reload with: Ctrl+Shift+, (Linux) or Cmd+Shift+, (macOS)
+#
+
+# =============================================================================
+#  THEME - Catppuccin Mocha (the king of modern terminal themes)
+# =============================================================================
+# Other options: "Tokyo Night", "Dracula", "Cyberpunk Scarlet Protocol",
+# "Nord", "Gruvbox Dark Hard", "Afterglow", "Ayu Mirage"
+# Run `ghostty +list-themes` to browse all 300+ built-in themes.
+theme = dark:Catppuccin Mocha,light:Catppuccin Latte
+
+# =============================================================================
+#  TRANSPARENCY - SceneFX handles blur at compositor level
+# =============================================================================
+background-opacity = 0.6
+background-blur = 0
+unfocused-split-opacity = 0.80
+
+# =============================================================================
+#  FONT - Operator Mono (from wezterm config)
+# =============================================================================
+font-family = Operator Mono Book
+font-family-bold = Operator Mono Bold
+font-family-italic = Operator Mono Book Italic
+font-family-bold-italic = Operator Mono Bold Italic
+font-size = 14
+
+# Disable ligatures (matching wezterm harfbuzz_features calt=0)
+font-feature = -calt
+font-feature = -liga
+
+# =============================================================================
+#  CURSOR - Ninja warp animation
+# =============================================================================
+cursor-style = block
+cursor-style-blink = true
+cursor-color = #cba6f7
+cursor-text = #1e1e2e
+cursor-opacity = 0.90
+adjust-cursor-thickness = 2
+
+# =============================================================================
+#  WINDOW - Clean, borderless, minimal padding
+# =============================================================================
+window-decoration = none
+window-padding-x = 2
+window-padding-y = 2
+window-padding-balance = true
+window-padding-color = extend
+window-theme = ghostty
+
+# =============================================================================
+#  COLORS
+# =============================================================================
+minimum-contrast = 1.1
+bold-color = bright
+
+# =============================================================================
+#  SPLIT PANES
+# =============================================================================
+split-divider-color = #313244
+
+# =============================================================================
+#  NINJA CURSOR SHADER - Neovide-like smear/warp effect
+# =============================================================================
+# Cursor warps and stretches when jumping between positions.
+# Leading edge jumps fast, trailing corners lag behind = ninja smear.
+custom-shader = shaders/cursor/cursor_warp.glsl
+custom-shader-animation = true
+
+# --- Other cursor shaders (uncomment to swap) ---
+# custom-shader = shaders/cursor/cursor_sweep.glsl
+# custom-shader = shaders/cursor/cursor_tail.glsl
+# custom-shader = shaders/cursor/sonic_boom_cursor.glsl
+# custom-shader = shaders/cursor/ripple_cursor.glsl
+
+# --- Atmosphere shaders (clone 0xhckr/ghostty-shaders first) ---
+# custom-shader = shaders/effects/bloom.glsl
+# custom-shader = shaders/effects/bettercrt.glsl
+# custom-shader = shaders/effects/starfield.glsl
+# custom-shader = shaders/effects/galaxy.glsl
+# custom-shader = shaders/effects/spotlight.glsl
+
+# =============================================================================
+#  BACKGROUND IMAGE (optional, uncomment to use)
+# =============================================================================
+# background-image = /path/to/your/wallpaper.png
+# background-image-opacity = 0.06
+# background-image-position = center
+# background-image-fit = cover
+
+# =============================================================================
+#  KEYBINDINGS - Splits & Navigation
+# =============================================================================
+keybind = ctrl+shift+d=new_split:right
+keybind = ctrl+shift+e=new_split:down
+keybind = ctrl+shift+h=goto_split:left
+keybind = ctrl+shift+l=goto_split:right
+keybind = ctrl+shift+k=goto_split:up
+keybind = ctrl+shift+j=goto_split:down
+keybind = ctrl+shift+equal=equalize_splits
+keybind = ctrl+equal=increase_font_size:1
+keybind = ctrl+minus=decrease_font_size:1
+keybind = ctrl+0=reset_font_size
+
+# =============================================================================
+#  MISC
+# =============================================================================
+copy-on-select = clipboard
+link-url = true
+shell-integration = detect
+scrollback-limit = 30000
