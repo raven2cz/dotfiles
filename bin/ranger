@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Work around ranger 1.9.4 rejecting Kitty image previews in Ghostty because
+# Ghostty correctly advertises TERM=xterm-ghostty, while ranger checks for
+# "kitty" in TERM before enabling the Kitty graphics protocol.
+if [[ "${TERM_PROGRAM:-}" == "ghostty" || "${TERM:-}" == "xterm-ghostty" ]]; then
+  export TERM=xterm-kitty
+  export TMPDIR=/tmp/tty-graphics-protocol
+  mkdir -p "$TMPDIR"
+fi
+
+exec /usr/bin/ranger "$@"
