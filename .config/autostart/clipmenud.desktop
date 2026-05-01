@@ -2,4 +2,5 @@
 Exec=/usr/bin/clipmenud
 Name=clipmenud
 Type=Application
-OnlyShownIn=Awesome;
+OnlyShowIn=Awesome;
+NotShowIn=wlroots;

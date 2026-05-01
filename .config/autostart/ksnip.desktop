@@ -5,3 +5,4 @@ Exec=ksnip
 Terminal=false
 Type=Application
 X-GNOME-Autostart-enabled=true
+NotShowIn=wlroots;

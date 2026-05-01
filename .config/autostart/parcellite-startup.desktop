@@ -39,3 +39,4 @@ Exec=start_process parcellite
 Terminal=false
 Type=Application
 X-GNOME-Autostart-enabled=true
+NotShowIn=wlroots;

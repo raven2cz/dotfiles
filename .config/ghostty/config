@@ -69,8 +69,9 @@ split-divider-color = #313244
 # =============================================================================
 # Cursor warps and stretches when jumping between positions.
 # Leading edge jumps fast, trailing corners lag behind = ninja smear.
-custom-shader = shaders/cursor/cursor_warp.glsl
-custom-shader-animation = true
+# DISABLED: shader měl bug, žral ~15 % GPU i v klidu.
+# custom-shader = shaders/cursor/cursor_warp.glsl
+# custom-shader-animation = true
 
 # --- Other cursor shaders (uncomment to swap) ---
 # custom-shader = shaders/cursor/cursor_sweep.glsl

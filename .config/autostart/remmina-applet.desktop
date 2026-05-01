@@ -7,3 +7,4 @@ Exec=remmina -i
 Terminal=false
 Type=Application
 Hidden=false
+NotShowIn=wlroots;

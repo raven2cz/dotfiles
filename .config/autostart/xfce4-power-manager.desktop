@@ -125,5 +125,5 @@ Icon=org.xfce.powermanager
 Exec=xfce4-power-manager
 Terminal=false
 Type=Application
-NotShowIn=GNOME;KDE;Unity;MATE;LXQt;Awesome
+NotShowIn=GNOME;KDE;Unity;MATE;LXQt;Awesome;wlroots;
 StartupNotify=false
