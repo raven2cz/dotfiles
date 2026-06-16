@@ -12,10 +12,10 @@ machines: [r7home]
 status: active
 confidence: high
 owner: tonda
-last_updated: 2026-05-28
+last_updated: 2026-06-16
 supersedes: []
 superseded_by: null
-links: [system.firefox-hidpi-scaling]
+links: [system.firefox-hidpi-scaling, system.aur-malware-monitoring]
 ---
 
 # r7home
@@ -49,5 +49,24 @@ GTK side: `xsettingsd.conf` controls `Gdk/UnscaledDPI` (currently `98304` = 96 D
 
 ## Known quirks
 
-- After Arch updates (~mid-May 2026) `gtk-xft-dpi` started being auto-set to `142540` (~139 DPI) — root cause not fully isolated. Manual reset to `98304` survives unless something regenerates the config.
+- After Arch updates (~mid-May 2026) `gtk-xft-dpi` started being auto-set to `142540` (~139 DPI) - root cause not fully isolated. Manual reset to `98304` survives unless something regenerates the config.
 - somewm logs spam `mouse::leave on invalid object` warnings; benign.
+
+## Security / AUR monitoring
+
+Procedure: [[system.aur-malware-monitoring]]. Run `aur-audit.sh` after AUR
+update batches. aurscan checkout lives at `~/.local/src/aurscan`.
+
+- Full clean sweep on 2026-06-16: 97 installed AUR packages, live-process sweep
+  (processes, network, systemd, cron, autostart, ld.so.preload, shell rc) all
+  clean. The 2026 ~400-package AUR hijack campaign did not touch this box.
+- Watch item: `libelectron` (AUR, maintainer `gameslayer`, since 2022) is a
+  transitive dep of the `netflix` AUR wrapper. Its `package()` runs a build-time
+  `npm install` from a personal gitlab repo named "electron" - a real
+  arbitrary-code-at-build-time exposure, though the on-disk node_modules from
+  the 2026-06-02 build were clean (39 ordinary electron libs, no pre/postinstall
+  hooks, no native/ELF). Not part of the hijack campaign. If the `netflix`
+  Electron wrapper is unused, `paru -Rns netflix libelectron` removes the
+  exposure (Netflix runs fine in Firefox/Chrome).
+- Outbound reverse SSH tunnel `pi-tunnel.service` (`-R 22022:localhost:22` to
+  `pi@fishlive.org`) is tonda's own secured remote access, not a backdoor.

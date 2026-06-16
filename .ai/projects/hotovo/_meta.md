@@ -15,7 +15,7 @@ owner: tonda
 last_updated: 2026-05-29
 supersedes: []
 superseded_by: null
-links: [project.hotovo.deployment, project.realestate-bot.deployment]
+links: [project.hotovo.deployment, project.realestate-bot.deployment, project.gemma.hotovo-integration]
 ---
 
 # HOTOVO
