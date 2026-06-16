@@ -6,6 +6,7 @@ should know exist. Exhaustive listing is done by ripgrep on the tree.
 ## Start here
 
 - New machine setup → [system.r7home](system/machines/r7home.md)
+- dotfiles + ~/.ai versioning via the `config` bare repo (how to persist KB, all Arch boxes) → [system.dotfiles-config-bare-repo](system/dotfiles-config-bare-repo.md)
 - AUR malware / supply-chain check (aurscan, all Arch boxes) → [system.aur-malware-monitoring](system/aur-malware-monitoring.md)
 - External agent CLIs (codex, agy) for review → [system.ai-agents-usage](system/ai-agents-usage.md)
 - Firefox / HiDPI display weirdness → [system.firefox-hidpi-scaling](system/firefox-hidpi-scaling.md)
@@ -18,6 +19,7 @@ should know exist. Exhaustive listing is done by ripgrep on the tree.
 | id | title | last_updated |
 |---|---|---|
 | system.r7home | r7home — primary workstation (4K + somewm + dual monitor + Samsung TV) | 2026-06-16 |
+| system.dotfiles-config-bare-repo | dotfiles + ~/.ai via the `config` bare git repo (Arch machines) | 2026-06-16 |
 | system.aur-malware-monitoring | AUR package malware monitoring with aurscan (all Arch machines) | 2026-06-16 |
 | system.ai-agents-usage | External AI agent CLIs (codex gpt-5.5, agy/Antigravity 2.0 replacing gemini-cli) | 2026-05-28 |
 | system.firefox-hidpi-scaling | Firefox HiDPI chrome vs content scaling | 2026-05-28 |
