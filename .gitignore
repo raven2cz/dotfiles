@@ -22,5 +22,9 @@
 # python cache
 *.pyc
 
+# ~/.ai moved to its own PRIVATE Gitea repo (git@fishlive.org:raven2cz/ai.git).
+# Keep this PUBLIC dotfiles repo from tracking it. See ~/.ai system.ai-knowledge-base.
+/.ai/
+
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
